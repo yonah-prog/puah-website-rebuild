@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PUAH — Website Design Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#152a3d;
+    --navy-2:#1e3549;
+    --teal:#2f9a95;
+    --teal-d:#26807c;
+    --sky:#5cbfda;
+    --pink:#eeb0c2;
+    --pink-d:#d98aa0;
+    --ink:#22323f;
+    --muted:#5f6d78;
+    --cream:#f7f4ee;
+    --sand:#efe9df;
+    --line:#e7e0d5;
+    --white:#ffffff;
+    --note:#8a6d1f;
+    --note-bg:#fbf4dd;
+    --radius:16px;
+    --maxw:1120px;
+    --shadow:0 10px 30px rgba(21,42,61,.08);
+    --shadow-sm:0 4px 14px rgba(21,42,61,.07);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--white);color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.12;margin:0 0 .5em;color:var(--navy);letter-spacing:-.01em;}
+  h1{font-size:clamp(34px,4.6vw,54px);}
+  h2{font-size:clamp(26px,3.2vw,38px);}
+  h3{font-size:21px;}
+  p{margin:0 0 1em;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  section{padding:72px 0;}
+  .eyebrow{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);font-weight:700;margin-bottom:14px;display:block;}
+  .muted{color:var(--muted);}
+  .center{text-align:center;}
+  .lead{font-size:19px;color:var(--muted);}
+
+  /* ---- brand mark ---- */
+  .mark{display:inline-block;vertical-align:middle;}
+  .logo{display:flex;align-items:center;gap:9px;cursor:pointer;text-decoration:none;}
+  .logo .wordmark{font-family:"Fraunces",serif;font-weight:600;font-size:26px;color:var(--navy);letter-spacing:.02em;}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;gap:7px;border-radius:100px;padding:12px 22px;font-size:14px;font-weight:600;
+    cursor:pointer;text-decoration:none;border:1.5px solid transparent;transition:.15s;}
+  .btn.solid{background:var(--teal);color:#fff;}
+  .btn.solid:hover{background:var(--teal-d);}
+  .btn.ghost{background:transparent;color:var(--navy);border-color:#cdd6da;}
+  .btn.ghost:hover{border-color:var(--teal);color:var(--teal-d);}
+  .btn.light{background:#fff;color:var(--navy);}
+  .btn.sm{padding:9px 16px;font-size:13px;}
+  .btn.on-dark{border-color:rgba(255,255,255,.35);color:#fff;}
+  .btn.on-dark:hover{background:rgba(255,255,255,.1);}
+  .link{color:var(--teal-d);font-weight:600;text-decoration:none;cursor:pointer;border-bottom:1.5px solid transparent;}
+  .link:hover{border-bottom-color:var(--teal);}
+
+  /* ---- media placeholders (intentional, soft) ---- */
+  .media{position:relative;border-radius:var(--radius);overflow:hidden;
+    background:linear-gradient(135deg,#dfeeee 0%,#eae3ef 55%,#f6e7ec 100%);
+    display:flex;align-items:center;justify-content:center;min-height:150px;color:#8a97a0;}
+  .media .lbl{position:relative;z-index:2;font-size:12px;letter-spacing:.05em;text-transform:uppercase;font-weight:600;
+    background:rgba(255,255,255,.72);padding:5px 12px;border-radius:100px;color:#6b7882;}
+  .media .picon{position:absolute;opacity:.5;}
+  .media.avatar{border-radius:50%;min-height:0;width:76px;height:76px;}
+  .media.tall{min-height:300px;}
+  .media.dark{background:linear-gradient(135deg,#20364a,#2b4a52);}
+  .media.dark .lbl{background:rgba(255,255,255,.14);color:#dfe7ea;}
+
+  /* ---- icon tile ---- */
+  .itile{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#fff;flex:0 0 auto;}
+  .itile.teal{background:var(--teal);}
+  .itile.sky{background:var(--sky);}
+  .itile.pink{background:var(--pink-d);}
+  .itile.navy{background:var(--navy);}
+
+  /* ---- cards ---- */
+  .grid{display:grid;gap:22px;}
+  .g2{grid-template-columns:repeat(2,1fr);}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .g4{grid-template-columns:repeat(4,1fr);}
+  @media(max-width:860px){.g2,.g3,.g4{grid-template-columns:1fr;}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:var(--shadow-sm);transition:.18s;}
+  .card:hover{box-shadow:var(--shadow);transform:translateY(-3px);}
+  .card h3{margin-top:16px;}
+  .tag{display:inline-block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-d);background:#e6f2f1;border-radius:100px;padding:3px 11px;font-weight:600;}
+
+  /* ---- note ---- */
+  .note{background:var(--note-bg);border-left:3px solid var(--note);color:var(--note);font-size:12.5px;line-height:1.5;
+    padding:10px 14px;border-radius:6px;margin:16px 0 0;}
+  .note b{color:var(--note);}
+
+  /* ---- top bars ---- */
+  .anno-bar{background:var(--navy);color:#c9d3da;font-size:12px;padding:7px 0;text-align:center;letter-spacing:.02em;}
+  .anno-bar .toggle{color:#fff;text-decoration:underline;cursor:pointer;font-weight:600;}
+  .utility{background:var(--cream);border-bottom:1px solid var(--line);font-size:12.5px;color:var(--muted);}
+  .utility .wrap{display:flex;justify-content:space-between;align-items:center;height:38px;}
+  .utility a{text-decoration:none;margin-left:18px;cursor:pointer;}
+  .utility a:hover{color:var(--teal-d);}
+
+  header.site{position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:30;}
+  header.site .wrap{display:flex;align-items:center;gap:26px;height:74px;}
+  nav.main{display:flex;gap:26px;flex:1;font-size:15px;font-weight:600;}
+  nav.main a{text-decoration:none;color:var(--navy);cursor:pointer;padding:6px 0;border-bottom:2px solid transparent;}
+  nav.main a:hover,nav.main a.active{border-bottom-color:var(--teal);color:var(--teal-d);}
+  .has-drop{position:relative;}
+  .has-drop > a{display:inline-flex;align-items:center;gap:5px;}
+  .caret{width:9px;height:9px;transition:.15s;}
+  .has-drop:hover .caret{transform:rotate(180deg);}
+  .dropdown{position:absolute;top:100%;left:-14px;padding-top:12px;min-width:288px;display:none;}
+  .has-drop:hover .dropdown,.dropdown:hover{display:block;}
+  .dropdown-inner{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:8px;}
+  .dropdown a{display:block;padding:11px 14px;border-radius:10px;border-bottom:none !important;color:var(--navy);font-weight:600;}
+  .dropdown a:hover{background:var(--cream);color:var(--teal-d);}
+  .dropdown a small{display:block;font-weight:400;font-size:12.5px;color:var(--muted);margin-top:2px;}
+  .header-cta{display:flex;gap:10px;align-items:center;}
+  @media(max-width:860px){nav.main{display:none;} .header-cta .hide-sm{display:none;}}
+
+  /* ---- hero ---- */
+  .hero{background:radial-gradient(1200px 500px at 80% -10%,#e7f2f1 0%,transparent 60%),linear-gradient(180deg,var(--cream),#fff);}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:80px 28px;}
+  @media(max-width:860px){.hero .wrap{grid-template-columns:1fr;padding:52px 28px;}}
+  .hero .media{min-height:380px;box-shadow:var(--shadow);}
+
+  .page{display:none;}
+  .page.active{display:block;}
+  .alt{background:var(--cream);}
+  .stat{font-family:"Fraunces",serif;font-size:52px;font-weight:500;line-height:1;color:var(--teal);}
+
+  /* dark section */
+  .dark{background:linear-gradient(160deg,var(--navy),var(--navy-2));color:#d7e0e6;}
+  .dark h2,.dark h3{color:#fff;}
+  .dark .eyebrow{color:var(--sky);}
+  .pill-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:26px;}
+  .pill-card .num{font-size:12px;letter-spacing:.14em;font-weight:700;color:rgba(255,255,255,.5);}
+
+  /* footer */
+  footer.site{background:var(--navy);color:#b7c3cc;padding:56px 0 28px;}
+  footer.site a{color:#b7c3cc;text-decoration:none;cursor:pointer;}
+  footer.site a:hover{color:#fff;}
+  footer.site h4{color:#fff;font-family:"Inter";font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;}
+  .fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:32px;}
+  @media(max-width:860px){.fgrid{grid-template-columns:1fr 1fr;}}
+  .foot-links a{display:block;padding:5px 0;font-size:14px;}
+  .sep{height:1px;background:rgba(255,255,255,.12);margin:28px 0;}
+
+  .breadcrumb{font-size:12.5px;color:var(--muted);padding:16px 0;border-bottom:1px solid var(--line);}
+  .stub-hero{background:radial-gradient(900px 400px at 85% -20%,#e7f2f1,transparent 60%),var(--cream);padding:64px 0;border-bottom:1px solid var(--line);}
+  .quote{font-family:"Fraunces",serif;font-size:clamp(22px,2.6vw,30px);line-height:1.35;color:var(--navy);}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site">
+  <div class="wrap">
+    <a class="logo" onclick="go('home')">
+      <svg class="mark" width="34" height="34" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#2f9a95"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#2f9a95" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg>
+      <span class="wordmark">PUAH</span>
+    </a>
+    <nav class="main" id="nav">
+      <div class="has-drop">
+        <a data-page="about" onclick="go('about')">About <svg class="caret" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown"><div class="dropdown-inner">
+          <a onclick="go('about-story')">PUAH's Story<small>Origins, vision &amp; milestones</small></a>
+          <a onclick="go('about-mission')">Our Mission &amp; Approach<small>Torah wisdom meets modern medicine</small></a>
+          <a onclick="go('about-team')">Meet the Team<small>Leadership &amp; advisors</small></a>
+          <a onclick="go('about-council')">Medical Advisory Council<small>The experts behind our integrity</small></a>
+          <a onclick="go('about-endorsements')">Rabbinical Endorsements<small>Trusted across the spectrum</small></a>
+          <a onclick="go('about-testimonials')">Testimonials<small>Families in their own words</small></a>
+        </div></div>
+      </div>
+      <div class="has-drop">
+        <a data-page="services" onclick="go('services')">Services <svg class="caret" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown"><div class="dropdown-inner">
+          <a onclick="go('svc-guidance')">Guidance &amp; Support<small>Counseling &amp; coaching, every step</small></a>
+          <a onclick="go('svc-ask')">Ask the Rabbi<small>Confidential halachic answers</small></a>
+          <a onclick="go('svc-puahline')">The PUAHline<small>Family-purity hotline</small></a>
+          <a onclick="go('svc-lab')">Lab Supervision<small>Protecting halachic integrity</small></a>
+          <a onclick="go('svc-shabbos')">Shabbos Phlebotomy &amp; Injections<small>Care that stays on schedule</small></a>
+          <a onclick="go('svc-financial')">Financial Assistance<small>Grants, loans &amp; more</small></a>
+        </div></div>
+      </div>
+      <a data-page="pillars" onclick="go('pillars')">The Three Pillars</a>
+      <div class="has-drop">
+        <a data-page="getinvolved" onclick="go('getinvolved')">Get Involved <svg class="caret" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown"><div class="dropdown-inner">
+          <a onclick="go('gi-volunteer')">Volunteer<small>Join the PUAH family</small></a>
+          <a onclick="go('gi-events')">Events<small>Gather &amp; celebrate with us</small></a>
+          <a onclick="go('gi-story')">Share Your Story<small>Inspire others with your journey</small></a>
+          <a onclick="go('gi-ecards')">eCards<small>Send a card, support a family</small></a>
+        </div></div>
+      </div>
+      <a data-page="resources" onclick="go('resources')">Digital Library ↗</a>
+    </nav>
+    <div class="header-cta">
+      <a class="btn ghost sm hide-sm" href="javascript:void(0)">How can we help?</a>
+      <a class="btn solid sm" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate</a>
+    </div>
+  </div>
+</header>
+
+<!-- ========================= HOME ========================= -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Fertility · Medicine · Halacha</span>
+        <h1>Guidance for building a Jewish family.</h1>
+        <p class="lead" style="max-width:52ch;">For over two decades, PUAH has stood at the intersection of Halacha and reproductive medicine — walking beside couples, physicians, and rabbanim with clarity, discretion, and compassion. Wherever you are on the journey, we're here to help.</p>
+        <div style="margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;">
+          <a class="btn solid" onclick="go('services')">Schedule a free consultation</a>
+          <a class="btn ghost" onclick="go('services')">Ask the Rabbi</a>
+        </div>
+        <p class="note" style="max-width:60ch;"><b>Design note —</b> Hero speaks to all three audiences at once: families (primary CTA), rabbanim (Ask the Rabbi), and a discreet path to the helpline. Warm, human photography of a family/couple recommended.</p>
+      </div>
+      <div class="media tall"><span class="lbl">Hero image — couple / family</span></div>
+    </div>
+  </div>
+
+  <!-- WHO PUAH HELPS -->
+  <section>
+    <div class="wrap">
+      <div class="center"><span class="eyebrow">Who PUAH Helps</span><h2>One organization, three communities served.</h2></div>
+      <div class="grid g3" style="margin-top:36px;">
+        <div class="card">
+          <div class="itile teal"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div>
+          <h3>Families &amp; Couples</h3>
+          <p class="muted">Individuals and couples navigating fertility, women's and men's health, genetics, and intimacy — supported with free, confidential guidance at every step.</p>
+          <a class="link" onclick="go('services')">Explore our services →</a>
+        </div>
+        <div class="card">
+          <div class="itile pink"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div>
+          <h3>Rabbanim &amp; Community Leaders</h3>
+          <p class="muted">Rabbanim fielding today's complex halachic fertility questions, backed by structured training, real-time guidance, and a trusted peer network.</p>
+          <a class="link" onclick="go('pillars')">Rabbinic Leadership Initiative →</a>
+        </div>
+        <div class="card">
+          <div class="itile sky"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div>
+          <h3>Physicians &amp; Medical Professionals</h3>
+          <p class="muted">Jewish physicians and scientists working at the intersection of modern medicine and Halacha, connected through PUAH's national medical network.</p>
+          <a class="link" onclick="go('pillars')">National Medical Thinktank →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section class="alt">
+    <div class="wrap grid g2" style="align-items:center;">
+      <div class="media tall"><span class="lbl">Photo — advisor with client</span></div>
+      <div>
+        <span class="eyebrow">Who we are</span>
+        <h2>Where Halacha and reproductive medicine meet.</h2>
+        <p>PUAH helps the greater Jewish community fulfill the dream of a healthy family. Whether the challenge is fertility, women's health, men's health, genetics, or intimacy, our advisors bring together deep rabbinical knowledge and specialized training in modern reproductive medicine to offer the clearest guidance possible.</p>
+        <p>All of our counseling and guidance is provided <strong>free of charge</strong>, carried out in full accordance with Jewish law, and delivered with sensitivity and discretion.</p>
+        <a class="link" onclick="go('about')">Read our story →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT STATS -->
+  <section class="dark">
+    <div class="wrap">
+      <div class="center"><span class="eyebrow">Our worldwide impact</span></div>
+      <div class="grid g4 center" style="margin-top:14px;">
+        <div><div class="stat">16,654</div><div style="color:#a9b7c0;">people helped last year</div></div>
+        <div><div class="stat">300</div><div style="color:#a9b7c0;">calls answered per day</div></div>
+        <div><div class="stat">5</div><div style="color:#a9b7c0;">countries served</div></div>
+        <div><div class="stat">20+</div><div style="color:#a9b7c0;">years of guidance</div></div>
+      </div>
+      <p class="note"><b>Design note —</b> Verify all figures with PUAH before publishing. "20+ years" is inferred from the proposal ("more than two decades"); confirm founding year.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES SNAPSHOT -->
+  <section>
+    <div class="wrap">
+      <span class="eyebrow">What we do</span>
+      <h2>Comprehensive support, every step of the way</h2>
+      <p class="lead" style="max-width:62ch;">PUAH's services meet families, physicians, and rabbanim where they are — from the first question to the delivery room.</p>
+      <div class="grid g3" style="margin-top:30px;">
+        <div class="card"><h3>Guidance &amp; Support</h3><p class="muted">One-on-one counseling and coaching through the fertility process, in accordance with Halacha.</p><a class="link" onclick="go('services')">Learn more →</a></div>
+        <div class="card"><h3>Ask the Rabbi</h3><p class="muted">Direct, confidential answers to your halachic questions from PUAH's rabbinic experts.</p><a class="link" onclick="go('services')">Learn more →</a></div>
+        <div class="card"><h3>The PUAHline</h3><p class="muted">A dedicated helpline connecting you to a knowledgeable advisor when you need one most.</p><a class="link" onclick="go('services')">Learn more →</a></div>
+        <div class="card"><h3>Lab Supervision</h3><p class="muted">On-site observation to safeguard the integrity of the process and prevent human error.</p><a class="link" onclick="go('services')">Learn more →</a></div>
+        <div class="card"><h3>Financial Assistance</h3><p class="muted">Help easing the financial burden that so often accompanies the fertility journey.</p><a class="link" onclick="go('services')">Learn more →</a></div>
+        <div class="card"><h3>Shabbos &amp; Injection Support</h3><p class="muted">Shabbos phlebotomy collection and injection assistance to keep care on schedule.</p><a class="link" onclick="go('services')">Learn more →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THREE PILLARS -->
+  <section class="dark">
+    <div class="wrap">
+      <span class="eyebrow">Our model for the future</span>
+      <h2>The Three Pillars of Fertility Support</h2>
+      <p style="color:#b7c3cc;max-width:66ch;">PUAH is building the infrastructure for the next generation of Jewish family-building — uniting rabbinic leadership, medical expertise, and accessible knowledge into one coordinated framework.</p>
+      <div class="grid g3" style="margin-top:30px;">
+        <div class="pill-card">
+          <div class="itile teal" style="margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div>
+          <div class="num">PILLAR 01</div>
+          <h3>Rabbinic Leadership Initiative</h3>
+          <p style="color:#b7c3cc;">Equipping rabbanim with structured training, real-time halachic dialogue, and a peer network to lead confidently on fertility.</p>
+          <a class="link" style="color:#fff;border-color:rgba(255,255,255,.5);" onclick="go('pillar-rabbinic')">Learn more →</a>
+        </div>
+        <div class="pill-card">
+          <div class="itile pink" style="margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div>
+          <div class="num">PILLAR 02</div>
+          <h3>National Medical Thinktank</h3>
+          <p style="color:#b7c3cc;">An elite forum of Jewish physicians and scientists bridging modern medicine and halachic decision-making.</p>
+          <a class="link" style="color:#fff;border-color:rgba(255,255,255,.5);" onclick="go('pillar-medical')">Learn more →</a>
+        </div>
+        <div class="pill-card">
+          <div class="itile sky" style="margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div>
+          <div class="num">PILLAR 03</div>
+          <h3>Education &amp; Awareness</h3>
+          <p style="color:#b7c3cc;">A comprehensive Digital Resource Library making trusted fertility knowledge accessible to everyone.</p>
+          <a class="link" style="color:#fff;border-color:rgba(255,255,255,.5);" onclick="go('resources')">Visit the library ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION LINK-OUT -->
+  <section>
+    <div class="wrap grid g2" style="align-items:center;">
+      <div>
+        <span class="eyebrow">Looking for fertility information?</span>
+        <h2>Explore the PUAH Digital Resource Library</h2>
+        <p class="lead">Fertility 101, halachic guidance, medical insights, genetics, women's and men's health, personal stories and more — all in one trusted, searchable home.</p>
+        <p>Our educational content now lives on a dedicated platform built for learning.</p>
+        <a class="btn solid" onclick="go('resources')">Go to the Resource Library ↗</a>
+        <p class="note" style="max-width:60ch;"><b>Design note —</b> This is the prominent link-out. The corporate site hosts no articles itself; all educational content lives on the separate platform. Opens the new domain in a new tab in production.</p>
+      </div>
+      <div class="media tall"><span class="lbl">Preview — Resource Library</span></div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="alt">
+    <div class="wrap center">
+      <span class="eyebrow">In their words</span>
+      <p class="quote" style="max-width:64ch;margin:0 auto;">"I wouldn't be here if it wasn't for PUAH. They gave us answers, dignity, and hope when we had none."</p>
+      <p class="muted" style="margin-top:14px;">— PUAH family</p>
+      <div style="margin-top:20px;"><a class="btn ghost" onclick="go('about-testimonials')">Read more testimonials →</a></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section>
+    <div class="wrap center">
+      <h2 style="max-width:22ch;margin:0 auto .6em;">However you found us, you don't have to navigate this alone.</h2>
+      <div style="margin-top:6px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a class="btn solid" onclick="go('services')">Schedule a free consultation</a>
+        <a class="btn ghost" onclick="go('pillars')">Partner with PUAH</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ========================= ABOUT ========================= -->
+<div class="page" id="page-about">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">About PUAH</span><h1>Our story, our people, our promise.</h1><p class="lead" style="max-width:62ch;">More than twenty years standing at the intersection of Halacha and reproductive medicine.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / About</div></div>
+  <section><div class="wrap">
+    <div class="grid g3">
+      <div class="card" onclick="go('about-story')" style="cursor:pointer;"><h3>PUAH's Story</h3><p class="muted">History and origins, founding vision, milestones, and growth into a global organization.</p><a class="link" onclick="go('about-story')">Read more →</a></div>
+      <div class="card" onclick="go('about-mission')" style="cursor:pointer;"><h3>Our Mission &amp; Approach</h3><p class="muted">The synthesis of Torah wisdom and reproductive medicine; our commitment to free, discreet, halachically-grounded care.</p><a class="link" onclick="go('about-mission')">Read more →</a></div>
+      <div class="card" onclick="go('about-team')" style="cursor:pointer;"><h3>Meet the Team</h3><p class="muted">The leadership and advisors who make PUAH's work possible.</p><a class="link" onclick="go('about-team')">Read more →</a></div>
+      <div class="card" onclick="go('about-council')" style="cursor:pointer;"><h3>Medical Advisory Council</h3><p class="muted">The physicians and scientists who guide PUAH's medical integrity.</p><a class="link" onclick="go('about-council')">Read more →</a></div>
+      <div class="card" onclick="go('about-endorsements')" style="cursor:pointer;"><h3>Rabbinical Endorsements</h3><p class="muted">Letters and endorsements from leading rabbinic authorities across the spectrum.</p><a class="link" onclick="go('about-endorsements')">Read more →</a></div>
+      <div class="card" onclick="go('about-testimonials')" style="cursor:pointer;"><h3>Testimonials</h3><p class="muted">Families in their own words.</p><a class="link" onclick="go('about-testimonials')">Read more →</a></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ========================= ABOUT: STORY ========================= -->
+<div class="page" id="page-about-story">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">About · PUAH's Story</span><h1>From a living-room desk to a worldwide movement.</h1><p class="lead" style="max-width:66ch;">Since 1980, PUAH has grown from one rabbi's vision into a global organization that has counseled more than 100,000 families.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / About / PUAH's Story</div></div>
+  <section><div class="wrap grid g2" style="align-items:center;">
+    <div>
+      <span class="eyebrow">Our origins</span>
+      <h2>How it began</h2>
+      <p>In 1978, the first baby was born through in-vitro fertilization (IVF) — an extraordinary scientific breakthrough that raised major halachic questions. Rabbi Mordechai Eliyahu zt"l, then the Chief Rabbi of Israel, charged Rabbi Menachem Burstein with researching a halachic framework to assist the Jewish community.</p>
+      <p>Rabbi Burstein recognized that Jewish men and women needed a wide network of resources to understand their fertility options — including supervision in laboratories to protect against errors and mix-ups, and one-on-one counseling by compassionate, educated professionals who understand the medical, halachic, and emotional aspects of each unique case.</p>
+      <p>In 1980, from a desk in his humble living room, Rabbi Burstein established PUAH. With Hashem's helping hand and a dedicated team, it has flourished into a worldwide organization that has counseled more than 100,000 families through their infertility struggles.</p>
+    </div>
+    <div class="media tall"><span class="lbl">Archival / founder photo</span></div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="center"><span class="eyebrow">Milestones</span><h2>Our journey so far</h2></div>
+    <div class="grid g4" style="margin-top:34px;">
+      <div class="card"><div class="stat" style="font-size:34px;">1978</div><h3 style="font-size:18px;margin-top:8px;">The IVF era begins</h3><p class="muted">The first IVF birth raises urgent new halachic questions for the Jewish community.</p></div>
+      <div class="card"><div class="stat" style="font-size:34px;">1980</div><h3 style="font-size:18px;margin-top:8px;">PUAH is founded</h3><p class="muted">Rabbi Menachem Burstein establishes PUAH from his living room to guide families through fertility and Halacha.</p></div>
+      <div class="card"><div class="stat" style="font-size:34px;">Today</div><h3 style="font-size:18px;margin-top:8px;">A global organization</h3><p class="muted">PUAH serves families across five countries with rabbinic, medical, and emotional support.</p></div>
+      <div class="card"><div class="stat" style="font-size:34px;">100k+</div><h3 style="font-size:18px;margin-top:8px;">Families counseled</h3><p class="muted">More than 100,000 families guided through their infertility journeys — and counting.</p></div>
+    </div>
+    <p class="note"><b>Design note —</b> "Today" milestone can become a specific founding-of-US-office year, etc., if PUAH wants a fuller timeline.</p>
+  </div></section>
+  <section><div class="wrap center">
+    <h2 style="max-width:24ch;margin:0 auto .6em;">The need has only grown — and so has our commitment.</h2>
+    <p class="lead" style="max-width:60ch;margin:0 auto 22px;">Approximately one in seven couples faces hurdles building a family. PUAH is here to walk beside every one of them.</p>
+    <a class="btn solid" onclick="go('about-mission')">Our mission &amp; approach →</a>
+  </div></section>
+</div>
+
+<!-- ========================= ABOUT: MISSION ========================= -->
+<div class="page" id="page-about-mission">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">About · Our Mission &amp; Approach</span><h1>Torah wisdom and modern medicine, working as one.</h1><p class="lead" style="max-width:66ch;">Our mission is to help every Jewish family build a healthy home — with guidance that honors both Halacha and science.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / About / Our Mission &amp; Approach</div></div>
+  <section><div class="wrap" style="max-width:820px;">
+    <span class="eyebrow">Our mission</span>
+    <p class="quote" style="font-size:26px;">"PUAH is devoted to helping the greater Jewish community fulfil their dreams of building a healthy family."</p>
+    <p>Whether individuals are struggling with fertility, women's health, men's health, genetics, or intimacy, PUAH is here to help. PUAH advisors embody a unique synthesis of rabbinical knowledge and specialized training in modern reproductive medicine to provide the best guidance possible. Our counseling and guidance is free of charge, helping to ease the difficult journey. All that we do is carried out in accordance with Jewish law, with deep sensitivity and compassion.</p>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="center"><span class="eyebrow">Our approach</span><h2>Three commitments that guide everything we do</h2></div>
+    <div class="grid g3" style="margin-top:34px;">
+      <div class="card"><div class="itile teal"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div><h3>Halachic Integrity</h3><p class="muted">Everything we do is carried out in full accordance with Jewish law, in cooperation with poskim across the entire rabbinic spectrum.</p></div>
+      <div class="card"><div class="itile pink"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div><h3>Medical Excellence</h3><p class="muted">Our advisors combine rabbinical knowledge with specialized training in modern reproductive medicine to guide each unique case.</p></div>
+      <div class="card"><div class="itile sky"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div><h3>Compassion &amp; Discretion</h3><p class="muted">Guidance is free of charge, strictly confidential, and delivered with deep sensitivity to ease a difficult journey.</p></div>
+    </div>
+  </div></section>
+  <section><div class="wrap center">
+    <h2 style="margin-bottom:.6em;">Guidance that meets you where you are.</h2>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;"><a class="btn solid" onclick="go('services')">Explore our services</a><a class="btn ghost" onclick="go('about-team')">Meet the team →</a></div>
+  </div></section>
+</div>
+
+<!-- ========================= ABOUT: TEAM ========================= -->
+<div class="page" id="page-about-team">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">About · Meet the Team</span><h1>The people behind the guidance.</h1><p class="lead" style="max-width:64ch;">A dedicated team of rabbinic and medical advisors, coordinators, and support staff.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / About / Meet the Team</div></div>
+  <section><div class="wrap">
+    <span class="eyebrow">Founder</span><h2>Founder &amp; Dean</h2>
+    <div class="card" style="margin-top:20px;"><div style="display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;">
+      <div class="media avatar" style="width:110px;height:110px;flex:0 0 auto;"></div>
+      <div style="flex:1;min-width:260px;">
+        <h3 style="font-size:21px;margin-bottom:2px;">Rabbi Menachem Burstein</h3>
+        <div class="tag">Founder &amp; Dean</div>
+        <p class="muted" style="margin-top:12px;">Born in Uruguay, Rabbi Burstein studied at Yeshivat Merkaz HaRav in Jerusalem and received ordination from the Chief Rabbinate of Israel. He developed close relationships with the leading poskim of the generation — including Rav Mordechai Eliyahu, Rav Ovadia Yosef, Rav Yosef Shalom Elyashiv, and Rav Shlomo Zalman Auerbach zt"l. He has published numerous seforim and articles on fertility and Halacha, and founded PUAH in 1980.</p>
+      </div>
+    </div></div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <span class="eyebrow">Rabbinical Counselors — USA</span><h2>Guidance across America</h2>
+    <div class="grid g3" style="margin-top:24px;">
+      <div class="card center"><div class="media avatar" style="margin:0 auto 14px;"></div><h3 style="font-size:19px;">Rabbi Elan Segelman</h3><div class="tag">Rabbinic Director — USA</div><p class="muted" style="margin-top:12px;">Rabbinic Director for PUAH in America; Rabbi of the Young Israel of Hancock Park, Los Angeles.</p></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 14px;"></div><h3 style="font-size:19px;">Rabbi Eliezer Krohn</h3><div class="tag">Rabbinic Advisor — USA</div><p class="muted" style="margin-top:12px;">A sought-after posek, lecturer, and mohel who received semicha from Beis Medrash Gavoha of Lakewood.</p></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 14px;"></div><h3 style="font-size:19px;">Rabbi Dovid Bogopulsky</h3><div class="tag">Regional Director — Florida</div><p class="muted" style="margin-top:12px;">Assistant rabbi at the Boca Jewish Center and rebbe at the Yeshiva of South Florida.</p></div>
+    </div>
+    <span class="eyebrow" style="margin-top:40px;">Rabbinical Counselors — Israel</span><h2>Guidance from Israel</h2>
+    <div class="grid g2" style="margin-top:24px;">
+      <div class="card"><div style="display:flex;gap:16px;align-items:center;"><div class="media avatar" style="width:64px;height:64px;flex:0 0 auto;"></div><div><h3 style="font-size:19px;margin-bottom:2px;">Rabbi Gideon Weitzman</h3><div class="tag">Rabbinic Advisor</div></div></div><p class="muted" style="margin-top:12px;">Heads PUAH's English-speaking section in Israel; a published scholar on IVF, sperm extraction, and genetic counseling, and rabbi of the Merkaz Modiin Synagogue.</p></div>
+      <div class="card"><div style="display:flex;gap:16px;align-items:center;"><div class="media avatar" style="width:64px;height:64px;flex:0 0 auto;"></div><div><h3 style="font-size:19px;margin-bottom:2px;">Rabbi Elchanan Lewis</h3><div class="tag">Rabbinic Advisor — English Dept.</div></div></div><p class="muted" style="margin-top:12px;">Ordained by the Chief Rabbinate of Israel; rabbi of Congregation Tiferet Avot in Efrat and a longtime halachic responder.</p></div>
+    </div>
+  </div></section>
+  <section><div class="wrap">
+    <span class="eyebrow">Rabbinical advisors by department</span><h2>Our rabbinical advisors</h2>
+    <div class="grid g3" style="margin-top:22px;">
+      <div class="card"><h3 style="font-size:17px;">Hebrew Department</h3><p class="muted" style="margin:0;">Rabbi Eliezer Altshuler · Rabbi Yossi Eitan · Rabbi Yonatan Elran · Rabbi Eliyahu Haeitan · Rabbi Aryeh Katz · Rabbi Yitzchak Nissim · Rabbi Dov Popper · Rabbi Udi Roth · Rabbi Lior Segev</p></div>
+      <div class="card"><h3 style="font-size:17px;">Spanish Department</h3><p class="muted" style="margin:0;">Rabbi Gavriel Goldman</p></div>
+      <div class="card"><h3 style="font-size:17px;">French Department</h3><p class="muted" style="margin:0;">Rabbi Binyamin David</p></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <span class="eyebrow">Supervision Department</span><h2>Supervision team</h2>
+    <div class="grid g4" style="margin-top:24px;">
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Aryeh Noyek</strong><div class="muted" style="font-size:13px;">Int'l Director of Supervision</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rivky Itzkowitz</strong><div class="muted" style="font-size:13px;">Director of Supervision, East Coast</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Ahuva Goldstein</strong><div class="muted" style="font-size:13px;">Director of Supervision, West Coast</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Denise Hirsch</strong><div class="muted" style="font-size:13px;">Director of Supervision, Florida</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Sherryl Steiner</strong><div class="muted" style="font-size:13px;">Director of Supervision, Toronto</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Tzipporah Coronel</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, West Coast</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Brocha Friedman</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, East Coast</div></div>
+    </div>
+  </div></section>
+  <section><div class="wrap">
+    <span class="eyebrow">Management</span><h2>Leadership &amp; operations</h2>
+    <div class="grid g4" style="margin-top:24px;">
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Amichai Remer</strong><div class="muted" style="font-size:13px;">International Executive Director</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Lea P. Davidson</strong><div class="muted" style="font-size:13px;">Executive Director, USA</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Miriam Ben David</strong><div class="muted" style="font-size:13px;">Director of Volunteer Services</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Orly Aziz</strong><div class="muted" style="font-size:13px;">Director of Operations</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Joelle Bohadana</strong><div class="muted" style="font-size:13px;">Awareness &amp; Events Director</div></div>
+    </div>
+    <p class="note"><b>Wireframe note —</b> Real names/titles pulled from puahfertility.org/staff. Replace avatars with headshots; bios can be expanded per person.</p>
+  </div></section>
+</div>
+
+<!-- ========================= ABOUT: COUNCIL ========================= -->
+<div class="page" id="page-about-council">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">About · Medical Advisory Council</span><h1>The experts safeguarding our medical integrity.</h1><p class="lead" style="max-width:66ch;">A council of leading physicians and scientists ensures PUAH's guidance reflects the most current, accurate medical knowledge.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / About / Medical Advisory Council</div></div>
+  <section><div class="wrap">
+    <p style="max-width:760px;">PUAH's Medical Advisory Council is comprised of leading specialists who excel in their fields. Their expertise ensures that PUAH's guidance reflects the most current and accurate reproductive medicine, working hand-in-hand with our rabbinic advisors.</p>
+    <div class="grid g3" style="margin-top:26px;">
+      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Eric Forman, MD, HCLD</h3><div class="tag">Reproductive Endocrinology &amp; Infertility</div><p class="muted" style="margin-top:12px;">Reproductive endocrinologist and high-complexity laboratory director specializing in IVF and PGT.</p></div>
+      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Marc Goldstein, MD, DSc</h3><div class="tag">Male Reproductive Medicine &amp; Microsurgery</div><p class="muted" style="margin-top:12px;">A pioneer in male infertility and microsurgery, affiliated with Weill Cornell and The Population Council.</p></div>
+      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Brian A. Levine, MD</h3><div class="tag">Reproductive Endocrinology &amp; Infertility</div><p class="muted" style="margin-top:12px;">Founding partner and practice director of CCRM New York.</p></div>
+      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Hugh K. Miller, MD</h3><div class="tag">Obstetrics &amp; Gynecology</div><p class="muted" style="margin-top:12px;">Department of Obstetrics &amp; Gynecology, Stanford Health.</p></div>
+      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Ilan Tur-Kaspa, MD</h3><div class="tag">Reproductive Medicine &amp; Genetics</div><p class="muted" style="margin-top:12px;">President &amp; Medical Director of the Institute for Human Reproduction (IHR) and Director of the Clinical IVF-PGD Program at the Reproductive Genetics Institute, Chicago.</p></div>
+      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Paul J. Turek, MD, FACS, FRSM</h3><div class="tag">Male Fertility &amp; Microsurgery</div><p class="muted" style="margin-top:12px;">Director of The Turek Clinics, specializing in men's reproductive health.</p></div>
+      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Zev Williams, MD, PhD</h3><div class="tag">Reproductive Endocrinology &amp; Infertility</div><p class="muted" style="margin-top:12px;">Chief of the Division of Reproductive Endocrinology and Infertility at Columbia University.</p></div>
+    </div>
+    <p class="note"><b>Wireframe note —</b> Council members pulled from puahfertility.org/board. Confirm current roster and titles before publishing.</p>
+  </div></section>
+</div>
+
+<!-- ========================= ABOUT: ENDORSEMENTS ========================= -->
+<div class="page" id="page-about-endorsements">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">About · Rabbinical Endorsements</span><h1>Trusted across the religious spectrum.</h1><p class="lead" style="max-width:66ch;">PUAH's work carries the endorsement of leading rabbinic authorities from communities around the world.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / About / Rabbinical Endorsements</div></div>
+  <section><div class="wrap">
+    <p style="max-width:760px;">PUAH is honored to carry the endorsement and guidance of leading rabbinic authorities from across the religious spectrum, in Israel and around the world. Many have written formal letters of support, viewable on request.</p>
+    <div class="grid g4" style="margin-top:26px;">
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yisroel Belsky zt"l</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Dovid Cohen</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yosef Yisroel Eisenberger</strong><div class="muted" style="font-size:13px;">Skverer Dayan, New Square</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Mordechai Eliyahu zt"l</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yekusiel Farkash</strong></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Reuven Feinstein</strong></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Zalman Nechemia Goldberg</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Shamai Gross</strong></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yitzchak Kaduri zt"l</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Shmuel Kamenetsky</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav David Lau</strong><div class="muted" style="font-size:13px;">Chief Rabbi of Israel</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yisroel Meir Lau</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Shalom Messas zt"l</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Noach I. Oelbaum</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Herschel Schachter</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Moshe Shternbuch</strong></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Skverer Rebbe</strong></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Mordechai Willig</strong></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Ovadia Yosef zt"l</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yitzchak Yosef</strong><div class="muted" style="font-size:13px;">Rishon LeZion</div><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Gavriel Zinner</strong><div class="muted" style="font-size:13px;">Nitei Gavriel</div></div>
+    </div>
+    <p class="note"><b>Wireframe note —</b> Names pulled from puahfertility.org/endorsements. "View letter" appears where scanned letters exist; wire these to the letter images/PDFs.</p>
+  </div></section>
+</div>
+
+<!-- ========================= ABOUT: TESTIMONIALS ========================= -->
+<div class="page" id="page-about-testimonials">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">About · Testimonials</span><h1>Families, in their own words.</h1><p class="lead" style="max-width:64ch;">The heart of PUAH's work is the people we walk beside.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / About / Testimonials</div></div>
+  <section><div class="wrap">
+    <div class="grid g3">
+      <div class="card"><p class="quote" style="font-size:18px;">"You guided us throughout all the years of treatment and listened to us with much patience and understanding. You not only assisted us with all our medical and halachic problems, but also helped us deal with our emotional pain."</p><p class="muted" style="margin:12px 0 0;">— Anonymous, Haifa</p></div>
+      <div class="card"><p class="quote" style="font-size:18px;">"You cannot imagine how important your work is. How wonderful that there is a listening ear and someone to give guidance on where to go and which tests are necessary."</p><p class="muted" style="margin:12px 0 0;">— Anonymous, New York</p></div>
+      <div class="card"><p class="quote" style="font-size:18px;">"Never before have we encountered such a dedicated group of people who cared about us, as if we were part of their family. After so many trials and disappointments our twins Avi &amp; Rivky were born."</p><p class="muted" style="margin:12px 0 0;">— Anonymous, Jerusalem</p></div>
+      <div class="card"><p class="quote" style="font-size:18px;">"Thank you so much for all your help and being part of what has become the greatest gift to my wife and myself. The work you do is incredible and we really appreciate all the love and care that you provided."</p><p class="muted" style="margin:12px 0 0;">— Grateful Couple, Boca Raton, FL</p></div>
+      <div class="card"><p class="quote" style="font-size:18px;">"You were an integral part of making sure our 'project' was halachically followed and gave us a lot of peace of mind. We can't thank you enough for all of your help."</p><p class="muted" style="margin:12px 0 0;">— Happy Parents, New York</p></div>
+      <div class="card"><p class="quote" style="font-size:18px;">"When I was told that chemotherapy can cause infertility, I felt utterly hopeless. As soon as I got in touch with PUAH I knew that I was in good hands. I don't think words are enough to truly thank you."</p><p class="muted" style="margin:12px 0 0;">— A Growing Family, Los Angeles, CA</p></div>
+    </div>
+    <div class="center" style="margin-top:34px;"><a class="btn ghost" onclick="go('contact')">Share your story →</a></div>
+  </div></section>
+</div>
+
+<!-- ========================= SERVICES ========================= -->
+<div class="page" id="page-services">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services</span><h1>Support for every step of the journey.</h1><p class="lead" style="max-width:60ch;">Free, confidential, and carried out in accordance with Halacha.</p><div style="margin-top:18px;"><a class="btn solid" onclick="go('contact')">Schedule a free consultation</a></div></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Services</div></div>
+  <section><div class="wrap">
+    <div class="grid g3">
+      <div class="card" onclick="go('svc-guidance')" style="cursor:pointer;"><h3>Guidance &amp; Support</h3><p class="muted">Personal counseling and coaching through the entire fertility process.</p><a class="link" onclick="go('svc-guidance')">Learn more →</a></div>
+      <div class="card" onclick="go('svc-ask')" style="cursor:pointer;"><h3>Ask the Rabbi</h3><p class="muted">Confidential halachic answers from PUAH's rabbinic experts.</p><a class="link" onclick="go('svc-ask')">Learn more →</a></div>
+      <div class="card" onclick="go('svc-puahline')" style="cursor:pointer;"><h3>The PUAHline</h3><p class="muted">A dedicated hotline for time-sensitive family-purity questions.</p><a class="link" onclick="go('svc-puahline')">Learn more →</a></div>
+      <div class="card" onclick="go('svc-lab')" style="cursor:pointer;"><h3>Lab Supervision</h3><p class="muted">On-site observation to prevent human error and protect halachic integrity.</p><a class="link" onclick="go('svc-lab')">Learn more →</a></div>
+      <div class="card" onclick="go('svc-shabbos')" style="cursor:pointer;"><h3>Shabbos Phlebotomy &amp; Injection Assistance</h3><p class="muted">Keeping time-sensitive care on track around Shabbos and daily protocols.</p><a class="link" onclick="go('svc-shabbos')">Learn more →</a></div>
+      <div class="card" onclick="go('svc-financial')" style="cursor:pointer;"><h3>Financial Assistance</h3><p class="muted">Easing the financial burden of fertility treatment.</p><a class="link" onclick="go('svc-financial')">Learn more →</a></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ========================= SVC: GUIDANCE & SUPPORT ========================= -->
+<div class="page" id="page-svc-guidance">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services · Guidance &amp; Support</span><h1>You are not alone.</h1><p class="lead" style="max-width:66ch;">PUAH's Cares Team offers personalized advice and emotional support at every step of the fertility journey.</p><div style="margin-top:18px;"><a class="btn solid" onclick="go('contact')">Schedule a free consultation</a></div></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Services / Guidance &amp; Support</div></div>
+  <section><div class="wrap grid g2" style="align-items:center;">
+    <div>
+      <span class="eyebrow">The PUAH Cares Team</span>
+      <h2>Personalized support, halachic to emotional</h2>
+      <p>Our professional mental health specialists are here to give you personalized advice and emotional support every step of the fertility process. From the moment you reach out to us, you have access to our extensive network of resources and support — halachic, medical, and emotional.</p>
+      <p>First and foremost, PUAH's mental health specialists ensure that you never feel isolated or alone. Infertility is often a struggle suffered in silence, so you may be surprised to learn that approximately 1 in every 7 people face hurdles when trying to have children — with more than 5,000,000 individuals of childbearing age experiencing fertility issues in the United States alone.</p>
+    </div>
+    <div class="media tall"><span class="lbl">Photo — advisor with client</span></div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <span class="eyebrow">Areas of guidance</span>
+    <h2>Step-by-step guidance across many areas</h2>
+    <div class="grid g4" style="margin-top:24px;">
+      <div class="card"><strong>Primary Infertility</strong></div>
+      <div class="card"><strong>Secondary Infertility</strong></div>
+      <div class="card"><strong>High-Risk Pregnancy</strong></div>
+      <div class="card"><strong>Miscarriages</strong></div>
+      <div class="card"><strong>Intimacy</strong></div>
+      <div class="card"><strong>Women's Health</strong></div>
+      <div class="card"><strong>Menopause</strong></div>
+      <div class="card"><strong>Men's Health</strong></div>
+      <div class="card"><strong>Taharat Hamishpacha</strong></div>
+      <div class="card"><strong>Shalom Bayit</strong></div>
+      <div class="card"><strong>Genetics</strong></div>
+      <div class="card"><strong>Reproductive Health for Adolescents</strong></div>
+      <div class="card"><strong>Shidduchim</strong></div>
+    </div>
+    <p style="margin-top:22px;">PUAH's guidance services are founded upon expert knowledge, with respect and consideration for every unique individual and scenario. Our team is comprised of specially trained coaches and expert rabbinical advisors in Halacha and medicine who are sensitive and nonjudgmental. Every meeting is strictly confidential.</p>
+  </div></section>
+  <section><div class="wrap">
+    <span class="eyebrow">Meet the Cares Team</span>
+    <h2>Mental health specialists</h2>
+    <div class="grid g4" style="margin-top:24px;">
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Shulamis Mayerfeld</strong><div class="tag">LCSW</div><p class="muted" style="font-size:13px;margin-top:10px;">Uses a psychodynamic approach, integrating play therapy, CBT, systems, narrative, and strength-based methods tailored to each client.</p></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Karen Wasserstein</strong><div class="tag">PsyD</div><p class="muted" style="font-size:13px;margin-top:10px;">Specializes in therapy for individuals and couples navigating family-building, including third-party reproduction consultations.</p></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Daniela Gemal</strong><div class="tag">LCSW</div><p class="muted" style="font-size:13px;margin-top:10px;">Helps individuals and couples with anxiety, depression, grief, and trauma to enhance emotional well-being and fulfillment.</p></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Bassy Schwartz</strong><div class="tag">LMFT</div><p class="muted" style="font-size:13px;margin-top:10px;">A warm, easy-going approach specializing in marital/premarital challenges, relationships, and trauma using EFT.</p></div>
+    </div>
+    <h3 style="margin-top:34px;">Rabbinical advisors</h3>
+    <div class="grid g2" style="margin-top:16px;">
+      <div class="card"><div style="display:flex;gap:14px;align-items:center;"><div class="media avatar" style="width:56px;height:56px;"></div><div><strong>Rabbi Elan Segelman</strong><div class="muted" style="font-size:13px;">Rabbinic Director — America</div></div></div></div>
+      <div class="card"><div style="display:flex;gap:14px;align-items:center;"><div class="media avatar" style="width:56px;height:56px;"></div><div><strong>Rabbi Eliezer Krohn</strong><div class="muted" style="font-size:13px;">Rabbinic Advisor — America</div></div></div></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap center">
+    <h2 style="margin-bottom:.5em;">PUAH is here for you, every step of the way.</h2>
+    <a class="btn solid" onclick="go('contact')">Schedule a free consultation</a>
+  </div></section>
+</div>
+
+<!-- ========================= SVC: ASK THE RABBI ========================= -->
+<div class="page" id="page-svc-ask">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services · Ask the Rabbi</span><h1>Ask the Rabbi.</h1><p class="lead" style="max-width:64ch;">Submit your question and PUAH's experts will respond as soon as possible. All questions are completely confidential.</p><div style="margin-top:18px;"><a class="btn solid" onclick="go('contact')">Submit a question</a></div></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Services / Ask the Rabbi</div></div>
+  <section><div class="wrap">
+    <span class="eyebrow">Question categories</span>
+    <h2>What can we help you with?</h2>
+    <div class="grid g3" style="margin-top:22px;">
+      <div class="card"><strong>General</strong></div>
+      <div class="card"><strong>Infertility</strong></div>
+      <div class="card"><strong>Genetics</strong></div>
+      <div class="card"><strong>High-Risk Pregnancies</strong></div>
+      <div class="card"><strong>Family Purity</strong></div>
+      <div class="card"><strong>Intimacy</strong></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <span class="eyebrow">Recently asked</span>
+    <h2>Recently answered questions</h2>
+    <div class="grid g1" style="margin-top:22px;display:grid;gap:18px;">
+      <div class="card"><div class="tag">Family Purity</div><p style="margin:12px 0 8px;"><strong>Q.</strong> I had my IUD removed today and there was no blood when it was removed. Am I a niddah?</p><p class="muted" style="margin:0;"><strong>A.</strong> Assuming the cervix was not dilated 3/4 of an inch (19mm), the removal will not render you a niddah. In our experience, doctors do not dilate the cervix anywhere near 19mm for IUD removal.</p></div>
+      <div class="card"><div class="tag">General</div><p style="margin:12px 0 8px;"><strong>Q.</strong> I saw a small spot of blood, then got a positive pregnancy test. Does that mean I am niddah?</p><p class="muted" style="margin:0;"><strong>A.</strong> B'shaa tova — wonderful news! You are not a niddah, because the spots were seen only on a pantyliner and tissue, items not susceptible to tumah.</p></div>
+    </div>
+    <div style="margin-top:22px;"><a class="btn ghost" onclick="go('resources')">View all Q&amp;A in the Resource Library ↗</a></div>
+    <p class="note"><b>Design note —</b> The full searchable Q&amp;A archive is a natural fit for the separate Digital Resource Library; the corporate site keeps a light "Ask the Rabbi" intake + a few featured answers.</p>
+  </div></section>
+</div>
+
+<!-- ========================= SVC: PUAHLINE ========================= -->
+<div class="page" id="page-svc-puahline">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services · The PUAHline</span><h1>The PUAHline.</h1><p class="lead" style="max-width:66ch;">Our hotline for all taharat hamishpacha (family purity) questions — answered by expert rabbis, confidentially and professionally.</p><div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" href="tel:8053917824">Call 805.391.PUAH (7824)</a><a class="btn ghost" href="mailto:hotline@puahfertility.org">hotline@puahfertility.org</a></div></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Services / The PUAHline</div></div>
+  <section><div class="wrap grid g2" style="align-items:center;">
+    <div>
+      <span class="eyebrow">A critical resource</span>
+      <h2>Expert answers when you need them</h2>
+      <p>Since the laws of taharat hamishpacha are often complicated and time-sensitive, the PUAHline serves as a critical resource for anyone who is unable to reach their local rabbi. Your call will be answered by expert rabbis in the most confidential and professional manner.</p>
+    </div>
+    <div class="card">
+      <h3>PUAHline Hours</h3>
+      <p class="muted" style="margin-bottom:6px;"><em>Summer hours (EDT)</em></p>
+      <p style="margin:0;"><strong>Sunday – Thursday</strong><br>3:00pm – 8:00pm</p>
+      <p style="margin:10px 0 0;"><strong>Friday</strong><br>12:00pm – 1 hour before candle lighting</p>
+      <p style="margin:10px 0 0;"><strong>Motzei Shabbat</strong><br>1.5 hours after candle lighting – 10:00pm</p>
+      <p class="note"><b>Note —</b> Hours are seasonal; confirm current schedule before publishing.</p>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <span class="eyebrow">Our poskim</span>
+    <h2>The PUAHline rabbis</h2>
+    <div class="grid g4" style="margin-top:24px;">
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Chaim Jachter</strong><div class="muted" style="font-size:13px;">Sephardic Cong. of Teaneck; Dayan, Beth Din of Elizabeth</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Aryeh Lebowitz</strong><div class="muted" style="font-size:13px;">Rav, Bais Haknesses of North Woodmere</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Avi Lebowitz</strong><div class="muted" style="font-size:13px;">Rosh Kollel, Jewish Study Network, Palo Alto</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Doniel Neustadt</strong><div class="muted" style="font-size:13px;">Rav, Pine River Village, Lakewood, NJ</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Noach Isaac Oelbaum</strong><div class="muted" style="font-size:13px;">Mara D'Asra, Khal Nachlas Yitzchok</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Elan Segelman</strong><div class="muted" style="font-size:13px;">Rabbinic Advisor — America</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Gideon Weitzman</strong><div class="muted" style="font-size:13px;">PUAH Senior Advisor; Rav, Merkaz Modiin</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Mordechai Willig</strong><div class="muted" style="font-size:13px;">Rosh Yeshiva, RIETS; Rav, Young Israel of Riverdale</div></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ========================= SVC: LAB SUPERVISION ========================= -->
+<div class="page" id="page-svc-lab">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services · Lab Supervision</span><h1>Setting the standard for lab supervision.</h1><p class="lead" style="max-width:68ch;">PUAH was the first organization to offer hashgacha in fertility laboratories — and continues to set the protocols in labs around the world.</p><div style="margin-top:18px;"><a class="btn solid" href="tel:6468091407">Order Supervision · 646-809-1407</a></div></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Services / Lab Supervision</div></div>
+  <section><div class="wrap" style="max-width:860px;">
+    <p>Halacha requires complete knowledge of the exact lineage of a baby in order to establish halachic parenthood. For that reason, many Orthodox rabbis maintain that Jewish law requires a trained supervisor in the lab to observe the procedure and storage of genetic material outside of the body.</p>
+    <div class="grid g3" style="margin:26px 0;">
+      <div class="card center"><div class="stat" style="font-size:38px;">1st</div><p class="muted" style="margin:6px 0 0;">organization to offer lab hashgacha</p></div>
+      <div class="card center"><div class="stat" style="font-size:38px;">150</div><p class="muted" style="margin:6px 0 0;">trained supervisors available</p></div>
+      <div class="card center"><div class="stat" style="font-size:38px;">~50</div><p class="muted" style="margin:6px 0 0;">mistakes prevented to date</p></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <span class="eyebrow">Common questions</span>
+    <h2>How lab supervision works</h2>
+    <div style="display:grid;gap:16px;margin-top:22px;">
+      <div class="card"><h3 style="font-size:18px;">Who are the PUAH supervisors?</h3><p class="muted" style="margin:0;">Discreet, dedicated women who are expertly trained in the halacha of fertility treatments. Each signs a confidentiality agreement, so your privacy is fully protected.</p></div>
+      <div class="card"><h3 style="font-size:18px;">Is supervision a halachic requirement?</h3><p class="muted" style="margin:0;">Establishing yichus (parentage) is paramount. Out of concern for human error, many poskim rule that an outside observer must monitor the procedure and storage of genetic material. Notably, Rav Yosef Sholom Elyashiv zt"l told PUAH that even if he himself were the embryologist, outside supervision would still be required.</p></div>
+      <div class="card"><h3 style="font-size:18px;">Which stages require supervision?</h3><p class="muted" style="margin:0;">All lab work is overseen — including IUI (sperm wash-up and insemination), sperm freezing, fertility preservation and egg freezing, frozen embryo transfers, surgical sperm retrieval, and IVF (egg retrieval, embryo checks, biopsy for genetic testing, and embryo freeze).</p></div>
+      <div class="card"><h3 style="font-size:18px;">Do all rabbinic authorities accept PUAH's supervision?</h3><p class="muted" style="margin:0;">Yes. PUAH is renowned for its cooperation with rabbis and poskim across the entire rabbinic spectrum.</p></div>
+      <div class="card"><h3 style="font-size:18px;">How much does it cost?</h3><p class="muted" style="margin:0;">To ease the financial burden of fertility challenges, supervision is fully subsidized by PUAH.</p></div>
+      <div class="card"><h3 style="font-size:18px;">How do I request supervision?</h3><p class="muted" style="margin:0;">Call our nationwide number <strong>646-809-1407</strong>. Supervision is available at participating labs nationwide, pending availability and halachic psak, with a 24-hour minimum request.</p></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ========================= SVC: SHABBOS PHLEBOTOMY & INJECTIONS ========================= -->
+<div class="page" id="page-svc-shabbos">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services · Shabbos Phlebotomy &amp; Injection Assistance</span><h1>Keeping time-sensitive care on schedule.</h1><p class="lead" style="max-width:66ch;">Support that works around Shabbos and daily treatment protocols — fully subsidized by PUAH.</p><div style="margin-top:18px;"><a class="btn solid" href="tel:6468091407">Call 646-809-1407</a></div></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Services / Shabbos Phlebotomy &amp; Injection Assistance</div></div>
+  <section><div class="wrap grid g2">
+    <div class="card"><h3>Shabbos Phlebotomy Collection</h3><p class="muted">PUAH has partnered with reputable phlebotomy collection agencies to provide blood collection from the patient's home on Shabbos, delivered to the patient's lab. This service is fully subsidized by PUAH.</p><div class="tag">Pending availability</div></div>
+    <div class="card"><h3>Injection Assistance</h3><p class="muted">PUAH maintains a network of licensed physicians, nurses, physician assistants, and medical assistants who provide injection guidance and make house calls to administer injections — available evenings and weekends. This service is fully subsidized by PUAH.</p><div class="tag">Pending availability</div></div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="card"><h3>Courier Services</h3><p class="muted" style="margin:0;">Courier service referral and discount available upon request. Supervision required. Please call 646-437-7090 for more information.</p></div>
+  </div></section>
+</div>
+
+<!-- ========================= SVC: FINANCIAL ASSISTANCE ========================= -->
+<div class="page" id="page-svc-financial">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services · Financial Assistance</span><h1>Easing the financial burden of treatment.</h1><p class="lead" style="max-width:66ch;">Multiple pathways — grants, interest-free loans, community fundraising, and a preferred network — to support couples through their fertility journey.</p><div style="margin-top:18px;"><a class="btn solid" onclick="go('contact')">Contact us confidentially</a></div></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Services / Financial Assistance</div></div>
+  <section><div class="wrap">
+    <div class="grid g2">
+      <div class="card"><div class="tag">01</div><h3 style="margin-top:8px;">Grants</h3><p class="muted">Fertility grants to assist with the cost of treatment. Available to qualified applicants based on medical need and financial circumstances. There is no formal income requirement, though the grant committee considers each applicant's financial position.</p></div>
+      <div class="card"><div class="tag">02</div><h3 style="margin-top:8px;">Interest-Free Loans</h3><p class="muted">Interest-free loans to help couples pay for treatment without the added burden of interest. Open to couples undergoing assisted reproduction and individuals seeking fertility preservation. Two guarantors are required, with customized, interest-free payment plans arranged case by case.</p></div>
+      <div class="card"><div class="tag">03</div><h3 style="margin-top:8px;">PUAH "FundMe" Option</h3><p class="muted">Couples can create a personalized fundraising campaign within the PUAH framework to raise funds from family and friends. Each campaign is managed by PUAH counselors who help guide the treatment process. Medical and rabbinic referrals are required for eligibility.</p></div>
+      <div class="card"><div class="tag">04</div><h3 style="margin-top:8px;">PUAH Preferred Network</h3><p class="muted">Partnerships with fertility labs worldwide offer discounted rates and concierge care for the PUAH community. A medication discount program with partner pharmacies makes essential fertility medications more accessible and affordable.</p></div>
+    </div>
+    <p style="margin-top:22px;">Together, this comprehensive support system — grants, interest-free loans, FundMe campaigns, and the PUAH Preferred Network — offers multiple pathways to address financial and treatment needs at every level. All personal data is kept strictly confidential.</p>
+  </div></section>
+</div>
+
+<!-- ========================= PILLARS ========================= -->
+<div class="page" id="page-pillars">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">A Campaign for the Future of Jewish Families</span><h1>The Three Pillars of Fertility Support</h1><p class="lead" style="max-width:64ch;">A bold, coordinated vision to ensure that every Jewish family facing infertility can find knowledgeable rabbinic guidance, world-class medical insight, and a community that understands their journey.</p></div></div>
+  <section><div class="wrap" style="max-width:820px;">
+    <span class="eyebrow">Why now</span>
+    <h2>The need has never been greater.</h2>
+    <p>For more than two decades, PUAH has stood at the intersection of Halacha and cutting-edge reproductive medicine. Yet the need is growing. Today, one in five Jewish couples confronts fertility challenges — and they deserve a support system as comprehensive as it is compassionate.</p>
+    <p>The Three Pillars Initiative is PUAH's next bold step: a single, coordinated framework that empowers rabbinic leadership, unites medical expertise, and illuminates fertility knowledge for the entire community. Together, these pillars will solidify a future in which hope remains a cornerstone of the Jewish home.</p>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="center"><span class="eyebrow">The vision</span><h2>Three pillars. One mission.</h2></div>
+    <div class="grid g3" style="margin-top:34px;">
+      <div class="card" onclick="go('pillar-rabbinic')" style="cursor:pointer;"><div class="itile teal" style="margin-bottom:14px;"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div><div class="tag">Pillar 01</div><h3 style="margin-top:10px;">Rabbinic Leadership Initiative</h3><p class="muted">Empowering rabbanim to lead on fertility with confidence, clarity, and compassion.</p><a class="link" onclick="go('pillar-rabbinic')">Explore this pillar →</a></div>
+      <div class="card" onclick="go('pillar-medical')" style="cursor:pointer;"><div class="itile pink" style="margin-bottom:14px;"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div><div class="tag">Pillar 02</div><h3 style="margin-top:10px;">National Medical Thinktank</h3><p class="muted">Uniting leading Jewish physicians and scientists in service of halachic clarity.</p><a class="link" onclick="go('pillar-medical')">Explore this pillar →</a></div>
+      <div class="card" onclick="go('pillar-education')" style="cursor:pointer;"><div class="itile sky" style="margin-bottom:14px;"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div><div class="tag">Pillar 03</div><h3 style="margin-top:10px;">Education &amp; Awareness</h3><p class="muted">A trusted digital home making fertility knowledge accessible to all.</p><a class="link" onclick="go('pillar-education')">Explore this pillar →</a></div>
+    </div>
+  </div></section>
+  <!-- CAPITAL CAMPAIGN CTA -->
+  <section class="dark"><div class="wrap" style="max-width:820px;text-align:center;">
+    <span class="eyebrow">An invitation to lead</span>
+    <h2 style="max-width:20ch;margin:0 auto .5em;">A generational opportunity to build.</h2>
+    <p style="color:#c3ced6;font-size:19px;">The Three Pillars represent one of the most ambitious undertakings in PUAH's history — a vision that will be realized through the foresight and generosity of a small circle of founding partners. Each pillar, and the institutions within it, carries distinguished naming and dedication opportunities designed to honor a family's legacy for generations to come.</p>
+    <p style="color:#c3ced6;">If you feel called to help shape this future, we would be honored to share our full vision with you and explore a leadership role in the campaign.</p>
+    <div style="margin-top:26px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn light" onclick="go('contact')">Begin a conversation</a>
+      <a class="btn on-dark" onclick="go('contact')">Request the vision brochure</a>
+    </div>
+    <p style="color:#8a97a0;font-size:13px;margin-top:22px;">For a confidential discussion about leadership and naming opportunities, please contact PUAH's development office.</p>
+  </div></section>
+</div>
+
+<!-- ========================= PILLAR 1: RABBINIC LEADERSHIP ========================= -->
+<div class="page" id="page-pillar-rabbinic">
+  <div class="stub-hero"><div class="wrap"><div class="itile teal" style="margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div><span class="eyebrow">Pillar 01 · Rabbinic Leadership Initiative</span><h1>A new era of trusted fertility leadership.</h1><p class="lead" style="max-width:64ch;">Empowering rabbanim across the Jewish world to lead on fertility with confidence, clarity, and compassion.</p></div></div>
+  <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('pillars')">The Three Pillars</a> / Rabbinic Leadership Initiative</div></div>
+  <section><div class="wrap grid g2" style="align-items:center;">
+    <div>
+      <span class="eyebrow">The vision</span>
+      <h2>Reimagining halachic leadership for the 21st century</h2>
+      <p>Today's rabbanim face a seismic shift in the questions they receive. What were once rare fertility cases are now routine — from IVF and embryo freezing to surrogacy and genetic testing — and the complexity of halachic guidance has reached new heights.</p>
+      <p>The Rabbinic Leadership Initiative builds a structured, consistent, and supportive ecosystem for Torah leadership in fertility — ensuring that every community leader, not just a handful of experts, can offer real support to the families who turn to them.</p>
+    </div>
+    <div class="media tall"><span class="lbl">Photo — rabbanim in learning</span></div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="center"><span class="eyebrow">What it makes possible</span><h2>Confident, connected, compassionate leadership</h2></div>
+    <div class="grid g4" style="margin-top:30px;">
+      <div class="card"><h3 style="font-size:18px;">Ongoing Learning</h3><p class="muted">A steady rhythm of high-quality education keeps fertility at the forefront of rabbinic thinking.</p></div>
+      <div class="card"><h3 style="font-size:18px;">Real-Time Guidance</h3><p class="muted">A framework for timely, real-world halachic dialogue when families need answers most.</p></div>
+      <div class="card"><h3 style="font-size:18px;">A Peer Network</h3><p class="muted">A trusted circle of colleagues and poskim for consultation, collaboration, and support.</p></div>
+      <div class="card"><h3 style="font-size:18px;">Meaningful Gatherings</h3><p class="muted">In-person convenings that deepen expertise and strengthen relationships across communities.</p></div>
+    </div>
+  </div></section>
+  <section class="dark"><div class="wrap" style="max-width:760px;text-align:center;">
+    <span class="eyebrow">Partner with this pillar</span>
+    <h2 style="max-width:22ch;margin:0 auto .5em;">Put your name behind a generation of Torah leadership.</h2>
+    <p style="color:#c3ced6;">The Rabbinic Leadership Initiative offers a signature naming opportunity for a visionary partner who wishes to anchor this work and shape the future of halachic fertility guidance. We invite you to learn more.</p>
+    <div style="margin-top:22px;"><a class="btn light" onclick="go('contact')">Begin a conversation</a></div>
+  </div></section>
+</div>
+
+<!-- ========================= PILLAR 2: MEDICAL THINKTANK ========================= -->
+<div class="page" id="page-pillar-medical">
+  <div class="stub-hero"><div class="wrap"><div class="itile pink" style="margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div><span class="eyebrow">Pillar 02 · National Medical Thinktank</span><h1>Bridging Torah values and modern medicine.</h1><p class="lead" style="max-width:64ch;">An elite forum of leading Jewish physicians and scientists, in service of halachic clarity and communal confidence.</p></div></div>
+  <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('pillars')">The Three Pillars</a> / National Medical Thinktank</div></div>
+  <section><div class="wrap grid g2" style="align-items:center;">
+    <div>
+      <span class="eyebrow">The vision</span>
+      <h2>A national medical network rooted in Torah</h2>
+      <p>The National Medical Thinktank is an exclusive forum of leading Jewish physicians, scientists, and healthcare experts. It anchors PUAH's halachic work by ensuring that rabbanim have direct access to the most current and accurate medical knowledge.</p>
+      <p>By building trusted relationships between medical and halachic leaders, the Thinktank deepens halachic sensitivity, strengthens communal confidence, and positions PUAH as the central force for Torah-driven medical leadership.</p>
+    </div>
+    <div class="media tall"><span class="lbl">Photo — physicians in dialogue</span></div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="center"><span class="eyebrow">What it makes possible</span><h2>Scientific insight. Halachic clarity. Communal impact.</h2></div>
+    <div class="grid g4" style="margin-top:30px;">
+      <div class="card"><h3 style="font-size:18px;">Scientific Access</h3><p class="muted">Direct access to the latest in clinical research, diagnostics, and treatment.</p></div>
+      <div class="card"><h3 style="font-size:18px;">Cross-Disciplinary Expertise</h3><p class="muted">Leading specialists across medical fields inform halachic conversation.</p></div>
+      <div class="card"><h3 style="font-size:18px;">Trusted Relationships</h3><p class="muted">Enduring partnerships between physicians and poskim, built on mutual respect.</p></div>
+      <div class="card"><h3 style="font-size:18px;">Communal Confidence</h3><p class="muted">Guidance that reflects the realities of modern medicine, strengthening trust.</p></div>
+    </div>
+  </div></section>
+  <section class="dark"><div class="wrap" style="max-width:760px;text-align:center;">
+    <span class="eyebrow">Partner with this pillar</span>
+    <h2 style="max-width:24ch;margin:0 auto .5em;">Help build the bridge between medicine and Halacha.</h2>
+    <p style="color:#c3ced6;">The National Medical Thinktank offers a premier naming opportunity for a partner who wishes to establish this forum as a lasting institution of Torah-informed medical leadership in the Jewish world.</p>
+    <div style="margin-top:22px;"><a class="btn light" onclick="go('contact')">Begin a conversation</a></div>
+  </div></section>
+</div>
+
+<!-- ========================= PILLAR 3: EDUCATION & AWARENESS ========================= -->
+<div class="page" id="page-pillar-education">
+  <div class="stub-hero"><div class="wrap"><div class="itile sky" style="margin-bottom:16px;"><svg width="26" height="26" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#fff"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#fff" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg></div><span class="eyebrow">Pillar 03 · Education &amp; Awareness Division</span><h1>Trusted fertility knowledge, accessible to all.</h1><p class="lead" style="max-width:64ch;">A comprehensive digital home for Jewish fertility — halachic, medical, emotional, and inspirational.</p></div></div>
+  <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('pillars')">The Three Pillars</a> / Education &amp; Awareness Division</div></div>
+  <section><div class="wrap grid g2" style="align-items:center;">
+    <div>
+      <span class="eyebrow">The vision</span>
+      <h2>One trusted source, for everyone</h2>
+      <p>Right now, individuals in the Jewish community must search across scattered websites, books, and journals to find relevant fertility and halachic guidance — an overwhelming task, especially during high-stress times.</p>
+      <p>PUAH's Education &amp; Awareness Division consolidates our acclaimed expertise into a single, definitive online home: the Digital Resource Library. It supports young couples exploring their options, rabbinic leaders seeking halachic context, and parents and educators guiding others.</p>
+    </div>
+    <div class="media tall"><span class="lbl">Preview — Digital Resource Library</span></div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="center"><span class="eyebrow">What it makes possible</span><h2>Comprehensive, accessible, and built to grow</h2></div>
+    <div class="grid g4" style="margin-top:30px;">
+      <div class="card"><h3 style="font-size:18px;">Holistic Content</h3><p class="muted">From fertility basics to halachic guidance, medical insight, and emotional support.</p></div>
+      <div class="card"><h3 style="font-size:18px;">Accessible Design</h3><p class="muted">Easy to search, mobile-friendly, and welcoming for those hesitant to ask in person.</p></div>
+      <div class="card"><h3 style="font-size:18px;">Trusted Authority</h3><p class="muted">A single, definitive source consolidating PUAH's decades of expertise.</p></div>
+      <div class="card"><h3 style="font-size:18px;">Built to Grow</h3><p class="muted">A scalable foundation for future courses, webinars, and outreach.</p></div>
+    </div>
+    <div class="center" style="margin-top:30px;"><a class="btn ghost" onclick="go('resources')">Visit the Digital Library ↗</a></div>
+  </div></section>
+  <section class="dark"><div class="wrap" style="max-width:760px;text-align:center;">
+    <span class="eyebrow">Partner with this pillar</span>
+    <h2 style="max-width:24ch;margin:0 auto .5em;">Illuminate the path for countless families.</h2>
+    <p style="color:#c3ced6;">The Digital Resource Library and its major content areas offer meaningful naming and dedication opportunities for partners who wish to make trusted fertility knowledge freely available for generations.</p>
+    <div style="margin-top:22px;"><a class="btn light" onclick="go('contact')">Begin a conversation</a></div>
+  </div></section>
+</div>
+
+<!-- ========================= GET INVOLVED (HUB) ========================= -->
+<div class="page" id="page-getinvolved">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Get Involved</span><h1>Join the PUAH family.</h1><p class="lead" style="max-width:64ch;">There are many ways to help turn the dream of a baby into a reality — with your time, your voice, and your heart.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Get Involved</div></div>
+  <section><div class="wrap">
+    <div class="grid g4">
+      <div class="card" onclick="go('gi-volunteer')" style="cursor:pointer;"><h3>Volunteer</h3><p class="muted">Share your skills and time to support PUAH's mission.</p><a class="link" onclick="go('gi-volunteer')">Learn more →</a></div>
+      <div class="card" onclick="go('gi-events')" style="cursor:pointer;"><h3>Events</h3><p class="muted">Gather and celebrate the families we build together.</p><a class="link" onclick="go('gi-events')">Learn more →</a></div>
+      <div class="card" onclick="go('gi-story')" style="cursor:pointer;"><h3>Share Your Story</h3><p class="muted">Inspire others by sharing your own journey.</p><a class="link" onclick="go('gi-story')">Learn more →</a></div>
+      <div class="card" onclick="go('gi-ecards')" style="cursor:pointer;"><h3>eCards</h3><p class="muted">Mark a simcha or milestone while supporting a family.</p><a class="link" onclick="go('gi-ecards')">Learn more →</a></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ========================= GI: VOLUNTEER ========================= -->
+<div class="page" id="page-gi-volunteer">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Get Involved · Volunteer</span><h1>Volunteers are always welcome.</h1><p class="lead" style="max-width:66ch;">Come join the PUAH family and help us in our efforts to assure Jewish continuity.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Get Involved / Volunteer</div></div>
+  <section><div class="wrap grid g2" style="align-items:center;">
+    <div>
+      <span class="eyebrow">Why volunteer</span>
+      <h2>Your time makes families possible</h2>
+      <p>PUAH requires a tremendous amount of time and energy, and volunteers are at the heart of everything we do. The zechusim (merits) associated with such an endeavor are extremely fulfilling and rewarding.</p>
+      <p>Tell us how you'd like to help using the form, and we look forward to meeting you.</p>
+    </div>
+    <div class="card">
+      <h3>How I can assist PUAH</h3>
+      <div style="display:grid;gap:10px;margin-top:10px;">
+        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Host a get-together in my home</label>
+        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Help with an awareness talk in my community</label>
+        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Help with financial and insurance advice</label>
+        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Help with calls before an event</label>
+        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Network and help find sponsors</label>
+        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Offer secretarial / computer skills</label>
+        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Grants &amp; charitable foundations experience</label>
+        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Other</label>
+      </div>
+      <div style="margin-top:16px;"><a class="btn solid">Submit</a></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ========================= GI: EVENTS ========================= -->
+<div class="page" id="page-gi-events">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Get Involved · Events</span><h1>Celebrating the families we build together.</h1><p class="lead" style="max-width:64ch;">Join us throughout the year for gatherings that support PUAH's mission and community.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Get Involved / Events</div></div>
+  <section><div class="wrap">
+    <span class="eyebrow">Upcoming</span><h2>What's coming up</h2>
+    <div class="grid g2" style="margin-top:22px;">
+      <div class="card"><div class="tag">July 28, 2026 · 7:30 PM</div><h3 style="margin-top:10px;">Stars, Strings &amp; Stories</h3><p class="muted">Celebrating the Families We Build Together — a memorable summer evening under the open sky featuring live music and BBQ.</p><a class="btn ghost sm">Learn more &amp; RSVP</a></div>
+      <div class="card"><div class="tag">Year-round</div><h3 style="margin-top:10px;">Daily Giving</h3><p class="muted">Join PUAH's Daily Giving community and make an ongoing impact for families in need.</p><a class="btn ghost sm">Participate</a></div>
+    </div>
+    <p class="note"><b>Wireframe note —</b> Events feed can pull from PUAH's live calendar. Past-events archive and photo galleries can live here too.</p>
+  </div></section>
+</div>
+
+<!-- ========================= GI: SHARE YOUR STORY ========================= -->
+<div class="page" id="page-gi-story">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Get Involved · Share Your Story</span><h1>Your story can give someone else hope.</h1><p class="lead" style="max-width:64ch;">The journey to parenthood is deeply personal — and deeply powerful when shared.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Get Involved / Share Your Story</div></div>
+  <section><div class="wrap grid g2" style="align-items:center;">
+    <div>
+      <span class="eyebrow">Be a voice of hope</span>
+      <h2>Share your experience with PUAH</h2>
+      <p>So many families walk the fertility journey feeling alone. By sharing your story, you remind others that there is guidance, community, and hope — and that they are never alone.</p>
+      <p>Submissions can be shared anonymously, and every story is treated with care and discretion.</p>
+      <div style="margin-top:16px;"><a class="btn solid">Share your story</a></div>
+      <p class="note"><b>Wireframe note —</b> On the current site this section is "coming soon." Suggested build: a simple submission form (name optional, email, your story) with consent and anonymity options.</p>
+    </div>
+    <div class="media tall"><span class="lbl">Photo — family / hopeful moment</span></div>
+  </div></section>
+</div>
+
+<!-- ========================= GI: ECARDS ========================= -->
+<div class="page" id="page-gi-ecards">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Get Involved · eCards</span><h1>Send a card. Support a family.</h1><p class="lead" style="max-width:64ch;">Mark a simcha, honor a loved one, or share a word of comfort — while helping build Jewish families.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Get Involved / eCards</div></div>
+  <section><div class="wrap">
+    <p style="max-width:720px;">Celebrate a birth, wedding, or milestone — or send wishes of comfort and refuah — with a PUAH eCard. Your dedication supports PUAH's work on behalf of families navigating fertility.</p>
+    <div class="grid g4" style="margin-top:24px;">
+      <div class="card center"><div class="media" style="min-height:120px;"><span class="lbl">Mazel Tov</span></div><h3 style="font-size:17px;margin-top:14px;">Simcha &amp; Mazel Tov</h3></div>
+      <div class="card center"><div class="media" style="min-height:120px;"><span class="lbl">In Honor</span></div><h3 style="font-size:17px;margin-top:14px;">In Honor Of</h3></div>
+      <div class="card center"><div class="media" style="min-height:120px;"><span class="lbl">In Memory</span></div><h3 style="font-size:17px;margin-top:14px;">In Memory Of</h3></div>
+      <div class="card center"><div class="media" style="min-height:120px;"><span class="lbl">Refuah</span></div><h3 style="font-size:17px;margin-top:14px;">Refuah Sheleimah</h3></div>
+    </div>
+    <div style="margin-top:24px;"><a class="btn solid">Send an eCard</a></div>
+  </div></section>
+</div>
+
+<!-- ========================= GIVE ========================= -->
+<div class="page" id="page-give">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Partner &amp; Give</span><h1>Help transform dreams into families.</h1><p class="lead" style="max-width:60ch;">Your partnership brings compassionate, halachically-grounded care to every Jewish family facing fertility challenges.</p><div style="margin-top:18px;"><a class="btn solid">Donate now</a></div></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Partner &amp; Give</div></div>
+  <section><div class="wrap">
+    <p class="note" style="margin-bottom:26px;"><b>Wireframe stub —</b> Ways to give plus higher-level partnership opportunities tied to the Three Pillars.</p>
+    <div class="grid g3">
+      <div class="card"><h3>Donate</h3><p class="muted">One-time and recurring gifts, stock, and charitable IRA options.</p></div>
+      <div class="card"><h3>Legacy Partnerships</h3><p class="muted">Naming and dedication opportunities across the Three Pillars for visionary partners.</p></div>
+      <div class="card"><h3>Get Involved</h3><p class="muted">Volunteer, attend events, share your story, and advocate for PUAH.</p></div>
+    </div>
+  </div></section>
+</div>
+
+<!-- ========================= RESOURCES LINK-OUT ========================= -->
+<div class="page" id="page-resources">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">External platform</span><h1>PUAH Digital Resource Library ↗</h1><p class="lead" style="max-width:64ch;">Educational content lives on a separate, dedicated platform.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Digital Resource Library</div></div>
+  <section><div class="wrap center">
+    <div class="media tall"><span class="lbl">Separate platform — opens in new tab in production</span></div>
+    <p class="note" style="margin:26px auto 0;max-width:64ch;text-align:left;"><b>Design note —</b> In the live build this nav item links directly out to the Resource Library domain (new tab). It is shown as an in-wireframe page here only so you can preview the hand-off. The corporate site should never host articles/FAQs itself.</p>
+    <div style="margin-top:20px;"><a class="btn ghost" onclick="go('home')">← Back to PUAH.org</a></div>
+  </div></section>
+</div>
+
+<!-- ========================= CONTACT ========================= -->
+<div class="page" id="page-contact">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Contact</span><h1>We're here to help.</h1></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Contact</div></div>
+  <section><div class="wrap grid g2">
+    <div>
+      <h3>Reach us</h3>
+      <p class="muted">888.993.7824<br>(contact email)<br>PUAH, P.O. Box 297185, Brooklyn, NY 11229</p>
+      <p class="muted">Instagram · Facebook · YouTube</p>
+    </div>
+    <div class="card">
+      <h3>Request a free consultation</h3>
+      <div class="media" style="min-height:44px;margin-bottom:12px;"><span class="lbl">Name</span></div>
+      <div class="media" style="min-height:44px;margin-bottom:12px;"><span class="lbl">Email / Phone</span></div>
+      <div class="media" style="min-height:88px;margin-bottom:12px;"><span class="lbl">How can we help?</span></div>
+      <a class="btn solid">Submit</a>
+    </div>
+  </div></section>
+</div>
+
+<!-- FOOTER -->
+<footer class="site">
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="logo" style="cursor:default;">
+          <svg class="mark" width="32" height="32" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#5cbfda"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#5cbfda" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg>
+          <span class="wordmark" style="color:#fff;">PUAH</span>
+        </div>
+        <p style="font-size:14px;color:#9fadb6;margin-top:14px;max-width:36ch;">Helping the greater Jewish community fulfill the dream of a healthy family — rooted in Torah, informed by medicine.</p>
+        <p style="font-size:13px;color:#7f8d97;">888.993.7824</p>
+      </div>
+      <div><h4>Organization</h4><div class="foot-links"><a onclick="go('about')">About</a><a onclick="go('services')">Services</a><a onclick="go('pillars')">The Three Pillars</a><a onclick="go('getinvolved')">Get Involved</a></div></div>
+      <div><h4>Get Support</h4><div class="foot-links"><a onclick="go('services')">Guidance &amp; Support</a><a onclick="go('services')">Ask the Rabbi</a><a onclick="go('services')">The PUAHline</a><a onclick="go('contact')">Contact</a></div></div>
+      <div><h4>Engage</h4><div class="foot-links"><a href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate</a><a onclick="go('pillars')">The Three Pillars</a><a onclick="go('resources')">Digital Library ↗</a></div></div>
+    </div>
+    <div class="sep"></div>
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#7f8d97;">
+      <div>© 2026 PUAH · Brooklyn, NY</div>
+      <div>Privacy Policy · Terms</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function go(page){
+    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+    var el=document.getElementById('page-'+page);
+    if(el){el.classList.add('active');}
+    document.querySelectorAll('#nav a[data-page]').forEach(a=>{
+      var dp=a.getAttribute('data-page');
+      a.classList.toggle('active', dp===page || (dp==='about' && page.indexOf('about')===0) || (dp==='services' && (page==='services' || page.indexOf('svc-')===0)) || (dp==='pillars' && (page==='pillars' || page.indexOf('pillar-')===0)) || (dp==='getinvolved' && (page==='getinvolved' || page.indexOf('gi-')===0)));
+    });
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+  // Design notes hidden by default for presentation
+  document.querySelectorAll('.note').forEach(n=>n.style.display='none');
+</script>
+</body>
+</html>
