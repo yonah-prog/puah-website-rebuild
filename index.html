@@ -110,10 +110,11 @@
 
   /* ---- quick-services bar ---- */
   .svc-bar{background:var(--navy);border-bottom:1px solid rgba(255,255,255,.08);}
-  .svc-bar .wrap{display:flex;justify-content:center;gap:8px;height:40px;align-items:center;}
+  .svc-bar .wrap{display:flex;justify-content:flex-end;gap:8px;height:40px;align-items:center;}
   .svc-bar a{display:inline-flex;align-items:center;gap:7px;color:#c9d3da;text-decoration:none;font-size:12.5px;font-weight:600;letter-spacing:.03em;padding:5px 14px;border-radius:999px;cursor:pointer;transition:.15s;}
   .svc-bar a:hover{color:#fff;background:rgba(255,255,255,.08);}
   .svc-bar a svg{width:15px;height:15px;stroke:var(--sky);flex:none;}
+  .svc-bar a:last-of-type{margin-right:-14px;}
   .svc-bar .divider{width:1px;height:16px;background:rgba(255,255,255,.15);}
   @media(max-width:560px){.svc-bar a{padding:5px 9px;font-size:11.5px;} .svc-bar .wrap{gap:4px;}}
 
