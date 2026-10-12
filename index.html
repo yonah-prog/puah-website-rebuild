@@ -166,6 +166,39 @@
 
   .breadcrumb{font-size:12.5px;color:var(--muted);padding:16px 0;border-bottom:1px solid var(--line);}
   .stub-hero{background:radial-gradient(900px 400px at 85% -20%,#e7f2f1,transparent 60%),var(--cream);padding:64px 0;border-bottom:1px solid var(--line);}
+
+  /* ---- fertility dictionary ---- */
+  .dict-search-wrap{position:relative;max-width:580px;margin-top:24px;}
+  .dict-search-wrap > svg{position:absolute;left:19px;top:50%;transform:translateY(-50%);width:18px;height:18px;stroke:#8e9aa2;fill:none;stroke-width:2;stroke-linecap:round;pointer-events:none;}
+  #dict-q{width:100%;padding:15px 20px 15px 50px;border:1.5px solid var(--line);border-radius:100px;background:#fff;
+    font-family:inherit;font-size:15px;color:var(--ink);box-shadow:var(--shadow-sm);outline:none;transition:.15s;}
+  #dict-q:focus{border-color:var(--teal);box-shadow:0 0 0 4px rgba(47,154,149,.13);}
+  #dict-q::placeholder{color:#9aa6ae;}
+  .dict-hint{font-size:13px;color:var(--muted);margin:12px 0 0;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{font-family:inherit;font-size:13px;font-weight:600;padding:8px 16px;border-radius:100px;
+    border:1.5px solid var(--line);background:#fff;color:var(--navy);cursor:pointer;transition:.15s;}
+  .chip:hover{border-color:var(--teal);color:var(--teal-d);}
+  .chip.on{background:var(--navy);border-color:var(--navy);color:#fff;}
+  .dict-count-line{font-size:13px;color:var(--muted);margin:18px 0 26px;}
+  .cat-group{margin-bottom:40px;}
+  .cat-head{display:flex;align-items:center;gap:14px;font-size:20px;margin:0 0 18px;}
+  .cat-head::after{content:"";flex:1;height:1px;background:var(--line);}
+  .term-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  @media(max-width:860px){.term-grid{grid-template-columns:1fr;}}
+  .term{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;}
+  .term h4{font-family:"Fraunces",Georgia,serif;font-size:17.5px;margin:0 0 4px;line-height:1.25;}
+  .term .abbr{display:inline-block;font-family:"Inter",sans-serif;font-size:11px;font-weight:700;letter-spacing:.07em;
+    color:var(--teal-d);background:#e6f2f1;border-radius:100px;padding:2px 9px;vertical-align:middle;margin-left:6px;}
+  .term .say{display:block;font-size:12.5px;letter-spacing:.03em;color:var(--muted);font-style:italic;margin:0 0 8px;}
+  .term p{margin:0;font-size:14.5px;color:var(--muted);line-height:1.62;}
+  .term .ctx{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);font-size:13px;color:var(--navy);line-height:1.55;}
+  .term .ctx b{color:var(--teal-d);}
+  .dict-empty{display:none;text-align:center;padding:50px 0;}
+  .starter{display:flex;gap:16px;align-items:flex-start;}
+  .starter .itile{width:44px;height:44px;border-radius:12px;}
+  .starter svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
   .quote{font-family:"Fraunces",serif;font-size:clamp(22px,2.6vw,30px);line-height:1.35;color:var(--navy);}
 </style>
 </head>
@@ -219,6 +252,7 @@
           <a onclick="go('svc-lab')">Lab Supervision<small>Protecting halachic integrity</small></a>
           <a onclick="go('svc-shabbos')">Shabbos Phlebotomy &amp; Injections<small>Care that stays on schedule</small></a>
           <a onclick="go('svc-financial')">Financial Assistance<small>Grants, loans &amp; more</small></a>
+          <a onclick="go('dictionary')">Fertility Dictionary<small>Every term, in plain English</small></a>
         </div></div>
       </div>
       <div class="has-drop">
@@ -612,6 +646,7 @@
       <div class="card" onclick="go('svc-lab')" style="cursor:pointer;"><h3>Lab Supervision</h3><p class="muted">On-site observation to prevent human error and protect halachic integrity.</p><a class="link" onclick="go('svc-lab')">Learn more →</a></div>
       <div class="card" onclick="go('svc-shabbos')" style="cursor:pointer;"><h3>Shabbos Phlebotomy &amp; Injection Assistance</h3><p class="muted">Keeping time-sensitive care on track around Shabbos and daily protocols.</p><a class="link" onclick="go('svc-shabbos')">Learn more →</a></div>
       <div class="card" onclick="go('svc-financial')" style="cursor:pointer;"><h3>Financial Assistance</h3><p class="muted">Easing the financial burden of fertility treatment.</p><a class="link" onclick="go('svc-financial')">Learn more →</a></div>
+      <div class="card" onclick="go('dictionary')" style="cursor:pointer;"><h3>Fertility Dictionary</h3><p class="muted">110 medical and halachic terms, explained in plain English.</p><a class="link" onclick="go('dictionary')">Learn more →</a></div>
     </div>
   </div></section>
 </div>
@@ -1023,6 +1058,656 @@
   </div></section>
 </div>
 
+
+<!-- ========================= FERTILITY DICTIONARY ========================= -->
+<div class="page" id="page-dictionary">
+  <div class="stub-hero"><div class="wrap">
+    <span class="eyebrow">Plain-language guide</span>
+    <h1>The fertility dictionary.</h1>
+    <p class="lead" style="max-width:68ch;">Every appointment arrives with new vocabulary — and no one stops to explain it. Here is the language of fertility care in plain English, with the halachic terms standing right alongside it.</p>
+    <div class="dict-search-wrap">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="dict-q" type="search" placeholder="Search a word you heard — AMH, ICSI, hefsek taharah&hellip;" oninput="dictFilter()" autocomplete="off" spellcheck="false">
+    </div>
+    <p class="dict-hint">Written for couples, not clinicians. Nothing here replaces your doctor or your rav — it just helps you walk in knowing what the words mean.</p>
+  </div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Services / Fertility Dictionary</div></div>
+
+  <!-- START HERE -->
+  <section><div class="wrap">
+    <span class="eyebrow">Start here</span>
+    <h2>Five ideas worth understanding first</h2>
+    <p class="muted" style="max-width:62ch;">Most of the jargon hangs off these five concepts. Get these, and the rest of the vocabulary starts to fall into place.</p>
+    <div class="grid g3" style="margin-top:28px;">
+      <div class="card">
+        <div class="starter">
+          <div class="itile teal"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <div>
+            <h3 style="margin:0 0 8px;">Ovarian reserve</h3>
+            <p class="muted" style="font-size:14.5px;margin:0;">Roughly, how many eggs are still in reserve. Two numbers estimate it — <b>AMH</b> (a blood test) and <b>antral follicle count</b> (an ultrasound). They speak to <i>quantity</i>, not quality, and they are not a verdict on whether you can conceive.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="starter">
+          <div class="itile sky"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18V8M10 18V5M16 18v-7M22 18v-4"/></svg></div>
+          <div>
+            <h3 style="margin:0 0 8px;">The ladder of treatment</h3>
+            <p class="muted" style="font-size:14.5px;margin:0;">Care usually escalates in steps: timed intercourse &rarr; <b>ovulation induction</b> &rarr; <b>IUI</b> &rarr; <b>IVF</b>. Where you start depends on diagnosis and age — plenty of couples skip rungs, and that is not a sign anything went wrong.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="starter">
+          <div class="itile pink"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-7 4 14L16 12h5"/></svg></div>
+          <div>
+            <h3 style="margin:0 0 8px;">Your protocol</h3>
+            <p class="muted" style="font-size:14.5px;margin:0;">The specific recipe of medications, doses and timing your doctor chooses for one cycle. Protocols get adjusted between cycles constantly — a change is normal fine-tuning, not a setback.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="starter">
+          <div class="itile navy"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div>
+          <div>
+            <h3 style="margin:0 0 8px;">Monitoring</h3>
+            <p class="muted" style="font-size:14.5px;margin:0;">The stretch of early-morning bloodwork and ultrasounds during an active cycle, often every day or two. It is how the clinic watches your follicles grow and decides when to <b>trigger</b>.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="starter">
+          <div class="itile teal"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-4.3 7-9.5A4.5 4.5 0 0 0 12 8a4.5 4.5 0 0 0-7 3.5C5 16.7 12 21 12 21z"/></svg></div>
+          <div>
+            <h3 style="margin:0 0 8px;">The halachic layer</h3>
+            <p class="muted" style="font-size:14.5px;margin:0;">Treatment intersects with <b>taharat hamishpacha</b>, sperm collection, lab handling and more. Every one of these has answers — but they are individual answers. A <b>shaalah</b> to a rav who knows this field is part of good care, not an obstacle to it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="background:var(--cream);border-style:dashed;display:flex;flex-direction:column;justify-content:center;">
+        <h3 style="margin:0 0 8px;">Still lost in a sentence?</h3>
+        <p class="muted" style="font-size:14.5px;">Send us the exact words your doctor used. We will translate them — medically and halachically — at no charge.</p>
+        <a class="link" onclick="go('contact')">Ask PUAH &rarr;</a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- TERMS -->
+  <section class="alt" id="dict-terms"><div class="wrap">
+    <span class="eyebrow">The full list</span>
+    <h2>Every term, by topic</h2>
+    <div class="chips" id="dict-chips" style="margin-top:22px;">
+      <button class="chip on" data-cat="all" onclick="dictChip(this)">All terms</button>
+      <button class="chip" data-cat="basics" onclick="dictChip(this)">Diagnosis &amp; the basics</button>
+      <button class="chip" data-cat="testing" onclick="dictChip(this)">Tests &amp; monitoring</button>
+      <button class="chip" data-cat="meds" onclick="dictChip(this)">Medications</button>
+      <button class="chip" data-cat="treatment" onclick="dictChip(this)">Treatments &amp; procedures</button>
+      <button class="chip" data-cat="lab" onclick="dictChip(this)">The lab, eggs &amp; embryos</button>
+      <button class="chip" data-cat="genetics" onclick="dictChip(this)">Genetics &amp; screening</button>
+      <button class="chip" data-cat="pregnancy" onclick="dictChip(this)">Pregnancy, loss &amp; after</button>
+      <button class="chip" data-cat="halacha" onclick="dictChip(this)">Halachic terms</button>
+    </div>
+    <p class="dict-count-line">Showing <b id="dict-count">110</b> of 110 terms.</p>
+    <div id="dict-results">
+
+      <div class="cat-group" data-cat="basics">
+        <h3 class="cat-head">Diagnosis &amp; the basics</h3>
+        <div class="term-grid">
+          <div class="term" data-cat="basics">
+            <h4>Infertility</h4>
+            <p>Not conceiving after 12 months of trying — or 6 months if the woman is 35 or older. It is a clinical threshold for <i>when to investigate</i>, not a verdict.</p>
+            <div class="ctx"><b>Worth knowing:</b> roughly 1 in 7 couples meet this definition.</div>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Primary infertility</h4>
+            <p>Difficulty conceiving or carrying when you have not previously had a child.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Secondary infertility</h4>
+            <p>Difficulty conceiving or carrying after already having one or more children. Just as real, and often lonelier, because people assume it cannot be happening.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Unexplained infertility</h4>
+            <p>Standard testing came back normal and no cause was identified. It means the tests did not find it — not that nothing is there, and not that nothing can be done.</p>
+            <div class="ctx"><b>Heard when:</b> workup is complete and your doctor still recommends treatment.</div>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Reproductive endocrinologist<span class="abbr">RE</span></h4>
+            <p>An OB/GYN who completed an additional fellowship in fertility and hormones. The specialist who runs IUI and IVF cycles.</p>
+            <div class="ctx"><b>Also written:</b> REI — Reproductive Endocrinology &amp; Infertility.</div>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Ovulation</h4>
+            <p>The release of a mature egg from the ovary, usually about 14 days before the next period starts.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Follicular phase</h4>
+            <p>The first half of the cycle — from the first day of your period until ovulation. This is when follicles grow.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Luteal phase</h4>
+            <p>The second half — from ovulation until your next period. Typically 12&ndash;14 days, and where progesterone does its work.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Follicle</h4>
+            <p>A small fluid-filled sac in the ovary, each holding one immature egg. Monitoring ultrasounds measure follicles in millimetres to track growth.</p>
+            <div class="ctx"><b>Heard when:</b> &ldquo;You have eight follicles, the lead is at 18.&rdquo;</div>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Polycystic ovary syndrome<span class="abbr">PCOS</span></h4>
+            <p>A common hormonal condition causing irregular or absent ovulation, often with many small follicles visible on ultrasound. Very treatable from a fertility standpoint.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Endometriosis</h4>
+            <p>Tissue similar to the uterine lining growing outside the uterus. Can cause pain and can affect fertility; diagnosed definitively only by laparoscopy.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Diminished ovarian reserve<span class="abbr">DOR</span></h4>
+            <p>Fewer remaining eggs than expected for your age. It affects how a cycle is planned — it does not by itself mean pregnancy is out of reach.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Premature ovarian insufficiency<span class="abbr">POI</span></h4>
+            <p>Ovaries reducing function before age 40. Previously called premature ovarian failure, a name that was both inaccurate and unkind.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Male factor</h4>
+            <p>Any sperm-related contribution to difficulty conceiving. Present in roughly 40&ndash;50% of cases — which is why testing both partners early is standard, not an accusation.</p>
+            <div class="ctx"><b>PUAH note:</b> collection for testing has its own halachic guidance. Ask before the appointment, not after.</div>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Azoospermia</h4>
+            <p>No sperm found in the ejaculate. Often still treatable — sperm can frequently be retrieved surgically from the testicle.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Oligospermia</h4>
+            <p>A lower-than-typical sperm count.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Asthenozoospermia</h4>
+            <p>Reduced sperm motility — how well sperm move.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Teratozoospermia</h4>
+            <p>A low proportion of normally shaped sperm. Morphology is one of three standard semen measures, alongside count and motility.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Varicocele</h4>
+            <p>Enlarged veins in the scrotum that can raise temperature and affect sperm. One of the more commonly correctable male-factor findings.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Tubal factor</h4>
+            <p>Blocked or damaged fallopian tubes preventing egg and sperm from meeting. IVF bypasses the tubes entirely.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Fibroids &amp; polyps</h4>
+            <p>Benign growths in or on the uterus. Whether they matter depends almost entirely on size and location — many need nothing done.</p>
+          </div>
+          <div class="term" data-cat="basics">
+            <h4>Asherman&rsquo;s syndrome</h4>
+            <p>Scar tissue inside the uterine cavity, usually following a procedure or infection. Often correctable with hysteroscopy.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-group" data-cat="testing">
+        <h3 class="cat-head">Tests &amp; monitoring</h3>
+        <div class="term-grid">
+          <div class="term" data-cat="testing">
+            <h4>Anti-M&uuml;llerian hormone<span class="abbr">AMH</span></h4>
+            <p>A blood test estimating how many eggs remain. It can be drawn any day of the cycle. It speaks to quantity, says little about quality, and predicts response to stimulation better than it predicts pregnancy.</p>
+            <div class="ctx"><b>Heard when:</b> your very first workup. Try not to let one number carry your whole week.</div>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Antral follicle count<span class="abbr">AFC</span></h4>
+            <p>An ultrasound count of the small resting follicles visible at the start of a cycle. Read together with AMH.</p>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Follicle-stimulating hormone<span class="abbr">FSH</span></h4>
+            <p>The hormone that drives follicles to grow. Measured on day 2&ndash;3 of the cycle; a high level can suggest the ovaries are working harder than expected.</p>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Luteinizing hormone<span class="abbr">LH</span></h4>
+            <p>The hormone whose surge triggers ovulation. This is what at-home ovulation predictor kits detect.</p>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Estradiol<span class="abbr">E2</span></h4>
+            <p>The main estrogen, rising as follicles grow. Tracked at nearly every monitoring visit.</p>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Progesterone<span class="abbr">P4</span></h4>
+            <p>The hormone of the luteal phase, which prepares and holds the uterine lining. Often supplemented after IUI and IVF.</p>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Prolactin &amp; TSH</h4>
+            <p>Two routine blood tests — a pituitary hormone and a thyroid marker. Both can quietly disrupt ovulation, and both are straightforward to treat.</p>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Semen analysis<span class="abbr">SA</span></h4>
+            <p>A lab assessment of count, motility and morphology. Usually repeated, since results vary considerably between samples.</p>
+            <div class="ctx"><b>PUAH note:</b> we guide couples on halachically appropriate collection methods and work directly with labs. Call before you schedule.</div>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Hysterosalpingogram<span class="abbr">HSG</span></h4>
+            <div class="say">his-ter-o-SAL-ping-o-gram</div>
+            <p>An X-ray taken while dye is passed through the uterus and tubes, showing whether the tubes are open and the cavity is normally shaped.</p>
+            <div class="ctx"><b>Heard when:</b> scheduled early in the workup, in the first half of the cycle.</div>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Saline infusion sonogram<span class="abbr">SIS</span></h4>
+            <p>An ultrasound done with saline in the uterus to reveal polyps, fibroids or scarring. Gentler than an HSG and focused on the cavity rather than the tubes.</p>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Hysteroscopy</h4>
+            <p>A thin camera passed through the cervix to look directly inside the uterus — and, when needed, to remove what it finds in the same sitting.</p>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Laparoscopy</h4>
+            <p>Keyhole surgery through the abdomen to see the outside of the uterus, tubes and ovaries. The only way to confirm endometriosis.</p>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Baseline</h4>
+            <p>The scan and bloodwork at the start of a cycle, confirming the ovaries are quiet and it is safe to begin medication.</p>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Monitoring</h4>
+            <p>The repeated bloodwork and ultrasounds during an active cycle — often every one to three days, usually very early in the morning.</p>
+            <div class="ctx"><b>PUAH note:</b> when monitoring falls on Shabbos or Yom Tov, our phlebotomy service keeps the cycle on schedule.</div>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Trigger shot</h4>
+            <p>An injection of hCG or Lupron that tells the follicles to finish maturing. Timing is exact: egg retrieval or IUI follows roughly 36 hours later.</p>
+            <div class="ctx"><b>Heard when:</b> the call comes in the evening with a precise time. Set an alarm.</div>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Beta</h4>
+            <div class="say">BAY-tuh</div>
+            <p>A blood test measuring hCG to confirm pregnancy — more sensitive and far earlier than a home test. Usually repeated 48 hours later to see whether the number is rising appropriately.</p>
+            <div class="ctx"><b>Heard when:</b> about 9&ndash;14 days after transfer or IUI. The gap before it has a well-earned nickname: the two-week wait.</div>
+          </div>
+          <div class="term" data-cat="testing">
+            <h4>Endometrial lining</h4>
+            <p>The uterine lining, measured in millimetres before a transfer. A &ldquo;triple stripe&rdquo; pattern on ultrasound is the appearance clinicians hope to see.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-group" data-cat="meds">
+        <h3 class="cat-head">Medications</h3>
+        <div class="term-grid">
+          <div class="term" data-cat="meds">
+            <h4>Clomiphene citrate<span class="abbr">Clomid</span></h4>
+            <p>An oral tablet that prompts the body to produce more FSH and ovulate. Often the first medication tried.</p>
+          </div>
+          <div class="term" data-cat="meds">
+            <h4>Letrozole<span class="abbr">Femara</span></h4>
+            <p>An oral alternative to Clomid, frequently preferred in PCOS and often easier on the uterine lining.</p>
+          </div>
+          <div class="term" data-cat="meds">
+            <h4>Gonadotropins</h4>
+            <div class="say">gon-AD-oh-TROH-pins</div>
+            <p>Injectable FSH and LH hormones — brand names like Gonal-F, Follistim and Menopur — used to grow multiple follicles in IVF and some IUI cycles.</p>
+          </div>
+          <div class="term" data-cat="meds">
+            <h4>Antagonist<span class="abbr">Cetrotide / Ganirelix</span></h4>
+            <p>An injection added partway through stimulation to stop the body ovulating before retrieval. The backbone of the common &ldquo;antagonist protocol.&rdquo;</p>
+          </div>
+          <div class="term" data-cat="meds">
+            <h4>Agonist / Lupron</h4>
+            <div class="say">LOO-pron</div>
+            <p>A medication that first stimulates, then suppresses, the body's own hormones. Used in long protocols and sometimes as the trigger.</p>
+          </div>
+          <div class="term" data-cat="meds">
+            <h4>Human chorionic gonadotropin<span class="abbr">hCG</span></h4>
+            <p>The pregnancy hormone. Used as a trigger shot before retrieval or IUI, and measured as the beta to confirm pregnancy.</p>
+          </div>
+          <div class="term" data-cat="meds">
+            <h4>Progesterone support</h4>
+            <p>Progesterone given after transfer or IUI — as injections, suppositories or both — to support the lining. Usually continued into early pregnancy.</p>
+            <div class="ctx"><b>PUAH note:</b> progesterone can cause spotting. Whether a particular stain carries halachic weight is a question worth asking rather than assuming.</div>
+          </div>
+          <div class="term" data-cat="meds">
+            <h4>Birth control pills</h4>
+            <p>Sometimes prescribed <i>before</i> an IVF cycle. Counterintuitive, but it quiets the ovaries and lets the clinic control the calendar.</p>
+          </div>
+          <div class="term" data-cat="meds">
+            <h4>Metformin</h4>
+            <p>An insulin-sensitising medication often used in PCOS to help restore regular ovulation.</p>
+          </div>
+          <div class="term" data-cat="meds">
+            <h4>Stims</h4>
+            <p>Shorthand for the stimulation phase — typically 8&ndash;12 days of injections to grow multiple follicles before retrieval.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-group" data-cat="treatment">
+        <h3 class="cat-head">Treatments &amp; procedures</h3>
+        <div class="term-grid">
+          <div class="term" data-cat="treatment">
+            <h4>Timed intercourse<span class="abbr">TI</span></h4>
+            <p>Using monitoring or ovulation kits to identify the fertile window. The first and least invasive step.</p>
+            <div class="ctx"><b>PUAH note:</b> if ovulation reliably falls before mikveh night, that is <i>halachic infertility</i> — and it is often solvable. See the halachic terms below.</div>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Ovulation induction<span class="abbr">OI</span></h4>
+            <p>Using medication to produce ovulation in someone who ovulates irregularly or not at all.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Intrauterine insemination<span class="abbr">IUI</span></h4>
+            <p>Washed, concentrated sperm placed directly into the uterus around ovulation. A short office procedure, usually painless, with no anaesthesia.</p>
+            <div class="ctx"><b>PUAH note:</b> collection, washing and lab handling all carry halachic considerations. Supervision is available.</div>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>In vitro fertilization<span class="abbr">IVF</span></h4>
+            <p>Eggs are retrieved, fertilised with sperm in the lab, grown for several days, and one embryo is transferred to the uterus. Remaining embryos can be frozen.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Egg retrieval<span class="abbr">ER / OPU</span></h4>
+            <p>A 15&ndash;20 minute procedure under light sedation in which fluid is drawn from each follicle and eggs are collected. Recovery is usually the same day.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Intracytoplasmic sperm injection<span class="abbr">ICSI</span></h4>
+            <div class="say">IK-see</div>
+            <p>A single sperm injected directly into a single egg, rather than leaving fertilisation to happen in the dish. Standard practice in male factor.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Fertilization report</h4>
+            <p>The call the day after retrieval telling you how many eggs were mature and how many fertilised. Numbers drop at each stage — that attrition is expected, not a failure.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Embryo transfer<span class="abbr">ET</span></h4>
+            <p>Placing an embryo into the uterus through a thin catheter. Quick, usually without sedation, and typically the shortest appointment of the whole cycle.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Fresh transfer</h4>
+            <p>Transferring an embryo within the same cycle as the retrieval, typically on day 3 or day 5.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Frozen embryo transfer<span class="abbr">FET</span></h4>
+            <p>Transferring a previously frozen embryo in a later cycle. Now extremely common, with outcomes comparable to or better than fresh.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Freeze-all</h4>
+            <p>Freezing every embryo and transferring none in that cycle — to allow genetic testing, to avoid OHSS, or to let the body recover first.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Natural vs. medicated FET</h4>
+            <p>Two ways to prepare the lining for a frozen transfer: following your own ovulation, or controlling the timing with estrogen and progesterone.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Protocol</h4>
+            <p>The full plan for one cycle — which medications, what doses, what order, which trigger. Expect it to be adjusted between cycles.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Mini-IVF / mild stimulation</h4>
+            <p>Lower medication doses aiming for fewer, good-quality eggs. Gentler and cheaper per cycle, with fewer embryos per attempt.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Egg freezing</h4>
+            <p>Retrieving and vitrifying unfertilised eggs for later use. Halachically more straightforward than freezing embryos, which is one reason it is discussed early.</p>
+            <div class="ctx"><b>PUAH note:</b> a decision with real halachic and practical dimensions. Worth a conversation before, not after.</div>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Surgical sperm retrieval<span class="abbr">TESE / TESA / micro-TESE</span></h4>
+            <p>Obtaining sperm directly from the testicle or epididymis when there is none in the ejaculate. Frequently successful even in azoospermia.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Ovarian hyperstimulation syndrome<span class="abbr">OHSS</span></h4>
+            <p>An over-response to stimulation causing swollen ovaries, fluid retention and discomfort. Modern protocols make severe cases uncommon — but report bloating, rapid weight gain or breathlessness immediately.</p>
+          </div>
+          <div class="term" data-cat="treatment">
+            <h4>Third-party reproduction</h4>
+            <p>Using donor eggs, donor sperm or a gestational carrier. Each raises substantial halachic questions about lineage and status that differ sharply between poskim.</p>
+            <div class="ctx"><b>PUAH note:</b> this is precisely the territory where a general answer is no answer. Speak with us early.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-group" data-cat="lab">
+        <h3 class="cat-head">The lab, eggs &amp; embryos</h3>
+        <div class="term-grid">
+          <div class="term" data-cat="lab">
+            <h4>Oocyte</h4>
+            <div class="say">OH-oh-site</div>
+            <p>The medical word for an egg.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Mature vs. immature<span class="abbr">MII</span></h4>
+            <p>Only mature eggs can be fertilised. Not every egg retrieved will be mature, which is why the retrieval number and the fertilisation number differ.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Zygote</h4>
+            <div class="say">ZY-goat</div>
+            <p>A fertilised egg in its first day, before it begins dividing.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Cleavage stage<span class="abbr">Day 3</span></h4>
+            <p>An embryo of roughly 6&ndash;8 cells, three days after fertilisation.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Blastocyst<span class="abbr">Day 5/6</span></h4>
+            <div class="say">BLAST-oh-sist</div>
+            <p>A more developed embryo of 100-plus cells with two distinct parts. Most transfers and freezes now happen at this stage.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Embryo grading</h4>
+            <p>A visual quality score such as 4AA or 3BB — expansion plus two letter grades. A useful guide, but a decent grade and a great grade both become babies.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Euploid</h4>
+            <div class="say">YOU-ployd</div>
+            <p>An embryo with the expected 46 chromosomes, as determined by genetic testing.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Aneuploid</h4>
+            <div class="say">an-YOU-ployd</div>
+            <p>An embryo with a chromosomal number outside the expected range. The single most common reason an embryo does not implant or a pregnancy is lost.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Mosaic</h4>
+            <p>An embryo showing both normal and abnormal cells on testing. A genuinely nuanced category — many have resulted in healthy births, and it warrants a real conversation.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Vitrification</h4>
+            <p>Flash-freezing so fast that no ice crystals form. The reason modern survival rates after thaw are so high.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Embryologist</h4>
+            <p>The scientist who handles eggs, sperm and embryos in the lab. You rarely meet them; they do some of the most consequential work in the building.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Witnessing</h4>
+            <p>The lab's own protocol of having a second person verify identity at each handling step.</p>
+            <div class="ctx"><b>PUAH note:</b> our lab supervision adds an independent, PUAH-trained observer present for your material specifically — an extra set of eyes, not a replacement for the lab's.</div>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Assisted hatching</h4>
+            <p>Thinning the embryo's outer shell to help it emerge and implant. Used selectively, not routinely.</p>
+          </div>
+          <div class="term" data-cat="lab">
+            <h4>Cryopreservation storage</h4>
+            <p>The long-term tanks where frozen eggs and embryos are kept, with annual fees and consent forms. Ask early what the paperwork commits you to.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-group" data-cat="genetics">
+        <h3 class="cat-head">Genetics &amp; screening</h3>
+        <div class="term-grid">
+          <div class="term" data-cat="genetics">
+            <h4>Carrier screening</h4>
+            <p>A blood or saliva test showing whether you carry genes for recessive conditions. Carrying one is common and harmless — it matters only when both partners carry the same one.</p>
+          </div>
+          <div class="term" data-cat="genetics">
+            <h4>Dor Yeshorim</h4>
+            <div class="say">dor yeh-sho-REEM</div>
+            <p>The anonymous, number-based screening programme widely used in Orthodox communities. Results are not disclosed to individuals; compatibility between two numbers is checked at shidduch stage.</p>
+          </div>
+          <div class="term" data-cat="genetics">
+            <h4>Autosomal recessive</h4>
+            <p>A condition that appears only when a child inherits the same gene variant from both parents. Two carriers have a 25% chance with each pregnancy.</p>
+          </div>
+          <div class="term" data-cat="genetics">
+            <h4>Ashkenazi panel</h4>
+            <p>Screening for conditions found at higher rates in Ashkenazi Jewish populations — Tay-Sachs, Canavan, familial dysautonomia, Gaucher, cystic fibrosis and others. Sephardic and Mizrachi panels differ and matter just as much.</p>
+          </div>
+          <div class="term" data-cat="genetics">
+            <h4>Preimplantation genetic testing<span class="abbr">PGT-A / PGT-M / PGT-SR</span></h4>
+            <p>Testing embryos before transfer — for chromosome count (A), a specific inherited condition (M), or a structural rearrangement (SR). Requires IVF and a biopsy of the embryo.</p>
+            <div class="ctx"><b>PUAH note:</b> whether, and when, PGT is appropriate is a halachic question as much as a medical one.</div>
+          </div>
+          <div class="term" data-cat="genetics">
+            <h4>BRCA</h4>
+            <div class="say">BRACK-uh</div>
+            <p>Gene variants raising breast and ovarian cancer risk, more common in Ashkenazi families. Relevant to fertility planning and timing, and increasingly screened for.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-group" data-cat="pregnancy">
+        <h3 class="cat-head">Pregnancy, loss &amp; after</h3>
+        <div class="term-grid">
+          <div class="term" data-cat="pregnancy">
+            <h4>Two-week wait<span class="abbr">TWW</span></h4>
+            <p>The stretch between transfer or IUI and the beta. Clinically uneventful; emotionally, often the hardest part of the cycle.</p>
+            <div class="ctx"><b>You are not imagining it.</b> This is the week most couples tell us they needed someone to talk to.</div>
+          </div>
+          <div class="term" data-cat="pregnancy">
+            <h4>Implantation</h4>
+            <p>The embryo embedding into the uterine lining, roughly 6&ndash;10 days after fertilisation. Where most of what can go right or wrong actually happens.</p>
+          </div>
+          <div class="term" data-cat="pregnancy">
+            <h4>Chemical pregnancy</h4>
+            <p>A very early loss shortly after a positive test, often before anything is visible on ultrasound. It was a real pregnancy, and it is a real loss.</p>
+          </div>
+          <div class="term" data-cat="pregnancy">
+            <h4>Ectopic pregnancy</h4>
+            <div class="say">ek-TOP-ik</div>
+            <p>A pregnancy implanted outside the uterus, usually in a tube. A medical emergency — sharp one-sided pain or shoulder-tip pain means call now, not tomorrow.</p>
+          </div>
+          <div class="term" data-cat="pregnancy">
+            <h4>Blighted ovum</h4>
+            <p>A gestational sac that develops without an embryo. Also called an anembryonic pregnancy.</p>
+          </div>
+          <div class="term" data-cat="pregnancy">
+            <h4>Recurrent pregnancy loss<span class="abbr">RPL</span></h4>
+            <p>Two or more consecutive losses — the point at which a dedicated workup is warranted. Most couples with RPL do go on to carry.</p>
+          </div>
+          <div class="term" data-cat="pregnancy">
+            <h4>Viability scan</h4>
+            <p>The ultrasound at around 6&ndash;7 weeks looking for a heartbeat.</p>
+          </div>
+          <div class="term" data-cat="pregnancy">
+            <h4>Graduation</h4>
+            <p>Being discharged from the fertility clinic to a regular OB, usually between 8 and 10 weeks. Expected to feel purely joyful; frequently feels unmoored as well.</p>
+          </div>
+          <div class="term" data-cat="pregnancy">
+            <h4>High-risk pregnancy<span class="abbr">MFM</span></h4>
+            <p>Pregnancy needing extra monitoring, managed by a maternal-fetal medicine specialist.</p>
+            <div class="ctx"><b>PUAH note:</b> our guidance continues through pregnancy — the halachic questions do not stop at the positive test.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cat-group" data-cat="halacha">
+        <h3 class="cat-head">Halachic terms</h3>
+        <div class="term-grid">
+          <div class="term" data-cat="halacha">
+            <h4>Taharat hamishpacha</h4>
+            <div class="say">ta-ha-RAT ha-mish-pa-CHA</div>
+            <p>Family purity — the laws governing marital intimacy around the menstrual cycle. The framework within which every fertility decision is made.</p>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Niddah</h4>
+            <div class="say">NID-dah</div>
+            <p>The halachic status following menstrual bleeding, during which physical contact between spouses is prohibited until immersion.</p>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Hefsek taharah</h4>
+            <div class="say">hef-SEK ta-ha-RAH</div>
+            <p>The internal examination at the end of bleeding that establishes it has stopped and begins the count of seven clean days.</p>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Shiva nekiyim</h4>
+            <div class="say">shi-VA ne-ki-YIM</div>
+            <p>The seven clean days counted after the hefsek taharah, before immersion in the mikveh.</p>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Bedika</h4>
+            <div class="say">be-di-KAH</div>
+            <p>An internal examination with a white cloth, used to establish and confirm cleanliness during the count.</p>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Ketem</h4>
+            <div class="say">KE-tem</div>
+            <p>A stain found on clothing or linen. Whether it renders a woman niddah depends on size, colour and what it was found on — which is why these are asked, not assumed.</p>
+            <div class="ctx"><b>Heard when:</b> treatment causes spotting. This is among the most common calls to the PUAHline.</div>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Mikveh</h4>
+            <div class="say">MIK-vah</div>
+            <p>The ritual bath; immersion ends niddah status and permits marital relations to resume.</p>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Harchakot</h4>
+            <div class="say">har-cha-KOT</div>
+            <p>The specific practices of separation observed while a woman is niddah.</p>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Halachic infertility</h4>
+            <p>When ovulation reliably occurs before mikveh night, so the fertile window closes before intimacy is permitted. A timing problem, not a medical one — and very often solvable with a short course of medication or an adjusted count.</p>
+            <div class="ctx"><b>This is where PUAH began.</b> If your cycle is short, raise it with us. Many couples in this situation conceive without any fertility treatment at all.</div>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Veset</h4>
+            <div class="say">VE-set</div>
+            <p>The anticipated date of the next period, around which certain separations apply. Cycle tracking has halachic as well as medical significance.</p>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Shaalah</h4>
+            <div class="say">sha-a-LAH</div>
+            <p>A halachic question put to a rav. In this field answers genuinely turn on the details — which is why &ldquo;I heard that someone said&rdquo; is never a substitute for asking.</p>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Hashgacha / mashgiach</h4>
+            <div class="say">hash-ga-CHA / mash-GEE-ach</div>
+            <p>Supervision, and the trained supervisor who provides it. In a fertility lab, a PUAH mashgiach observes the handling of eggs, sperm and embryos to protect against mix-ups and preserve halachic integrity.</p>
+            <div class="ctx"><b>PUAH note:</b> supervision is free to families and arranged directly with your clinic.</div>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Hotza&rsquo;at zera</h4>
+            <div class="say">hotz-a-AT ZE-ra</div>
+            <p>The halachic framework governing sperm collection. There are accepted methods for testing and treatment — the question is which applies to you, and your rav or PUAH can direct you before the appointment.</p>
+          </div>
+          <div class="term" data-cat="halacha">
+            <h4>Pru u&rsquo;rvu</h4>
+            <div class="say">pru ur-VU</div>
+            <p>The mitzvah of having children. Named here because couples often carry it as a burden of failure. Halachically, the obligation is to make the effort — an outcome no one controls was never the measure.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="dict-empty" id="dict-empty">
+      <h3>No match for that word — yet.</h3>
+      <p class="muted" style="max-width:48ch;margin:0 auto 18px;">Send it to us and we will explain it personally, and add it here for the next couple who hears it.</p>
+      <a class="btn solid" onclick="go('contact')">Ask us what it means</a>
+    </div>
+    <p class="note" style="margin-top:30px;"><b>Design note —</b> Live search plus topic filters, rather than an A&ndash;Z index: a couple searching here knows the sound of a word, not its spelling. In production this page is also the natural home for short explainer videos and should be linked from every service page and from the Resource Library.</p>
+  </div></section>
+
+  <!-- CTA -->
+  <section class="dark"><div class="wrap" style="max-width:780px;text-align:center;">
+    <span class="eyebrow">You should not have to decode this alone</span>
+    <h2>Bring us the sentence you did not understand.</h2>
+    <p style="font-size:18px;">Forward the email. Read us the note from the clinic. Repeat the phrase the nurse used. PUAH&rsquo;s advisors will translate it &mdash; medically and halachically &mdash; and tell you what, if anything, it changes. Free, confidential, and without judgment.</p>
+    <div style="margin-top:22px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn light" onclick="go('contact')">Schedule a free consultation</a>
+      <a class="btn on-dark" onclick="go('svc-ask')">Ask the Rabbi</a>
+    </div>
+    <p style="font-size:14px;color:#9fb0bb;margin-top:20px;">Or call the PUAHline: 888.993.7824</p>
+  </div></section>
+</div>
 <!-- ========================= CONTACT ========================= -->
 <div class="page" id="page-contact">
   <div class="stub-hero"><div class="wrap"><span class="eyebrow">Contact</span><h1>We're here to help.</h1></div></div>
@@ -1056,7 +1741,7 @@
         <p style="font-size:13px;color:#7f8d97;">888.993.7824</p>
       </div>
       <div><h4>Organization</h4><div class="foot-links"><a onclick="go('about')">About</a><a onclick="go('services')">Services</a><a onclick="go('pillars')">The Three Pillars</a><a onclick="go('getinvolved')">Get Involved</a></div></div>
-      <div><h4>Get Support</h4><div class="foot-links"><a onclick="go('services')">Guidance &amp; Support</a><a onclick="go('services')">Ask the Rabbi</a><a onclick="go('services')">The PUAHline</a><a onclick="go('contact')">Contact</a></div></div>
+      <div><h4>Get Support</h4><div class="foot-links"><a onclick="go('services')">Guidance &amp; Support</a><a onclick="go('services')">Ask the Rabbi</a><a onclick="go('services')">The PUAHline</a><a onclick="go('dictionary')">Fertility Dictionary</a><a onclick="go('contact')">Contact</a></div></div>
       <div><h4>Engage</h4><div class="foot-links"><a href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate</a><a onclick="go('pillars')">The Three Pillars</a><a onclick="go('resources')">Digital Library ↗</a></div></div>
     </div>
     <div class="sep"></div>
@@ -1076,8 +1761,38 @@
       var dp=a.getAttribute('data-page');
       a.classList.toggle('active', dp===page || (dp==='about' && page.indexOf('about')===0) || (dp==='services' && (page==='services' || page.indexOf('svc-')===0)) || (dp==='pillars' && (page==='pillars' || page.indexOf('pillar-')===0)) || (dp==='getinvolved' && (page==='getinvolved' || page.indexOf('gi-')===0)));
     });
+    if(page==='dictionary'){
+      var q=document.getElementById('dict-q');
+      if(q){q.value='';}
+      var all=document.querySelector('#dict-chips .chip[data-cat="all"]');
+      if(all){dictChip(all);}
+    }
     window.scrollTo({top:0,behavior:'instant'});
   }
+  function dictFilter(){
+    var q=(document.getElementById('dict-q').value||'').trim().toLowerCase();
+    var on=document.querySelector('#dict-chips .chip.on');
+    var cat=on?on.getAttribute('data-cat'):'all';
+    var shown=0;
+    document.querySelectorAll('#dict-results .cat-group').forEach(function(g){
+      var vis=0;
+      g.querySelectorAll('.term').forEach(function(t){
+        var hit=(cat==='all'||t.getAttribute('data-cat')===cat) && (!q||t.textContent.toLowerCase().indexOf(q)>-1);
+        t.style.display=hit?'':'none';
+        if(hit){vis++;}
+      });
+      g.style.display=vis?'':'none';
+      shown+=vis;
+    });
+    document.getElementById('dict-empty').style.display=shown?'none':'block';
+    document.getElementById('dict-count').textContent=shown;
+  }
+  function dictChip(el){
+    document.querySelectorAll('#dict-chips .chip').forEach(function(c){c.classList.remove('on');});
+    el.classList.add('on');
+    dictFilter();
+  }
+
   // Design notes hidden by default for presentation
   document.querySelectorAll('.note').forEach(n=>n.style.display='none');
 </script>
