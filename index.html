@@ -1753,13 +1753,29 @@
 </footer>
 
 <script>
+  /* ---- hash routing ----
+     Every "page" is a hidden div in this one file, so there is no real
+     navigation. We mirror the current page in location.hash so the URL,
+     the back button, refresh and shareable deep links all behave. */
+  function pageExists(page){ return !!document.getElementById('page-'+page); }
+  function currentRoute(){
+    var p=decodeURIComponent((location.hash||'').replace(/^#\/?/,'')).trim();
+    return pageExists(p) ? p : 'home';
+  }
   function go(page){
+    if(!pageExists(page)){ page='home'; }
+    // Setting the hash fires hashchange, which renders. If the hash is
+    // already correct (re-click, or first load) render directly.
+    if(currentRoute()===page){ render(page); }
+    else { location.hash=page; }
+  }
+  function render(page){
     document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
     var el=document.getElementById('page-'+page);
     if(el){el.classList.add('active');}
     document.querySelectorAll('#nav a[data-page]').forEach(a=>{
       var dp=a.getAttribute('data-page');
-      a.classList.toggle('active', dp===page || (dp==='about' && page.indexOf('about')===0) || (dp==='services' && (page==='services' || page.indexOf('svc-')===0)) || (dp==='pillars' && (page==='pillars' || page.indexOf('pillar-')===0)) || (dp==='getinvolved' && (page==='getinvolved' || page.indexOf('gi-')===0)));
+      a.classList.toggle('active', dp===page || (dp==='about' && page.indexOf('about')===0) || (dp==='services' && (page==='services' || page==='dictionary' || page.indexOf('svc-')===0)) || (dp==='pillars' && (page==='pillars' || page.indexOf('pillar-')===0)) || (dp==='getinvolved' && (page==='getinvolved' || page.indexOf('gi-')===0)));
     });
     if(page==='dictionary'){
       var q=document.getElementById('dict-q');
@@ -1793,8 +1809,13 @@
     dictFilter();
   }
 
+  window.addEventListener('hashchange', function(){ render(currentRoute()); });
+
   // Design notes hidden by default for presentation
   document.querySelectorAll('.note').forEach(n=>n.style.display='none');
+
+  // Route on first load so a deep link such as index.html#dictionary opens there
+  render(currentRoute());
 </script>
 </body>
 </html>
