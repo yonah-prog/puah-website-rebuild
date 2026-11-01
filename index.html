@@ -6,7 +6,7 @@
 <title>PUAH — Website Design Concept</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --navy:#152a3d;
@@ -254,6 +254,183 @@
   .steps > div::before{content:counter(st);flex:none;width:30px;height:30px;border-radius:50%;background:var(--teal);color:#fff;
     font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;}
   .steps p{margin:3px 0 0;}
+
+  /* =================== HOME V2 (Maven-inspired) =================== */
+  .v2{--v2-bg:#f1ede6;--v2-ink:#10283a;--v2-deep:#0f2a36;background:var(--v2-bg);color:var(--v2-ink);}
+  .v2 .v2-wrap{max-width:1240px;margin:0 auto;padding:0 32px;}
+  .v2 .v2-sec{padding:96px 0;}
+  .v2 .v2-eyebrow{display:block;font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--teal-d);margin-bottom:18px;}
+  .v2 .v2-h1,.v2 .v2-h2{font-family:"Inter",sans-serif;font-weight:300;letter-spacing:-.025em;color:inherit;}
+  .v2 .v2-h1{font-size:clamp(40px,5.6vw,76px);line-height:1.02;margin:0 0 22px;}
+  .v2 .v2-h2{font-size:clamp(30px,3.6vw,50px);line-height:1.06;margin:0;}
+  .v2 .v2-h1 em,.v2 .v2-h2 em{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:400;color:var(--teal-d);letter-spacing:-.01em;}
+  .v2 .v2-muted{color:#56656f;font-size:16.5px;line-height:1.6;margin:0;}
+  .v2 .v2-lead{font-size:18px;color:#46555f;max-width:56ch;margin:0 auto;}
+  .v2 .v2-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;}
+  .v2 .v2-btn{display:inline-flex;align-items:center;justify-content:center;border-radius:8px;padding:13px 22px;font-size:14.5px;font-weight:500;
+    background:var(--teal-d);color:#fff;text-decoration:none;cursor:pointer;border:1.5px solid var(--teal-d);transition:.15s;}
+  .v2 .v2-btn:hover{background:var(--navy);border-color:var(--navy);}
+  .v2 .v2-btn.ghost{background:transparent;color:var(--v2-ink);border-color:rgba(16,40,58,.25);}
+  .v2 .v2-btn.ghost:hover{border-color:var(--teal-d);color:var(--teal-d);}
+  .v2 .v2-btn.light{background:#fff;color:var(--v2-ink);border-color:#fff;}
+  .v2 .v2-btn.light:hover{background:#dff1ef;border-color:#dff1ef;}
+  .v2 .v2-btn.ghost-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.4);}
+  .v2 .v2-btn.ghost-light:hover{background:rgba(255,255,255,.1);}
+  .v2 .v2-chip{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+    padding:5px 11px;border-radius:6px;background:rgba(255,255,255,.16);color:#fff;backdrop-filter:blur(6px);}
+  .v2 .v2-chip::before{content:"";width:6px;height:6px;border-radius:50%;background:#7fe0c9;}
+  .v2 .v2-chip.dark{background:rgba(16,40,58,.07);color:var(--v2-ink);}
+  .v2 .v2-chip.dark::before{background:var(--teal);}
+  .v2 .v2-split-head{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end;margin-bottom:44px;}
+  .v2 .v2-split-head.on-dark p{color:#a9bcc4;font-size:16.5px;margin:0;}
+  .v2 .v2-center-head{text-align:center;max-width:760px;margin:0 auto 48px;}
+  .v2 .v2-center-head .v2-muted{margin-top:12px;font-size:13px;}
+  @media(max-width:860px){.v2 .v2-split-head{grid-template-columns:1fr;gap:16px;}.v2 .v2-sec{padding:64px 0;}.v2 .v2-wrap{padding:0 16px;}}
+
+  /* placeholders that read as photography */
+  .v2 .v2-float,.v2 .v2-rp-photo,.v2 .bt-ph,.v2 .v2-aud-photo,.v2 .v2-banner-ph{position:relative;overflow:hidden;
+    background:linear-gradient(150deg,#c9d9d6 0%,#b7c6cf 45%,#d7c3c4 100%);}
+  .v2 .v2-float span,.v2 .v2-rp-photo span,.v2 .bt-ph span,.v2 .v2-aud-photo span,.v2 .v2-banner-ph span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:rgba(16,40,58,.55);background:rgba(255,255,255,.55);padding:4px 10px;border-radius:100px;white-space:nowrap;}
+
+  /* hero */
+  .v2 .v2-hero{position:relative;overflow:hidden;padding:120px 32px 110px;text-align:center;
+    background:radial-gradient(700px 420px at 0% 0%,rgba(47,154,149,.28),transparent 70%),radial-gradient(600px 380px at 100% 100%,rgba(238,176,194,.25),transparent 70%),var(--v2-bg);}
+  .v2 .v2-hero-in{position:relative;z-index:2;max-width:820px;margin:0 auto;}
+  .v2 .v2-hero .v2-ctas{justify-content:center;}
+  .v2 .v2-trust{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 26px;margin-top:30px;font-size:13px;font-weight:500;color:#46555f;}
+  .v2 .v2-trust span::before{content:"✓";color:var(--teal);font-weight:700;margin-right:7px;}
+  .v2 .v2-float{position:absolute;border-radius:14px;box-shadow:0 18px 40px rgba(16,40,58,.14);z-index:1;}
+  .v2 .f1{width:190px;height:150px;left:3%;top:60px;}
+  .v2 .f2{width:150px;height:190px;right:4%;top:40px;background:linear-gradient(150deg,#e6cfc9,#c9b3be);}
+  .v2 .f3{width:170px;height:130px;left:6%;bottom:50px;background:linear-gradient(150deg,#b9d3e0,#cfe0dc);}
+  .v2 .f4{width:180px;height:200px;right:6%;bottom:30px;background:linear-gradient(150deg,#d8cdb9,#c3cfc8);}
+  @media(max-width:1100px){.v2 .v2-float{display:none;}.v2 .v2-hero{padding:80px 16px;}}
+
+  /* router */
+  .v2 .v2-router{justify-content:flex-start;max-width:none;margin:0 0 24px;}
+  .v2 .v2-router .rpill{border-radius:8px;font-weight:500;background:#fff;border-color:rgba(16,40,58,.12);}
+  .v2 .v2-router .rpill.on{background:var(--v2-deep);border-color:var(--v2-deep);}
+  .v2 .v2-rpanels .rpanel{display:none;grid-template-columns:1fr 1.25fr 1fr;gap:14px;background:none;border:0;padding:0;}
+  .v2 .v2-rpanels .rpanel.on{display:grid;}
+  .v2 .v2-rp-photo{border-radius:18px;min-height:280px;}
+  .v2 .v2-rp-text{background:#fff;border-radius:18px;padding:34px;display:flex;flex-direction:column;justify-content:flex-end;}
+  .v2 .v2-rp-text h3{font-family:"Inter";font-weight:400;font-size:26px;letter-spacing:-.015em;line-height:1.15;color:var(--v2-ink);margin:0 0 12px;}
+  .v2 .v2-rp-text p{color:#56656f;margin:0;font-size:15.5px;}
+  .v2 .v2-rp-act{background:var(--v2-deep);border-radius:18px;padding:30px;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;}
+  .v2 .v2-rp-act > a:not(.v2-btn){display:flex;justify-content:space-between;color:#fff;font-size:15px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.14);cursor:pointer;text-decoration:none;}
+  .v2 .v2-rp-act > a:not(.v2-btn):hover{color:#7fe0c9;}
+  .v2 .v2-rp-act i{font-style:normal;}
+  .v2 .v2-rp-act .v2-btn{margin-top:18px;background:#fff;color:var(--v2-ink);border-color:#fff;}
+  @media(max-width:960px){.v2 .v2-rpanels .rpanel{grid-template-columns:1fr;}.v2 .v2-rp-photo{min-height:180px;}}
+
+  /* inset dark panel */
+  .v2 .v2-inset{margin:0 16px;border-radius:24px;background:radial-gradient(900px 500px at 100% 0%,rgba(47,154,149,.22),transparent 60%),var(--v2-deep);color:#fff;padding:96px 0;}
+  .v2 .v2-inset .v2-h2 em{color:#7fe0c9;}
+  @media(max-width:860px){.v2 .v2-inset{margin:0 8px;padding:64px 0;}}
+
+  /* bento */
+  .v2 .v2-bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(220px,auto);gap:14px;}
+  .v2 .bt{position:relative;border-radius:18px;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;color:inherit;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+  .v2 a.bt{cursor:pointer;}
+  .v2 a.bt:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(0,0,0,.18);}
+  .v2 .bt h3{font-family:"Inter";font-weight:400;font-size:22px;letter-spacing:-.015em;line-height:1.2;margin:0 0 8px;color:inherit;}
+  .v2 .bt p{margin:0;font-size:14.5px;line-height:1.55;opacity:.85;}
+  .v2 .bt b{display:block;margin-top:16px;font-size:14px;font-weight:600;}
+  .v2 .bt-lg{grid-column:span 2;grid-row:span 2;}
+  .v2 .bt-tall{grid-row:span 2;}
+  .v2 .bt-wide{grid-column:span 2;flex-direction:row;align-items:flex-end;justify-content:space-between;gap:24px;}
+  .v2 .bt-wide b{white-space:nowrap;}
+  .v2 .v2-inset .bt-wide{grid-column:span 3;}
+  .v2 .bt-photo{padding:0;color:#fff;}
+  .v2 .bt-photo .bt-ph{position:absolute;inset:0;}
+  .v2 .bt-photo .bt-ph span{top:30%;}
+  .v2 .bt-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,28,38,.82));}
+  .v2 .bt-photo .v2-chip{position:absolute;left:24px;top:24px;z-index:2;}
+  .v2 .bt-cap{position:relative;z-index:2;padding:28px;}
+  .v2 .bt-cap .v2-chip{position:static;margin-bottom:14px;}
+  .v2 .bt-lg .bt-cap h3{font-size:32px;}
+  .v2 .bt-teal{background:linear-gradient(165deg,#3bb0a8,#1f7470);color:#fff;}
+  .v2 .bt-sky{background:linear-gradient(165deg,#bfe6f1,#8fd0e4);color:var(--v2-ink);}
+  .v2 .bt-pink{background:linear-gradient(165deg,#f6dbe2,#eab7c5);color:var(--v2-ink);}
+  .v2 .bt-cream{background:#fff;color:var(--v2-ink);}
+  .v2 .v2-inset .bt-cream{background:#f1ede6;}
+  .v2 .bt-navy{background:var(--v2-deep);color:#fff;}
+  .v2 .bt-big{font-family:"Inter";font-weight:300;font-size:44px;letter-spacing:-.03em;line-height:1;margin:auto 0 0;padding-top:30px;}
+  .v2 .bt-tall{justify-content:flex-start;}
+  .v2 .bt-tall b{margin-top:18px;}
+  .v2 .bt .bt-quote{font-family:"Fraunces",serif;font-style:italic;font-size:21px;line-height:1.4;opacity:1 !important;margin:18px 0 10px !important;}
+  .v2 .bt-attr{font-size:12.5px;opacity:.7;}
+  .v2 .bt-quote.dark,.v2 .bt-attr.dark{color:var(--v2-ink);}
+  .v2 .bt-link{margin-top:18px;font-weight:600;font-size:14px;color:var(--teal-d);cursor:pointer;text-decoration:none;}
+  .v2 .bt-navy .v2-chip,.v2 .bt-teal .v2-chip{margin-bottom:auto;}
+  @media(max-width:960px){.v2 .v2-bento{grid-template-columns:1fr 1fr;}.v2 .bt-lg,.v2 .bt-wide{grid-column:span 2;}}
+  @media(max-width:600px){.v2 .v2-bento{grid-template-columns:1fr;}.v2 .bt-lg,.v2 .bt-wide{grid-column:auto;}.v2 .bt-lg,.v2 .bt-tall{grid-row:auto;min-height:320px;}.v2 .bt-wide{flex-direction:column;align-items:flex-start;}}
+
+  /* experts bento */
+  .v2 .v2-bento-exp{grid-template-columns:1.4fr 1fr 1fr;}
+  .v2 .bt-exp{grid-row:span 2;justify-content:flex-start;}
+  .v2 .bt-exp .v2-chip{margin-bottom:18px;}
+  .v2 .v2-docs{list-style:none;margin:0;padding:0;}
+  .v2 .v2-docs li{display:flex;justify-content:space-between;gap:12px;padding:13px 0;border-bottom:1px solid rgba(16,40,58,.09);font-size:14.5px;}
+  .v2 .v2-docs li b{font-weight:500;margin:0;font-size:14.5px;}
+  .v2 .v2-docs li span{color:#6a7881;text-align:right;}
+  .v2 .v2-bento-exp .bt-photo{grid-column:span 2;}
+  .v2 .v2-bento-exp .bt-navy{grid-column:span 2;}
+  @media(max-width:960px){.v2 .v2-bento-exp{grid-template-columns:1fr;}.v2 .v2-bento-exp .bt-photo{grid-column:auto;min-height:260px;}.v2 .v2-bento-exp .bt-navy{grid-column:auto;}.v2 .bt-exp{grid-row:auto;}}
+
+  /* rings */
+  .v2 .v2-rings{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+  .v2 .ring{position:relative;aspect-ratio:1;text-align:center;}
+  .v2 .ring > div{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18%;}
+  .v2 .ring::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--c) calc(var(--p)*1%),#e1dbd1 0);
+    -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 9px),#000 calc(100% - 8px));mask:radial-gradient(farthest-side,transparent calc(100% - 9px),#000 calc(100% - 8px));}
+  .v2 .ring b{font-family:"Inter";font-weight:300;font-size:clamp(34px,3.6vw,52px);letter-spacing:-.03em;line-height:1;color:var(--v2-ink);}
+  .v2 .ring span{font-size:13.5px;color:#56656f;margin-top:8px;line-height:1.4;}
+  @media(max-width:860px){.v2 .v2-rings{grid-template-columns:1fr 1fr;gap:18px;}}
+
+  /* audiences */
+  .v2 .v2-aud{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:stretch;}
+  .v2 .v2-aud-lead{color:#a9bcc4;font-size:16.5px;margin:18px 0 26px;max-width:44ch;}
+  .v2 .v2-aud-list{margin-bottom:30px;}
+  .v2 .v2-aud-list a{display:flex;justify-content:space-between;font-size:21px;font-weight:300;padding:17px 0;border-bottom:1px solid rgba(255,255,255,.16);
+    color:#fff;text-decoration:none;cursor:pointer;transition:.15s;}
+  .v2 .v2-aud-list a i{font-style:normal;}
+  .v2 .v2-aud-list a.on,.v2 .v2-aud-list a:hover{color:#7fe0c9;border-bottom-color:#7fe0c9;}
+  .v2 .v2-aud-photo{border-radius:18px;min-height:460px;}
+  @media(max-width:860px){.v2 .v2-aud{grid-template-columns:1fr;gap:30px;}.v2 .v2-aud-photo{min-height:260px;}}
+
+  /* legacy banner */
+  .v2 .v2-banner{position:relative;margin:0 16px;border-radius:24px;overflow:hidden;min-height:540px;display:flex;align-items:flex-end;color:#fff;}
+  .v2 .v2-banner-ph{position:absolute;inset:0;background:linear-gradient(150deg,#9fb2b4,#7d8f99 50%,#a5939a);}
+  .v2 .v2-banner-ph span{top:30%;}
+  .v2 .v2-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,28,38,.85) 0%,rgba(10,28,38,.35) 60%,transparent);}
+  .v2 .v2-banner-in{position:relative;z-index:2;max-width:620px;padding:56px;}
+  .v2 .v2-banner-in .v2-h2 em{color:#7fe0c9;}
+  .v2 .v2-banner-in p{color:#d5e0e4;margin:20px 0 26px;font-size:16.5px;}
+  @media(max-width:860px){.v2 .v2-banner{margin:0 8px;min-height:480px;}.v2 .v2-banner-in{padding:28px;}}
+
+  /* donor + library bentos */
+  .v2 .v2-bento-give{grid-template-columns:1.5fr 1fr 1fr 1fr;grid-auto-rows:minmax(200px,auto);}
+  .v2 .bt-give{grid-row:span 2;justify-content:flex-end;}
+  .v2 .bt-give h3{font-size:34px;font-weight:300;}
+  .v2 .v2-bento-give .bt-navy{grid-column:span 3;}
+  .v2 .v2-num{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--teal-d);margin-bottom:auto;}
+  .v2 .v2-bento-2{grid-template-columns:1.6fr 1fr;}
+  .v2 .bt-lib{min-height:400px;}
+  .v2 .bt-story{justify-content:flex-end;}
+  @media(max-width:960px){.v2 .v2-bento-give{grid-template-columns:1fr 1fr;}.v2 .bt-give,.v2 .v2-bento-give .bt-navy{grid-column:span 2;grid-row:auto;}.v2 .v2-bento-2{grid-template-columns:1fr;}}
+  @media(max-width:600px){.v2 .v2-bento-give{grid-template-columns:1fr;}.v2 .bt-give,.v2 .v2-bento-give .bt-navy{grid-column:auto;}}
+
+  .v2 .v2-final{text-align:center;margin-bottom:16px;}
+  .v2 .v2-final .v2-h2{max-width:18ch;margin:0 auto;}
+  .v2 .v2-final p{color:#a9bcc4;margin:16px 0 0;}
+  .v2 .note{max-width:1176px;}
+
+  /* v1/v2 comparison switch */
+  .ver-switch{position:fixed;left:16px;bottom:16px;z-index:50;display:flex;background:var(--navy);border-radius:100px;padding:4px;box-shadow:var(--shadow);}
+  .ver-switch a{color:#c9d3da;font-size:12px;font-weight:600;padding:7px 14px;border-radius:100px;cursor:pointer;text-decoration:none;}
+  .ver-switch a.on{background:#fff;color:var(--navy);}
 </style>
 </head>
 <body>
@@ -653,6 +830,189 @@
       </div>
     </div>
   </section>
+</div>
+
+<!-- ========================= HOME V2 (Maven-inspired) ========================= -->
+<div class="page v2" id="page-home-v2">
+
+  <!-- HERO: centered headline, floating photos -->
+  <div class="v2-hero">
+    <div class="v2-float f1"><span>Couple</span></div>
+    <div class="v2-float f2"><span>Advisor on call</span></div>
+    <div class="v2-float f3"><span>Lab</span></div>
+    <div class="v2-float f4"><span>Family</span></div>
+    <div class="v2-hero-in">
+      <span class="v2-eyebrow">Fertility · Medicine · Halacha · Since 1980</span>
+      <h1 class="v2-h1">Expert fertility guidance, <em>rooted in Halacha</em></h1>
+      <p class="v2-lead">Whether you're just starting to ask questions or facing a complicated situation, PUAH's rabbis, counselors and medical advisors are here, free of charge and in complete confidence.</p>
+      <div class="v2-ctas">
+        <a class="v2-btn" onclick="go('contact')">Speak to an advisor</a>
+        <a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a>
+      </div>
+      <div class="v2-trust"><span>Completely confidential</span><span>Free of charge</span><span>Trusted across the rabbinic spectrum</span></div>
+    </div>
+  </div>
+
+  <!-- ROUTER: pills + bento answer panel -->
+  <section class="v2-sec" id="help-v2">
+    <div class="v2-wrap">
+      <div class="v2-split-head">
+        <h2 class="v2-h2">What brings you <em>to PUAH?</em></h2>
+        <p class="v2-muted">Choose what's closest to your situation. You don't need the right words, and you can always just call.</p>
+      </div>
+      <div class="router v2-router">
+        <button class="rpill on" data-topic="hashgacha" onclick="routeTo(this)">Lab supervision (hashgacha)</button>
+        <button class="rpill" data-topic="ivf" onclick="routeTo(this)">Starting IVF</button>
+        <button class="rpill" data-topic="ttc" onclick="routeTo(this)">Not conceiving yet</button>
+        <button class="rpill" data-topic="cycles" onclick="routeTo(this)">Short cycles &amp; mikveh timing</button>
+        <button class="rpill" data-topic="spotting" onclick="routeTo(this)">Spotting during treatment</button>
+        <button class="rpill" data-topic="male" onclick="routeTo(this)">Male fertility</button>
+        <button class="rpill" data-topic="loss" onclick="routeTo(this)">Pregnancy loss</button>
+        <button class="rpill" data-topic="genetics" onclick="routeTo(this)">Genetic testing</button>
+        <button class="rpill" data-topic="preserve" onclick="routeTo(this)">Egg freezing &amp; preservation</button>
+        <button class="rpill" data-topic="cost" onclick="routeTo(this)">Paying for treatment</button>
+      </div>
+      <div class="v2-rpanels">
+        <!-- each panel: photo tile + answer tile + action tile -->
+        <div class="rpanel on" data-topic="hashgacha"><div class="v2-rp-photo"><span>Mashgicha in lab</span></div><div class="v2-rp-text"><h3>Making sure your treatment is supervised</h3><p>Many poskim require an independent supervisor in the lab whenever eggs, sperm or embryos are handled. PUAH pioneered lab hashgacha, and our trained mashgichot work in clinics nationwide. Supervision is fully subsidized.</p></div><div class="v2-rp-act"><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-shabbos')">Shabbos phlebotomy &amp; injections <i>→</i></a><a class="v2-btn" onclick="go('svc-lab')">Request a supervisor</a></div></div>
+        <div class="rpanel" data-topic="ivf"><div class="v2-rp-photo"><span>Couple with advisor</span></div><div class="v2-rp-text"><h3>Starting IVF</h3><p>IVF comes with a lot of new terms, appointments and halachic questions at once. An advisor can walk you through the process, arrange lab supervision, and help with monitoring or injections that fall on Shabbos and Yom Tov.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-shabbos')">Shabbos phlebotomy &amp; injections <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="ttc"><div class="v2-rp-photo"><span>Couple at home</span></div><div class="v2-rp-text"><h3>Trying, and it hasn't happened yet</h3><p>Knowing when to seek help, which tests come first and which specialist to see is often the hardest part. We help you understand the first steps, find the right doctor, and get your halachic questions answered along the way.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="cycles"><div class="v2-rp-photo"><span>Calendar / cycle</span></div><div class="v2-rp-text"><h3>When ovulation seems to come before mikveh night</h3><p>This is where PUAH began. If your cycles are short or ovulation seems early, it needs to be confirmed and evaluated, medically and halachically. Many couples in this situation find a solution. Every case is individual.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="spotting"><div class="v2-rp-photo"><span>PUAHline rabbi</span></div><div class="v2-rp-text"><h3>Spotting or staining during treatment</h3><p>Fertility medications often cause spotting, and whether a stain carries halachic weight depends on the details. These questions are time-sensitive. The PUAHline connects you to expert rabbis, confidentially.</p></div><div class="v2-rp-act"><a onclick="go('svc-puahline')">The PUAHline <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" href="tel:8053917824">Call the PUAHline</a></div></div>
+        <div class="rpanel" data-topic="male"><div class="v2-rp-photo"><span>Male advisor</span></div><div class="v2-rp-text"><h3>Male fertility</h3><p>Male factors are part of roughly half of all fertility challenges, yet they're rarely talked about. We guide men discreetly through testing, the halachic questions around sperm collection, and referrals to leading specialists.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="loss"><div class="v2-rp-photo"><span>Quiet support</span></div><div class="v2-rp-text"><h3>After a pregnancy loss</h3><p>Loss is painful and often carried in silence. Our counselors offer emotional support, help you understand what evaluation may be worthwhile, and answer the halachic questions that can follow.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; emotional support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to someone</a></div></div>
+        <div class="rpanel" data-topic="genetics"><div class="v2-rp-photo"><span>Genetic counseling</span></div><div class="v2-rp-text"><h3>Genetic testing</h3><p>Carrier screening, PGT, a result you don't understand: genetics raises medical and halachic questions at the same time. We help you understand your options and connect you with genetic counseling.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Supervision for genetic testing <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="preserve"><div class="v2-rp-photo"><span>Planning ahead</span></div><div class="v2-rp-text"><h3>Egg freezing &amp; fertility preservation</h3><p>Whether you're planning ahead or facing medical treatment such as chemotherapy, preserving fertility has real medical and halachic dimensions. It's a conversation worth having before, not after.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-financial')">Interest-free loans <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="cost"><div class="v2-rp-photo"><span>Couple, paperwork</span></div><div class="v2-rp-text"><h3>Paying for treatment</h3><p>Treatment is expensive, and cost shouldn't decide whether a family gets help. PUAH offers grants, interest-free loans, family fundraising campaigns, and discounted rates through our preferred network. Everything is kept strictly confidential.</p></div><div class="v2-rp-act"><a onclick="go('svc-financial')">Financial Assistance <i>→</i></a><a class="v2-btn" onclick="go('svc-financial')">See your options</a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES BENTO (inset dark panel) -->
+  <div class="v2-inset">
+    <div class="v2-wrap">
+      <div class="v2-split-head on-dark">
+        <h2 class="v2-h2">Every service is free, <em>confidential and in accordance with Halacha</em></h2>
+        <p>From the first question to the delivery room, for families, physicians and rabbanim.</p>
+      </div>
+      <div class="v2-bento">
+        <a class="bt bt-photo bt-lg" onclick="go('svc-lab')"><span class="v2-chip">Signature service</span><div class="bt-ph"><span>Lab supervision photo</span></div><div class="bt-cap"><h3>Lab Supervision</h3><p>Trained mashgichot in fertility labs nationwide, protecting halachic integrity at every stage.</p><b>Request a supervisor →</b></div></a>
+        <a class="bt bt-teal bt-tall" onclick="go('svc-puahline')"><h3>The PUAHline</h3><p>Expert rabbis answering time-sensitive taharat hamishpacha questions.</p><div class="bt-big">805.391<br>.PUAH</div><b>Call now →</b></a>
+        <a class="bt bt-cream" onclick="go('svc-guidance')"><h3>Guidance &amp; Support</h3><p>One-on-one counseling and emotional support, from first question through treatment.</p><b>Learn more →</b></a>
+        <a class="bt bt-sky" onclick="go('svc-ask')"><h3>Ask the Rabbi</h3><p>Confidential halachic answers from PUAH's rabbinic experts.</p><b>Ask a question →</b></a>
+        <a class="bt bt-pink" onclick="go('svc-shabbos')"><h3>Shabbos &amp; Injection Support</h3><p>At-home blood draws on Shabbos and injection house calls.</p><b>Learn more →</b></a>
+        <a class="bt bt-cream bt-wide" onclick="go('svc-financial')"><div><h3>Financial Assistance</h3><p>Grants, interest-free loans, family fundraising and discounted care through our preferred network.</p></div><b>See your options →</b></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RING STATS -->
+  <section class="v2-sec">
+    <div class="v2-wrap">
+      <div class="v2-center-head">
+        <span class="v2-eyebrow">PUAH by the numbers</span>
+        <h2 class="v2-h2">Four decades of <em>quiet, essential work</em></h2>
+        <p class="v2-muted">Figures for [reporting year]</p>
+      </div>
+      <div class="v2-rings">
+        <div class="ring" style="--p:92;--c:var(--teal);"><div><b>100k+</b><span>families counseled since 1980</span></div></div>
+        <div class="ring" style="--p:70;--c:var(--sky);"><div><b>16,654</b><span>people helped last year</span></div></div>
+        <div class="ring" style="--p:55;--c:var(--teal-d);"><div><b>300</b><span>calls answered per day</span></div></div>
+        <div class="ring" style="--p:40;--c:var(--pink-d);"><div><b>150</b><span>trained lab supervisors</span></div></div>
+      </div>
+      <p class="note"><b>Design note —</b> The rings are decorative, not proportional. Verify every figure and fill in the reporting year before publishing.</p>
+    </div>
+  </section>
+
+  <!-- AUDIENCE LIST + PHOTO (inset dark) -->
+  <div class="v2-inset">
+    <div class="v2-wrap v2-aud">
+      <div>
+        <h2 class="v2-h2">Here for <em>everyone on the journey</em></h2>
+        <p class="v2-aud-lead">Couples, the rabbanim they turn to, the physicians who treat them, and the partners who make it all free.</p>
+        <div class="v2-aud-list">
+          <a class="on" onmouseenter="audSwap(this)" onclick="go('contact')" data-img="Couple / family">Families &amp; couples <i>→</i></a>
+          <a onmouseenter="audSwap(this)" onclick="go('svc-ask')" data-img="Rav consulting">Rabbanim <i>→</i></a>
+          <a onmouseenter="audSwap(this)" onclick="go('svc-lab')" data-img="Physician in clinic">Physicians &amp; clinics <i>→</i></a>
+          <a onmouseenter="audSwap(this)" onclick="go('give')" data-img="Community event">Donors &amp; partners <i>→</i></a>
+        </div>
+        <a class="v2-btn light" onclick="go('contact')">Speak to an advisor</a>
+      </div>
+      <div class="v2-aud-photo" id="aud-photo"><span>Couple / family</span></div>
+    </div>
+  </div>
+
+  <!-- EXPERTS BENTO -->
+  <section class="v2-sec">
+    <div class="v2-wrap">
+      <div class="v2-split-head">
+        <h2 class="v2-h2">Leading physicians and poskim, <em>working together</em></h2>
+        <p class="v2-muted">A Medical Advisory Council of leading reproductive specialists works alongside PUAH's rabbinic advisors, with the endorsement of poskim across the religious spectrum.</p>
+      </div>
+      <div class="v2-bento v2-bento-exp">
+        <div class="bt bt-cream bt-exp"><span class="v2-chip dark">Medical Advisory Council</span>
+          <ul class="v2-docs">
+            <li><b>Zev Williams, MD, PhD</b><span>Columbia University</span></li>
+            <li><b>Marc Goldstein, MD, DSc</b><span>Weill Cornell</span></li>
+            <li><b>Brian A. Levine, MD</b><span>CCRM New York</span></li>
+            <li><b>Eric Forman, MD, HCLD</b><span>Reproductive Endocrinology &amp; IVF</span></li>
+            <li><b>Ilan Tur-Kaspa, MD</b><span>Institute for Human Reproduction</span></li>
+            <li><b>Paul J. Turek, MD</b><span>The Turek Clinics</span></li>
+          </ul>
+          <a class="bt-link" onclick="go('about-council')">See the full council →</a>
+        </div>
+        <a class="bt bt-navy" onclick="go('about-endorsements')"><span class="v2-chip">Rabbinic endorsements</span><p class="bt-quote">Rav Yosef Sholom Elyashiv zt&quot;l told PUAH that even if he himself were the embryologist, outside supervision would still be required.</p><span class="bt-attr">Endorsed by poskim across the religious spectrum</span><b>See endorsements →</b></a>
+        <a class="bt bt-photo" onclick="go('about-team')"><div class="bt-ph"><span>Team photo</span></div><div class="bt-cap"><h3>Meet the team</h3><b>Rabbis, counselors &amp; supervisors →</b></div></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGACY BANNER -->
+  <div class="v2-banner">
+    <div class="v2-banner-ph"><span>Archival / founder photo</span></div>
+    <div class="v2-banner-in">
+      <h2 class="v2-h2">From a living-room desk <em>to a worldwide movement</em></h2>
+      <p>When the first IVF baby was born in 1978, it raised halachic questions no one had faced before. In 1980, Rabbi Menachem Burstein founded PUAH from his living room. It went on to pioneer lab supervision and has guided more than 100,000 families.</p>
+      <a class="v2-btn light" onclick="go('about-story')">Read our story</a>
+    </div>
+  </div>
+
+  <!-- DONOR BENTO -->
+  <section class="v2-sec">
+    <div class="v2-wrap">
+      <div class="v2-split-head">
+        <h2 class="v2-h2">Families never pay for PUAH's help. <em>Our partners make that possible.</em></h2>
+        <p class="v2-muted">Every counseling session, supervised cycle, Shabbos blood draw and PUAHline call is funded by people who believe no couple should face this alone.</p>
+      </div>
+      <div class="v2-bento v2-bento-give">
+        <div class="bt bt-teal bt-give"><h3>Give today</h3><p>One-time or monthly. Every gift keeps PUAH's services free for the next family who calls.</p><div class="v2-ctas"><a class="v2-btn light" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate</a><a class="v2-btn ghost-light" onclick="go('give')">Monthly giving</a></div></div>
+        <div class="bt bt-cream"><span class="v2-num">01</span><h3>Counseling &amp; guidance</h3><p>One-on-one support for couples, at no cost to them.</p></div>
+        <div class="bt bt-cream"><span class="v2-num">02</span><h3>Lab supervision</h3><p>Fully subsidized for every family.</p></div>
+        <div class="bt bt-cream"><span class="v2-num">03</span><h3>Shabbos care</h3><p>At-home blood draws and injections that keep treatment on schedule.</p></div>
+        <a class="bt bt-navy" onclick="go('pillars')"><span class="v2-chip">Legacy partnerships</span><h3>The Three Pillars</h3><p>Naming and dedication opportunities in PUAH's plan for the next generation.</p><b>Explore →</b></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIBRARY + STORY -->
+  <section class="v2-sec" style="padding-top:0;">
+    <div class="v2-wrap v2-bento v2-bento-2">
+      <a class="bt bt-photo bt-lib" onclick="go('resources')"><div class="bt-ph"><span>Resource Library preview</span></div><div class="bt-cap"><span class="v2-chip">Want to read more first?</span><h3>The PUAH Digital Resource Library</h3><p>In-depth articles on halacha, medicine and emotional health, reviewed by our rabbinic team and medical advisors.</p><b>Visit the library ↗</b></div></a>
+      <div class="bt bt-sky bt-story"><p class="bt-quote dark">&ldquo;You not only assisted us with all our medical and halachic problems, but also helped us deal with our emotional pain.&rdquo;</p><span class="bt-attr dark">Anonymous, Haifa</span><a class="bt-link" onclick="go('about-testimonials')">Read more stories →</a></div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="v2-inset v2-final">
+    <div class="v2-wrap">
+      <h2 class="v2-h2">However you found us, <em>you don't have to navigate this alone</em></h2>
+      <p>Free and completely confidential.</p>
+      <div class="v2-ctas" style="justify-content:center;">
+        <a class="v2-btn light" onclick="go('contact')">Speak to an advisor</a>
+        <a class="v2-btn ghost-light" href="tel:8889937824">Call 888.993.7824</a>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ========================= ABOUT ========================= -->
@@ -2008,6 +2368,8 @@
   </div></section>
 </div>
 
+<div class="ver-switch" id="ver-switch"><a data-v="home" onclick="go('home')">Home v1</a><a data-v="home-v2" onclick="go('home-v2')">Home v2</a></div>
+
 <!-- FOOTER -->
 <footer class="site">
   <div class="wrap">
@@ -2063,12 +2425,23 @@
       var all=document.querySelector('#dict-chips .chip[data-cat="all"]');
       if(all){dictChip(all);}
     }
+    var vs=document.getElementById('ver-switch');
+    if(vs){
+      vs.style.display=(page==='home'||page==='home-v2')?'flex':'none';
+      vs.querySelectorAll('a').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-v')===page);});
+    }
     window.scrollTo({top:0,behavior:'instant'});
   }
   function routeTo(btn){
     var t=btn.getAttribute('data-topic');
-    document.querySelectorAll('.rpill').forEach(function(b){b.classList.toggle('on',b===btn);b.setAttribute('aria-selected',b===btn);});
-    document.querySelectorAll('.rpanel').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-topic')===t);});
+    var scope=btn.closest('section')||document;
+    scope.querySelectorAll('.rpill').forEach(function(b){b.classList.toggle('on',b===btn);b.setAttribute('aria-selected',b===btn);});
+    scope.querySelectorAll('.rpanel').forEach(function(p){p.classList.toggle('on',p.getAttribute('data-topic')===t);});
+  }
+  function audSwap(a){
+    a.parentNode.querySelectorAll('a').forEach(function(x){x.classList.toggle('on',x===a);});
+    var ph=document.getElementById('aud-photo');
+    if(ph){ph.querySelector('span').textContent=a.getAttribute('data-img');}
   }
   function goHelp(){
     go('home');
