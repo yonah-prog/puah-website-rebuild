@@ -556,6 +556,72 @@
   .sg-toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px;}
   .sg-toc a{font-size:13.5px;font-weight:500;padding:8px 14px;border-radius:8px;background:#fff;color:var(--v2-ink);text-decoration:none;cursor:pointer;}
   .sg-toc a:hover{color:var(--teal-d);}
+
+  /* ---- mobile menu ---- */
+  .nav-toggle{display:none;width:42px;height:42px;border:0;border-radius:8px;background:transparent;cursor:pointer;padding:10px;flex-direction:column;justify-content:center;gap:5px;}
+  .nav-toggle span{display:block;height:2px;border-radius:2px;background:var(--navy);transition:.2s;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  @media(max-width:860px){.nav-toggle{display:flex;} header.site .wrap{gap:12px;} .header-cta{margin-left:auto;}}
+  .mnav{display:none;position:fixed;left:0;right:0;top:74px;bottom:0;z-index:29;background:var(--v2-bg);overflow-y:auto;}
+  .mnav.open{display:block;}
+  .mnav-in{padding:12px 16px 40px;}
+  .mnav details{border-bottom:1px solid rgba(16,40,58,.1);}
+  .mnav summary{list-style:none;cursor:pointer;font-size:21px;font-weight:300;color:var(--v2-ink);padding:16px 4px;display:flex;justify-content:space-between;}
+  .mnav summary::-webkit-details-marker{display:none;}
+  .mnav summary::after{content:"+";font-weight:300;color:var(--teal-d);}
+  .mnav details[open] summary::after{content:"–";}
+  .mnav details a{display:block;padding:10px 4px 10px 14px;font-size:15.5px;color:#46555f;cursor:pointer;text-decoration:none;}
+  .mnav details[open]{padding-bottom:8px;}
+  .mnav .mnav-top{display:block;font-size:21px;font-weight:300;color:var(--v2-ink);padding:16px 4px;border-bottom:1px solid rgba(16,40,58,.1);cursor:pointer;text-decoration:none;}
+  .mnav-cta{display:grid;gap:10px;margin-top:26px;}
+  .mnav-cta .v2-btn{display:flex;justify-content:center;align-items:center;border-radius:8px;padding:14px;font-weight:500;text-decoration:none;cursor:pointer;background:var(--teal-d);color:#fff;border:1.5px solid var(--teal-d);}
+  .mnav-cta .v2-btn.ghost{background:transparent;color:var(--v2-ink);border-color:rgba(16,40,58,.25);}
+  .mnav-cta p{text-align:center;font-size:13px;color:#5b6973;margin:4px 0 0;}
+  body.menu-open{overflow:hidden;}
+
+  /* ---- photos in v2 placeholders ---- */
+  .v2 .v2-float img,.v2 .v2-rp-photo img,.v2 .bt-ph img,.v2 .v2-aud-photo img,.v2 .v2-banner-ph img,.v2 .topic-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .v2 .v2-banner-ph img{filter:saturate(.9);}
+
+  /* ---- solid tile, router main link ---- */
+  .v2 .bt-solid{background:#2f9a95;color:#fff;justify-content:flex-end;}
+  .v2 .bt-solid h3{font-size:34px;font-weight:300;}
+  .v2 .bt-tall{justify-content:flex-end;}
+  .v2 .v2-rp-act > a.rp-main{color:#7fe0c9;font-weight:500;}
+
+  /* ---- soft closing panel (sits above the deep footer) ---- */
+  .v2 .v2-final.soft{margin:0 16px 16px;border-radius:24px;padding:88px 0;text-align:center;color:var(--v2-ink);
+    background:radial-gradient(700px 360px at 0% 0%,rgba(255,255,255,.6),transparent 70%),linear-gradient(160deg,#dcefec,#c9e4e6);}
+  .v2 .v2-final.soft .v2-h2{max-width:20ch;margin:0 auto;}
+  .v2 .v2-final.soft .v2-h2 em{color:var(--teal-d);}
+  .v2 .v2-final.soft p{color:#46555f;margin:16px 0 0;}
+  @media(max-width:860px){.v2 .v2-final.soft{margin:0 8px 8px;padding:60px 16px;}}
+
+  /* ---- topic pages ---- */
+  .v2 .topic-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;}
+  .v2 .topic-img{position:relative;border-radius:18px;overflow:hidden;min-height:340px;box-shadow:0 18px 40px rgba(16,40,58,.14);}
+  .v2 .topic-help{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch;}
+  .v2 .topic-help > div:first-child{background:#fff;border-radius:18px;padding:34px;display:flex;flex-direction:column;justify-content:flex-end;}
+  .v2 .topic-help > div:first-child p{margin-top:12px;}
+  @media(max-width:860px){.v2 .topic-hero,.v2 .topic-help{grid-template-columns:1fr;gap:24px;}.v2 .topic-img{min-height:220px;}}
+
+  /* ---- library lists ---- */
+  .v2 .lib-list{display:flex;flex-direction:column;}
+  .v2 .lib-row{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(16,40,58,.09);color:var(--v2-ink);text-decoration:none;font-size:15.5px;}
+  .v2 .lib-row i{font-style:normal;color:var(--teal-d);}
+  .v2 .lib-row:hover span{color:var(--teal-d);}
+  .v2 .lib-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .v2 .lib-col{background:var(--v2-bg);border-radius:18px;padding:28px;display:flex;flex-direction:column;}
+  .v2 .lib-col .lib-list{flex:1;margin:10px 0 22px;}
+  .v2 .lib-col .lib-row{font-size:14.5px;}
+  .v2 .lib-col .v2-btn{align-self:flex-start;}
+  .v2 .lib-col-h{display:flex;align-items:center;gap:10px;}
+  .v2 .lib-col-h h3{margin:0;font-size:24px;}
+  .v2 .lib-col-h .dot{width:12px;height:12px;border-radius:4px;padding:0;min-height:0;}
+  .v2 .lib-pillars{grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(260px,auto);}
+  @media(max-width:960px){.v2 .lib-cols,.v2 .lib-pillars{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -620,14 +686,37 @@
           <a onclick="go('gi-ecards')">eCards<small>Send a card, support a family</small></a>
         </div></div>
       </div>
-      <a data-page="resources" onclick="go('resources')">Digital Library ↗</a>
+      <a data-page="resources" onclick="go('resources')">Digital Library</a>
     </nav>
     <div class="header-cta">
       <a class="btn ghost sm hide-sm" onclick="goHelp()">How can we help?</a>
       <a class="btn solid sm" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate</a>
+      <button class="nav-toggle" id="nav-toggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
+
+<!-- MOBILE MENU -->
+<div class="mnav" id="mnav" aria-hidden="true">
+  <div class="mnav-in">
+    <details><summary>About</summary>
+      <a onclick="go('about-story')">PUAH's Story</a><a onclick="go('about-mission')">Our Mission &amp; Approach</a><a onclick="go('about-team')">Meet the Team</a><a onclick="go('about-council')">Medical Advisory Council</a><a onclick="go('about-endorsements')">Rabbinic Endorsements</a><a onclick="go('about-testimonials')">Testimonials</a>
+    </details>
+    <details><summary>Services</summary>
+      <a onclick="go('svc-guidance')">Guidance &amp; Support</a><a onclick="go('svc-ask')">Ask the Rabbi</a><a onclick="go('svc-puahline')">The PUAHline</a><a onclick="go('svc-lab')">Lab Supervision</a><a onclick="go('svc-shabbos')">Shabbos Phlebotomy &amp; Injections</a><a onclick="go('svc-financial')">Financial Assistance</a><a onclick="go('dictionary')">Fertility Dictionary</a>
+    </details>
+    <details><summary>Get Involved</summary>
+      <a onclick="go('gi-volunteer')">Volunteer</a><a onclick="go('gi-events')">Events</a><a onclick="go('gi-story')">Share Your Story</a><a onclick="go('gi-ecards')">eCards</a><a onclick="go('give')">Partner &amp; Give</a>
+    </details>
+    <a class="mnav-top" onclick="go('resources')">Digital Library</a>
+    <a class="mnav-top" onclick="go('contact')">Contact</a>
+    <div class="mnav-cta">
+      <a class="v2-btn" onclick="go('contact')">Speak to an advisor</a>
+      <a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a>
+      <p>Free and completely confidential.</p>
+    </div>
+  </div>
+</div>
 
 <!-- ========================= HOME ========================= -->
 <div class="page" id="page-home-v1">
@@ -962,10 +1051,10 @@
 
   <!-- HERO: centered headline, floating photos -->
   <div class="v2-hero">
-    <div class="v2-float f1"><span>Couple</span></div>
-    <div class="v2-float f2"><span>Advisor on call</span></div>
-    <div class="v2-float f3"><span>Lab</span></div>
-    <div class="v2-float f4"><span>Family</span></div>
+    <div class="v2-float f1"><img src="img/couple.jpg" alt=""></div>
+    <div class="v2-float f2"><img src="img/puahline-rabbi.jpg" alt=""></div>
+    <div class="v2-float f3"><img src="img/mashgicha-lab.jpg" alt=""></div>
+    <div class="v2-float f4"><img src="img/couple-advisor.jpg" alt=""></div>
     <div class="v2-hero-in">
       <span class="v2-eyebrow">Fertility · Medicine · Halacha · Since 1980</span>
       <h1 class="v2-h1">Expert fertility guidance, <em>rooted in Halacha</em></h1>
@@ -999,16 +1088,16 @@
       </div>
       <div class="v2-rpanels">
         <!-- each panel: photo tile + answer tile + action tile -->
-        <div class="rpanel on" data-topic="hashgacha"><div class="v2-rp-photo"><span>Mashgicha in lab</span></div><div class="v2-rp-text"><h3>Making sure your treatment is supervised</h3><p>Many poskim require an independent supervisor in the lab whenever eggs, sperm or embryos are handled. PUAH pioneered lab hashgacha, and our trained mashgichot work in clinics nationwide. Supervision is fully subsidized.</p></div><div class="v2-rp-act"><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-shabbos')">Shabbos phlebotomy &amp; injections <i>→</i></a><a class="v2-btn" onclick="go('svc-lab')">Request a supervisor</a></div></div>
-        <div class="rpanel" data-topic="ivf"><div class="v2-rp-photo"><span>Couple with advisor</span></div><div class="v2-rp-text"><h3>Starting IVF</h3><p>IVF comes with a lot of new terms, appointments and halachic questions at once. An advisor can walk you through the process, arrange lab supervision, and help with monitoring or injections that fall on Shabbos and Yom Tov.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-shabbos')">Shabbos phlebotomy &amp; injections <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
-        <div class="rpanel" data-topic="ttc"><div class="v2-rp-photo"><span>Couple at home</span></div><div class="v2-rp-text"><h3>Trying, and it hasn't happened yet</h3><p>Knowing when to seek help, which tests come first and which specialist to see is often the hardest part. We help you understand the first steps, find the right doctor, and get your halachic questions answered along the way.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
-        <div class="rpanel" data-topic="cycles"><div class="v2-rp-photo"><span>Calendar / cycle</span></div><div class="v2-rp-text"><h3>When ovulation seems to come before mikveh night</h3><p>This is where PUAH began. If your cycles are short or ovulation seems early, it needs to be confirmed and evaluated, medically and halachically. Many couples in this situation find a solution. Every case is individual.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
-        <div class="rpanel" data-topic="spotting"><div class="v2-rp-photo"><span>PUAHline rabbi</span></div><div class="v2-rp-text"><h3>Spotting or staining during treatment</h3><p>Fertility medications often cause spotting, and whether a stain carries halachic weight depends on the details. These questions are time-sensitive. The PUAHline connects you to expert rabbis, confidentially.</p></div><div class="v2-rp-act"><a onclick="go('svc-puahline')">The PUAHline <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" href="tel:8053917824">Call the PUAHline</a></div></div>
-        <div class="rpanel" data-topic="male"><div class="v2-rp-photo"><span>Male advisor</span></div><div class="v2-rp-text"><h3>Male fertility</h3><p>Male factors are part of roughly half of all fertility challenges, yet they're rarely talked about. We guide men discreetly through testing, the halachic questions around sperm collection, and referrals to leading specialists.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
-        <div class="rpanel" data-topic="loss"><div class="v2-rp-photo"><span>Quiet support</span></div><div class="v2-rp-text"><h3>After a pregnancy loss</h3><p>Loss is painful and often carried in silence. Our counselors offer emotional support, help you understand what evaluation may be worthwhile, and answer the halachic questions that can follow.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; emotional support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to someone</a></div></div>
-        <div class="rpanel" data-topic="genetics"><div class="v2-rp-photo"><span>Genetic counseling</span></div><div class="v2-rp-text"><h3>Genetic testing</h3><p>Carrier screening, PGT, a result you don't understand: genetics raises medical and halachic questions at the same time. We help you understand your options and connect you with genetic counseling.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Supervision for genetic testing <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
-        <div class="rpanel" data-topic="preserve"><div class="v2-rp-photo"><span>Planning ahead</span></div><div class="v2-rp-text"><h3>Egg freezing &amp; fertility preservation</h3><p>Whether you're planning ahead or facing medical treatment such as chemotherapy, preserving fertility has real medical and halachic dimensions. It's a conversation worth having before, not after.</p></div><div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-financial')">Interest-free loans <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
-        <div class="rpanel" data-topic="cost"><div class="v2-rp-photo"><span>Couple, paperwork</span></div><div class="v2-rp-text"><h3>Paying for treatment</h3><p>Treatment is expensive, and cost shouldn't decide whether a family gets help. PUAH offers grants, interest-free loans, family fundraising campaigns, and discounted rates through our preferred network. Everything is kept strictly confidential.</p></div><div class="v2-rp-act"><a onclick="go('svc-financial')">Financial Assistance <i>→</i></a><a class="v2-btn" onclick="go('svc-financial')">See your options</a></div></div>
+        <div class="rpanel on" data-topic="hashgacha"><div class="v2-rp-photo"><img src="img/mashgicha-lab.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Making sure your treatment is supervised</h3><p>Many poskim require an independent supervisor in the lab whenever eggs, sperm or embryos are handled. PUAH pioneered lab hashgacha, and our trained mashgichot work in clinics nationwide. Supervision is fully subsidized.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('svc-lab')">About lab supervision <i>→</i></a><a onclick="go('svc-shabbos')">Shabbos phlebotomy &amp; injections <i>→</i></a><a class="v2-btn" onclick="go('svc-lab')">Request a supervisor</a></div></div>
+        <div class="rpanel" data-topic="ivf"><div class="v2-rp-photo"><img src="img/couple-advisor.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Starting IVF</h3><p>IVF comes with a lot of new terms, appointments and halachic questions at once. An advisor can walk you through the process, arrange lab supervision, and help with monitoring or injections that fall on Shabbos and Yom Tov.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-ivf')">About starting IVF <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-shabbos')">Shabbos phlebotomy &amp; injections <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="ttc"><div class="v2-rp-photo"><img src="img/negative-test.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Trying, and it hasn't happened yet</h3><p>Knowing when to seek help, which tests come first and which specialist to see is often the hardest part. We help you understand the first steps, find the right doctor, and get your halachic questions answered along the way.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-ttc')">About not conceiving yet <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="cycles"><div class="v2-rp-photo"><img src="img/calendar.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>When ovulation seems to come before mikveh night</h3><p>This is where PUAH began. If your cycles are short or ovulation seems early, it needs to be confirmed and evaluated, medically and halachically. Many couples in this situation find a solution. Every case is individual.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-cycles')">About short cycles &amp; mikveh timing <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="spotting"><div class="v2-rp-photo"><img src="img/puahline-rabbi.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Spotting or staining during treatment</h3><p>Fertility medications often cause spotting, and whether a stain carries halachic weight depends on the details. These questions are time-sensitive. The PUAHline connects you to expert rabbis, confidentially.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-spotting')">About spotting during treatment <i>→</i></a><a onclick="go('svc-puahline')">The PUAHline <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" href="tel:8053917824">Call the PUAHline</a></div></div>
+        <div class="rpanel" data-topic="male"><div class="v2-rp-photo"><img src="img/male-fertility.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Male fertility</h3><p>Male factors are part of roughly half of all fertility challenges, yet they're rarely talked about. We guide men discreetly through testing, the halachic questions around sperm collection, and referrals to leading specialists.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-male')">About male fertility <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="loss"><div class="v2-rp-photo"><img src="img/pregnancy-loss.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>After a pregnancy loss</h3><p>Loss is painful and often carried in silence. Our counselors offer emotional support, help you understand what evaluation may be worthwhile, and answer the halachic questions that can follow.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-loss')">About pregnancy loss <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; emotional support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to someone</a></div></div>
+        <div class="rpanel" data-topic="genetics"><div class="v2-rp-photo"><img src="img/genetic-testing.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Genetic testing</h3><p>Carrier screening, PGT, a result you don't understand: genetics raises medical and halachic questions at the same time. We help you understand your options and connect you with genetic counseling.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-genetics')">About genetic testing <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Supervision for genetic testing <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="preserve"><div class="v2-rp-photo"><img src="img/egg-freezing.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Egg freezing &amp; fertility preservation</h3><p>Whether you're planning ahead or facing medical treatment such as chemotherapy, preserving fertility has real medical and halachic dimensions. It's a conversation worth having before, not after.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-preserve')">About egg freezing &amp; preservation <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-financial')">Interest-free loans <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
+        <div class="rpanel" data-topic="cost"><div class="v2-rp-photo"><img src="img/paying-for-treatment.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Paying for treatment</h3><p>Treatment is expensive, and cost shouldn't decide whether a family gets help. PUAH offers grants, interest-free loans, family fundraising campaigns, and discounted rates through our preferred network. Everything is kept strictly confidential.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('svc-financial')">About paying for treatment <i>→</i></a><a class="v2-btn" onclick="go('svc-financial')">See your options</a></div></div>
       </div>
     </div>
   </section>
@@ -1021,11 +1110,11 @@
         <p>From the first question to the delivery room, for families, physicians and rabbanim.</p>
       </div>
       <div class="v2-bento">
-        <a class="bt bt-photo bt-lg" onclick="go('svc-lab')"><span class="v2-chip">Signature service</span><div class="bt-ph"><span>Lab supervision photo</span></div><div class="bt-cap"><h3>Lab Supervision</h3><p>Trained mashgichot in fertility labs nationwide, protecting halachic integrity at every stage.</p><b>Request a supervisor →</b></div></a>
-        <a class="bt bt-teal bt-tall" onclick="go('svc-puahline')"><h3>The PUAHline</h3><p>Expert rabbis answering time-sensitive taharat hamishpacha questions.</p><div class="bt-big">805.391<br>.PUAH</div><b>Call now →</b></a>
+        <a class="bt bt-solid bt-lg" onclick="go('svc-lab')"><h3>Lab Supervision</h3><p>Trained mashgichot in fertility labs nationwide, protecting halachic integrity at every stage. Fully subsidized by PUAH.</p><b>Request a supervisor →</b></a>
+        <a class="bt bt-pink bt-tall" onclick="go('svc-puahline')"><h3>The PUAHline</h3><p>Expert rabbis answering time-sensitive taharat hamishpacha questions, confidentially. Call 805.391.PUAH (7824).</p><b>Learn more →</b></a>
         <a class="bt bt-cream" onclick="go('svc-guidance')"><h3>Guidance &amp; Support</h3><p>One-on-one counseling and emotional support, from first question through treatment.</p><b>Learn more →</b></a>
         <a class="bt bt-sky" onclick="go('svc-ask')"><h3>Ask the Rabbi</h3><p>Confidential halachic answers from PUAH's rabbinic experts.</p><b>Ask a question →</b></a>
-        <a class="bt bt-pink" onclick="go('svc-shabbos')"><h3>Shabbos &amp; Injection Support</h3><p>At-home blood draws on Shabbos and injection house calls.</p><b>Learn more →</b></a>
+        <a class="bt bt-sky" onclick="go('svc-shabbos')"><h3>Shabbos &amp; Injection Support</h3><p>At-home blood draws on Shabbos and injection house calls.</p><b>Learn more →</b></a>
         <a class="bt bt-cream bt-wide" onclick="go('svc-financial')"><div><h3>Financial Assistance</h3><p>Grants, interest-free loans, family fundraising and discounted care through our preferred network.</p></div><b>See your options →</b></a>
       </div>
     </div>
@@ -1056,14 +1145,14 @@
         <h2 class="v2-h2">Here for <em>everyone on the journey</em></h2>
         <p class="v2-aud-lead">Couples, the rabbanim they turn to, the physicians who treat them, and the partners who make it all free.</p>
         <div class="v2-aud-list">
-          <a class="on" onmouseenter="audSwap(this)" onclick="go('contact')" data-img="Couple / family">Families &amp; couples <i>→</i></a>
-          <a onmouseenter="audSwap(this)" onclick="go('svc-ask')" data-img="Rav consulting">Rabbanim <i>→</i></a>
-          <a onmouseenter="audSwap(this)" onclick="go('svc-lab')" data-img="Physician in clinic">Physicians &amp; clinics <i>→</i></a>
-          <a onmouseenter="audSwap(this)" onclick="go('give')" data-img="Community event">Donors &amp; partners <i>→</i></a>
+          <a class="on" onmouseenter="audSwap(this)" onclick="go('contact')" data-img="img/couple.jpg">Families &amp; couples <i>→</i></a>
+          <a onmouseenter="audSwap(this)" onclick="go('svc-ask')" data-img="img/rabbanim.jpg">Rabbanim <i>→</i></a>
+          <a onmouseenter="audSwap(this)" onclick="go('svc-lab')" data-img="img/physician.jpg">Physicians &amp; clinics <i>→</i></a>
+          <a onmouseenter="audSwap(this)" onclick="go('give')" data-img="img/team.jpg">Donors &amp; partners <i>→</i></a>
         </div>
         <a class="v2-btn light" onclick="go('contact')">Speak to an advisor</a>
       </div>
-      <div class="v2-aud-photo" id="aud-photo"><span>Couple / family</span></div>
+      <div class="v2-aud-photo" id="aud-photo"><img src="img/couple.jpg" alt=""></div>
     </div>
   </div>
 
@@ -1087,14 +1176,14 @@
           <a class="bt-link" onclick="go('about-council')">See the full council →</a>
         </div>
         <a class="bt bt-navy" onclick="go('about-endorsements')"><span class="v2-chip">Rabbinic endorsements</span><p class="bt-quote">Rav Yosef Sholom Elyashiv zt&quot;l told PUAH that even if he himself were the embryologist, outside supervision would still be required.</p><span class="bt-attr">Endorsed by poskim across the religious spectrum</span><b>See endorsements →</b></a>
-        <a class="bt bt-photo" onclick="go('about-team')"><div class="bt-ph"><span>Team photo</span></div><div class="bt-cap"><h3>Meet the team</h3><b>Rabbis, counselors &amp; supervisors →</b></div></a>
+        <a class="bt bt-photo" onclick="go('about-team')"><div class="bt-ph"><img src="img/team.jpg" alt="" loading="lazy"></div><div class="bt-cap"><h3>Meet the team</h3><b>Rabbis, counselors &amp; supervisors →</b></div></a>
       </div>
     </div>
   </section>
 
   <!-- LEGACY BANNER -->
   <div class="v2-banner">
-    <div class="v2-banner-ph"><span>Archival / founder photo</span></div>
+    <div class="v2-banner-ph"><img src="img/founder.jpg" alt="" loading="lazy"></div>
     <div class="v2-banner-in">
       <h2 class="v2-h2">From a living-room desk <em>to a worldwide movement</em></h2>
       <p>When the first IVF baby was born in 1978, it raised halachic questions no one had faced before. In 1980, Rabbi Menachem Burstein founded PUAH from his living room. It went on to pioneer lab supervision and has guided more than 100,000 families.</p>
@@ -1122,19 +1211,19 @@
   <!-- LIBRARY + STORY -->
   <section class="v2-sec" style="padding-top:0;">
     <div class="v2-wrap v2-bento v2-bento-2">
-      <a class="bt bt-photo bt-lib" onclick="go('resources')"><div class="bt-ph"><span>Resource Library preview</span></div><div class="bt-cap"><span class="v2-chip">Want to read more first?</span><h3>The PUAH Digital Resource Library</h3><p>In-depth articles on halacha, medicine and emotional health, reviewed by our rabbinic team and medical advisors.</p><b>Visit the library ↗</b></div></a>
+      <a class="bt bt-photo bt-lib" onclick="go('resources')"><div class="bt-ph"><span>Resource Library preview</span></div><div class="bt-cap"><span class="v2-chip">Want to read more first?</span><h3>The PUAH Digital Resource Library</h3><p>In-depth articles on halacha, medicine and emotional health, reviewed by our rabbinic team and medical advisors.</p><b>Explore the library →</b></div></a>
       <div class="bt bt-sky bt-story"><p class="bt-quote dark">&ldquo;You not only assisted us with all our medical and halachic problems, but also helped us deal with our emotional pain.&rdquo;</p><span class="bt-attr dark">Anonymous, Haifa</span><a class="bt-link" onclick="go('about-testimonials')">Read more stories →</a></div>
     </div>
   </section>
 
   <!-- FINAL CTA -->
-  <div class="v2-inset v2-final">
+  <div class="v2-final soft">
     <div class="v2-wrap">
       <h2 class="v2-h2">However you found us, <em>you don't have to navigate this alone</em></h2>
       <p>Free and completely confidential.</p>
       <div class="v2-ctas" style="justify-content:center;">
-        <a class="v2-btn light" onclick="go('contact')">Speak to an advisor</a>
-        <a class="v2-btn ghost-light" href="tel:8889937824">Call 888.993.7824</a>
+        <a class="v2-btn" onclick="go('contact')">Speak to an advisor</a>
+        <a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a>
       </div>
     </div>
   </div>
@@ -1347,8 +1436,8 @@
   <div class="breadcrumb"><div class="wrap">Home / Services</div></div>
   <section><div class="wrap">
     <div class="v2-bento">
-      <a class="bt bt-photo bt-lg" onclick="go('svc-lab')"><span class="v2-chip">Signature service</span><div class="bt-ph"><span>Lab supervision photo</span></div><div class="bt-cap"><h3>Lab Supervision</h3><p>Trained mashgichot in fertility labs nationwide, protecting halachic integrity at every stage.</p><b>Request a supervisor →</b></div></a>
-      <a class="bt bt-teal bt-tall" onclick="go('svc-puahline')"><h3>The PUAHline</h3><p>Expert rabbis answering time-sensitive taharat hamishpacha questions.</p><div class="bt-big">805.391<br>.PUAH</div><b>Learn more →</b></a>
+      <a class="bt bt-solid bt-lg" onclick="go('svc-lab')"><h3>Lab Supervision</h3><p>Trained mashgichot in fertility labs nationwide, protecting halachic integrity at every stage. Fully subsidized by PUAH.</p><b>Request a supervisor →</b></a>
+      <a class="bt bt-teal bt-tall" onclick="go('svc-puahline')"><h3>The PUAHline</h3><p>Expert rabbis answering time-sensitive taharat hamishpacha questions, confidentially. Call 805.391.PUAH (7824).</p><b>Learn more →</b></a>
       <a class="bt bt-cream" onclick="go('svc-guidance')"><h3>Guidance &amp; Support</h3><p>One-on-one counseling and emotional support through the whole journey.</p><b>Learn more →</b></a>
       <a class="bt bt-sky" onclick="go('svc-ask')"><h3>Ask the Rabbi</h3><p>Confidential halachic answers from PUAH's rabbinic experts.</p><b>Ask a question →</b></a>
       <a class="bt bt-pink" onclick="go('svc-shabbos')"><h3>Shabbos &amp; Injection Support</h3><p>At-home blood draws on Shabbos and injection house calls.</p><b>Learn more →</b></a>
@@ -1528,6 +1617,11 @@
       <p class="note"><b>Build note —</b> Wire this form to the Resource Library's existing submissions system and email notifications, so there's one inbox for every request.</p>
     </div>
   </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Read more <em>in the Digital Library</em></h2><p class="v2-muted">In-depth articles reviewed by PUAH's rabbinic team and medical advisors. They open on puahlibrary.org.</p></div>
+    <div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/why-fertility-labs-require-supervision" target="_blank" rel="noopener"><span>Why Fertility Labs Require Supervision</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/which-stages-require-hashgacha" target="_blank" rel="noopener"><span>Which Stages Require Hashgacha</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/supervision-on-shabbos" target="_blank" rel="noopener"><span>Supervision on Shabbos</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/inside-the-ivf-lab-what-really-happens-to-your-embryos" target="_blank" rel="noopener"><span>Inside the IVF Lab: What Really Happens to Your Embryos</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/understanding-embryology-labs" target="_blank" rel="noopener"><span>Understanding Embryology Labs</span><i>↗</i></a></div>
+    <div style="margin-top:22px;"><a class="btn ghost" onclick="go('resources')">About the Digital Library</a></div>
+  </div></section>
 </div>
 
 <!-- ========================= SVC: SHABBOS PHLEBOTOMY & INJECTIONS ========================= -->
@@ -1555,6 +1649,11 @@
       <div class="card"><div class="tag">04</div><h3 style="margin-top:8px;">PUAH Preferred Network</h3><p class="muted">Partnerships with fertility labs worldwide offer discounted rates and concierge care for the PUAH community. A medication discount program with partner pharmacies makes essential fertility medications more accessible and affordable.</p></div>
     </div>
     <p style="margin-top:22px;">Together, this comprehensive support system — grants, interest-free loans, FundMe campaigns, and the PUAH Preferred Network — offers multiple pathways to address financial and treatment needs at every level. All personal data is kept strictly confidential.</p>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Read more <em>in the Digital Library</em></h2><p class="v2-muted">In-depth articles reviewed by PUAH's rabbinic team and medical advisors. They open on puahlibrary.org.</p></div>
+    <div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/using-maaser-kesafim-for-fertility-treatment" target="_blank" rel="noopener"><span>Using Maaser Kesafim for Fertility Treatment</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/7-questions-you-must-ask-before-starting-ivf" target="_blank" rel="noopener"><span>7 Questions You Must Ask Before Starting IVF</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/ivf-success-rates" target="_blank" rel="noopener"><span>IVF Success Rates</span><i>↗</i></a></div>
+    <div style="margin-top:22px;"><a class="btn ghost" onclick="go('resources')">About the Digital Library</a></div>
   </div></section>
 </div>
 
@@ -1803,15 +1902,27 @@
 
 <!-- ========================= RESOURCES LINK-OUT ========================= -->
 <div class="page v2" id="page-resources">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">External platform</span><h1>PUAH Digital <em>Resource Library</em></h1><p class="lead" style="max-width:64ch;">Educational content lives on a separate, dedicated platform.</p></div></div>
-  <div class="breadcrumb"><div class="wrap">Home / Digital Resource Library</div></div>
-  <section><div class="wrap center">
-    <div class="media tall"><span class="lbl">Separate platform — opens in new tab in production</span></div>
-    <p class="note" style="margin:26px auto 0;max-width:64ch;text-align:left;"><b>Design note —</b> In the live build this nav item links directly out to the Resource Library domain (new tab). It is shown as an in-wireframe page here only so you can preview the hand-off. The corporate site should never host articles/FAQs itself.</p>
-    <div style="margin-top:20px;"><a class="btn ghost" onclick="go('home')">← Back to PUAH.org</a></div>
+  <div class="stub-hero"><div class="wrap">
+    <span class="eyebrow">PUAH Digital Resource Library</span>
+    <h1>Trusted fertility knowledge, <em>in one place</em></h1>
+    <p class="lead">More than 160 articles on halacha, medicine and emotional support, written for couples and reviewed by PUAH's rabbinic team and medical advisors. Free, private, and open to everyone.</p>
+    <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" href="https://www.puahlibrary.org" target="_blank" rel="noopener">Visit the library ↗</a><a class="btn ghost" onclick="go('contact')">Ask an advisor instead</a></div>
+  </div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Digital Library</div></div>
+  <section><div class="wrap">
+    <div class="v2-split-head"><h2>Three pillars <em>of content</em></h2><p class="v2-muted">The same three areas PUAH has always brought together: what halacha says, what medicine knows, and how to cope along the way.</p></div>
+    <div class="v2-bento lib-pillars"><a class="bt bt-teal" href="https://www.puahlibrary.org/halacha" target="_blank" rel="noopener"><span class="v2-num">01</span><h3>Halacha</h3><p>Niddah and tahara during treatment, Shabbos, lab supervision, embryos, third-party reproduction and more.</p><b>Explore halacha ↗</b></a><a class="bt bt-sky" href="https://www.puahlibrary.org/science-medical" target="_blank" rel="noopener"><span class="v2-num">02</span><h3>Medicine</h3><p>Diagnosis and testing, treatments from IUI to IVF, male fertility, genetics and pregnancy, in plain language.</p><b>Explore medicine ↗</b></a><a class="bt bt-pink" href="https://www.puahlibrary.org/emotional-health" target="_blank" rel="noopener"><span class="v2-num">03</span><h3>Support</h3><p>Coping, marriage, community life, grief and faith: the emotional side of the journey.</p><b>Explore support ↗</b></a></div>
   </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Where to <em>start reading</em></h2><p class="v2-muted">Ten of the most useful articles in each pillar. Articles open on puahlibrary.org.</p></div>
+    <div class="lib-cols"><div class="lib-col"><div class="lib-col-h"><span class="dot bt-teal"></span><h3>Halacha</h3></div><div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/does-fertility-testing-render-a-woman-a-niddah" target="_blank" rel="noopener"><span>Does Fertility Testing Render a Woman a Niddah?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/early-ovulation-and-mikvah-timing" target="_blank" rel="noopener"><span>Early Ovulation and Mikvah Timing</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/why-fertility-labs-require-supervision" target="_blank" rel="noopener"><span>Why Fertility Labs Require Supervision</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/which-stages-require-hashgacha" target="_blank" rel="noopener"><span>Which Stages Require Hashgacha</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/halachic-methods-of-sperm-procurement-for-fertility-treatment" target="_blank" rel="noopener"><span>Halachic Methods of Sperm Procurement for Fertility Treatment</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/injections-on-shabbos" target="_blank" rel="noopener"><span>Injections on Shabbos</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/fertility-monitoring-on-shabbos" target="_blank" rel="noopener"><span>Fertility Monitoring on Shabbos</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/the-mitzvah-of-pru-urvu-sources-and-application" target="_blank" rel="noopener"><span>The Mitzvah of Pru Urvu: Sources and Application</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/halachic-status-and-handling-of-embryos" target="_blank" rel="noopener"><span>Halachic Status and Handling of Embryos</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/halachos-of-miscarriage" target="_blank" rel="noopener"><span>Halachos of Miscarriage</span><i>↗</i></a></div><a class="v2-btn ghost" href="https://www.puahlibrary.org/halacha" target="_blank" rel="noopener">All halacha articles ↗</a></div><div class="lib-col"><div class="lib-col-h"><span class="dot bt-sky"></span><h3>Medicine</h3></div><div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/what-is-infertility" target="_blank" rel="noopener"><span>What Is Infertility?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/when-should-a-couple-seek-help" target="_blank" rel="noopener"><span>When Should a Couple Seek Help?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/what-is-ivf" target="_blank" rel="noopener"><span>What Is IVF?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/step-by-step-ivf-process" target="_blank" rel="noopener"><span>Step-by-Step IVF Process</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/what-is-intrauterine-insemination-iui" target="_blank" rel="noopener"><span>What Is Intrauterine Insemination (IUI)?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/understanding-amh-fsh-and-fertility-hormones" target="_blank" rel="noopener"><span>Understanding AMH, FSH, and Fertility Hormones</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/understanding-semen-analysis" target="_blank" rel="noopener"><span>Understanding Semen Analysis</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/understanding-preimplantation-genetic-testing-pgt" target="_blank" rel="noopener"><span>Understanding Preimplantation Genetic Testing (PGT)</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/egg-freezing-every-thing-you-need-to-know" target="_blank" rel="noopener"><span>Egg Freezing: Every Thing You Need to Know</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/pcos-causes-diagnosis-and-treatment" target="_blank" rel="noopener"><span>PCOS: Causes, Diagnosis, and Treatment</span><i>↗</i></a></div><a class="v2-btn ghost" href="https://www.puahlibrary.org/science-medical" target="_blank" rel="noopener">All medicine articles ↗</a></div><div class="lib-col"><div class="lib-col-h"><span class="dot bt-pink"></span><h3>Support</h3></div><div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/coping-with-the-emotional-toll-of-infertility" target="_blank" rel="noopener"><span>Coping with the Emotional Toll of Infertility</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/strengthening-your-marriage-during-treatment" target="_blank" rel="noopener"><span>Strengthening Your Marriage During Treatment</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/navigating-simchas-and-community-events" target="_blank" rel="noopener"><span>Navigating Simchas and Community Events</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/shabbos-and-yom-tov-triggers" target="_blank" rel="noopener"><span>Shabbos and Yom Tov Triggers</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/secondary-infertility-and-emotional-complexity" target="_blank" rel="noopener"><span>Secondary Infertility and Emotional Complexity</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/processing-grief-after-miscarriage" target="_blank" rel="noopener"><span>Processing Grief After Miscarriage</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/when-to-seek-professional-mental-health-support" target="_blank" rel="noopener"><span>When to Seek Professional Mental Health Support</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/emunah-and-hishtadlus-in-fertility-treatment" target="_blank" rel="noopener"><span>Emunah and Hishtadlus in Fertility Treatment</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/working-with-a-rav-during-fertility-treatment" target="_blank" rel="noopener"><span>Working with a Rav During Fertility Treatment</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/when-and-how-to-share-your-journey" target="_blank" rel="noopener"><span>When and How to Share Your Journey</span><i>↗</i></a></div><a class="v2-btn ghost" href="https://www.puahlibrary.org/emotional-health" target="_blank" rel="noopener">All support articles ↗</a></div></div>
+  </div></section>
+  <div class="v2-final soft"><div class="v2-wrap">
+    <h2 class="v2-h2">Have a question <em>the library doesn't answer?</em></h2>
+    <p>Our advisors answer questions personally. Free and completely confidential.</p>
+    <div class="v2-ctas" style="justify-content:center;"><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a><a class="v2-btn ghost" onclick="go('svc-ask')">Ask the Rabbi</a></div>
+  </div></div>
 </div>
-
 
 <!-- ========================= FERTILITY DICTIONARY ========================= -->
 <div class="page v2" id="page-dictionary">
@@ -2497,6 +2608,286 @@
   </div></section>
 </div>
 
+<!-- ========================= TOPIC: IVF ========================= -->
+<div class="page v2" id="page-topic-ivf">
+  <div class="stub-hero"><div class="wrap topic-hero">
+    <div>
+      <span class="eyebrow">How PUAH helps · Starting IVF</span>
+      <h1>Starting IVF, <em>with guidance at every step</em></h1>
+      <p class="lead">IVF brings a lot of new terms, appointments and halachic questions at once. You don't have to work it out alone.</p>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" onclick="go('contact')">Reach out to PUAH to understand the process</a><a class="btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+    </div>
+    <div class="topic-img"><img src="img/couple-advisor.jpg" alt="" loading="lazy"></div>
+  </div></div>
+  <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('home')">Home</a> / Starting IVF</div></div>
+  <section><div class="wrap">
+    <div class="v2-split-head"><h2>What to <em>know</em></h2><p class="v2-muted">A few starting points. Every situation is different, which is why we encourage you to speak with an advisor.</p></div>
+    <div class="v2-bento"><div class="bt bt-cream"><span class="v2-num">01</span><h3>Know the stages</h3><p>Stimulation, monitoring, egg retrieval, fertilization and transfer each raise their own medical and halachic questions. Knowing what's coming makes each step easier.</p></div><div class="bt bt-cream"><span class="v2-num">02</span><h3>Arrange supervision early</h3><p>Many poskim require a supervisor in the lab. Request a mashgicha as soon as your cycle is scheduled; PUAH needs at least 24 hours' notice.</p></div><div class="bt bt-cream"><span class="v2-num">03</span><h3>Plan around Shabbos and Yom Tov</h3><p>Monitoring, injections and procedures don't always fall on weekdays. PUAH can arrange Shabbos blood draws and injection help.</p></div><div class="bt bt-cream"><span class="v2-num">04</span><h3>Ask before you start</h3><p>Questions about genetic testing, freezing embryos or what happens to unused embryos are easier to resolve before treatment begins.</p></div></div>
+  </div></section>
+  <section style="padding-top:0;"><div class="wrap">
+    <div class="topic-help">
+      <div><h2>How PUAH <em>helps</em></h2><p class="v2-muted">Every PUAH service is free and confidential.</p></div>
+      <div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-shabbos')">Shabbos phlebotomy &amp; injections <i>→</i></a><a onclick="go('svc-financial')">Financial Assistance <i>→</i></a><a class="v2-btn" onclick="go(&#39;contact&#39;)">Reach out to PUAH to understand the process</a></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Read more <em>in the Digital Library</em></h2><p class="v2-muted">In-depth articles reviewed by PUAH's rabbinic team and medical advisors. They open on puahlibrary.org.</p></div>
+    <div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/what-is-ivf" target="_blank" rel="noopener"><span>What Is IVF?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/step-by-step-ivf-process" target="_blank" rel="noopener"><span>Step-by-Step IVF Process</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/7-questions-you-must-ask-before-starting-ivf" target="_blank" rel="noopener"><span>7 Questions You Must Ask Before Starting IVF</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/which-stages-require-hashgacha" target="_blank" rel="noopener"><span>Which Stages Require Hashgacha</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/egg-retrieval-on-shabbos" target="_blank" rel="noopener"><span>Egg Retrieval on Shabbos</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/risks-and-complications-of-ivf" target="_blank" rel="noopener"><span>Risks and Complications of IVF</span><i>↗</i></a></div>
+    <div style="margin-top:22px;"><a class="btn ghost" onclick="go('resources')">About the Digital Library</a></div>
+  </div></section>
+
+  <div class="v2-final soft"><div class="v2-wrap">
+    <h2 class="v2-h2">You don't have to <em>figure this out alone</em></h2>
+    <p>Free and completely confidential.</p>
+    <div class="v2-ctas" style="justify-content:center;"><a class="v2-btn" onclick="go('contact')">Reach out to PUAH to understand the process</a><a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+  </div></div>
+</div>
+
+<!-- ========================= TOPIC: TTC ========================= -->
+<div class="page v2" id="page-topic-ttc">
+  <div class="stub-hero"><div class="wrap topic-hero">
+    <div>
+      <span class="eyebrow">How PUAH helps · Not conceiving yet</span>
+      <h1>Trying, and it <em>hasn't happened yet</em></h1>
+      <p class="lead">Knowing when to seek help, which tests come first and which specialist to see is often the hardest part.</p>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" onclick="go('contact')">Reach out to PUAH to talk through your first steps</a><a class="btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+    </div>
+    <div class="topic-img"><img src="img/negative-test.jpg" alt="" loading="lazy"></div>
+  </div></div>
+  <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('home')">Home</a> / Not conceiving yet</div></div>
+  <section><div class="wrap">
+    <div class="v2-split-head"><h2>What to <em>know</em></h2><p class="v2-muted">A few starting points. Every situation is different, which is why we encourage you to speak with an advisor.</p></div>
+    <div class="v2-bento"><div class="bt bt-cream"><span class="v2-num">01</span><h3>When to seek help</h3><p>The common guideline is after 12 months of trying, or 6 months if the woman is 35 or older, and sooner if there's a known concern.</p></div><div class="bt bt-cream"><span class="v2-num">02</span><h3>Both partners matter</h3><p>Male factors are part of many fertility challenges. A full evaluation looks at both husband and wife.</p></div><div class="bt bt-cream"><span class="v2-num">03</span><h3>The first tests</h3><p>Usually bloodwork, an ultrasound and a semen analysis. Some tests and procedures raise niddah questions worth asking in advance.</p></div><div class="bt bt-cream"><span class="v2-num">04</span><h3>Finding the right doctor</h3><p>PUAH can help you understand when to move from an OB-GYN to a fertility specialist, and refer you to physicians we trust.</p></div></div>
+  </div></section>
+  <section style="padding-top:0;"><div class="wrap">
+    <div class="topic-help">
+      <div><h2>How PUAH <em>helps</em></h2><p class="v2-muted">Every PUAH service is free and confidential.</p></div>
+      <div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go(&#39;contact&#39;)">Reach out to PUAH to talk through your first steps</a></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Read more <em>in the Digital Library</em></h2><p class="v2-muted">In-depth articles reviewed by PUAH's rabbinic team and medical advisors. They open on puahlibrary.org.</p></div>
+    <div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/when-should-a-couple-seek-help" target="_blank" rel="noopener"><span>When Should a Couple Seek Help?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/what-is-infertility" target="_blank" rel="noopener"><span>What Is Infertility?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/fertility-testing-for-women-what-to-expect" target="_blank" rel="noopener"><span>Fertility Testing for Women: What to Expect</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/understanding-semen-analysis" target="_blank" rel="noopener"><span>Understanding Semen Analysis</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/does-fertility-testing-render-a-woman-a-niddah" target="_blank" rel="noopener"><span>Does Fertility Testing Render a Woman a Niddah?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/before-your-first-fertility-appointment-a-complete-checklist" target="_blank" rel="noopener"><span>Before Your First Fertility Appointment: A Complete Checklist</span><i>↗</i></a></div>
+    <div style="margin-top:22px;"><a class="btn ghost" onclick="go('resources')">About the Digital Library</a></div>
+  </div></section>
+
+  <div class="v2-final soft"><div class="v2-wrap">
+    <h2 class="v2-h2">You don't have to <em>figure this out alone</em></h2>
+    <p>Free and completely confidential.</p>
+    <div class="v2-ctas" style="justify-content:center;"><a class="v2-btn" onclick="go('contact')">Reach out to PUAH to talk through your first steps</a><a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+  </div></div>
+</div>
+
+<!-- ========================= TOPIC: CYCLES ========================= -->
+<div class="page v2" id="page-topic-cycles">
+  <div class="stub-hero"><div class="wrap topic-hero">
+    <div>
+      <span class="eyebrow">How PUAH helps · Short cycles &amp; mikveh timing</span>
+      <h1>When ovulation seems to come <em>before mikveh night</em></h1>
+      <p class="lead">This is where PUAH began. Many couples in this situation find a solution, and every case is individual.</p>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" onclick="go('contact')">Reach out to PUAH to look at your cycle with an advisor</a><a class="btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+    </div>
+    <div class="topic-img"><img src="img/calendar.jpg" alt="" loading="lazy"></div>
+  </div></div>
+  <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('home')">Home</a> / Short cycles &amp; mikveh timing</div></div>
+  <section><div class="wrap">
+    <div class="v2-split-head"><h2>What to <em>know</em></h2><p class="v2-muted">A few starting points. Every situation is different, which is why we encourage you to speak with an advisor.</p></div>
+    <div class="v2-bento"><div class="bt bt-cream"><span class="v2-num">01</span><h3>Confirm the timing first</h3><p>Early ovulation needs to be confirmed with tracking or monitoring before drawing conclusions.</p></div><div class="bt bt-cream"><span class="v2-num">02</span><h3>A medical evaluation</h3><p>Cycle length, hormones and ovulation can all be assessed. Sometimes there is a medical factor that can be treated.</p></div><div class="bt bt-cream"><span class="v2-num">03</span><h3>Individual halachic guidance</h3><p>Halachic questions depend on the details of each case. A rav familiar with the medical picture should guide you.</p></div><div class="bt bt-cream"><span class="v2-num">04</span><h3>Often solvable</h3><p>Depending on the circumstances, options may include medical treatment or halachic guidance. PUAH works with you and your doctor.</p></div></div>
+  </div></section>
+  <section style="padding-top:0;"><div class="wrap">
+    <div class="topic-help">
+      <div><h2>How PUAH <em>helps</em></h2><p class="v2-muted">Every PUAH service is free and confidential.</p></div>
+      <div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go(&#39;contact&#39;)">Reach out to PUAH to look at your cycle with an advisor</a></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Read more <em>in the Digital Library</em></h2><p class="v2-muted">In-depth articles reviewed by PUAH's rabbinic team and medical advisors. They open on puahlibrary.org.</p></div>
+    <div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/early-ovulation-and-mikvah-timing" target="_blank" rel="noopener"><span>Early Ovulation and Mikvah Timing</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/shortening-or-delaying-the-cycle-halachically" target="_blank" rel="noopener"><span>Shortening or Delaying the Cycle Halachically</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/understanding-the-menstrual-cycle-step-by-step" target="_blank" rel="noopener"><span>Understanding the Menstrual Cycle Step-by-Step</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/hormones-and-ovulation-explained" target="_blank" rel="noopener"><span>Hormones and Ovulation Explained</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/luteal-phase-defects" target="_blank" rel="noopener"><span>Luteal Phase Defects</span><i>↗</i></a></div>
+    <div style="margin-top:22px;"><a class="btn ghost" onclick="go('resources')">About the Digital Library</a></div>
+  </div></section>
+
+  <div class="v2-final soft"><div class="v2-wrap">
+    <h2 class="v2-h2">You don't have to <em>figure this out alone</em></h2>
+    <p>Free and completely confidential.</p>
+    <div class="v2-ctas" style="justify-content:center;"><a class="v2-btn" onclick="go('contact')">Reach out to PUAH to look at your cycle with an advisor</a><a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+  </div></div>
+</div>
+
+<!-- ========================= TOPIC: SPOTTING ========================= -->
+<div class="page v2" id="page-topic-spotting">
+  <div class="stub-hero"><div class="wrap topic-hero">
+    <div>
+      <span class="eyebrow">How PUAH helps · Spotting during treatment</span>
+      <h1>Spotting or staining <em>during treatment</em></h1>
+      <p class="lead">Fertility medications often cause spotting, and these questions are time-sensitive. Expert rabbis are a phone call away.</p>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" href="tel:8053917824">Call the PUAHline</a><a class="btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+    </div>
+    <div class="topic-img"><img src="img/puahline-rabbi.jpg" alt="" loading="lazy"></div>
+  </div></div>
+  <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('home')">Home</a> / Spotting during treatment</div></div>
+  <section><div class="wrap">
+    <div class="v2-split-head"><h2>What to <em>know</em></h2><p class="v2-muted">A few starting points. Every situation is different, which is why we encourage you to speak with an advisor.</p></div>
+    <div class="v2-bento"><div class="bt bt-cream"><span class="v2-num">01</span><h3>It's common</h3><p>Hormones, procedures and progesterone can all cause spotting during treatment.</p></div><div class="bt bt-cream"><span class="v2-num">02</span><h3>The details matter</h3><p>Whether a stain carries halachic weight depends on its color, size, where it was found and the circumstances. Ask rather than assume.</p></div><div class="bt bt-cream"><span class="v2-num">03</span><h3>Answers when you need them</h3><p>The PUAHline connects you to expert rabbis confidentially, especially when your local rav isn't available.</p></div><div class="bt bt-cream"><span class="v2-num">04</span><h3>Tell your doctor too</h3><p>Bleeding during treatment or pregnancy should also be discussed with your medical team.</p></div></div>
+  </div></section>
+  <section style="padding-top:0;"><div class="wrap">
+    <div class="topic-help">
+      <div><h2>How PUAH <em>helps</em></h2><p class="v2-muted">Every PUAH service is free and confidential.</p></div>
+      <div class="v2-rp-act"><a onclick="go('svc-puahline')">The PUAHline <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" href="tel:8053917824">Call the PUAHline</a></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Read more <em>in the Digital Library</em></h2><p class="v2-muted">In-depth articles reviewed by PUAH's rabbinic team and medical advisors. They open on puahlibrary.org.</p></div>
+    <div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/does-fertility-testing-render-a-woman-a-niddah" target="_blank" rel="noopener"><span>Does Fertility Testing Render a Woman a Niddah?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/transvaginal-ultrasounds-and-niddah" target="_blank" rel="noopener"><span>Transvaginal Ultrasounds and Niddah</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/hsg-and-niddah-status" target="_blank" rel="noopener"><span>HSG and Niddah Status</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/iui-during-niddah" target="_blank" rel="noopener"><span>IUI During Niddah</span><i>↗</i></a></div>
+    <div style="margin-top:22px;"><a class="btn ghost" onclick="go('resources')">About the Digital Library</a></div>
+  </div></section>
+
+  <div class="v2-final soft"><div class="v2-wrap">
+    <h2 class="v2-h2">You don't have to <em>figure this out alone</em></h2>
+    <p>Free and completely confidential.</p>
+    <div class="v2-ctas" style="justify-content:center;"><a class="v2-btn" href="tel:8053917824">Call the PUAHline</a><a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+  </div></div>
+</div>
+
+<!-- ========================= TOPIC: MALE ========================= -->
+<div class="page v2" id="page-topic-male">
+  <div class="stub-hero"><div class="wrap topic-hero">
+    <div>
+      <span class="eyebrow">How PUAH helps · Male fertility</span>
+      <h1>Male fertility, <em>handled discreetly</em></h1>
+      <p class="lead">Male factors are part of many fertility challenges, yet they're rarely talked about. PUAH guides men privately through every step.</p>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" onclick="go('contact')">Reach out to PUAH confidentially</a><a class="btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+    </div>
+    <div class="topic-img"><img src="img/male-fertility.jpg" alt="" loading="lazy"></div>
+  </div></div>
+  <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('home')">Home</a> / Male fertility</div></div>
+  <section><div class="wrap">
+    <div class="v2-split-head"><h2>What to <em>know</em></h2><p class="v2-muted">A few starting points. Every situation is different, which is why we encourage you to speak with an advisor.</p></div>
+    <div class="v2-bento"><div class="bt bt-cream"><span class="v2-num">01</span><h3>A simple first step</h3><p>A semen analysis is usually the first test, and it's quick and non-invasive.</p></div><div class="bt bt-cream"><span class="v2-num">02</span><h3>Halachic questions first</h3><p>There are accepted halachic methods of collection for testing and treatment. Ask before the appointment, not after.</p></div><div class="bt bt-cream"><span class="v2-num">03</span><h3>Treatments exist</h3><p>From lifestyle and hormonal treatment to surgical sperm retrieval, there are options even in difficult cases.</p></div><div class="bt bt-cream"><span class="v2-num">04</span><h3>Leading specialists</h3><p>PUAH's Medical Advisory Council includes pioneers in male infertility and microsurgery.</p></div></div>
+  </div></section>
+  <section style="padding-top:0;"><div class="wrap">
+    <div class="topic-help">
+      <div><h2>How PUAH <em>helps</em></h2><p class="v2-muted">Every PUAH service is free and confidential.</p></div>
+      <div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a class="v2-btn" onclick="go(&#39;contact&#39;)">Reach out to PUAH confidentially</a></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Read more <em>in the Digital Library</em></h2><p class="v2-muted">In-depth articles reviewed by PUAH's rabbinic team and medical advisors. They open on puahlibrary.org.</p></div>
+    <div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/male-factor-infertility" target="_blank" rel="noopener"><span>Male Factor Infertility</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/understanding-semen-analysis" target="_blank" rel="noopener"><span>Understanding Semen Analysis</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/when-does-halacha-allow-for-a-semen-analysis" target="_blank" rel="noopener"><span>When Does Halacha Allow for a Semen Analysis?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/halachic-methods-of-sperm-procurement-for-fertility-treatment" target="_blank" rel="noopener"><span>Halachic Methods of Sperm Procurement for Fertility Treatment</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/why-sperm-health-is-the-missing-conversation-in-fertility" target="_blank" rel="noopener"><span>Why Sperm Health Is the Missing Conversation in Fertility</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/micro-tese-and-advanced-male-procedures" target="_blank" rel="noopener"><span>Micro-TESE and Advanced Male Procedures</span><i>↗</i></a></div>
+    <div style="margin-top:22px;"><a class="btn ghost" onclick="go('resources')">About the Digital Library</a></div>
+  </div></section>
+
+  <div class="v2-final soft"><div class="v2-wrap">
+    <h2 class="v2-h2">You don't have to <em>figure this out alone</em></h2>
+    <p>Free and completely confidential.</p>
+    <div class="v2-ctas" style="justify-content:center;"><a class="v2-btn" onclick="go('contact')">Reach out to PUAH confidentially</a><a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+  </div></div>
+</div>
+
+<!-- ========================= TOPIC: LOSS ========================= -->
+<div class="page v2" id="page-topic-loss">
+  <div class="stub-hero"><div class="wrap topic-hero">
+    <div>
+      <span class="eyebrow">How PUAH helps · Pregnancy loss</span>
+      <h1>After a pregnancy loss, <em>you're not alone</em></h1>
+      <p class="lead">Loss is painful and often carried in silence. PUAH offers emotional support, medical direction and halachic answers.</p>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" onclick="go('contact')">Reach out to speak with someone</a><a class="btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+    </div>
+    <div class="topic-img"><img src="img/pregnancy-loss.jpg" alt="" loading="lazy"></div>
+  </div></div>
+  <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('home')">Home</a> / Pregnancy loss</div></div>
+  <section><div class="wrap">
+    <div class="v2-split-head"><h2>What to <em>know</em></h2><p class="v2-muted">A few starting points. Every situation is different, which is why we encourage you to speak with an advisor.</p></div>
+    <div class="v2-bento"><div class="bt bt-cream"><span class="v2-num">01</span><h3>Grief is real</h3><p>Whatever the stage of the pregnancy, the loss deserves to be acknowledged. Our counselors are here to listen.</p></div><div class="bt bt-cream"><span class="v2-num">02</span><h3>Understanding why</h3><p>After two or more losses, a medical evaluation may help identify causes and guide what comes next.</p></div><div class="bt bt-cream"><span class="v2-num">03</span><h3>Halachic questions</h3><p>Questions about niddah status, burial and mourning often follow. PUAH's rabbis can help.</p></div><div class="bt bt-cream"><span class="v2-num">04</span><h3>Support for both of you</h3><p>Husbands and wives often grieve differently. Counseling can help you through it together.</p></div></div>
+  </div></section>
+  <section style="padding-top:0;"><div class="wrap">
+    <div class="topic-help">
+      <div><h2>How PUAH <em>helps</em></h2><p class="v2-muted">Every PUAH service is free and confidential.</p></div>
+      <div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; emotional support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go(&#39;contact&#39;)">Reach out to speak with someone</a></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Read more <em>in the Digital Library</em></h2><p class="v2-muted">In-depth articles reviewed by PUAH's rabbinic team and medical advisors. They open on puahlibrary.org.</p></div>
+    <div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/processing-grief-after-miscarriage" target="_blank" rel="noopener"><span>Processing Grief After Miscarriage</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/miscarriage-medical-understanding" target="_blank" rel="noopener"><span>Miscarriage: Medical Understanding</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/recurrent-pregnancy-loss-medical-overview" target="_blank" rel="noopener"><span>Recurrent Pregnancy Loss: Medical Overview</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/halachos-of-miscarriage" target="_blank" rel="noopener"><span>Halachos of Miscarriage</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/determining-niddah-status-after-loss" target="_blank" rel="noopener"><span>Determining Niddah Status After Loss</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/burial-and-mourning-guidelines" target="_blank" rel="noopener"><span>Burial and Mourning Guidelines</span><i>↗</i></a></div>
+    <div style="margin-top:22px;"><a class="btn ghost" onclick="go('resources')">About the Digital Library</a></div>
+  </div></section>
+
+  <div class="v2-final soft"><div class="v2-wrap">
+    <h2 class="v2-h2">You don't have to <em>figure this out alone</em></h2>
+    <p>Free and completely confidential.</p>
+    <div class="v2-ctas" style="justify-content:center;"><a class="v2-btn" onclick="go('contact')">Reach out to speak with someone</a><a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+  </div></div>
+</div>
+
+<!-- ========================= TOPIC: GENETICS ========================= -->
+<div class="page v2" id="page-topic-genetics">
+  <div class="stub-hero"><div class="wrap topic-hero">
+    <div>
+      <span class="eyebrow">How PUAH helps · Genetic testing</span>
+      <h1>Genetic testing, <em>explained clearly</em></h1>
+      <p class="lead">Carrier screening, PGT, a result you don't understand: genetics raises medical and halachic questions at the same time.</p>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" onclick="go('contact')">Reach out to PUAH to talk through your options</a><a class="btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+    </div>
+    <div class="topic-img"><img src="img/genetic-testing.jpg" alt="" loading="lazy"></div>
+  </div></div>
+  <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('home')">Home</a> / Genetic testing</div></div>
+  <section><div class="wrap">
+    <div class="v2-split-head"><h2>What to <em>know</em></h2><p class="v2-muted">A few starting points. Every situation is different, which is why we encourage you to speak with an advisor.</p></div>
+    <div class="v2-bento"><div class="bt bt-cream"><span class="v2-num">01</span><h3>Carrier screening</h3><p>Programs like Dor Yeshorim and expanded carrier panels show whether a couple shares risk for certain inherited conditions.</p></div><div class="bt bt-cream"><span class="v2-num">02</span><h3>Testing embryos</h3><p>PGT during IVF analyzes a small sample of cells. The biopsy is a lab stage that requires supervision.</p></div><div class="bt bt-cream"><span class="v2-num">03</span><h3>Results need context</h3><p>A result is rarely a simple yes or no. Genetic counseling helps you understand what it means.</p></div><div class="bt bt-cream"><span class="v2-num">04</span><h3>Halachic considerations</h3><p>Testing and decisions about embryos raise halachic questions that are best discussed early.</p></div></div>
+  </div></section>
+  <section style="padding-top:0;"><div class="wrap">
+    <div class="topic-help">
+      <div><h2>How PUAH <em>helps</em></h2><p class="v2-muted">Every PUAH service is free and confidential.</p></div>
+      <div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go(&#39;contact&#39;)">Reach out to PUAH to talk through your options</a></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Read more <em>in the Digital Library</em></h2><p class="v2-muted">In-depth articles reviewed by PUAH's rabbinic team and medical advisors. They open on puahlibrary.org.</p></div>
+    <div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/genetic-carrier-screening" target="_blank" rel="noopener"><span>Genetic Carrier Screening</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/pre-marital-genetic-testing-in-the-jewish-community" target="_blank" rel="noopener"><span>Pre-Marital Genetic Testing in the Jewish Community</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/understanding-preimplantation-genetic-testing-pgt" target="_blank" rel="noopener"><span>Understanding Preimplantation Genetic Testing (PGT)</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/genetic-testing-before-ivf-is-pgt-worth-it" target="_blank" rel="noopener"><span>Genetic Testing Before IVF: Is PGT Worth It?</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/pgt-and-gender-selection-in-halacha" target="_blank" rel="noopener"><span>PGT and Gender Selection in Halacha</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/basic-genetic-principles-for-couples" target="_blank" rel="noopener"><span>Basic Genetic Principles for Couples</span><i>↗</i></a></div>
+    <div style="margin-top:22px;"><a class="btn ghost" onclick="go('resources')">About the Digital Library</a></div>
+  </div></section>
+
+  <div class="v2-final soft"><div class="v2-wrap">
+    <h2 class="v2-h2">You don't have to <em>figure this out alone</em></h2>
+    <p>Free and completely confidential.</p>
+    <div class="v2-ctas" style="justify-content:center;"><a class="v2-btn" onclick="go('contact')">Reach out to PUAH to talk through your options</a><a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+  </div></div>
+</div>
+
+<!-- ========================= TOPIC: PRESERVE ========================= -->
+<div class="page v2" id="page-topic-preserve">
+  <div class="stub-hero"><div class="wrap topic-hero">
+    <div>
+      <span class="eyebrow">How PUAH helps · Egg freezing &amp; preservation</span>
+      <h1>Preserving fertility, <em>before you need it</em></h1>
+      <p class="lead">Whether you're planning ahead or facing medical treatment such as chemotherapy, it's a conversation worth having before, not after.</p>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" onclick="go('contact')">Reach out to PUAH to discuss your options</a><a class="btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+    </div>
+    <div class="topic-img"><img src="img/egg-freezing.jpg" alt="" loading="lazy"></div>
+  </div></div>
+  <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('home')">Home</a> / Egg freezing &amp; preservation</div></div>
+  <section><div class="wrap">
+    <div class="v2-split-head"><h2>What to <em>know</em></h2><p class="v2-muted">A few starting points. Every situation is different, which is why we encourage you to speak with an advisor.</p></div>
+    <div class="v2-bento"><div class="bt bt-cream"><span class="v2-num">01</span><h3>Age matters</h3><p>Egg quantity and quality decline with age, so earlier is usually better when planning ahead.</p></div><div class="bt bt-cream"><span class="v2-num">02</span><h3>Before cancer treatment</h3><p>Some treatments affect fertility. Preservation is time-sensitive, so ask as soon as treatment is being planned.</p></div><div class="bt bt-cream"><span class="v2-num">03</span><h3>Eggs or embryos</h3><p>Freezing eggs and freezing embryos raise different medical and halachic considerations.</p></div><div class="bt bt-cream"><span class="v2-num">04</span><h3>Supervision and cost</h3><p>Supervision applies to retrieval, freezing and storage. Interest-free loans are available for preservation.</p></div></div>
+  </div></section>
+  <section style="padding-top:0;"><div class="wrap">
+    <div class="topic-help">
+      <div><h2>How PUAH <em>helps</em></h2><p class="v2-muted">Every PUAH service is free and confidential.</p></div>
+      <div class="v2-rp-act"><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-financial')">Interest-free loans <i>→</i></a><a class="v2-btn" onclick="go(&#39;contact&#39;)">Reach out to PUAH to discuss your options</a></div>
+    </div>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Read more <em>in the Digital Library</em></h2><p class="v2-muted">In-depth articles reviewed by PUAH's rabbinic team and medical advisors. They open on puahlibrary.org.</p></div>
+    <div class="lib-list"><a class="lib-row" href="https://www.puahlibrary.org/article/egg-freezing-every-thing-you-need-to-know" target="_blank" rel="noopener"><span>Egg Freezing: Every Thing You Need to Know</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/onco-fertility-preserving-fertility-during-cancer" target="_blank" rel="noopener"><span>Onco-Fertility: Preserving Fertility During Cancer</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/fertility-preservation-for-cancer-patients-medical-and-halachic-considerations" target="_blank" rel="noopener"><span>Fertility Preservation for Cancer Patients: Medical and Halachic Considerations</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/embryo-freezing-and-vitrification" target="_blank" rel="noopener"><span>Embryo Freezing and Vitrification</span><i>↗</i></a><a class="lib-row" href="https://www.puahlibrary.org/article/how-age-affects-female-fertility" target="_blank" rel="noopener"><span>How Age Affects Female Fertility</span><i>↗</i></a></div>
+    <div style="margin-top:22px;"><a class="btn ghost" onclick="go('resources')">About the Digital Library</a></div>
+  </div></section>
+
+  <div class="v2-final soft"><div class="v2-wrap">
+    <h2 class="v2-h2">You don't have to <em>figure this out alone</em></h2>
+    <p>Free and completely confidential.</p>
+    <div class="v2-ctas" style="justify-content:center;"><a class="v2-btn" onclick="go('contact')">Reach out to PUAH to discuss your options</a><a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+  </div></div>
+</div>
+
 <!-- ========================= WEB STYLE GUIDE ========================= -->
 <div class="page v2 sg" id="page-style-guide">
   <div class="stub-hero"><div class="wrap">
@@ -2666,7 +3057,7 @@
       </div>
       <div><h4>Organization</h4><div class="foot-links"><a onclick="go('about')">About</a><a onclick="go('services')">Services</a><a onclick="go('pillars')">The Three Pillars</a><a onclick="go('getinvolved')">Get Involved</a></div></div>
       <div><h4>Get Support</h4><div class="foot-links"><a onclick="go('services')">Guidance &amp; Support</a><a onclick="go('services')">Ask the Rabbi</a><a onclick="go('services')">The PUAHline</a><a onclick="go('dictionary')">Fertility Dictionary</a><a onclick="go('contact')">Contact</a></div></div>
-      <div><h4>Engage</h4><div class="foot-links"><a href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate</a><a onclick="go('pillars')">The Three Pillars</a><a onclick="go('resources')">Digital Library ↗</a></div></div>
+      <div><h4>Engage</h4><div class="foot-links"><a href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate</a><a onclick="go('pillars')">The Three Pillars</a><a onclick="go('resources')">Digital Library</a></div></div>
     </div>
     <div class="sep"></div>
     <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#7f8d97;">
@@ -2699,7 +3090,7 @@
     if(el){el.classList.add('active');}
     document.querySelectorAll('#nav a[data-page]').forEach(a=>{
       var dp=a.getAttribute('data-page');
-      a.classList.toggle('active', dp===page || (dp==='about' && page.indexOf('about')===0) || (dp==='services' && (page==='services' || page==='dictionary' || page.indexOf('svc-')===0)) || (dp==='pillars' && (page==='pillars' || page.indexOf('pillar-')===0)) || (dp==='getinvolved' && (page==='getinvolved' || page.indexOf('gi-')===0)));
+      a.classList.toggle('active', dp===page || (dp==='about' && page.indexOf('about')===0) || (dp==='services' && (page==='services' || page==='dictionary' || page.indexOf('svc-')===0 || page.indexOf('topic-')===0)) || (dp==='pillars' && (page==='pillars' || page.indexOf('pillar-')===0)) || (dp==='getinvolved' && (page==='getinvolved' || page.indexOf('gi-')===0)));
     });
     if(page==='dictionary'){
       var q=document.getElementById('dict-q');
@@ -2712,6 +3103,7 @@
       vs.style.display=(page==='home'||page==='home-v1')?'flex':'none';
       vs.querySelectorAll('a').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-v')===page);});
     }
+    toggleMenu(false);
     window.scrollTo({top:0,behavior:'instant'});
   }
   function routeTo(btn){
@@ -2723,11 +3115,23 @@
   function audSwap(a){
     a.parentNode.querySelectorAll('a').forEach(function(x){x.classList.toggle('on',x===a);});
     var ph=document.getElementById('aud-photo');
-    if(ph){ph.querySelector('span').textContent=a.getAttribute('data-img');}
+    var im=ph&&ph.querySelector('img');
+    if(im){im.src=a.getAttribute('data-img');}
   }
   function sgJump(id){
     var el=document.getElementById(id);
     if(el){el.scrollIntoView({behavior:'smooth'});}
+  }
+  function toggleMenu(force){
+    var m=document.getElementById('mnav'), b=document.getElementById('nav-toggle');
+    if(!m||!b){return;}
+    var open=(typeof force==='boolean')?force:!m.classList.contains('open');
+    if(open){m.style.top=b.closest('header').getBoundingClientRect().bottom+'px';}
+    m.classList.toggle('open',open);
+    m.setAttribute('aria-hidden',!open);
+    b.setAttribute('aria-expanded',open);
+    b.setAttribute('aria-label',open?'Close menu':'Open menu');
+    document.body.classList.toggle('menu-open',open);
   }
   function goHelp(){
     go('home');
