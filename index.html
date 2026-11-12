@@ -497,8 +497,7 @@
   #page-about-team .card > .media.avatar:first-child,
   #page-about-council .card > .media.avatar:first-child,
   #page-svc-guidance .card > .media.avatar:first-child,
-  #page-svc-puahline .card > .media.avatar:first-child{width:100%;height:auto;aspect-ratio:4/3;border-radius:14px;margin:0 0 16px !important;}
-  #page-about-team .card.center,#page-svc-puahline .card.center,#page-svc-guidance .card.center{text-align:left;}
+    #page-about-team .card.center,#page-svc-guidance .card.center{text-align:left;}
   #page-about-endorsements .media.avatar{display:none;}
   #page-about-endorsements .card{padding:20px 22px;text-align:left;}
 
@@ -622,6 +621,42 @@
   .v2 .lib-col-h .dot{width:12px;height:12px;border-radius:4px;padding:0;min-height:0;}
   .v2 .lib-pillars{grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(260px,auto);}
   @media(max-width:960px){.v2 .lib-cols,.v2 .lib-pillars{grid-template-columns:1fr;}}
+
+  /* ---- review round 3 additions ---- */
+  .search-btn{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:999px;border:1px solid rgba(16,40,58,.14);background:transparent;color:var(--navy);cursor:pointer;}
+  .search-btn:hover{border-color:var(--teal);color:var(--teal);}
+  .search-ov{position:fixed;inset:0;z-index:200;background:rgba(16,40,58,.42);display:none;align-items:flex-start;justify-content:center;padding:10vh 16px 16px;}
+  .search-ov.open{display:flex;}
+  .search-box{width:100%;max-width:640px;background:#fff;border-radius:16px;box-shadow:0 24px 60px rgba(16,40,58,.25);overflow:hidden;}
+  .search-in{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid rgba(16,40,58,.1);color:var(--muted);}
+  .search-in input{flex:1;border:0;outline:0;font:inherit;font-size:17px;color:var(--ink);background:transparent;min-width:0;}
+  .search-in button{border:1px solid rgba(16,40,58,.14);background:#fff;border-radius:6px;font-size:12px;padding:4px 8px;color:var(--muted);cursor:pointer;}
+  .search-res{max-height:60vh;overflow:auto;}
+  .search-res a{display:block;padding:12px 18px;border-bottom:1px solid rgba(16,40,58,.06);cursor:pointer;text-decoration:none;color:var(--ink);}
+  .search-res a:hover,.search-res a.on{background:rgba(47,154,149,.08);}
+  .search-res a b{display:block;font-size:15px;color:var(--navy);}
+  .search-res a small{display:block;font-size:12px;color:var(--teal);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;}
+  .search-res a span{display:block;font-size:13.5px;color:var(--muted);margin-top:3px;}
+  .search-res mark{background:rgba(47,154,149,.18);color:inherit;border-radius:3px;}
+  .search-res .none{padding:18px;color:var(--muted);font-size:14px;}
+  body.search-open{overflow:hidden;}
+  .dept-cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:22px;margin-top:12px;}
+  .dept-cols p{margin:8px 0 0;}
+  @media(max-width:760px){.dept-cols{grid-template-columns:1fr;gap:14px;}}
+  .council-card h3{font-size:18px;margin-bottom:6px;}
+  .council-card p{margin:10px 0 0;font-size:14px;}
+  .chk{display:flex !important;gap:10px;align-items:flex-start;font-size:14px !important;font-weight:400 !important;letter-spacing:0 !important;color:var(--ink) !important;margin:0 !important;}
+  .chk input{width:auto !important;margin-top:3px;}
+  .form button.btn{border:0;cursor:pointer;font:inherit;justify-self:start;}
+  .form-done{padding:8px 0;}
+  .form-done h3{margin-top:0;}
+  .social{display:flex;gap:14px;flex-wrap:wrap;margin-top:8px;}
+  .social a{font-size:14px;font-weight:600;color:var(--teal);text-decoration:none;}
+  .social a:hover{text-decoration:underline;}
+  .foot-social a{color:#9fadb6;font-size:13px;}
+  .book-cover{aspect-ratio:3/4;min-height:0 !important;margin-bottom:14px;}
+  .book-buy{display:flex;justify-content:space-between;align-items:center;margin-top:12px;}
+  .give-grid .card h3{font-size:19px;}
 </style>
 </head>
 <body>
@@ -662,7 +697,7 @@
           <a onclick="go('about-team')">Meet the Team<small>Leadership &amp; advisors</small></a>
           <a onclick="go('about-council')">Medical Advisory Council<small>The experts behind our integrity</small></a>
           <a onclick="go('about-endorsements')">Rabbinical Endorsements<small>Trusted across the spectrum</small></a>
-          <a onclick="go('about-testimonials')">Testimonials<small>Families in their own words</small></a>
+          <a onclick="go('about-testimonials')">Stories &amp; Testimonials<small>Read families' stories, or share yours</small></a>
         </div></div>
       </div>
       <div class="has-drop">
@@ -670,7 +705,6 @@
         <div class="dropdown"><div class="dropdown-inner">
           <a onclick="go('svc-guidance')">Guidance &amp; Support<small>Counseling &amp; coaching, every step</small></a>
           <a onclick="go('svc-ask')">Ask the Rabbi<small>Confidential halachic answers</small></a>
-          <a onclick="go('svc-puahline')">The PUAHline<small>Family-purity hotline</small></a>
           <a onclick="go('svc-lab')">Lab Supervision<small>Protecting halachic integrity</small></a>
           <a onclick="go('svc-shabbos')">Shabbos Phlebotomy &amp; Injections<small>Care that stays on schedule</small></a>
           <a onclick="go('svc-financial')">Financial Assistance<small>Grants, loans &amp; more</small></a>
@@ -681,14 +715,21 @@
         <a data-page="getinvolved" onclick="go('getinvolved')">Get Involved <svg class="caret" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <div class="dropdown"><div class="dropdown-inner">
           <a onclick="go('gi-volunteer')">Volunteer<small>Join the PUAH family</small></a>
-          <a onclick="go('gi-events')">Events<small>Gather &amp; celebrate with us</small></a>
           <a onclick="go('gi-story')">Share Your Story<small>Inspire others with your journey</small></a>
-          <a onclick="go('gi-ecards')">eCards<small>Send a card, support a family</small></a>
+          <a onclick="go('give')">Ways to Give<small>Online, stock, IRA, check &amp; more</small></a>
         </div></div>
       </div>
-      <a data-page="resources" onclick="go('resources')">Digital Library</a>
+      <div class="has-drop">
+        <a data-page="resources" onclick="go('resources')">Resources <svg class="caret" viewBox="0 0 12 12"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="dropdown"><div class="dropdown-inner">
+          <a onclick="go('resources')">Digital Library<small>160+ reviewed articles</small></a>
+          <a onclick="go('books')">Purchase Books<small>PUAH publications</small></a>
+          <a onclick="go('dictionary')">Fertility Dictionary<small>Every term, in plain English</small></a>
+        </div></div>
+      </div>
     </nav>
     <div class="header-cta">
+      <button class="search-btn" onclick="openSearch()" aria-label="Search the site" title="Search (press /)"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg></button>
       <a class="btn ghost sm hide-sm" onclick="goHelp()">How can we help?</a>
       <a class="btn solid sm" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate</a>
       <button class="nav-toggle" id="nav-toggle" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
@@ -696,19 +737,30 @@
   </div>
 </header>
 
+<!-- SEARCH -->
+<div class="search-ov" id="search-ov" aria-hidden="true" onclick="if(event.target===this)closeSearch()">
+  <div class="search-box" role="dialog" aria-label="Search the site">
+    <div class="search-in"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/></svg><input id="search-q" type="search" placeholder="Search PUAH: IVF, supervision, financial aid…" autocomplete="off" oninput="runSearch()" onkeydown="searchKey(event)"><button onclick="closeSearch()" aria-label="Close search">Esc</button></div>
+    <div class="search-res" id="search-res"></div>
+  </div>
+</div>
+
 <!-- MOBILE MENU -->
 <div class="mnav" id="mnav" aria-hidden="true">
   <div class="mnav-in">
     <details><summary>About</summary>
-      <a onclick="go('about-story')">PUAH's Story</a><a onclick="go('about-mission')">Our Mission &amp; Approach</a><a onclick="go('about-team')">Meet the Team</a><a onclick="go('about-council')">Medical Advisory Council</a><a onclick="go('about-endorsements')">Rabbinic Endorsements</a><a onclick="go('about-testimonials')">Testimonials</a>
+      <a onclick="go('about-story')">PUAH's Story</a><a onclick="go('about-mission')">Our Mission &amp; Approach</a><a onclick="go('about-team')">Meet the Team</a><a onclick="go('about-council')">Medical Advisory Council</a><a onclick="go('about-endorsements')">Rabbinic Endorsements</a><a onclick="go('about-testimonials')">Stories &amp; Testimonials</a>
     </details>
     <details><summary>Services</summary>
-      <a onclick="go('svc-guidance')">Guidance &amp; Support</a><a onclick="go('svc-ask')">Ask the Rabbi</a><a onclick="go('svc-puahline')">The PUAHline</a><a onclick="go('svc-lab')">Lab Supervision</a><a onclick="go('svc-shabbos')">Shabbos Phlebotomy &amp; Injections</a><a onclick="go('svc-financial')">Financial Assistance</a><a onclick="go('dictionary')">Fertility Dictionary</a>
+      <a onclick="go('svc-guidance')">Guidance &amp; Support</a><a onclick="go('svc-ask')">Ask the Rabbi</a><a onclick="go('svc-lab')">Lab Supervision</a><a onclick="go('svc-shabbos')">Shabbos Phlebotomy &amp; Injections</a><a onclick="go('svc-financial')">Financial Assistance</a><a onclick="go('dictionary')">Fertility Dictionary</a>
     </details>
     <details><summary>Get Involved</summary>
-      <a onclick="go('gi-volunteer')">Volunteer</a><a onclick="go('gi-events')">Events</a><a onclick="go('gi-story')">Share Your Story</a><a onclick="go('gi-ecards')">eCards</a><a onclick="go('give')">Partner &amp; Give</a>
+      <a onclick="go('gi-volunteer')">Volunteer</a><a onclick="go('gi-story')">Share Your Story</a><a onclick="go('give')">Ways to Give</a>
     </details>
-    <a class="mnav-top" onclick="go('resources')">Digital Library</a>
+    <details><summary>Resources</summary>
+      <a onclick="go('resources')">Digital Library</a><a onclick="go('books')">Purchase Books</a><a onclick="go('dictionary')">Fertility Dictionary</a>
+    </details>
+    <a class="mnav-top" onclick="toggleMenu(false);openSearch()">Search</a>
     <a class="mnav-top" onclick="go('contact')">Contact</a>
     <div class="mnav-cta">
       <a class="v2-btn" onclick="go('contact')">Speak to an advisor</a>
@@ -820,13 +872,12 @@
         <div class="rpanel" data-topic="spotting">
           <div>
             <h3>Spotting or staining during treatment</h3>
-            <p class="muted">Fertility medications often cause spotting, and whether a stain carries halachic weight depends on the details. These questions are time-sensitive. The PUAHline connects you to expert rabbis, confidentially.</p>
+            <p class="muted">Fertility medications often cause spotting, and whether a stain carries halachic weight depends on the details. These questions are time-sensitive. PUAH's rabbis can help, confidentially; call our main line at 888.993.7824.</p>
           </div>
           <div class="rhelp">
             <div class="rhelp-h">How PUAH helps</div>
-            <a onclick="go('svc-puahline')">The PUAHline <span>→</span></a>
             <a onclick="go('svc-ask')">Ask the Rabbi <span>→</span></a>
-            <a class="btn solid sm" href="tel:8053917824">Call the PUAHline</a>
+            <a class="btn solid sm" href="tel:8889937824">Call 888.993.7824</a>
             <a class="btn ghost sm" href="mailto:hotline@puahfertility.org">Email a question</a>
           </div>
         </div>
@@ -893,7 +944,7 @@
           </div>
         </div>
       </div>
-      <p class="note"><b>Design note —</b> These ten reasons are a first draft. Check the labels against what PUAHline and intake staff actually hear most, and use callers' own words where possible. Each "↗" button should deep-link to the matching hub in the Resource Library.</p>
+      <p class="note"><b>Design note —</b> These ten reasons are a first draft. Check the labels against what rabbinic and intake staff actually hear most, and use callers' own words where possible. Each "↗" button should deep-link to the matching hub in the Resource Library.</p>
     </div>
   </section>
 
@@ -905,7 +956,7 @@
       <div class="grid g3" style="margin-top:30px;">
         <div class="card" onclick="go('svc-lab')" style="cursor:pointer;"><div class="tag">Signature service</div><h3>Lab Supervision</h3><p class="muted">Trained mashgichot in fertility labs nationwide, protecting halachic integrity at every stage.</p><a class="link">Request a supervisor →</a></div>
         <div class="card" onclick="go('svc-guidance')" style="cursor:pointer;"><h3>Guidance &amp; Support</h3><p class="muted">One-on-one counseling, from the first question through treatment, including emotional support.</p><a class="link">Learn more →</a></div>
-        <div class="card" onclick="go('svc-puahline')" style="cursor:pointer;"><h3>The PUAHline</h3><p class="muted">Expert rabbis answering time-sensitive taharat hamishpacha questions.</p><a class="link">Learn more →</a></div>
+        <div class="card" onclick="go('svc-ask')" style="cursor:pointer;"><h3>Ask the Rabbi</h3><p class="muted">Confidential halachic answers from PUAH's rabbinic experts.</p><a class="link">Learn more →</a></div>
         <div class="card" onclick="go('svc-ask')" style="cursor:pointer;"><h3>Ask the Rabbi</h3><p class="muted">Confidential halachic answers from PUAH's rabbinic experts.</p><a class="link">Learn more →</a></div>
         <div class="card" onclick="go('svc-shabbos')" style="cursor:pointer;"><h3>Shabbos &amp; Injection Support</h3><p class="muted">At-home phlebotomy on Shabbos and injection house calls, so treatment stays on schedule.</p><a class="link">Learn more →</a></div>
         <div class="card" onclick="go('svc-financial')" style="cursor:pointer;"><h3>Financial Assistance</h3><p class="muted">Grants, interest-free loans and discounted care through our preferred network.</p><a class="link">Learn more →</a></div>
@@ -993,7 +1044,7 @@
       <div>
         <span class="eyebrow">Why every service is free</span>
         <h2>Families never pay for PUAH's help. Our partners make that possible.</h2>
-        <p style="color:#b7c3cc;">Every counseling session, supervised cycle, Shabbos blood draw and PUAHline call is funded by people who believe no couple should face this alone.</p>
+        <p style="color:#b7c3cc;">Every counseling session, supervised cycle, Shabbos blood draw and rabbinic question is funded by people who believe no couple should face this alone.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;">
           <a class="btn light" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate</a>
           <a class="btn on-dark" onclick="go('give')">Monthly giving &amp; legacy partnerships</a>
@@ -1092,7 +1143,7 @@
         <div class="rpanel" data-topic="ivf"><div class="v2-rp-photo"><img src="img/couple-advisor.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Starting IVF</h3><p>IVF comes with a lot of new terms, appointments and halachic questions at once. An advisor can walk you through the process, arrange lab supervision, and help with monitoring or injections that fall on Shabbos and Yom Tov.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-ivf')">About starting IVF <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Lab Supervision <i>→</i></a><a onclick="go('svc-shabbos')">Shabbos phlebotomy &amp; injections <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
         <div class="rpanel" data-topic="ttc"><div class="v2-rp-photo"><img src="img/negative-test.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Trying, and it hasn't happened yet</h3><p>Knowing when to seek help, which tests come first and which specialist to see is often the hardest part. We help you understand the first steps, find the right doctor, and get your halachic questions answered along the way.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-ttc')">About not conceiving yet <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
         <div class="rpanel" data-topic="cycles"><div class="v2-rp-photo"><img src="img/calendar.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>When ovulation seems to come before mikveh night</h3><p>This is where PUAH began. If your cycles are short or ovulation seems early, it needs to be confirmed and evaluated, medically and halachically. Many couples in this situation find a solution. Every case is individual.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-cycles')">About short cycles &amp; mikveh timing <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
-        <div class="rpanel" data-topic="spotting"><div class="v2-rp-photo"><img src="img/puahline-rabbi.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Spotting or staining during treatment</h3><p>Fertility medications often cause spotting, and whether a stain carries halachic weight depends on the details. These questions are time-sensitive. The PUAHline connects you to expert rabbis, confidentially.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-spotting')">About spotting during treatment <i>→</i></a><a onclick="go('svc-puahline')">The PUAHline <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" href="tel:8053917824">Call the PUAHline</a></div></div>
+        <div class="rpanel" data-topic="spotting"><div class="v2-rp-photo"><img src="img/puahline-rabbi.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Spotting or staining during treatment</h3><p>Fertility medications often cause spotting, and whether a stain carries halachic weight depends on the details. These questions are time-sensitive. PUAH's rabbis can help, confidentially; call our main line at 888.993.7824.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-spotting')">About spotting during treatment <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" href="tel:8889937824">Call 888.993.7824</a></div></div>
         <div class="rpanel" data-topic="male"><div class="v2-rp-photo"><img src="img/male-fertility.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Male fertility</h3><p>Male factors are part of roughly half of all fertility challenges, yet they're rarely talked about. We guide men discreetly through testing, the halachic questions around sperm collection, and referrals to leading specialists.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-male')">About male fertility <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
         <div class="rpanel" data-topic="loss"><div class="v2-rp-photo"><img src="img/pregnancy-loss.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>After a pregnancy loss</h3><p>Loss is painful and often carried in silence. Our counselors offer emotional support, help you understand what evaluation may be worthwhile, and answer the halachic questions that can follow.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-loss')">About pregnancy loss <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; emotional support <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to someone</a></div></div>
         <div class="rpanel" data-topic="genetics"><div class="v2-rp-photo"><img src="img/genetic-testing.jpg" alt="" loading="lazy"></div><div class="v2-rp-text"><h3>Genetic testing</h3><p>Carrier screening, PGT, a result you don't understand: genetics raises medical and halachic questions at the same time. We help you understand your options and connect you with genetic counseling.</p></div><div class="v2-rp-act"><a class="rp-main" onclick="go('topic-genetics')">About genetic testing <i>→</i></a><a onclick="go('svc-guidance')">Guidance &amp; Support <i>→</i></a><a onclick="go('svc-lab')">Supervision for genetic testing <i>→</i></a><a class="v2-btn" onclick="go('contact')">Speak to an advisor</a></div></div>
@@ -1111,10 +1162,10 @@
       </div>
       <div class="v2-bento">
         <a class="bt bt-solid bt-lg" onclick="go('svc-lab')"><h3>Lab Supervision</h3><p>Trained mashgichot in fertility labs nationwide, protecting halachic integrity at every stage. Fully subsidized by PUAH.</p><b>Request a supervisor →</b></a>
-        <a class="bt bt-pink bt-tall" onclick="go('svc-puahline')"><h3>The PUAHline</h3><p>Expert rabbis answering time-sensitive taharat hamishpacha questions, confidentially. Call 805.391.PUAH (7824).</p><b>Learn more →</b></a>
+        <a class="bt bt-pink bt-tall" onclick="go('svc-ask')"><h3>Ask the Rabbi</h3><p>Confidential halachic answers from PUAH's rabbinic experts, including time-sensitive taharat hamishpacha questions. Call 888.993.7824.</p><b>Ask a question →</b></a>
         <a class="bt bt-cream" onclick="go('svc-guidance')"><h3>Guidance &amp; Support</h3><p>One-on-one counseling and emotional support, from first question through treatment.</p><b>Learn more →</b></a>
-        <a class="bt bt-sky" onclick="go('svc-ask')"><h3>Ask the Rabbi</h3><p>Confidential halachic answers from PUAH's rabbinic experts.</p><b>Ask a question →</b></a>
         <a class="bt bt-sky" onclick="go('svc-shabbos')"><h3>Shabbos &amp; Injection Support</h3><p>At-home blood draws on Shabbos and injection house calls.</p><b>Learn more →</b></a>
+        <a class="bt bt-sky" onclick="go('dictionary')"><h3>Fertility Dictionary</h3><p>Medical and halachic terms in plain English.</p><b>Look up a term →</b></a>
         <a class="bt bt-cream bt-wide" onclick="go('svc-financial')"><div><h3>Financial Assistance</h3><p>Grants, interest-free loans, family fundraising and discounted care through our preferred network.</p></div><b>See your options →</b></a>
       </div>
     </div>
@@ -1196,7 +1247,7 @@
     <div class="v2-wrap">
       <div class="v2-split-head">
         <h2 class="v2-h2">Families never pay for PUAH's help. <em>Our partners make that possible.</em></h2>
-        <p class="v2-muted">Every counseling session, supervised cycle, Shabbos blood draw and PUAHline call is funded by people who believe no couple should face this alone.</p>
+        <p class="v2-muted">Every counseling session, supervised cycle, Shabbos blood draw and rabbinic question is funded by people who believe no couple should face this alone.</p>
       </div>
       <div class="v2-bento v2-bento-give">
         <div class="bt bt-teal bt-give"><h3>Give today</h3><p>One-time or monthly. Every gift keeps PUAH's services free for the next family who calls.</p><div class="v2-ctas"><a class="v2-btn light" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate</a><a class="v2-btn ghost-light" onclick="go('give')">Monthly giving</a></div></div>
@@ -1278,7 +1329,7 @@
 
 <!-- ========================= ABOUT: MISSION ========================= -->
 <div class="page v2" id="page-about-mission">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">About · Our Mission &amp; Approach</span><h1>Torah wisdom and modern medicine, <em>working as one</em></h1><p class="lead" style="max-width:66ch;">Our mission is to help every Jewish family build a healthy home — with guidance that honors both Halacha and science.</p></div></div>
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">About · Our Mission &amp; Approach</span><h1>Torah wisdom and modern medicine, <em>working as one</em></h1><p class="lead" style="max-width:66ch;">Our mission is to help Jewish couples build healthy families, with guidance that honors both Halacha and modern medicine.</p></div></div>
   <div class="breadcrumb"><div class="wrap">Home / About / Our Mission &amp; Approach</div></div>
   <section><div class="wrap" style="max-width:820px;">
     <span class="eyebrow">Our mission</span>
@@ -1329,22 +1380,26 @@
   </div></section>
   <section><div class="wrap">
     <span class="eyebrow">Rabbinical advisors by department</span><h2>Our rabbinical advisors</h2>
-    <div class="grid g3" style="margin-top:22px;">
-      <div class="card"><h3 style="font-size:17px;">Hebrew Department</h3><p class="muted" style="margin:0;">Rabbi Eliezer Altshuler · Rabbi Yossi Eitan · Rabbi Yonatan Elran · Rabbi Eliyahu Haeitan · Rabbi Aryeh Katz · Rabbi Yitzchak Nissim · Rabbi Dov Popper · Rabbi Udi Roth · Rabbi Lior Segev</p></div>
-      <div class="card"><h3 style="font-size:17px;">Spanish Department</h3><p class="muted" style="margin:0;">Rabbi Gavriel Goldman</p></div>
-      <div class="card"><h3 style="font-size:17px;">French Department</h3><p class="muted" style="margin:0;">Rabbi Binyamin David</p></div>
+    <div class="card dept-card" style="margin-top:22px;">
+      <h3 style="font-size:17px;">Hebrew, Spanish &amp; French Departments</h3>
+      <div class="dept-cols">
+        <div><div class="tag">Hebrew</div><p class="muted">Rabbi Eliezer Altshuler · Rabbi Yossi Eitan · Rabbi Yonatan Elran · Rabbi Eliyahu Haeitan · Rabbi Aryeh Katz · Rabbi Yitzchak Nissim · Rabbi Dov Popper · Rabbi Udi Roth · Rabbi Lior Segev</p></div>
+        <div><div class="tag">Spanish</div><p class="muted">Rabbi Gavriel Goldman</p></div>
+        <div><div class="tag">French</div><p class="muted">Rabbi Binyamin David</p></div>
+      </div>
     </div>
   </div></section>
   <section class="alt"><div class="wrap">
     <span class="eyebrow">Supervision Department</span><h2>Supervision team</h2>
     <div class="grid g4" style="margin-top:24px;">
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Aryeh Noyek</strong><div class="muted" style="font-size:13px;">Int'l Director of Supervision</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rivky Itzkowitz</strong><div class="muted" style="font-size:13px;">Director of Supervision, East Coast</div></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Ahuva Goldstein</strong><div class="muted" style="font-size:13px;">Director of Supervision, West Coast</div></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Denise Hirsch</strong><div class="muted" style="font-size:13px;">Director of Supervision, Florida</div></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Sherryl Steiner</strong><div class="muted" style="font-size:13px;">Director of Supervision, Toronto</div></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Tzipporah Coronel</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, West Coast</div></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Brocha Friedman</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, East Coast</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Meira Reichmann</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, East Coast</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Lisa Friedman</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, West Coast</div></div>
     </div>
   </div></section>
   <section><div class="wrap">
@@ -1366,16 +1421,35 @@
   <div class="breadcrumb"><div class="wrap">Home / About / Medical Advisory Council</div></div>
   <section><div class="wrap">
     <p style="max-width:760px;">PUAH's Medical Advisory Council is comprised of leading specialists who excel in their fields. Their expertise ensures that PUAH's guidance reflects the most current and accurate reproductive medicine, working hand-in-hand with our rabbinic advisors.</p>
-    <div class="grid g3" style="margin-top:26px;">
-      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Eric Forman, MD, HCLD</h3><div class="tag">Reproductive Endocrinology &amp; Infertility</div><p class="muted" style="margin-top:12px;">Reproductive endocrinologist and high-complexity laboratory director specializing in IVF and PGT.</p></div>
-      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Marc Goldstein, MD, DSc</h3><div class="tag">Male Reproductive Medicine &amp; Microsurgery</div><p class="muted" style="margin-top:12px;">A pioneer in male infertility and microsurgery, affiliated with Weill Cornell and The Population Council.</p></div>
-      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Brian A. Levine, MD</h3><div class="tag">Reproductive Endocrinology &amp; Infertility</div><p class="muted" style="margin-top:12px;">Founding partner and practice director of CCRM New York.</p></div>
-      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Hugh K. Miller, MD</h3><div class="tag">Obstetrics &amp; Gynecology</div><p class="muted" style="margin-top:12px;">Department of Obstetrics &amp; Gynecology, Stanford Health.</p></div>
-      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Ilan Tur-Kaspa, MD</h3><div class="tag">Reproductive Medicine &amp; Genetics</div><p class="muted" style="margin-top:12px;">President &amp; Medical Director of the Institute for Human Reproduction (IHR) and Director of the Clinical IVF-PGD Program at the Reproductive Genetics Institute, Chicago.</p></div>
-      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Paul J. Turek, MD, FACS, FRSM</h3><div class="tag">Male Fertility &amp; Microsurgery</div><p class="muted" style="margin-top:12px;">Director of The Turek Clinics, specializing in men's reproductive health.</p></div>
-      <div class="card"><div class="media avatar" style="margin-bottom:14px;"></div><h3 style="font-size:19px;">Zev Williams, MD, PhD</h3><div class="tag">Reproductive Endocrinology &amp; Infertility</div><p class="muted" style="margin-top:12px;">Chief of the Division of Reproductive Endocrinology and Infertility at Columbia University.</p></div>
+    <div class="grid g3 council-grid" style="margin-top:26px;">
+      <div class="card council-card"><h3>Baruch Abittan, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">Extend Fertility, NY</p></div>
+      <div class="card council-card"><h3>Natan Bar-Chama, MD</h3><div class="tag">Director, Male Reproductive Health</div><p class="muted">RMA of New York</p></div>
+      <div class="card council-card"><h3>Yonah Bardos, MD</h3><div class="tag">Founder; Reproductive Endocrinologist</div><p class="muted">White Glove Fertility, Miami</p></div>
+      <div class="card council-card"><h3>Boback Berookhim, MD</h3><div class="tag">Director, Male Fertility &amp; Microsurgery</div><p class="muted">Lenox Hill Hospital, NY</p></div>
+      <div class="card council-card"><h3>Anate Brauer, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">RMA of New York</p></div>
+      <div class="card council-card"><h3>Scott Chudnoff, MD</h3><div class="tag">Chair, Obstetrics &amp; Gynecology</div><p class="muted">Maimonides Medical Center, Brooklyn</p></div>
+      <div class="card council-card"><h3>Alan Copperman, MD</h3><div class="tag">CEO &amp; Managing Director</div><p class="muted">RMA of New York</p></div>
+      <div class="card council-card"><h3>Eric Forman, MD, HCLD</h3><div class="tag">Medical &amp; Laboratory Director</div><p class="muted">Columbia University Fertility Center</p></div>
+      <div class="card council-card"><h3>Michael Glassner, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">Main Line Fertility, PA</p></div>
+      <div class="card council-card"><h3>Ellen Goldstein, MD</h3><div class="tag">Founder; Reproductive Endocrinologist</div><p class="muted">Beverly Hills Fertility</p></div>
+      <div class="card council-card"><h3>Marc Goldstein, MD, DSc</h3><div class="tag">Male Reproductive Medicine &amp; Microsurgery</div><p class="muted">Weill Cornell Medicine</p></div>
+      <div class="card council-card"><h3>Joshua Klein, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">Premium Health, NY</p></div>
+      <div class="card council-card"><h3>Alexander Kotlyar, MD</h3><div class="tag">Reproductive Endocrinologist; Director of Resident Education</div><p class="muted">Pinnacle Fertility, NY</p></div>
+      <div class="card council-card"><h3>Brian A. Levine, MD</h3><div class="tag">Founding Partner &amp; Practice Director</div><p class="muted">CCRM Fertility, NY</p></div>
+      <div class="card council-card"><h3>Harry Lieman, MD</h3><div class="tag">Division Director, Reproductive Endocrinology &amp; Infertility</div><p class="muted">Montefiore / Albert Einstein, NY</p></div>
+      <div class="card council-card"><h3>Hugh K. Miller, MD</h3><div class="tag">Obstetrics &amp; Gynecology</div><p class="muted">Stanford Health</p></div>
+      <div class="card council-card"><h3>Steven Presser, MD</h3><div class="tag">Founder; Fertility Specialist</div><p class="muted">IVFLA Fertility, Beverly Hills</p></div>
+      <div class="card council-card"><h3>Peter Schlegel, MD</h3><div class="tag">Reproductive Urologist</div><p class="muted">NY Men's Health Medical</p></div>
+      <div class="card council-card"><h3>Tomer Singer, MD</h3><div class="tag">System Chief, Reproductive Endocrinology &amp; Infertility</div><p class="muted">Northwell Fertility, NY</p></div>
+      <div class="card council-card"><h3>Ilan Tur-Kaspa, MD</h3><div class="tag">President &amp; Medical Director</div><p class="muted">Institute for Human Reproduction (IHR), Chicago</p></div>
+      <div class="card council-card"><h3>Paul J. Turek, MD, FACS, FRSM</h3><div class="tag">Director, Men's Reproductive Health</div><p class="muted">The Turek Clinics</p></div>
+      <div class="card council-card"><h3>Rachel Weinerman, MD</h3><div class="tag">Reproductive Endocrinologist; REI Fellowship Program Director</div><p class="muted">University Hospitals Cleveland Medical Center</p></div>
+      <div class="card council-card"><h3>Sahar Wertheimer, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">HRC Fertility, Beverly Hills</p></div>
+      <div class="card council-card"><h3>Philip Werthman, MD</h3><div class="tag">Founder; Reproductive Urologist</div><p class="muted">Center for Male Reproductive Medicine, LA</p></div>
+      <div class="card council-card"><h3>Zev Williams, MD, PhD</h3><div class="tag">Chief, Reproductive Endocrinology &amp; Infertility</div><p class="muted">Columbia University Fertility Center</p></div>
+      <div class="card council-card"><h3>Nurit Winkler, MD</h3><div class="tag">Co-Founder; Reproductive Endocrinologist</div><p class="muted">Los Angeles Reproductive Center</p></div>
     </div>
-    <p class="note"><b>Wireframe note —</b> Council members pulled from puahfertility.org/board. Confirm current roster and titles before publishing.</p>
+    <p class="note"><b>Wireframe note —</b> Roster merged from puahfertility.org/board (22 members) plus four physicians already on this site (M. Goldstein, Miller, Tur-Kaspa, Turek) who are not on the old board page. Confirm those four and all titles before publishing.</p>
   </div></section>
 </div>
 
@@ -1384,28 +1458,28 @@
   <div class="stub-hero"><div class="wrap"><span class="eyebrow">About · Rabbinical Endorsements</span><h1>Trusted across <em>the religious spectrum</em></h1><p class="lead" style="max-width:66ch;">PUAH's work carries the endorsement of leading rabbinic authorities from communities around the world.</p></div></div>
   <div class="breadcrumb"><div class="wrap">Home / About / Rabbinical Endorsements</div></div>
   <section><div class="wrap">
-    <p style="max-width:760px;">PUAH is honored to carry the endorsement and guidance of leading rabbinic authorities from across the religious spectrum, in Israel and around the world. Many have written formal letters of support, viewable on request.</p>
+    <p style="max-width:760px;">PUAH is honored to carry the endorsement and guidance of leading rabbinic authorities from across the religious spectrum, in Israel and around the world. Many have written formal letters of support; select "View letter" to read them.</p>
     <div class="grid g4" style="margin-top:26px;">
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yisroel Belsky zt"l</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Dovid Cohen</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yisroel Belsky zt"l</strong><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/belsky.jpg" target="_blank" rel="noopener">View letter →</a></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Dovid Cohen</strong><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/cohen.jpg" target="_blank" rel="noopener">View letter →</a></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yosef Yisroel Eisenberger</strong><div class="muted" style="font-size:13px;">Skverer Dayan, New Square</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Mordechai Eliyahu zt"l</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Mordechai Eliyahu zt"l</strong><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/eliyahu.jpg" target="_blank" rel="noopener">View letter →</a></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yekusiel Farkash</strong></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Reuven Feinstein</strong></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Zalman Nechemia Goldberg</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Zalman Nechemia Goldberg</strong><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/goldberg-shechter.jpg" target="_blank" rel="noopener">View letter →</a></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Shamai Gross</strong></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yitzchak Kaduri zt"l</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Shmuel Kamenetsky</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav David Lau</strong><div class="muted" style="font-size:13px;">Chief Rabbi of Israel</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yisroel Meir Lau</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Shalom Messas zt"l</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Noach I. Oelbaum</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Herschel Schachter</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yitzchak Kaduri zt"l</strong><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/kadurri.jpg" target="_blank" rel="noopener">View letter →</a></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Shmuel Kamenetsky</strong><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/kaminetsky.jpg" target="_blank" rel="noopener">View letter →</a></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav David Lau</strong><div class="muted" style="font-size:13px;">Chief Rabbi of Israel</div><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/david-lau.jpg" target="_blank" rel="noopener">View letter →</a></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yisroel Meir Lau</strong><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/lau.jpg" target="_blank" rel="noopener">View letter →</a></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Shalom Messas zt"l</strong><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/messas.jpg" target="_blank" rel="noopener">View letter →</a></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Noach I. Oelbaum</strong><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/oelbaum.jpg" target="_blank" rel="noopener">View letter →</a></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Herschel Schachter</strong><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/shachter.jpg" target="_blank" rel="noopener">View letter →</a></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Moshe Shternbuch</strong></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Skverer Rebbe</strong></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Mordechai Willig</strong></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Ovadia Yosef zt"l</strong><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yitzchak Yosef</strong><div class="muted" style="font-size:13px;">Rishon LeZion</div><div class="link" style="font-size:12px;margin-top:6px;">View letter →</div></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Ovadia Yosef zt"l</strong><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/yosef.jpg" target="_blank" rel="noopener">View letter →</a></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yitzchak Yosef</strong><div class="muted" style="font-size:13px;">Rishon LeZion</div><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/yitzchak-yosef.jpg" target="_blank" rel="noopener">View letter →</a></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Gavriel Zinner</strong><div class="muted" style="font-size:13px;">Nitei Gavriel</div></div>
     </div>
     <p class="note"><b>Wireframe note —</b> Names pulled from puahfertility.org/endorsements. "View letter" appears where scanned letters exist; wire these to the letter images/PDFs.</p>
@@ -1414,8 +1488,8 @@
 
 <!-- ========================= ABOUT: TESTIMONIALS ========================= -->
 <div class="page v2" id="page-about-testimonials">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">About · Testimonials</span><h1>Families, <em>in their own words</em></h1><p class="lead" style="max-width:64ch;">The heart of PUAH's work is the people we walk beside.</p></div></div>
-  <div class="breadcrumb"><div class="wrap">Home / About / Testimonials</div></div>
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Stories &amp; Testimonials</span><h1>Families, <em>in their own words</em></h1><p class="lead" style="max-width:64ch;">The heart of PUAH's work is the people we walk beside. Read their stories, or share your own.</p></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / About / Stories &amp; Testimonials</div></div>
   <section><div class="wrap">
     <div class="v2-quotes">
       <div class="card"><p class="quote" style="font-size:18px;">"You guided us throughout all the years of treatment and listened to us with much patience and understanding. You not only assisted us with all our medical and halachic problems, but also helped us deal with our emotional pain."</p><p class="muted" style="margin:12px 0 0;">— Anonymous, Haifa</p></div>
@@ -1425,24 +1499,42 @@
       <div class="card"><p class="quote" style="font-size:18px;">"You were an integral part of making sure our 'project' was halachically followed and gave us a lot of peace of mind. We can't thank you enough for all of your help."</p><p class="muted" style="margin:12px 0 0;">— Happy Parents, New York</p></div>
       <div class="card"><p class="quote" style="font-size:18px;">"When I was told that chemotherapy can cause infertility, I felt utterly hopeless. As soon as I got in touch with PUAH I knew that I was in good hands. I don't think words are enough to truly thank you."</p><p class="muted" style="margin:12px 0 0;">— A Growing Family, Los Angeles, CA</p></div>
     </div>
-    <div class="center" style="margin-top:34px;"><p class="muted" style="max-width:56ch;margin:0 auto 14px;">Every journey matters, whatever its outcome. If PUAH helped you through a decision, a difficult time or a question, we'd be honored to hear about it.</p><a class="btn ghost" onclick="go('gi-story')">Share your story →</a></div>
+    <div class="center" style="margin-top:34px;"><a class="btn ghost" onclick="scrollToId('share-story')">Share your story →</a></div>
     <p class="note"><b>Content note —</b> Collect written consent for every story, and include stories that don't end in a pregnancy, such as support through loss, a hard decision, or getting supervision arranged.</p>
+  </div></section>
+  <section class="alt" id="share-story"><div class="wrap grid g2" style="gap:48px;align-items:start;">
+    <div>
+      <span class="eyebrow">Share your story</span>
+      <h2>Your story can give <em>someone else hope</em></h2>
+      <p>So many families walk this road feeling alone. By sharing your experience, you remind others that there is guidance, community and hope.</p>
+      <p class="muted">Every journey matters, whatever its outcome: a diagnosis, a hard decision, support through loss, or getting supervision arranged. You choose whether your name appears, and nothing is published without your written permission.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">Tell us your story</h3>
+      <form class="form" data-inbox="story" data-subject="Story submission" onsubmit="return sendForm(this)">
+        <div class="row2"><div><label>First name</label><input name="First name" type="text" autocomplete="given-name"></div><div><label>Last name (optional)</label><input name="Last name" type="text" autocomplete="family-name"></div></div>
+        <div class="row2"><div><label>Email</label><input name="Email" type="email" autocomplete="email" required></div><div><label>City (optional)</label><input name="City" type="text" autocomplete="address-level2"></div></div>
+        <div><label>Your story</label><textarea name="Story" required style="min-height:160px;" placeholder="Share as much or as little as you're comfortable with."></textarea></div>
+        <div><label>How should we credit you?</label><select name="Credit"><option>Anonymous</option><option>First name and city</option><option>Full name</option></select></div>
+        <label class="chk"><input type="checkbox" name="Consent" value="I give PUAH permission to contact me about publishing my story" required> PUAH may contact me about publishing my story. Nothing is published without my approval.</label>
+        <button class="btn solid" type="submit">Send my story</button>
+      </form>
+    </div>
   </div></section>
 </div>
 
 <!-- ========================= SERVICES ========================= -->
 <div class="page v2" id="page-services">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services</span><h1>Support for <em>every step of the journey</em></h1><p class="lead" style="max-width:60ch;">Free, confidential, and carried out in accordance with Halacha.</p><div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" onclick="go('contact')">Speak to an advisor</a><a class="btn ghost" href="tel:8889937824">Call 888.993.7824</a></div></div></div>
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services</span><h1>Support for <em>every step of the journey</em></h1><p class="lead" style="max-width:60ch;">Confidential, compassionate guidance, carried out in accordance with Halacha.</p><div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" onclick="go('contact')">Speak to an advisor</a><a class="btn ghost" href="tel:8889937824">Call 888.993.7824</a></div></div></div>
   <div class="breadcrumb"><div class="wrap">Home / Services</div></div>
   <section><div class="wrap">
     <div class="v2-bento">
       <a class="bt bt-solid bt-lg" onclick="go('svc-lab')"><h3>Lab Supervision</h3><p>Trained mashgichot in fertility labs nationwide, protecting halachic integrity at every stage. Fully subsidized by PUAH.</p><b>Request a supervisor →</b></a>
-      <a class="bt bt-teal bt-tall" onclick="go('svc-puahline')"><h3>The PUAHline</h3><p>Expert rabbis answering time-sensitive taharat hamishpacha questions, confidentially. Call 805.391.PUAH (7824).</p><b>Learn more →</b></a>
+      <a class="bt bt-teal bt-tall" onclick="go('svc-ask')"><h3>Ask the Rabbi</h3><p>Confidential halachic answers from PUAH's rabbinic experts, including time-sensitive taharat hamishpacha questions. Call 888.993.7824.</p><b>Ask a question →</b></a>
       <a class="bt bt-cream" onclick="go('svc-guidance')"><h3>Guidance &amp; Support</h3><p>One-on-one counseling and emotional support through the whole journey.</p><b>Learn more →</b></a>
-      <a class="bt bt-sky" onclick="go('svc-ask')"><h3>Ask the Rabbi</h3><p>Confidential halachic answers from PUAH's rabbinic experts.</p><b>Ask a question →</b></a>
       <a class="bt bt-pink" onclick="go('svc-shabbos')"><h3>Shabbos &amp; Injection Support</h3><p>At-home blood draws on Shabbos and injection house calls.</p><b>Learn more →</b></a>
       <a class="bt bt-cream bt-wide" onclick="go('svc-financial')"><div><h3>Financial Assistance</h3><p>Grants, interest-free loans, family fundraising and discounted care.</p></div><b>See your options →</b></a>
-      <a class="bt bt-navy" onclick="go('dictionary')"><span class="v2-chip">Moving to the library</span><h3>Fertility Dictionary</h3><p>110 medical and halachic terms in plain English.</p><b>Look up a term →</b></a>
+      <a class="bt bt-navy bt-wide" onclick="go('dictionary')"><div><span class="v2-chip">Moving to the library</span><h3>Fertility Dictionary</h3><p>110 medical and halachic terms in plain English.</p></div><b>Look up a term →</b></a>
     </div>
   </div></section>
 </div>
@@ -1487,7 +1579,7 @@
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Shulamis Mayerfeld</strong><div class="tag">LCSW</div><p class="muted" style="font-size:13px;margin-top:10px;">Uses a psychodynamic approach, integrating play therapy, CBT, systems, narrative, and strength-based methods tailored to each client.</p></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Karen Wasserstein</strong><div class="tag">PsyD</div><p class="muted" style="font-size:13px;margin-top:10px;">Specializes in therapy for individuals and couples navigating family-building, including third-party reproduction consultations.</p></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Daniela Gemal</strong><div class="tag">LCSW</div><p class="muted" style="font-size:13px;margin-top:10px;">Helps individuals and couples with anxiety, depression, grief, and trauma to enhance emotional well-being and fulfillment.</p></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Bassy Schwartz</strong><div class="tag">LMFT</div><p class="muted" style="font-size:13px;margin-top:10px;">A warm, easy-going approach specializing in marital/premarital challenges, relationships, and trauma using EFT.</p></div>
+      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Elimor Ryzman</strong><div class="tag">Mental Health Specialist</div><p class="muted" style="font-size:13px;margin-top:10px;">Member of the PUAH Cares Team, offering emotional support through every stage of the fertility journey.</p></div>
     </div>
     <h3 style="margin-top:34px;">Rabbinical advisors</h3>
     <div class="grid g2" style="margin-top:16px;">
@@ -1529,40 +1621,6 @@
   </div></section>
 </div>
 
-<!-- ========================= SVC: PUAHLINE ========================= -->
-<div class="page v2" id="page-svc-puahline">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services · The PUAHline</span><h1>Family purity questions, <em>answered by expert rabbis</em></h1><p class="lead" style="max-width:66ch;">Our hotline for all taharat hamishpacha (family purity) questions — answered by expert rabbis, confidentially and professionally.</p><div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" href="tel:8053917824">Call 805.391.PUAH (7824)</a><a class="btn ghost" href="mailto:hotline@puahfertility.org">hotline@puahfertility.org</a></div></div></div>
-  <div class="breadcrumb"><div class="wrap">Home / Services / The PUAHline</div></div>
-  <section><div class="wrap grid g2" style="align-items:center;">
-    <div>
-      <span class="eyebrow">A critical resource</span>
-      <h2>Expert answers <em>when you need them</em></h2>
-      <p>Since the laws of taharat hamishpacha are often complicated and time-sensitive, the PUAHline serves as a critical resource for anyone who is unable to reach their local rabbi. Your call will be answered by expert rabbis in the most confidential and professional manner.</p>
-    </div>
-    <div class="card">
-      <h3>PUAHline Hours</h3>
-      <p class="muted" style="margin-bottom:6px;"><em>Summer hours (EDT)</em></p>
-      <p style="margin:0;"><strong>Sunday – Thursday</strong><br>3:00pm – 8:00pm</p>
-      <p style="margin:10px 0 0;"><strong>Friday</strong><br>12:00pm – 1 hour before candle lighting</p>
-      <p style="margin:10px 0 0;"><strong>Motzei Shabbat</strong><br>1.5 hours after candle lighting – 10:00pm</p>
-      <p class="note"><b>Note —</b> Hours are seasonal; confirm current schedule before publishing.</p>
-    </div>
-  </div></section>
-  <section class="alt"><div class="wrap">
-    <span class="eyebrow">Our poskim</span>
-    <h2>The PUAHline rabbis</h2>
-    <div class="grid g4" style="margin-top:24px;">
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Chaim Jachter</strong><div class="muted" style="font-size:13px;">Sephardic Cong. of Teaneck; Dayan, Beth Din of Elizabeth</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Aryeh Lebowitz</strong><div class="muted" style="font-size:13px;">Rav, Bais Haknesses of North Woodmere</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Avi Lebowitz</strong><div class="muted" style="font-size:13px;">Rosh Kollel, Jewish Study Network, Palo Alto</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Doniel Neustadt</strong><div class="muted" style="font-size:13px;">Rav, Pine River Village, Lakewood, NJ</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Noach Isaac Oelbaum</strong><div class="muted" style="font-size:13px;">Mara D'Asra, Khal Nachlas Yitzchok</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Elan Segelman</strong><div class="muted" style="font-size:13px;">Rabbinic Advisor — America</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Gideon Weitzman</strong><div class="muted" style="font-size:13px;">PUAH Senior Advisor; Rav, Merkaz Modiin</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rabbi Mordechai Willig</strong><div class="muted" style="font-size:13px;">Rosh Yeshiva, RIETS; Rav, Young Israel of Riverdale</div></div>
-    </div>
-  </div></section>
-</div>
 
 <!-- ========================= SVC: LAB SUPERVISION ========================= -->
 <div class="page v2" id="page-svc-lab">
@@ -1602,19 +1660,18 @@
     </div>
     <div class="card">
       <h3 style="margin-top:0;">Supervision request</h3>
-      <form class="form" onsubmit="return false;">
-        <div class="row2"><div><label>Name</label><input type="text" autocomplete="name"></div><div><label>Phone</label><input type="tel" autocomplete="tel"></div></div>
-        <div><label>Email</label><input type="email" autocomplete="email"></div>
-        <div class="row2"><div><label>Clinic / lab</label><input type="text"></div><div><label>City</label><input type="text"></div></div>
+      <form class="form" data-inbox="supervision" data-subject="Supervision request" onsubmit="return sendForm(this)">
+        <div class="row2"><div><label>Name</label><input name="Name" type="text" autocomplete="name" required></div><div><label>Phone</label><input name="Phone" type="tel" autocomplete="tel" required></div></div>
+        <div><label>Email</label><input name="Email" type="email" autocomplete="email" required></div>
+        <div class="row2"><div><label>Clinic / lab</label><input name="Clinic" type="text"></div><div><label>City</label><input name="City" type="text"></div></div>
         <div class="row2">
-          <div><label>Procedure</label><select><option>IVF</option><option>IUI</option><option>Frozen embryo transfer</option><option>Egg freezing</option><option>Sperm freezing</option><option>Surgical sperm retrieval</option><option>Genetic testing (biopsy)</option><option>Not sure yet</option></select></div>
-          <div><label>Expected start date</label><input type="date"></div>
+          <div><label>Procedure</label><select name="Procedure"><option>IVF</option><option>IUI</option><option>Frozen embryo transfer</option><option>Egg freezing</option><option>Sperm freezing</option><option>Surgical sperm retrieval</option><option>Genetic testing (biopsy)</option><option>Not sure yet</option></select></div>
+          <div><label>Expected start date</label><input name="Expected start date" type="date"></div>
         </div>
-        <div><label>Anything else we should know? (optional)</label><textarea></textarea></div>
-        <a class="btn solid">Send request</a>
-        <p class="fine">Your details are seen only by PUAH's supervision coordinators. For anything within 24 hours, please call 646-809-1407.</p>
+        <div><label>Anything else we should know? (optional)</label><textarea name="Notes"></textarea></div>
+        <button class="btn solid" type="submit">Send request</button>
+        <p class="fine">Sent to supervision@puahfertility.org and seen only by PUAH's supervision coordinators. For anything within 24 hours, please call 646-809-1407.</p>
       </form>
-      <p class="note"><b>Build note —</b> Wire this form to the Resource Library's existing submissions system and email notifications, so there's one inbox for every request.</p>
     </div>
   </div></section>
   <section class="alt"><div class="wrap">
@@ -1639,7 +1696,7 @@
 
 <!-- ========================= SVC: FINANCIAL ASSISTANCE ========================= -->
 <div class="page v2" id="page-svc-financial">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services · Financial Assistance</span><h1>Easing the financial burden <em>of treatment</em></h1><p class="lead" style="max-width:66ch;">Multiple pathways — grants, interest-free loans, community fundraising, and a preferred network — to support couples through their fertility journey.</p><div style="margin-top:18px;"><a class="btn solid" onclick="go('contact')">Contact us confidentially</a></div></div></div>
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Services · Financial Assistance</span><h1>Easing the financial burden <em>of treatment</em></h1><p class="lead" style="max-width:66ch;">Multiple pathways — grants, interest-free loans, community fundraising, and a preferred network — to support couples through their fertility journey.</p><div style="margin-top:18px;"><a class="btn solid" onclick="scrollToId('apply-financial')">Apply confidentially</a></div></div></div>
   <div class="breadcrumb"><div class="wrap">Home / Services / Financial Assistance</div></div>
   <section><div class="wrap">
     <div class="grid g2">
@@ -1649,6 +1706,25 @@
       <div class="card"><div class="tag">04</div><h3 style="margin-top:8px;">PUAH Preferred Network</h3><p class="muted">Partnerships with fertility labs worldwide offer discounted rates and concierge care for the PUAH community. A medication discount program with partner pharmacies makes essential fertility medications more accessible and affordable.</p></div>
     </div>
     <p style="margin-top:22px;">Together, this comprehensive support system — grants, interest-free loans, FundMe campaigns, and the PUAH Preferred Network — offers multiple pathways to address financial and treatment needs at every level. All personal data is kept strictly confidential.</p>
+  </div></section>
+  <section id="apply-financial"><div class="wrap grid g2" style="gap:48px;align-items:start;">
+    <div>
+      <span class="eyebrow">Apply confidentially</span>
+      <h2>Start a financial <em>assistance request</em></h2>
+      <p>Tell us a little about your situation and which kind of help you're interested in. Your request goes directly to PUAH's financial assistance (gemach) team, who will contact you to explain eligibility and next steps.</p>
+      <p class="muted">All personal and financial information is kept strictly confidential. Questions? Call <a href="tel:8889937824">888.993.7824</a>.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">Financial assistance request</h3>
+      <form class="form" data-inbox="financial" data-subject="Financial assistance request" onsubmit="return sendForm(this)">
+        <div class="row2"><div><label>First name</label><input name="First name" type="text" autocomplete="given-name" required></div><div><label>Last name</label><input name="Last name" type="text" autocomplete="family-name" required></div></div>
+        <div class="row2"><div><label>Phone</label><input name="Phone" type="tel" autocomplete="tel" required></div><div><label>Email</label><input name="Email" type="email" autocomplete="email" required></div></div>
+        <div class="row2"><div><label>Interested in</label><select name="Interested in"><option>Grant</option><option>Interest-free loan</option><option>PUAH FundMe campaign</option><option>Preferred Network discounts</option><option>Not sure</option></select></div><div><label>City / state</label><input name="City" type="text" autocomplete="address-level2"></div></div>
+        <div><label>Anything we should know? (optional)</label><textarea name="Message" placeholder="Treatment stage, clinic, timeline. Share only what you're comfortable with."></textarea></div>
+        <button class="btn solid" type="submit">Send request</button>
+        <p class="fine">Sent to PUAH's financial assistance team (gemach) only.</p>
+      </form>
+    </div>
   </div></section>
   <section class="alt"><div class="wrap">
     <div class="v2-split-head"><h2>Read more <em>in the Digital Library</em></h2><p class="v2-muted">In-depth articles reviewed by PUAH's rabbinic team and medical advisors. They open on puahlibrary.org.</p></div>
@@ -1784,11 +1860,10 @@
   <div class="stub-hero"><div class="wrap"><span class="eyebrow">Get Involved</span><h1>Join <em>the PUAH family</em></h1><p class="lead" style="max-width:64ch;">There are many ways to help turn the dream of a baby into a reality: with your time, your voice and your heart.</p></div></div>
   <div class="breadcrumb"><div class="wrap">Home / Get Involved</div></div>
   <section><div class="wrap">
-    <div class="v2-stage four">
+    <div class="v2-stage">
       <a class="bt bt-photo" onclick="go('gi-volunteer')"><div class="bt-ph"><span>Volunteers</span></div><div class="bt-cap"><h3>Volunteer</h3><p>Share your skills and time to support PUAH's mission.</p><b>Learn more →</b></div></a>
-      <a class="bt bt-photo" onclick="go('gi-events')"><div class="bt-ph"><span>Community event</span></div><div class="bt-cap"><h3>Events</h3><p>Gather and celebrate the families we build together.</p><b>See what's coming up →</b></div></a>
-      <a class="bt bt-photo" onclick="go('gi-story')"><div class="bt-ph"><span>Family moment</span></div><div class="bt-cap"><h3>Share Your Story</h3><p>Give someone else hope by sharing your journey.</p><b>Share →</b></div></a>
-      <a class="bt bt-photo" onclick="go('gi-ecards')"><div class="bt-ph"><span>eCard</span></div><div class="bt-cap"><h3>eCards</h3><p>Mark a simcha or milestone while supporting a family.</p><b>Send a card →</b></div></a>
+      <a class="bt bt-photo" onclick="go('gi-story')"><div class="bt-ph"><span>Family moment</span></div><div class="bt-cap"><h3>Stories &amp; Testimonials</h3><p>Read families' stories, or give someone else hope by sharing yours.</p><b>Read &amp; share →</b></div></a>
+      <a class="bt bt-photo" onclick="go('give')"><div class="bt-ph"><span>Giving</span></div><div class="bt-cap"><h3>Ways to Give</h3><p>Online, stock, IRA, donor-advised fund, check and more.</p><b>See ways to give →</b></div></a>
     </div>
   </div></section>
   <section class="dark"><div class="wrap" style="max-width:760px;text-align:center;">
@@ -1806,75 +1881,40 @@
       <span class="eyebrow">Why volunteer</span>
       <h2>Your time makes families possible</h2>
       <p>PUAH requires a tremendous amount of time and energy, and volunteers are at the heart of everything we do. The zechusim (merits) associated with such an endeavor are extremely fulfilling and rewarding.</p>
-      <p>Tell us how you'd like to help using the form, and we look forward to meeting you.</p>
+      <p>Tell us how you'd like to help using the form. It goes to PUAH's main office, and our Awareness &amp; Events team will be in touch to find the right fit.</p>
+      <p class="muted">Prefer to call? <a href="tel:8889937824">888.993.7824</a></p>
     </div>
     <div class="card">
-      <h3>How I can assist PUAH</h3>
-      <div style="display:grid;gap:10px;margin-top:10px;">
-        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Host a get-together in my home</label>
-        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Help with an awareness talk in my community</label>
-        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Help with financial and insurance advice</label>
-        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Help with calls before an event</label>
-        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Network and help find sponsors</label>
-        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Offer secretarial / computer skills</label>
-        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Grants &amp; charitable foundations experience</label>
-        <label style="display:flex;gap:10px;align-items:center;"><input type="checkbox"> Other</label>
+      <h3>Volunteer sign-up</h3>
+      <form class="form" data-inbox="volunteer" data-subject="Volunteer sign-up" onsubmit="return sendForm(this)">
+      <div class="row2"><div><label>First name</label><input name="First name" type="text" autocomplete="given-name" required></div><div><label>Last name</label><input name="Last name" type="text" autocomplete="family-name" required></div></div>
+      <div class="row2"><div><label>Email</label><input name="Email" type="email" autocomplete="email" required></div><div><label>Phone</label><input name="Phone" type="tel" autocomplete="tel"></div></div>
+      <div><label>City / community</label><input name="City" type="text" autocomplete="address-level2"></div>
+      <label style="margin:6px 0 0;">How I can assist PUAH</label>
+      <div style="display:grid;gap:10px;">
+        <label class="chk"><input type="checkbox" name="Ways to help" value="Host a get-together in my home"> Host a get-together in my home</label>
+        <label class="chk"><input type="checkbox" name="Ways to help" value="Help with an awareness talk in my community"> Help with an awareness talk in my community</label>
+        <label class="chk"><input type="checkbox" name="Ways to help" value="Help with financial and insurance advice"> Help with financial and insurance advice</label>
+        <label class="chk"><input type="checkbox" name="Ways to help" value="Help with calls before an event"> Help with calls before an event</label>
+        <label class="chk"><input type="checkbox" name="Ways to help" value="Network and help find sponsors"> Network and help find sponsors</label>
+        <label class="chk"><input type="checkbox" name="Ways to help" value="Offer secretarial / computer skills"> Offer secretarial / computer skills</label>
+        <label class="chk"><input type="checkbox" name="Ways to help" value="Grants & charitable foundations experience"> Grants &amp; charitable foundations experience</label>
+        <label class="chk"><input type="checkbox" name="Ways to help" value="Other"> Other</label>
       </div>
-      <div style="margin-top:16px;"><a class="btn solid">Submit</a></div>
+      <div><label>Anything else? (optional)</label><textarea name="Message" placeholder="Skills, availability, or the event you'd like to help with."></textarea></div>
+      <button class="btn solid" type="submit">Submit</button>
+      <p class="fine">Sent to PUAH's main office (Awareness &amp; Events). We'll reply by email or phone.</p>
+      </form>
     </div>
   </div></section>
 </div>
 
 <!-- ========================= GI: EVENTS ========================= -->
-<div class="page v2" id="page-gi-events">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Get Involved · Events</span><h1>Celebrating the families <em>we build together</em></h1><p class="lead" style="max-width:64ch;">Join us throughout the year for gatherings that support PUAH's mission and community.</p></div></div>
-  <div class="breadcrumb"><div class="wrap">Home / Get Involved / Events</div></div>
-  <section><div class="wrap">
-    <span class="eyebrow">Upcoming</span><h2>What's coming up</h2>
-    <div class="grid g2" style="margin-top:22px;">
-      <div class="card"><div class="tag">July 28, 2026 · 7:30 PM</div><h3 style="margin-top:10px;">Stars, Strings &amp; Stories</h3><p class="muted">Celebrating the Families We Build Together — a memorable summer evening under the open sky featuring live music and BBQ.</p><a class="btn ghost sm">Learn more &amp; RSVP</a></div>
-      <div class="card"><div class="tag">Year-round</div><h3 style="margin-top:10px;">Daily Giving</h3><p class="muted">Join PUAH's Daily Giving community and make an ongoing impact for families in need.</p><a class="btn ghost sm">Participate</a></div>
-    </div>
-    <p class="note"><b>Wireframe note —</b> Events feed can pull from PUAH's live calendar. Past-events archive and photo galleries can live here too.</p>
-  </div></section>
-</div>
 
-<!-- ========================= GI: SHARE YOUR STORY ========================= -->
-<div class="page v2" id="page-gi-story">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Get Involved · Share Your Story</span><h1>Your story can give <em>someone else hope</em></h1><p class="lead" style="max-width:64ch;">The journey to parenthood is deeply personal — and deeply powerful when shared.</p></div></div>
-  <div class="breadcrumb"><div class="wrap">Home / Get Involved / Share Your Story</div></div>
-  <section><div class="wrap grid g2" style="align-items:center;">
-    <div>
-      <span class="eyebrow">Be a voice of hope</span>
-      <h2>Share your experience with PUAH</h2>
-      <p>So many families walk the fertility journey feeling alone. By sharing your story, you remind others that there is guidance, community, and hope — and that they are never alone.</p>
-      <p>Submissions can be shared anonymously, and every story is treated with care and discretion.</p>
-      <div style="margin-top:16px;"><a class="btn solid">Share your story</a></div>
-      <p class="note"><b>Wireframe note —</b> On the current site this section is "coming soon." Suggested build: a simple submission form (name optional, email, your story) with consent and anonymity options.</p>
-    </div>
-    <div class="media tall"><span class="lbl">Photo — family / hopeful moment</span></div>
-  </div></section>
-</div>
-
-<!-- ========================= GI: ECARDS ========================= -->
-<div class="page v2" id="page-gi-ecards">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Get Involved · eCards</span><h1>Send a card. <em>Support a family.</em></h1><p class="lead" style="max-width:64ch;">Mark a simcha, honor a loved one, or share a word of comfort — while helping build Jewish families.</p></div></div>
-  <div class="breadcrumb"><div class="wrap">Home / Get Involved / eCards</div></div>
-  <section><div class="wrap">
-    <p style="max-width:720px;">Celebrate a birth, wedding, or milestone — or send wishes of comfort and refuah — with a PUAH eCard. Your dedication supports PUAH's work on behalf of families navigating fertility.</p>
-    <div class="grid g4" style="margin-top:24px;">
-      <div class="card center"><div class="media" style="min-height:120px;"><span class="lbl">Mazel Tov</span></div><h3 style="font-size:17px;margin-top:14px;">Simcha &amp; Mazel Tov</h3></div>
-      <div class="card center"><div class="media" style="min-height:120px;"><span class="lbl">In Honor</span></div><h3 style="font-size:17px;margin-top:14px;">In Honor Of</h3></div>
-      <div class="card center"><div class="media" style="min-height:120px;"><span class="lbl">In Memory</span></div><h3 style="font-size:17px;margin-top:14px;">In Memory Of</h3></div>
-      <div class="card center"><div class="media" style="min-height:120px;"><span class="lbl">Refuah</span></div><h3 style="font-size:17px;margin-top:14px;">Refuah Sheleimah</h3></div>
-    </div>
-    <div style="margin-top:24px;"><a class="btn solid">Send an eCard</a></div>
-  </div></section>
-</div>
 
 <!-- ========================= GIVE ========================= -->
 <div class="page v2" id="page-give">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Partner &amp; Give</span><h1>Families never pay for PUAH's help. <em>You make that possible.</em></h1><p class="lead" style="max-width:62ch;">Every counseling session, supervised cycle and PUAHline call is free to the family, funded by partners who believe no couple should face this alone.</p><div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate now</a><a class="btn ghost" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Give monthly</a></div></div></div>
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Partner &amp; Give</span><h1>Families never pay for PUAH's help. <em>You make that possible.</em></h1><p class="lead" style="max-width:62ch;">Every counseling session, supervised cycle and rabbinic consultation is free to the family, funded by partners who believe no couple should face this alone.</p><div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate now</a><a class="btn ghost" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Give monthly</a></div></div></div>
   <div class="breadcrumb"><div class="wrap">Home / Partner &amp; Give</div></div>
   <section><div class="wrap">
     <span class="eyebrow">What your support makes possible</span>
@@ -1886,17 +1926,40 @@
     </div>
     <p class="note"><b>Design note —</b> Fill in real costs from PUAH's finance team. Specific, accurate amounts convert far better than general appeals, but don't publish estimates.</p>
   </div></section>
-  <section class="alt"><div class="wrap">
-    <span class="eyebrow">Ways to give</span>
-    <div class="grid g3" style="margin-top:14px;">
-      <div class="card"><h3>Monthly giving</h3><p class="muted">A recurring gift gives PUAH steady support it can plan around, all year.</p><a class="link" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Give monthly →</a></div>
-      <div class="card"><h3>Sponsor a service</h3><p class="muted">Sponsor supervised cycles, Shabbos services or a month of the PUAHline, in honor or in memory of a loved one.</p><a class="link" onclick="go('contact')">Talk to us →</a></div>
-      <div class="card"><h3>Legacy partnerships</h3><p class="muted">Naming and dedication opportunities across the Three Pillars, and stock, IRA and planned gifts.</p><a class="link" onclick="go('pillars')">The Three Pillars →</a></div>
+  <section class="alt" id="ways-to-give"><div class="wrap">
+    <div class="v2-split-head"><h2>Ways <em>to give</em></h2><p class="v2-muted">Choose the method that works best for you. PUAH is a qualified charitable organization; gifts are tax-deductible as allowed by law.</p></div>
+    <div class="grid g3 give-grid" style="margin-top:14px;">
+      <div class="card"><h3>Online, one-time or monthly</h3><p class="muted">Give by credit card, debit card or bank account through our secure donation page. A recurring gift gives PUAH steady support it can plan around.</p><a class="link" href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate online ↗</a></div>
+      <div class="card"><h3>Daily Giving</h3><p class="muted">Join PUAH's Daily Giving community: $1 a day, shared across a group of trusted organizations.</p><a class="link" href="https://dailygiving.pages.giving/beneficiaries?fundraiser=puah-fertility" target="_blank" rel="noopener">Join Daily Giving ↗</a></div>
+      <div class="card"><h3>Gifts of stock</h3><p class="muted">Donate appreciated securities to PUAH's Morgan Stanley brokerage account. Giving stock directly may avoid capital-gains tax.</p><a class="link" href="mailto:isaac.simon@morganstanley.com?subject=Stock%20gift%20to%20PUAH">Request transfer details →</a></div>
+      <div class="card"><h3>IRA charitable distribution</h3><p class="muted">If you're 70½ or older, you can give directly from an eligible IRA through a Qualified Charitable Distribution, up to the annual IRS limit. Ask your IRA custodian to send the gift to PUAH, and consult your tax advisor first.</p><a class="link" href="mailto:isaac.simon@morganstanley.com?subject=IRA%20gift%20to%20PUAH">Ask about IRA gifts →</a></div>
+      <div class="card"><h3>Donor-advised fund</h3><p class="muted">Recommend a grant to PUAH from your DAF (Fidelity Charitable, Schwab, OJC, JCF and others). Search for PUAH by name or by our tax ID.</p><a class="link" onclick="go('contact')">Get our DAF details →</a></div>
+      <div class="card"><h3>Check by mail</h3><p class="muted">Make checks payable to PUAH and mail to:<br><b>PUAH, P.O. Box 297185, Brooklyn, NY 11229</b></p></div>
+      <div class="card"><h3>Zelle</h3><p class="muted">Send a gift from your bank app with Zelle to <b>[Zelle email]</b>. Add your name and email in the memo so we can send a receipt.</p></div>
+      <div class="card"><h3>PayPal</h3><p class="muted">Give through PayPal or with your PayPal balance.</p><a class="link" href="#" onclick="return false;">[PayPal giving link] →</a></div>
+      <div class="card"><h3>Sponsor a service or dedicate</h3><p class="muted">Sponsor supervised cycles or Shabbos services, in honor or in memory of a loved one. Naming opportunities across the Three Pillars are also available.</p><a class="link" onclick="go('pillars')">Legacy partnerships →</a></div>
     </div>
+    <p class="note"><b>Content note —</b> Zelle and PayPal show placeholders. Publish them only if PUAH has (or opens) those accounts; otherwise delete the two cards. Confirm the check payee name and the tax ID before going live.</p>
+    <p class="muted" style="margin-top:20px;font-size:14px;">Questions about giving? Call <a href="tel:8889937824">888.993.7824</a>.</p>
   </div></section>
   <section><div class="wrap center">
     <p class="quote" style="max-width:60ch;margin:0 auto;">"You cannot imagine how important your work is. How wonderful that there is a listening ear and someone to give guidance on where to go and which tests are necessary."</p>
     <p class="muted" style="margin-top:14px;">— Anonymous, New York</p>
+  </div></section>
+</div>
+
+<!-- ========================= PURCHASE BOOKS ========================= -->
+<div class="page v2" id="page-books">
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Purchase Books</span><h1>PUAH <em>publications</em></h1><p class="lead" style="max-width:64ch;">Books on fertility, medicine and halacha by PUAH's rabbis and advisors. Every purchase supports PUAH's free services.</p><div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" href="tel:8889937824">Order by phone: 888.993.7824</a></div></div></div>
+  <div class="breadcrumb"><div class="wrap">Home / Resources / Purchase Books</div></div>
+  <section><div class="wrap">
+    <div class="grid g3 book-grid">
+      <div class="card"><div class="media book-cover"><span class="lbl">Cover</span></div><h3>[Book title]</h3><div class="tag">[Author]</div><p class="muted">[One-line description.]</p><div class="book-buy"><b>$[ ]</b><a class="btn ghost sm" onclick="go('contact')">Order</a></div></div>
+      <div class="card"><div class="media book-cover"><span class="lbl">Cover</span></div><h3>[Book title]</h3><div class="tag">[Author]</div><p class="muted">[One-line description.]</p><div class="book-buy"><b>$[ ]</b><a class="btn ghost sm" onclick="go('contact')">Order</a></div></div>
+      <div class="card"><div class="media book-cover"><span class="lbl">Cover</span></div><h3>[Book title]</h3><div class="tag">[Author]</div><p class="muted">[One-line description.]</p><div class="book-buy"><b>$[ ]</b><a class="btn ghost sm" onclick="go('contact')">Order</a></div></div>
+    </div>
+    <p class="muted" style="margin-top:22px;">To order, call <a href="tel:8889937824">888.993.7824</a>. Bulk orders for shuls, schools and kallah teachers are welcome.</p>
+    <p class="note"><b>Content needed —</b> puahfertility.org/purchase currently has no books listed. Send the title, author, cover, price and purchase link (or "order by phone") for each book, and these cards get filled in.</p>
   </div></section>
 </div>
 
@@ -2506,7 +2569,7 @@
             <h4>Ketem</h4>
             <div class="say">KE-tem</div>
             <p>A bloodstain found on clothing, linen or the body. Whether it renders a woman niddah depends on several factors, including its size, colour, where it was found and the circumstances in which it appeared. These details determine its halachic significance, which is why they are carefully evaluated rather than assumed.</p>
-            <div class="ctx"><b>Heard when:</b> treatment causes spotting. This is among the most common calls to the PUAHline.</div>
+            <div class="ctx"><b>Heard when:</b> treatment causes spotting. This is among the most common questions PUAH's rabbis receive.</div>
           </div>
           <div class="term" data-cat="halacha">
             <h4>Mikveh</h4>
@@ -2570,40 +2633,45 @@
       <a class="btn light" onclick="go('contact')">Schedule a free consultation</a>
       <a class="btn on-dark" onclick="go('svc-ask')">Ask the Rabbi</a>
     </div>
-    <p style="font-size:14px;color:#9fb0bb;margin-top:20px;">Or call the PUAHline: 888.993.7824</p>
+    <p style="font-size:14px;color:#9fb0bb;margin-top:20px;">Or call our main line: <a href="tel:8889937824" style="color:inherit;">888.993.7824</a></p>
   </div></section>
 </div>
 <!-- ========================= CONTACT ========================= -->
 <div class="page v2" id="page-contact">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Contact</span><h1>We're here <em>to help</em></h1><p class="lead" style="max-width:60ch;">Tell us a little about what's going on and the right person will reach out. Free and completely confidential.</p></div></div>
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Contact</span><h1>We're here <em>to help</em></h1><p class="lead" style="max-width:60ch;">Send a question to PUAH's rabbinic advisors, or reach the right department below. Free and completely confidential.</p></div></div>
   <div class="breadcrumb"><div class="wrap">Home / Contact</div></div>
   <section><div class="wrap grid g2" style="gap:48px;align-items:start;">
     <div>
       <h3>Prefer to call?</h3>
       <div class="expert-list" style="margin-bottom:28px;">
-        <div><b>General &amp; guidance</b><span><a href="tel:8889937824">888.993.7824</a></span></div>
+        <div><b>Main line: guidance &amp; halachic questions</b><span><a href="tel:8889937824">888.993.7824</a></span></div>
         <div><b>Lab supervision</b><span><a href="tel:6468091407">646-809-1407</a></span></div>
-        <div><b>PUAHline (family purity questions)</b><span><a href="tel:8053917824">805.391.7824</a></span></div>
+      </div>
+      <h3>Looking for another department?</h3>
+      <div class="expert-list" style="margin-bottom:28px;">
+        <div><b>Lab supervision request</b><span><a onclick="go('svc-lab');setTimeout(function(){scrollToId('request-supervision')},40)">Supervision form →</a></span></div>
+        <div><b>Financial assistance</b><span><a onclick="go('svc-financial');setTimeout(function(){scrollToId('apply-financial')},40)">Financial aid form →</a></span></div>
+        <div><b>Volunteering</b><span><a onclick="go('gi-volunteer')">Volunteer form →</a></span></div>
       </div>
       <h3>What to expect</h3>
-      <p class="muted">An advisor usually responds within [one business day]. Everything you share stays with PUAH's team and is never shared without your permission.</p>
-      <p class="muted"><b>Time-sensitive halachic question?</b> Call the PUAHline rather than using the form.</p>
-      <p class="muted"><b>Medical emergency?</b> Severe pain, heavy bleeding or fainting need immediate medical care. Call 911 or go to the nearest emergency room.</p>
-      <p class="muted" style="margin-top:22px;">PUAH, P.O. Box 297185, Brooklyn, NY 11229<br>Instagram · Facebook · YouTube</p>
+      <p class="muted">A member of our rabbinic team will get back to you within one business day. Everything you share stays with PUAH's team and is never shared without your permission.</p>
+      <p class="muted"><b>Time-sensitive halachic question?</b> Please call our main line at <a href="tel:8889937824">888.993.7824</a>.</p>
+      <p class="muted"><b>Medical emergency?</b> For all medical emergencies please call 911 or go to the nearest emergency room.</p>
+      <p class="muted" style="margin-top:22px;">PUAH, P.O. Box 297185, Brooklyn, NY 11229</p>
+      <div class="social"><a href="https://www.instagram.com/puah_fertility/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/puahfertility/" target="_blank" rel="noopener">Facebook</a><a href="https://www.youtube.com/channel/UC3PupKMKMuC_6Pj9i2-KdGA" target="_blank" rel="noopener">YouTube</a></div>
     </div>
     <div class="card">
-      <h3 style="margin-top:0;">Request a free consultation</h3>
-      <form class="form" onsubmit="return false;">
-        <div class="row2"><div><label>First name</label><input type="text" autocomplete="given-name"></div><div><label>Best way to reach you</label><select><option>Phone call</option><option>Email</option><option>WhatsApp</option></select></div></div>
-        <div class="row2"><div><label>Phone</label><input type="tel" autocomplete="tel"></div><div><label>Email</label><input type="email" autocomplete="email"></div></div>
-        <div><label>What's this about?</label><select>
-          <option>Lab supervision (hashgacha)</option><option>Starting IVF</option><option>Not conceiving yet</option><option>Short cycles &amp; mikveh timing</option><option>Spotting during treatment</option><option>Male fertility</option><option>Pregnancy loss</option><option>Genetic testing</option><option>Egg freezing &amp; preservation</option><option>Paying for treatment</option><option>I'm a physician or clinic</option><option>I'm a rav</option><option>Something else</option>
-        </select></div>
-        <div><label>How can we help? (optional)</label><textarea placeholder="Share as much or as little as you're comfortable with."></textarea></div>
-        <a class="btn solid">Send</a>
-        <p class="fine">Only your first name is needed. Your message is seen only by PUAH's advisors.</p>
+      <h3 style="margin-top:0;">Ask our rabbinic advisors</h3>
+      <form class="form" data-inbox="rabbi" data-subject="Consultation request" onsubmit="return sendForm(this)">
+        <div class="row2"><div><label>First name</label><input name="First name" type="text" autocomplete="given-name" required></div><div><label>Last name (optional)</label><input name="Last name" type="text" autocomplete="family-name"></div></div>
+        <div class="row2"><div><label>Phone</label><input name="Phone" type="tel" autocomplete="tel"></div><div><label>Email</label><input name="Email" type="email" autocomplete="email" required></div></div>
+        <div class="row2"><div><label>Best way to reach you</label><select name="Reach me by"><option>Phone call</option><option>Email</option><option>WhatsApp</option></select></div><div><label>What's this about?</label><select name="Topic">
+          <option>Starting IVF</option><option>Not conceiving yet</option><option>Short cycles &amp; mikveh timing</option><option>Spotting during treatment</option><option>Male fertility</option><option>Pregnancy loss</option><option>Genetic testing</option><option>Egg freezing &amp; preservation</option><option>Intimacy</option><option>I'm a physician or clinic</option><option>I'm a rav</option><option>Something else</option>
+        </select></div></div>
+        <div><label>Your question (optional)</label><textarea name="Message" placeholder="Share as much or as little as you're comfortable with."></textarea></div>
+        <button class="btn solid" type="submit">Send</button>
+        <p class="fine">Your message goes only to PUAH's rabbinic advisors.</p>
       </form>
-      <p class="note"><b>Build note —</b> Wire this form to the Resource Library's submissions system. If someone arrives from the home page's "What brings you to PUAH?" panel, preselect that topic. Confirm the response-time promise with PUAH before publishing.</p>
     </div>
   </div></section>
 </div>
@@ -2720,19 +2788,19 @@
       <span class="eyebrow">How PUAH helps · Spotting during treatment</span>
       <h1>Spotting or staining <em>during treatment</em></h1>
       <p class="lead">Fertility medications often cause spotting, and these questions are time-sensitive. Expert rabbis are a phone call away.</p>
-      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" href="tel:8053917824">Call the PUAHline</a><a class="btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+      <div style="margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" href="tel:8889937824">Call 888.993.7824</a><a class="btn ghost" onclick="go('svc-ask')">Ask the Rabbi</a></div>
     </div>
     <div class="topic-img"><img src="img/puahline-rabbi.jpg" alt="" loading="lazy"></div>
   </div></div>
   <div class="breadcrumb"><div class="wrap"><a class="link" onclick="go('home')">Home</a> / Spotting during treatment</div></div>
   <section><div class="wrap">
     <div class="v2-split-head"><h2>What to <em>know</em></h2><p class="v2-muted">A few starting points. Every situation is different, which is why we encourage you to speak with an advisor.</p></div>
-    <div class="v2-bento"><div class="bt bt-cream"><span class="v2-num">01</span><h3>It's common</h3><p>Hormones, procedures and progesterone can all cause spotting during treatment.</p></div><div class="bt bt-cream"><span class="v2-num">02</span><h3>The details matter</h3><p>Whether a stain carries halachic weight depends on its color, size, where it was found and the circumstances. Ask rather than assume.</p></div><div class="bt bt-cream"><span class="v2-num">03</span><h3>Answers when you need them</h3><p>The PUAHline connects you to expert rabbis confidentially, especially when your local rav isn't available.</p></div><div class="bt bt-cream"><span class="v2-num">04</span><h3>Tell your doctor too</h3><p>Bleeding during treatment or pregnancy should also be discussed with your medical team.</p></div></div>
+    <div class="v2-bento"><div class="bt bt-cream"><span class="v2-num">01</span><h3>It's common</h3><p>Hormones, procedures and progesterone can all cause spotting during treatment.</p></div><div class="bt bt-cream"><span class="v2-num">02</span><h3>The details matter</h3><p>Whether a stain carries halachic weight depends on its color, size, where it was found and the circumstances. Ask rather than assume.</p></div><div class="bt bt-cream"><span class="v2-num">03</span><h3>Answers when you need them</h3><p>PUAH's rabbis answer time-sensitive questions confidentially, especially when your local rav isn't available.</p></div><div class="bt bt-cream"><span class="v2-num">04</span><h3>Tell your doctor too</h3><p>Bleeding during treatment or pregnancy should also be discussed with your medical team.</p></div></div>
   </div></section>
   <section style="padding-top:0;"><div class="wrap">
     <div class="topic-help">
       <div><h2>How PUAH <em>helps</em></h2><p class="v2-muted">Every PUAH service is free and confidential.</p></div>
-      <div class="v2-rp-act"><a onclick="go('svc-puahline')">The PUAHline <i>→</i></a><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" href="tel:8053917824">Call the PUAHline</a></div>
+      <div class="v2-rp-act"><a onclick="go('svc-ask')">Ask the Rabbi <i>→</i></a><a class="v2-btn" href="tel:8889937824">Call 888.993.7824</a></div>
     </div>
   </div></section>
   <section class="alt"><div class="wrap">
@@ -2744,7 +2812,7 @@
   <div class="v2-final soft"><div class="v2-wrap">
     <h2 class="v2-h2">You don't have to <em>figure this out alone</em></h2>
     <p>Free and completely confidential.</p>
-    <div class="v2-ctas" style="justify-content:center;"><a class="v2-btn" href="tel:8053917824">Call the PUAHline</a><a class="v2-btn ghost" href="tel:8889937824">Call 888.993.7824</a></div>
+    <div class="v2-ctas" style="justify-content:center;"><a class="v2-btn" href="tel:8889937824">Call 888.993.7824</a><a class="v2-btn ghost" onclick="go('svc-ask')">Ask the Rabbi</a></div>
   </div></div>
 </div>
 
@@ -3013,7 +3081,7 @@
   <section class="alt" id="sg-voice"><div class="wrap">
     <div class="v2-split-head"><h2 class="v2-h2">Voice <em>&amp; tone</em></h2><p class="v2-muted">Calm, knowledgeable, and kind. Speak like an experienced advisor on the phone, not a brochure.</p></div>
     <div class="sg-dodont">
-      <div><h3>Do</h3><ul><li>Plain English first; explain Hebrew and medical terms the first time</li><li>Say "confidential" and "free" near every way to reach us</li><li>Qualify halachic and medical statements: "depends on the details", "a rav should review"</li><li>Write for couples who may be anxious, grieving, or still waiting</li><li>Use transliterations consistently: hashgacha, mashgicha, taharat hamishpacha, PUAHline</li><li>Use sentence case and avoid exclamation marks</li></ul></div>
+      <div><h3>Do</h3><ul><li>Plain English first; explain Hebrew and medical terms the first time</li><li>Say "confidential" and "free" near every way to reach us</li><li>Qualify halachic and medical statements: "depends on the details", "a rav should review"</li><li>Write for couples who may be anxious, grieving, or still waiting</li><li>Use transliterations consistently: hashgacha, mashgicha, taharat hamishpacha</li><li>Use sentence case and avoid exclamation marks</li></ul></div>
       <div><h3>Don't</h3><ul><li>Give individual psak or medical advice on the site</li><li>Promise outcomes ("very treatable", "guaranteed")</li><li>Assume a pregnancy will follow; stories should not depend on one</li><li>Publish numbers, costs, hours or titles without confirming them with PUAH</li><li>Present a paraphrase as a direct quote, especially from gedolim</li></ul></div>
     </div>
   </div></section>
@@ -3053,15 +3121,16 @@
           <span class="wordmark" style="color:#fff;">PUAH</span>
         </div>
         <p style="font-size:14px;color:#9fadb6;margin-top:14px;max-width:36ch;">Helping the greater Jewish community fulfill the dream of a healthy family — rooted in Torah, informed by medicine.</p>
-        <p style="font-size:13px;color:#7f8d97;">888.993.7824</p>
+        <p style="font-size:13px;color:#7f8d97;line-height:1.7;"><a href="tel:8889937824" style="color:inherit;">888.993.7824</a><br>P.O. Box 297185, Brooklyn, NY 11229<br>PUAH is a 501(c)(3) nonprofit organization. Tax ID: [EIN]</p>
+        <div class="social foot-social"><a href="https://www.instagram.com/puah_fertility/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/puahfertility/" target="_blank" rel="noopener">Facebook</a><a href="https://www.youtube.com/channel/UC3PupKMKMuC_6Pj9i2-KdGA" target="_blank" rel="noopener">YouTube</a></div>
       </div>
-      <div><h4>Organization</h4><div class="foot-links"><a onclick="go('about')">About</a><a onclick="go('services')">Services</a><a onclick="go('pillars')">The Three Pillars</a><a onclick="go('getinvolved')">Get Involved</a></div></div>
-      <div><h4>Get Support</h4><div class="foot-links"><a onclick="go('services')">Guidance &amp; Support</a><a onclick="go('services')">Ask the Rabbi</a><a onclick="go('services')">The PUAHline</a><a onclick="go('dictionary')">Fertility Dictionary</a><a onclick="go('contact')">Contact</a></div></div>
-      <div><h4>Engage</h4><div class="foot-links"><a href="https://americanfriendsofpuah.networkforgood.com/projects/31029-tough-questions-real-answers" target="_blank" rel="noopener">Donate</a><a onclick="go('pillars')">The Three Pillars</a><a onclick="go('resources')">Digital Library</a></div></div>
+      <div><h4>Organization</h4><div class="foot-links"><a onclick="go('about')">About</a><a onclick="go('services')">Services</a><a onclick="go('pillars')">The Three Pillars</a><a onclick="go('getinvolved')">Get Involved</a><a onclick="go('give')">Ways to Give</a></div></div>
+      <div><h4>Get Support</h4><div class="foot-links"><a onclick="go('svc-guidance')">Guidance &amp; Support</a><a onclick="go('svc-ask')">Ask the Rabbi</a><a onclick="go('svc-lab')">Lab Supervision</a><a onclick="go('svc-financial')">Financial Assistance</a><a onclick="go('contact')">Contact</a></div></div>
+      <div><h4>Resources</h4><div class="foot-links"><a onclick="go('resources')">Digital Library</a><a onclick="go('books')">Purchase Books</a><a onclick="go('dictionary')">Fertility Dictionary</a></div></div>
     </div>
     <div class="sep"></div>
     <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#7f8d97;">
-      <div>© 2026 PUAH · Brooklyn, NY</div>
+      <div>© 2026 PUAH</div>
       <div>Privacy Policy · Terms · <a onclick="go('style-guide')">Web style guide</a></div>
     </div>
   </div>
@@ -3073,11 +3142,17 @@
      navigation. We mirror the current page in location.hash so the URL,
      the back button, refresh and shareable deep links all behave. */
   function pageExists(page){ return !!document.getElementById('page-'+page); }
+  /* Retired pages keep working as links: old URL -> [new page, section to scroll to] */
+  var ALIASES={ 'svc-puahline':['svc-ask'], 'gi-ecards':['getinvolved'], 'gi-story':['about-testimonials','share-story'], 'gi-events':['getinvolved'], 'media':['resources'] };
+  var pendingScroll=null;
+  function resolve(p){ var a=ALIASES[p]; if(a){ pendingScroll=a[1]||null; return a[0]; } return p; }
   function currentRoute(){
-    var p=decodeURIComponent((location.hash||'').replace(/^#\/?/,'')).trim();
+    var p=resolve(decodeURIComponent((location.hash||'').replace(/^#\/?/,'')).trim());
     return pageExists(p) ? p : 'home';
   }
+  function scrollToId(id){ var el=document.getElementById(id); if(el){ el.scrollIntoView({behavior:'smooth'}); } }
   function go(page){
+    page=resolve(page);
     if(!pageExists(page)){ page='home'; }
     // Setting the hash fires hashchange, which renders. If the hash is
     // already correct (re-click, or first load) render directly.
@@ -3090,7 +3165,7 @@
     if(el){el.classList.add('active');}
     document.querySelectorAll('#nav a[data-page]').forEach(a=>{
       var dp=a.getAttribute('data-page');
-      a.classList.toggle('active', dp===page || (dp==='about' && page.indexOf('about')===0) || (dp==='services' && (page==='services' || page==='dictionary' || page.indexOf('svc-')===0 || page.indexOf('topic-')===0)) || (dp==='pillars' && (page==='pillars' || page.indexOf('pillar-')===0)) || (dp==='getinvolved' && (page==='getinvolved' || page.indexOf('gi-')===0)));
+      a.classList.toggle('active', dp===page || (dp==='about' && page.indexOf('about')===0) || (dp==='services' && (page==='services' || page==='dictionary' || page.indexOf('svc-')===0 || page.indexOf('topic-')===0)) || (dp==='pillars' && (page==='pillars' || page.indexOf('pillar-')===0)) || (dp==='getinvolved' && (page==='getinvolved' || page==='gi-volunteer' || page==='give')) || (dp==='resources' && page==='books'));
     });
     if(page==='dictionary'){
       var q=document.getElementById('dict-q');
@@ -3104,7 +3179,9 @@
       vs.querySelectorAll('a').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-v')===page);});
     }
     toggleMenu(false);
+    closeSearch();
     window.scrollTo({top:0,behavior:'instant'});
+    if(pendingScroll){ var id=pendingScroll; pendingScroll=null; setTimeout(function(){scrollToId(id);},40); }
   }
   function routeTo(btn){
     var t=btn.getAttribute('data-topic');
@@ -3161,6 +3238,76 @@
     dictFilter();
   }
 
+  /* ---- forms ----
+     Each form names a department in data-inbox. Until a server endpoint is
+     connected, submitting opens a pre-addressed email to that inbox.
+     To go server-side, replace the mailto block with a fetch() to the endpoint. */
+  var INBOX={
+    rabbi:       {to:'contact@puahfertility.org'},       /* confirm the rabbinic advisors' inbox */
+    supervision: {to:'supervision@puahfertility.org'},
+    financial:   {to:'gemach@puahfertility.org'},
+    volunteer:   {to:'contact@puahfertility.org', cc:''}, /* add Joelle's address in cc once confirmed */
+    story:       {to:'contact@puahfertility.org'}
+  };
+  function sendForm(f){
+    if(!f.reportValidity()){ return false; }
+    var box=INBOX[f.getAttribute('data-inbox')]||INBOX.rabbi, lines=[], seen={};
+    f.querySelectorAll('input,select,textarea').forEach(function(el){
+      var n=el.getAttribute('name'); if(!n){return;}
+      if(el.type==='checkbox'){ if(!el.checked){return;} if(seen[n]){ seen[n].push(el.value); return; } seen[n]=[el.value]; lines.push([n,seen[n]]); return; }
+      if(el.value){ lines.push([n,el.value]); }
+    });
+    var body=lines.map(function(l){ return l[0]+': '+(Array.isArray(l[1])?l[1].join('; '):l[1]); }).join('\n');
+    var url='mailto:'+box.to+'?'+(box.cc?'cc='+encodeURIComponent(box.cc)+'&':'')+'subject='+encodeURIComponent('[Website] '+(f.getAttribute('data-subject')||'Message'))+'&body='+encodeURIComponent(body);
+    window.location.href=url;
+    var done=document.createElement('div'); done.className='form-done';
+    done.innerHTML='<h3>Thank you.</h3><p class="muted">Your email app should open with your message addressed to <b>'+box.to+'</b>. Press send there to finish. If nothing opened, email us at that address or call <a href="tel:8889937824">888.993.7824</a>.</p>';
+    f.replaceWith(done);
+    return false;
+  }
+  /* ---- site search ---- */
+  var SINDEX=null, sSel=-1;
+  function buildIndex(){
+    SINDEX=[];
+    document.querySelectorAll('.page.v2').forEach(function(p){
+      var id=p.id.replace(/^page-/,''); if(id==='style-guide'){return;}
+      var h1=p.querySelector('h1,.v2-h1'), eb=p.querySelector('.eyebrow,.v2-eyebrow');
+      var clone=p.cloneNode(true); clone.querySelectorAll('.note,script,style').forEach(function(n){n.remove();});
+      SINDEX.push({id:id, title:h1?h1.textContent.replace(/\s+/g,' ').trim():id, crumb:eb?eb.textContent.trim():'', text:clone.textContent.replace(/\s+/g,' ').trim()});
+    });
+  }
+  function esc(t){ return t.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+  function hl(t,q){ var i=t.toLowerCase().indexOf(q); if(i<0){return esc(t);} return esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+q.length))+'</mark>'+esc(t.slice(i+q.length)); }
+  function runSearch(){
+    if(!SINDEX){buildIndex();}
+    var q=document.getElementById('search-q').value.trim().toLowerCase(), out=document.getElementById('search-res');
+    sSel=-1;
+    if(q.length<2){ out.innerHTML=''; return; }
+    var words=q.split(/\s+/), hits=[];
+    SINDEX.forEach(function(e){
+      var tl=e.title.toLowerCase(), xl=e.text.toLowerCase(), score=0;
+      for(var i=0;i<words.length;i++){ var w=words[i]; if(xl.indexOf(w)<0 && tl.indexOf(w)<0){ return; } score+=(tl.indexOf(w)>-1?10:0)+(e.crumb.toLowerCase().indexOf(w)>-1?5:0)+Math.min(xl.split(w).length-1,5); }
+      var i0=xl.indexOf(words[0]), a=Math.max(0,i0-60), snip=(a?'…':'')+e.text.slice(a,i0+110)+'…';
+      hits.push({e:e,score:score,snip:snip});
+    });
+    hits.sort(function(a,b){return b.score-a.score;});
+    out.innerHTML=hits.length?hits.slice(0,12).map(function(h){
+      return '<a onclick="go(\''+h.e.id+'\')"><small>'+esc(h.e.crumb)+'</small><b>'+hl(h.e.title,words[0])+'</b><span>'+hl(h.snip,words[0])+'</span></a>';
+    }).join(''):'<div class="none">No results for &ldquo;'+esc(q)+'&rdquo;. Try another word, or <a class="link" onclick="go(\'contact\')">ask an advisor</a>.</div>';
+  }
+  function searchKey(ev){
+    var items=document.querySelectorAll('#search-res a');
+    if(ev.key==='Escape'){ closeSearch(); return; }
+    if(ev.key==='ArrowDown'||ev.key==='ArrowUp'){ ev.preventDefault(); if(!items.length){return;} sSel=(sSel+(ev.key==='ArrowDown'?1:-1)+items.length)%items.length; items.forEach(function(a,i){a.classList.toggle('on',i===sSel);}); items[sSel].scrollIntoView({block:'nearest'}); }
+    if(ev.key==='Enter'){ var t=items[sSel>-1?sSel:0]; if(t){ t.click(); } }
+  }
+  function openSearch(){ var o=document.getElementById('search-ov'); o.classList.add('open'); o.setAttribute('aria-hidden','false'); document.body.classList.add('search-open'); var q=document.getElementById('search-q'); q.value=''; document.getElementById('search-res').innerHTML=''; setTimeout(function(){q.focus();},10); }
+  function closeSearch(){ var o=document.getElementById('search-ov'); if(!o){return;} o.classList.remove('open'); o.setAttribute('aria-hidden','true'); document.body.classList.remove('search-open'); }
+  document.addEventListener('keydown',function(e){
+    var t=e.target.tagName;
+    if(e.key==='/' && t!=='INPUT' && t!=='TEXTAREA' && t!=='SELECT'){ e.preventDefault(); openSearch(); }
+    if(e.key==='Escape'){ closeSearch(); }
+  });
   window.addEventListener('hashchange', function(){ render(currentRoute()); });
 
   // Design notes hidden by default for presentation
