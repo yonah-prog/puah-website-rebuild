@@ -48,8 +48,13 @@ Date: November 12, 2026. All changes are in `index.html`, plus 13 endorsement le
 - **Supervision page:** removed the "Clinics and physicians: call 646-809-1407…" line.
 - **Shabbos page:** new **Shabbos blood collection request** form (name, phone, email, address, city/ZIP, date, time, receiving lab, notes), sent to **supervision@puahfertility.org**. The hero button now jumps to it.
 
+### Books page (built from the old site's JotForm order form)
+- The old /purchase page loads its books inside a JotForm iframe. We copied all 11 titles, authors, descriptions, topics and prices from it, plus the 8 covers it has (saved in `img/books/`).
+- The page is grouped into **Sefer PUAH** (Vol. 1–5, $25), **Shu"t PUAH** (Vol. 1 $19.99, Vol. 2–4 $25) and **By Rav Gideon Weitzman** (Light of Redemption, His Words, Their Voices, $20 each).
+- Every "Order" button opens PUAH's existing JotForm order form. Card payments there already run through **Braintree**, so PUAH already has a payment account with refund access and no Stripe account is needed. Recommendation: keep JotForm, and make sure its order notifications go to office@puahfertility.org.
+- Gaps in the source: Volume 5 has no topic list and no cover, and the two Weitzman books have no covers (they show title placeholders). The source also says "three volumes have been published and two more are in production" while selling Volumes 4–5, so we left that sentence out.
+
 ### Still open
-- **Books:** puahfertility.org/purchase shows no books, even fully loaded in a browser, so the list has to come from PUAH. PUAH also asked how books would be charged and wants refund access. Recommendation: Stripe Payment Links on a Stripe account PUAH owns, so PUAH has full dashboard and refund access, with order notifications sent to office@puahfertility.org.
 - **Medical Advisory Council:** Donna's updated list hasn't arrived in friedman.yonah@gmail.com. Ask Orly to forward it.
 - **Elimor Ryzman:** bio and headshot coming from PUAH.
 - **Photos:** Joelle is putting together a folder of real photos.

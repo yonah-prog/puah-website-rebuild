@@ -654,8 +654,18 @@
   .social a{font-size:14px;font-weight:600;color:var(--teal);text-decoration:none;}
   .social a:hover{text-decoration:underline;}
   .foot-social a{color:#9fadb6;font-size:13px;}
-  .book-cover{aspect-ratio:3/4;min-height:0 !important;margin-bottom:14px;}
-  .book-buy{display:flex;justify-content:space-between;align-items:center;margin-top:12px;}
+  .book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px;margin-top:8px;}
+  .book-card{display:flex;flex-direction:column;padding:0 !important;overflow:hidden;}
+  .book-cover{background:#efe9df;display:flex;align-items:center;justify-content:center;height:240px;padding:18px;box-sizing:border-box;overflow:hidden;}
+  .book-cover img{height:204px;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(16,40,58,.18));}
+  .book-cover.no-img span{font-family:var(--serif, Georgia, serif);font-size:20px;color:var(--navy);text-align:center;max-width:16ch;border:1px solid rgba(16,40,58,.18);padding:28px 16px;background:#fff;border-radius:4px;}
+  .book-body{padding:18px 20px 20px;display:flex;flex-direction:column;flex:1;}
+  .book-body h3{font-size:19px;margin:0 0 4px;}
+  .book-auth{font-size:13px;color:var(--muted);margin-bottom:8px;}
+  .book-body .muted{font-size:14px;margin:10px 0 0;}
+  .book-topics{font-size:13px;color:var(--ink);margin:10px 0 0;line-height:1.55;}
+  .book-buy{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:16px;}
+  .book-buy b{font-size:18px;color:var(--navy);}
   .give-grid .card h3{font-size:19px;}
   .pay-list span{display:block;margin-bottom:4px;overflow-wrap:anywhere;}
 </style>
@@ -1969,16 +1979,38 @@
 
 <!-- ========================= PURCHASE BOOKS ========================= -->
 <div class="page v2" id="page-books">
-  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Purchase Books</span><h1>PUAH <em>publications</em></h1><p class="lead" style="max-width:64ch;">Books on fertility, medicine and halacha by PUAH's rabbis and advisors. Every purchase supports PUAH's free services.</p><div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" href="tel:8889937824">Order by phone: 888.993.7824</a></div></div></div>
+  <div class="stub-hero"><div class="wrap"><span class="eyebrow">Purchase Books</span><h1>PUAH <em>publications</em></h1><p class="lead" style="max-width:64ch;">Sefarim on fertility, taharat hamishpacha and halacha from PUAH's rabbis, plus English works by Rav Gideon Weitzman. Every purchase supports PUAH's work.</p><div style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;"><a class="btn solid" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order books ↗</a><a class="btn ghost" href="tel:8889937824">Order by phone: 888.993.7824</a></div></div></div>
   <div class="breadcrumb"><div class="wrap">Home / Resources / Purchase Books</div></div>
   <section><div class="wrap">
-    <div class="grid g3 book-grid">
-      <div class="card"><div class="media book-cover"><span class="lbl">Cover</span></div><h3>[Book title]</h3><div class="tag">[Author]</div><p class="muted">[One-line description.]</p><div class="book-buy"><b>$[ ]</b><a class="btn ghost sm" onclick="go('contact')">Order</a></div></div>
-      <div class="card"><div class="media book-cover"><span class="lbl">Cover</span></div><h3>[Book title]</h3><div class="tag">[Author]</div><p class="muted">[One-line description.]</p><div class="book-buy"><b>$[ ]</b><a class="btn ghost sm" onclick="go('contact')">Order</a></div></div>
-      <div class="card"><div class="media book-cover"><span class="lbl">Cover</span></div><h3>[Book title]</h3><div class="tag">[Author]</div><p class="muted">[One-line description.]</p><div class="book-buy"><b>$[ ]</b><a class="btn ghost sm" onclick="go('contact')">Order</a></div></div>
+    <div class="v2-split-head"><h2>Sefer PUAH</h2><p class="v2-muted">PUAH's comprehensive halachic reference, in Hebrew.</p></div>
+    <div class="book-grid">
+      <div class="card book-card"><div class="book-cover"><img src="img/books/sefer-puah-1.png" alt="Cover of Sefer PUAH, Volume 1" loading="lazy"></div><div class="book-body"><h3>Sefer PUAH, Volume 1</h3><div class="book-auth">Rav Gavriel Goldman &amp; Rav Menachem Burstein</div><div class="tag">Hebrew</div><p class="muted">Part of the five-volume Sefer PUAH set covering the full range of questions PUAH handles every day.</p><p class="book-topics">Family and taharat hamishpacha · Chattan &amp; kallah issues · Mikvah and complicated chatzitzah issues · Medical checkups</p><div class="book-buy"><b>$25.00</b><a class="btn ghost sm" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order ↗</a></div></div></div>
+      <div class="card book-card"><div class="book-cover"><img src="img/books/sefer-puah-2.png" alt="Cover of Sefer PUAH, Volume 2" loading="lazy"></div><div class="book-body"><h3>Sefer PUAH, Volume 2</h3><div class="book-auth">Rav Gavriel Goldman &amp; Rav Menachem Burstein</div><div class="tag">Hebrew</div><p class="muted">Part of the five-volume Sefer PUAH set covering the full range of questions PUAH handles every day.</p><p class="book-topics">Fertility · Intimacy · Diagnosing infertility · Fertility treatments</p><div class="book-buy"><b>$25.00</b><a class="btn ghost sm" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order ↗</a></div></div></div>
+      <div class="card book-card"><div class="book-cover"><img src="img/books/sefer-puah-3.jpg" alt="Cover of Sefer PUAH, Volume 3" loading="lazy"></div><div class="book-body"><h3>Sefer PUAH, Volume 3</h3><div class="book-auth">Rav Gavriel Goldman &amp; Rav Menachem Burstein</div><div class="tag">Hebrew</div><p class="muted">Part of the five-volume Sefer PUAH set covering the full range of questions PUAH handles every day.</p><p class="book-topics">Pregnancy · Miscarriage · Labor and delivery · Nursing · Bris milah and pidyon haben · Contraception</p><div class="book-buy"><b>$25.00</b><a class="btn ghost sm" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order ↗</a></div></div></div>
+      <div class="card book-card"><div class="book-cover"><img src="img/books/sefer-puah-4.jpg" alt="Cover of Sefer PUAH, Volume 4" loading="lazy"></div><div class="book-body"><h3>Sefer PUAH, Volume 4</h3><div class="book-auth">Rav Gavriel Goldman &amp; Rav Menachem Burstein</div><div class="tag">Hebrew</div><p class="muted">Part of the five-volume Sefer PUAH set covering the full range of questions PUAH handles every day.</p><p class="book-topics">Gynecological issues · Medical conditions and their effect on fertility and intimacy · Sexual trauma · Adoption · Plastic surgery · Transgenderism · Cloning · Genetic engineering</p><div class="book-buy"><b>$25.00</b><a class="btn ghost sm" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order ↗</a></div></div></div>
+      <div class="card book-card"><div class="book-cover no-img"><span>Sefer PUAH, Volume 5</span></div><div class="book-body"><h3>Sefer PUAH, Volume 5</h3><div class="book-auth">Rav Gavriel Goldman &amp; Rav Menachem Burstein</div><div class="tag">Hebrew</div><p class="muted">Part of the five-volume Sefer PUAH set covering the full range of questions PUAH handles every day.</p><div class="book-buy"><b>$25.00</b><a class="btn ghost sm" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order ↗</a></div></div></div>
     </div>
-    <p class="muted" style="margin-top:22px;">To order, call <a href="tel:8889937824">888.993.7824</a>. Bulk orders for shuls, schools and kallah teachers are welcome.</p>
-    <p class="note"><b>Content needed —</b> puahfertility.org/purchase currently has no books listed. Send the title, author, cover, price and purchase link (or "order by phone") for each book, and these cards get filled in.</p>
+  </div></section>
+  <section class="alt"><div class="wrap">
+    <div class="v2-split-head"><h2>Shu”t PUAH</h2><p class="v2-muted">She’elot PUAH sent to leading poskim, with their teshuvot. In Hebrew.</p></div>
+    <div class="book-grid">
+      <div class="card book-card"><div class="book-cover"><img src="img/books/shut-puah-1.png" alt="Cover of Shu”t PUAH, Volume 1" loading="lazy"></div><div class="book-body"><h3>Shu”t PUAH, Volume 1</h3><div class="tag">Hebrew · paperback</div><p class="muted">Questions regarding birth control.</p><div class="book-buy"><b>$19.99</b><a class="btn ghost sm" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order ↗</a></div></div></div>
+      <div class="card book-card"><div class="book-cover"><img src="img/books/shut-puah-2.png" alt="Cover of Shu”t PUAH, Volume 2" loading="lazy"></div><div class="book-body"><h3>Shu”t PUAH, Volume 2</h3><div class="book-auth">Rabbi Menachem Burstein &amp; Rabbi Aryeh Katz</div><div class="tag">Hebrew</div><p class="muted">Questions on fertility and genetics that PUAH sent to leading poskim, with their responses and expanded medical and halachic summaries.</p><div class="book-buy"><b>$25.00</b><a class="btn ghost sm" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order ↗</a></div></div></div>
+      <div class="card book-card"><div class="book-cover"><img src="img/books/shut-puah-3.png" alt="Cover of Shu”t PUAH, Volume 3" loading="lazy"></div><div class="book-body"><h3>Shu”t PUAH, Volume 3</h3><div class="book-auth">Rabbi Menachem Burstein &amp; Rabbi Aryeh Katz</div><div class="tag">Hebrew</div><p class="muted">Questions on taharat hamishpacha and practical solutions, with the responses of leading poskim and expanded medical and halachic summaries.</p><div class="book-buy"><b>$25.00</b><a class="btn ghost sm" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order ↗</a></div></div></div>
+      <div class="card book-card"><div class="book-cover"><img src="img/books/shut-puah-4.jpg" alt="Cover of Shu”t PUAH, Volume 4" loading="lazy"></div><div class="book-body"><h3>Shu”t PUAH, Volume 4</h3><div class="book-auth">Rabbi Menachem Burstein &amp; Rabbi Aryeh Katz</div><div class="tag">Hebrew</div><p class="muted">Questions on pregnancy, labor and delivery and gynecology, with the responses of leading poskim and expanded medical and halachic summaries.</p><div class="book-buy"><b>$25.00</b><a class="btn ghost sm" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order ↗</a></div></div></div>
+    </div>
+  </div></section>
+  <section><div class="wrap">
+    <div class="v2-split-head"><h2>By Rav Gideon Weitzman</h2><p class="v2-muted">Torah thought in English from PUAH's senior rabbinic advisor.</p></div>
+    <div class="book-grid">
+      <div class="card book-card"><div class="book-cover no-img"><span>Light of Redemption</span></div><div class="book-body"><h3>Light of Redemption</h3><div class="book-auth">Rav Gideon Weitzman</div><div class="tag">English</div><p class="muted">A Haggadah presenting Rav Kook's ideas on the Haggadah and on Pesach, available to English readers for the first time.</p><div class="book-buy"><b>$20.00</b><a class="btn ghost sm" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order ↗</a></div></div></div>
+      <div class="card book-card"><div class="book-cover no-img"><span>His Words, Their Voices</span></div><div class="book-body"><h3>His Words, Their Voices</h3><div class="book-auth">Rav Gideon Weitzman</div><div class="tag">English</div><p class="muted">Short essays on the weekly haftarot: the story of each haftarah, its hidden messages, and its link to the Torah reading or festival.</p><div class="book-buy"><b>$20.00</b><a class="btn ghost sm" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Order ↗</a></div></div></div>
+    </div>
+  </div></section>
+  <section><div class="wrap center">
+    <p class="muted" style="max-width:60ch;margin:0 auto 16px;">Choose your books and quantities on our secure order form; shipping is calculated at checkout. For bulk orders for shuls, schools or kallah teachers, call <a href="tel:8889937824">888.993.7824</a>.</p>
+    <a class="btn solid" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener">Go to the order form ↗</a>
+    <p class="note"><b>Content note —</b> Book text and covers copied from PUAH's existing JotForm order form (payments via Braintree). The source says "three volumes have been published and two more are in production" while selling Volumes 4 and 5; that sentence was left out. Volume 5 has no topic list or cover in the source, and the two Weitzman titles have no covers.</p>
   </div></section>
 </div>
 
