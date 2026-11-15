@@ -37,6 +37,23 @@ Date: November 12, 2026. All changes are in `index.html`, plus 13 endorsement le
 ## Follow-up changes
 - **Media & Webinars and Events pages deleted** at PUAH's request, along with every link to them: the Get Involved menu, the mobile menu, the Get Involved tiles and the Services tile. The Get Involved page now shows three tiles: Volunteer, Stories & Testimonials, and Ways to Give. On the Services page, the Fertility Dictionary tile was widened to fill the gap. Old links redirect: `#media` goes to the Digital Library and `#gi-events` goes to Get Involved. **Items #15 and #20 below are superseded.**
 
+## PUAH answers applied (Nov 13 emails from Orly)
+- **Tax ID:** the footer now reads "PUAH is a 501(c)(3) nonprofit organization. Tax ID (EIN): 11-3403453". The EIN also appears on Ways to Give.
+- **Rabbinic questions (Contact form):** now go to **esegelman@puahfertility.org and rabbikrohn@puahfertility.org**, per Orly's correction. This replaces questions@.
+- **Gemach:** gemach@puahfertility.org confirmed.
+- **Volunteer form:** goes to the main office, with **joelle@puahfertility.org** copied.
+- **Response time:** Contact now says "get back to you as soon as possible", as Orly suggested. Lea hasn't weighed in yet.
+- **Zelle, Venmo and PayPal:** one card with Zelle lpdavidson@puahfertility.org, Venmo @PUAH18 (linked) and PayPal puahfamily@gmail.com. Ways to Give is now 8 cards in a 4-column grid.
+- **DAF card:** names **American Friends of PUAH**, EIN 11-3403453.
+- **Supervision page:** removed the "Clinics and physicians: call 646-809-1407…" line.
+- **Shabbos page:** new **Shabbos blood collection request** form (name, phone, email, address, city/ZIP, date, time, receiving lab, notes), sent to **supervision@puahfertility.org**. The hero button now jumps to it.
+
+### Still open
+- **Books:** puahfertility.org/purchase shows no books, even fully loaded in a browser, so the list has to come from PUAH. PUAH also asked how books would be charged and wants refund access. Recommendation: Stripe Payment Links on a Stripe account PUAH owns, so PUAH has full dashboard and refund access, with order notifications sent to office@puahfertility.org.
+- **Medical Advisory Council:** Donna's updated list hasn't arrived in friedman.yonah@gmail.com. Ask Orly to forward it.
+- **Elimor Ryzman:** bio and headshot coming from PUAH.
+- **Photos:** Joelle is putting together a folder of real photos.
+
 ## Other changes made along the way
 - **New "Resources" menu** in the header and mobile menu: Digital Library, Purchase Books, Fertility Dictionary.
 - **Get Involved menu:** Volunteer, Share Your Story, Ways to Give.
