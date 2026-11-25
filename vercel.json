@@ -1,0 +1,36 @@
+{
+  "buildCommand": "node scripts/build.mjs",
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/:path*", "has": [{ "type": "host", "value": "puahfertility.org" }], "destination": "https://www.puahfertility.org/:path*", "permanent": true },
+
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/story", "destination": "/about/story", "permanent": true },
+    { "source": "/staff", "destination": "/about/team", "permanent": true },
+    { "source": "/board", "destination": "/about/medical-council", "permanent": true },
+    { "source": "/endorsements", "destination": "/about/endorsements", "permanent": true },
+    { "source": "/testimonials", "destination": "/about/stories", "permanent": true },
+    { "source": "/service/guidance-and-support", "destination": "/services/guidance", "permanent": true },
+    { "source": "/service/lab-supervision", "destination": "/services/lab-supervision", "permanent": true },
+    { "source": "/service/financial-assistance", "destination": "/services/financial-assistance", "permanent": true },
+    { "source": "/service/education", "destination": "/pillars/education", "permanent": true },
+    { "source": "/service/puahline", "destination": "/services/ask-the-rabbi", "permanent": true },
+    { "source": "/service", "destination": "/services", "permanent": true },
+    { "source": "/ask-rabbi", "destination": "/services/ask-the-rabbi", "permanent": true },
+    { "source": "/ask-rabbi.php", "destination": "/services/ask-the-rabbi", "permanent": true },
+    { "source": "/contactpi", "destination": "/contact", "permanent": true },
+    { "source": "/contactpi.php", "destination": "/contact", "permanent": true },
+    { "source": "/faq", "destination": "/services", "permanent": true },
+    { "source": "/eCards", "destination": "/get-involved", "permanent": true },
+    { "source": "/eCards.php", "destination": "/get-involved", "permanent": true },
+    { "source": "/events", "destination": "/get-involved", "permanent": true },
+    { "source": "/volunteer", "destination": "/get-involved/volunteer", "permanent": true },
+    { "source": "/donate", "destination": "/give", "permanent": true },
+    { "source": "/purchase", "destination": "/books", "permanent": true },
+    { "source": "/videos", "destination": "/library", "permanent": true },
+    { "source": "/articles", "destination": "/library", "permanent": true },
+    { "source": "/articles/:path*", "destination": "/library", "permanent": true }
+  ]
+}
