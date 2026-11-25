@@ -5,7 +5,7 @@ Status: **applied Nov 19, 2026** (approved by Yonah). Changes are in `index.html
 
 **Applied:** council roster rebuilt alphabetically with headshots and the wireframe note removed; home council previews now show Williams, Schlegel, Levine, Forman, Copperman, Singer; 3 book covers added (Vol. 5 described as *Otzar HaMusagim*); Elbaz and Danzger cards with headshots on Team; "Our rabbinical advisors" renamed to "Our International Advisors"; real photos on the home hero float, home audience panel, Guidance & Support page, Pillar 01 tile (Rabbi Segelman at a bris) and a 4-photo strip on Stories & Testimonials.
 
-**Still open:** Rabbi Danzger's first name (card reads "Rabbi Danzger"); Elimor Ryzman bio/photo; `img/photos/denise-h.jpg` imported but not used (unclear whether it's Denise Hirsch); Brian Levine Drive photos not used (council uses the roster headshot).
+**Still open:** Elimor Ryzman bio/photo; `img/photos/denise-h.jpg` imported but not used (unclear whether it's Denise Hirsch); Brian Levine Drive photos not used (council uses the roster headshot).
 
 ## Proposed changes
 
@@ -66,7 +66,7 @@ Status: **applied Nov 19, 2026** (approved by Yonah). Changes are in `index.html
 **Rabbi Meir Gavriel Elbaz** (Rabbinic Advisor)
 Born and raised in Queens, NY. After the Mirrer Yeshiva in Brooklyn, he studied at Bet Midrash Yehave Da'at in Jerusalem, receiving semicha in Rabbanut and Dayanut while serving on the Bet Hora'ah Yabia Omer. Rabbi of Congregation Ohel Simcha in Queens; Maggid Shiur and Sephardic Director at Lander College for Men; head of the English division of Halacha Yomit; Av Bet Din of Badatz Meorot Ha'Mishpat. *(Full text in Lea's Nov 18 email; card will use a 1–2 line summary.)*
 
-**Rabbi ___ Danzger** (Regional Director — East Coast)
+**Rabbi Yoni Danzger** (Regional Director — East Coast)
 Rabbi of The Roslyn Synagogue, Roslyn Heights, NY, since 2021. Studied at Yeshivat Sha'alvim; B.A. Psychology (Yeshiva University); M.A. Social-Organizational Psychology (Teachers College, Columbia); semicha from RIETS; Beren Kollel Elyon.
 
 ## Assets (imported)
