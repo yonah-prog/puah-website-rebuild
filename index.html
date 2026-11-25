@@ -53,6 +53,8 @@
   .mark{display:inline-block;vertical-align:middle;}
   .logo{display:flex;align-items:center;gap:9px;cursor:pointer;text-decoration:none;}
   .logo .wordmark{font-family:"Fraunces",serif;font-weight:600;font-size:26px;color:var(--navy);letter-spacing:.02em;}
+  .logo-img{display:block;height:38px;width:auto;}
+  .logo-inv{filter:brightness(0) invert(1);}
 
   /* ---- buttons ---- */
   .btn{display:inline-flex;align-items:center;gap:7px;border-radius:100px;padding:12px 22px;font-size:14px;font-weight:600;
@@ -345,6 +347,22 @@
   .v2 .bt-wide{grid-column:span 2;flex-direction:row;align-items:flex-end;justify-content:space-between;gap:24px;}
   .v2 .bt-wide b{white-space:nowrap;}
   .v2 .v2-inset .bt-wide{grid-column:span 3;}
+  /* letter lightbox */
+  .lb{position:fixed;inset:0;z-index:2000;background:rgba(8,20,28,.86);display:none;align-items:center;justify-content:center;padding:56px 64px;}
+  .lb.on{display:flex;}
+  .lb figure{margin:0;max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center;gap:12px;}
+  .lb img{max-width:min(900px,100%);max-height:calc(100vh - 140px);object-fit:contain;background:#fff;border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.45);}
+  .lb figcaption{color:#e8eef0;font-size:14px;text-align:center;}
+  .lb figcaption a{color:#9fd8d4;margin-left:10px;}
+  .lb button{position:absolute;background:rgba(255,255,255,.12);border:0;color:#fff;width:44px;height:44px;border-radius:50%;font-size:22px;line-height:44px;cursor:pointer;}
+  .lb button:hover{background:rgba(255,255,255,.25);}
+  .lb .lb-x{top:14px;right:14px;}
+  .lb .lb-prev{left:12px;top:50%;transform:translateY(-50%);}
+  .lb .lb-next{right:12px;top:50%;transform:translateY(-50%);}
+  @media(max-width:600px){.lb{padding:56px 10px 20px;}.lb .lb-prev,.lb .lb-next{top:auto;bottom:10px;transform:none;}.lb img{max-height:calc(100vh - 170px);}}
+  .v2 .bt-photo.bt-lib::after{background:linear-gradient(180deg,rgba(10,28,38,0) 0%,rgba(10,28,38,.35) 30%,rgba(10,28,38,.9) 58%,rgba(10,28,38,.96) 100%);}
+  .sticky-col{position:sticky;top:110px;}
+  @media(max-width:860px){.sticky-col{position:static;}}
   .v2 .bt-photo{padding:0;color:#fff;}
   .v2 .bt-photo .bt-ph{position:absolute;inset:0;}
   .v2 .bt-photo .bt-ph span{top:30%;}
@@ -644,6 +662,13 @@
   .dept-cols p{margin:8px 0 0;}
   @media(max-width:760px){.dept-cols{grid-template-columns:1fr;gap:14px;}}
   .council-card h3{font-size:18px;margin-bottom:6px;}
+  .council-ph{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top;display:block;margin-bottom:14px;background:#e6ecef;}
+  .media.avatar.has-img{background:none;}
+  .media.avatar img,.media.tall img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;}
+  .media.avatar img{object-position:center 25%;}
+  .story-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:34px;}
+  .story-photos img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:18px;display:block;}
+  @media(max-width:760px){.story-photos{grid-template-columns:repeat(2,1fr);}}
   .council-card p{margin:10px 0 0;font-size:14px;}
   .chk{display:flex !important;gap:10px;align-items:flex-start;font-size:14px !important;font-weight:400 !important;letter-spacing:0 !important;color:var(--ink) !important;margin:0 !important;}
   .chk input{width:auto !important;margin-top:3px;}
@@ -702,8 +727,7 @@
 <header class="site">
   <div class="wrap">
     <a class="logo" onclick="go('home')">
-      <svg class="mark" width="34" height="34" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#2f9a95"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#2f9a95" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg>
-      <span class="wordmark">PUAH</span>
+      <img class="logo-img" src="img/puah-logo.png" alt="PUAH" width="94" height="38">
     </a>
     <nav class="main" id="nav">
       <div class="has-drop">
@@ -995,11 +1019,11 @@
       </div>
       <div class="expert-list">
         <div><b>Zev Williams, MD, PhD</b><span>Columbia University</span></div>
-        <div><b>Marc Goldstein, MD, DSc</b><span>Weill Cornell</span></div>
-        <div><b>Brian A. Levine, MD</b><span>CCRM New York</span></div>
+        <div><b>Peter Schlegel, MD</b><span>Weill Cornell Medicine</span></div>
+        <div><b>Brian Levine, MD</b><span>CCRM Fertility, New York</span></div>
         <div><b>Eric Forman, MD, HCLD</b><span>Reproductive Endocrinology &amp; IVF</span></div>
-        <div><b>Ilan Tur-Kaspa, MD</b><span>Institute for Human Reproduction</span></div>
-        <div><b>Paul J. Turek, MD</b><span>The Turek Clinics</span></div>
+        <div><b>Alan Copperman, MD</b><span>RMA of New York</span></div>
+        <div><b>Tomer Singer, MD</b><span>Northwell Fertility</span></div>
         <a onclick="go('about-council')">See the full council →</a>
       </div>
     </div>
@@ -1119,7 +1143,7 @@
 
   <!-- HERO: centered headline, floating photos -->
   <div class="v2-hero">
-    <div class="v2-float f1"><img src="img/couple.jpg" alt=""></div>
+    <div class="v2-float f1"><img src="img/photos/family-sofa.jpg" alt=""></div>
     <div class="v2-float f2"><img src="img/puahline-rabbi.jpg" alt=""></div>
     <div class="v2-float f3"><img src="img/mashgicha-lab.jpg" alt=""></div>
     <div class="v2-float f4"><img src="img/couple-advisor.jpg" alt=""></div>
@@ -1213,14 +1237,14 @@
         <h2 class="v2-h2">Here for <em>everyone on the journey</em></h2>
         <p class="v2-aud-lead">Couples, the rabbanim they turn to, the physicians who treat them, and the partners who make it all free.</p>
         <div class="v2-aud-list">
-          <a class="on" onmouseenter="audSwap(this)" onclick="go('contact')" data-img="img/couple.jpg">Families &amp; couples <i>→</i></a>
+          <a class="on" onmouseenter="audSwap(this)" onclick="go('contact')" data-img="img/photos/couple-3.jpg">Families &amp; couples <i>→</i></a>
           <a onmouseenter="audSwap(this)" onclick="go('svc-ask')" data-img="img/rabbanim.jpg">Rabbanim <i>→</i></a>
           <a onmouseenter="audSwap(this)" onclick="go('svc-lab')" data-img="img/physician.jpg">Physicians &amp; clinics <i>→</i></a>
           <a onmouseenter="audSwap(this)" onclick="go('give')" data-img="img/team.jpg">Donors &amp; partners <i>→</i></a>
         </div>
         <a class="v2-btn light" onclick="go('contact')">Speak to an advisor</a>
       </div>
-      <div class="v2-aud-photo" id="aud-photo"><img src="img/couple.jpg" alt=""></div>
+      <div class="v2-aud-photo" id="aud-photo"><img src="img/photos/couple-3.jpg" alt=""></div>
     </div>
   </div>
 
@@ -1235,11 +1259,11 @@
         <div class="bt bt-cream bt-exp"><span class="v2-chip dark">Medical Advisory Council</span>
           <ul class="v2-docs">
             <li><b>Zev Williams, MD, PhD</b><span>Columbia University</span></li>
-            <li><b>Marc Goldstein, MD, DSc</b><span>Weill Cornell</span></li>
-            <li><b>Brian A. Levine, MD</b><span>CCRM New York</span></li>
+            <li><b>Peter Schlegel, MD</b><span>Weill Cornell Medicine</span></li>
+            <li><b>Brian Levine, MD</b><span>CCRM Fertility, New York</span></li>
             <li><b>Eric Forman, MD, HCLD</b><span>Reproductive Endocrinology &amp; IVF</span></li>
-            <li><b>Ilan Tur-Kaspa, MD</b><span>Institute for Human Reproduction</span></li>
-            <li><b>Paul J. Turek, MD</b><span>The Turek Clinics</span></li>
+            <li><b>Alan Copperman, MD</b><span>RMA of New York</span></li>
+            <li><b>Tomer Singer, MD</b><span>Northwell Fertility</span></li>
           </ul>
           <a class="bt-link" onclick="go('about-council')">See the full council →</a>
         </div>
@@ -1279,7 +1303,7 @@
   <!-- LIBRARY + STORY -->
   <section class="v2-sec" style="padding-top:0;">
     <div class="v2-wrap v2-bento v2-bento-2">
-      <a class="bt bt-photo bt-lib" onclick="go('resources')"><div class="bt-ph"><span>Resource Library preview</span></div><div class="bt-cap"><span class="v2-chip">Want to read more first?</span><h3>The PUAH Digital Resource Library</h3><p>In-depth articles on halacha, medicine and emotional health, reviewed by our rabbinic team and medical advisors.</p><b>Explore the library →</b></div></a>
+      <a class="bt bt-photo bt-lib" onclick="go('resources')"><div class="bt-ph"><img src="img/library-preview.jpg" alt="The PUAH Digital Resource Library home page" loading="lazy" style="object-position:top center;"></div><div class="bt-cap"><span class="v2-chip">Want to read more first?</span><h3>The PUAH Digital Resource Library</h3><p>In-depth articles on halacha, medicine and emotional health, reviewed by our rabbinic team and medical advisors.</p><b>Explore the library →</b></div></a>
       <div class="bt bt-sky bt-story"><p class="bt-quote dark">&ldquo;You not only assisted us with all our medical and halachic problems, but also helped us deal with our emotional pain.&rdquo;</p><span class="bt-attr dark">Anonymous, Haifa</span><a class="bt-link" onclick="go('about-testimonials')">Read more stories →</a></div>
     </div>
   </section>
@@ -1303,7 +1327,7 @@
   <div class="breadcrumb"><div class="wrap">Home / About</div></div>
   <section><div class="wrap">
     <div class="v2-bento">
-      <a class="bt bt-photo bt-lg" onclick="go('about-story')"><span class="v2-chip">Since 1980</span><div class="bt-ph"><span>Archival / founder photo</span></div><div class="bt-cap"><h3>PUAH's Story</h3><p>From a living-room desk to a worldwide movement: our origins, milestones and growth.</p><b>Read our story →</b></div></a>
+      <a class="bt bt-navy bt-lg" onclick="go('about-story')"><span class="v2-chip">Since 1980</span><div><h3>PUAH's Story</h3><p>From a living-room desk to a worldwide movement: our origins, milestones and growth.</p><b>Read our story →</b></div></a>
       <a class="bt bt-teal" onclick="go('about-mission')"><h3>Our Mission &amp; Approach</h3><p>Torah wisdom and reproductive medicine, free and discreet.</p><b>Read more →</b></a>
       <a class="bt bt-cream" onclick="go('about-team')"><h3>Meet the Team</h3><p>The rabbis, counselors and supervisors behind the guidance.</p><b>Meet the team →</b></a>
       <a class="bt bt-sky" onclick="go('about-council')"><h3>Medical Advisory Council</h3><p>The physicians who guide PUAH's medical integrity.</p><b>See the council →</b></a>
@@ -1317,15 +1341,14 @@
 <div class="page v2" id="page-about-story">
   <div class="stub-hero"><div class="wrap"><span class="eyebrow">About · PUAH's Story</span><h1>From a living-room desk <em>to a worldwide movement</em></h1><p class="lead" style="max-width:66ch;">Since 1980, PUAH has grown from one rabbi's vision into a global organization that has counseled more than 100,000 families.</p></div></div>
   <div class="breadcrumb"><div class="wrap">Home / About / PUAH's Story</div></div>
-  <section><div class="wrap grid g2" style="align-items:center;">
-    <div>
+  <section><div class="wrap">
+    <div style="max-width:760px;">
       <span class="eyebrow">Our origins</span>
       <h2>How it began</h2>
       <p>In 1978, the first baby was born through in-vitro fertilization (IVF) — an extraordinary scientific breakthrough that raised major halachic questions. Rabbi Mordechai Eliyahu zt"l, then the Chief Rabbi of Israel, charged Rabbi Menachem Burstein with researching a halachic framework to assist the Jewish community.</p>
       <p>Rabbi Burstein recognized that Jewish men and women needed a wide network of resources to understand their fertility options — including supervision in laboratories to protect against errors and mix-ups, and one-on-one counseling by compassionate, educated professionals who understand the medical, halachic, and emotional aspects of each unique case.</p>
       <p>In 1980, from a desk in his humble living room, Rabbi Burstein established PUAH. With Hashem's helping hand and a dedicated team, it has flourished into a worldwide organization that has counseled more than 100,000 families through their infertility struggles.</p>
     </div>
-    <div class="media tall"><span class="lbl">Archival / founder photo</span></div>
   </div></section>
   <section class="alt"><div class="wrap">
     <div class="center"><span class="eyebrow">Milestones</span><h2>Our journey <em>so far</em></h2></div>
@@ -1374,7 +1397,7 @@
   <section><div class="wrap">
     <span class="eyebrow">Founder</span><h2>Founder &amp; Dean</h2>
     <div class="card" style="margin-top:20px;"><div style="display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;">
-      <div class="media avatar" style="width:110px;height:110px;flex:0 0 auto;"></div>
+      <div class="media avatar has-img" style="width:110px;height:110px;flex:0 0 auto;"><img src="img/team/burstein.jpg" alt="Rabbi Menachem Burstein" loading="lazy"></div>
       <div style="flex:1;min-width:260px;">
         <h3 style="font-size:21px;margin-bottom:2px;">Rabbi Menachem Burstein</h3>
         <div class="tag">Founder &amp; Dean</div>
@@ -1385,18 +1408,20 @@
   <section class="alt"><div class="wrap">
     <span class="eyebrow">Rabbinical Counselors — USA</span><h2>Guidance across America</h2>
     <div class="grid g3" style="margin-top:24px;">
-      <div class="card center"><div class="media avatar" style="margin:0 auto 14px;"></div><h3 style="font-size:19px;">Rabbi Elan Segelman</h3><div class="tag">Rabbinic Director — USA</div><p class="muted" style="margin-top:12px;">Rabbinic Director for PUAH in America; Rabbi of the Young Israel of Hancock Park, Los Angeles.</p></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 14px;"></div><h3 style="font-size:19px;">Rabbi Eliezer Krohn</h3><div class="tag">Rabbinic Advisor — USA</div><p class="muted" style="margin-top:12px;">A sought-after posek, lecturer, and mohel who received semicha from Beis Medrash Gavoha of Lakewood.</p></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 14px;"></div><h3 style="font-size:19px;">Rabbi Dovid Bogopulsky</h3><div class="tag">Regional Director — Florida</div><p class="muted" style="margin-top:12px;">Assistant rabbi at the Boca Jewish Center and rebbe at the Yeshiva of South Florida.</p></div>
+      <div class="card center"><div class="media avatar has-img" style="margin:0 auto 14px;"><img src="img/team/segelman.jpg" alt="Rabbi Elan Segelman" loading="lazy"></div><h3 style="font-size:19px;">Rabbi Elan Segelman</h3><div class="tag">Rabbinic Director — USA</div><p class="muted" style="margin-top:12px;">Rabbinic Director for PUAH in America; Rabbi of the Young Israel of Hancock Park, Los Angeles.</p></div>
+      <div class="card center"><div class="media avatar has-img" style="margin:0 auto 14px;"><img src="img/team/krohn.jpg" alt="Rabbi Eliezer Krohn" loading="lazy"></div><h3 style="font-size:19px;">Rabbi Eliezer Krohn</h3><div class="tag">Rabbinic Advisor — USA</div><p class="muted" style="margin-top:12px;">A sought-after posek, lecturer, and mohel who received semicha from Beis Medrash Gavoha of Lakewood.</p></div>
+      <div class="card center"><div class="media avatar has-img" style="margin:0 auto 14px;"><img src="img/team/bogopulsky.jpg" alt="Rabbi Dovid Bogopulsky" loading="lazy"></div><h3 style="font-size:19px;">Rabbi Dovid Bogopulsky</h3><div class="tag">Regional Director — Florida</div><p class="muted" style="margin-top:12px;">Assistant rabbi at the Boca Jewish Center and rebbe at the Yeshiva of South Florida.</p></div>
+      <div class="card center"><div class="media avatar has-img" style="margin:0 auto 14px;"><img src="img/team/elbaz.jpg" alt="Rabbi Meir Gavriel Elbaz" loading="lazy"></div><h3 style="font-size:19px;">Rabbi Meir Gavriel Elbaz</h3><div class="tag">Rabbinic Advisor — USA</div><p class="muted" style="margin-top:12px;">Rabbi of Congregation Ohel Simcha in Queens and Sephardic Director at Lander College for Men. He heads the English division of Halacha Yomit and serves as Av Bet Din of Badatz Meorot Ha'Mishpat.</p></div>
+      <div class="card center"><div class="media avatar has-img" style="margin:0 auto 14px;"><img src="img/team/danzger.jpg" alt="Rabbi Danzger" loading="lazy"></div><h3 style="font-size:19px;">Rabbi Danzger</h3><div class="tag">Regional Director — East Coast</div><p class="muted" style="margin-top:12px;">Rabbi of The Roslyn Synagogue in Roslyn Heights, NY, since 2021. He received semicha from RIETS and holds an M.A. in Social-Organizational Psychology from Teachers College, Columbia University.</p></div>
     </div>
     <span class="eyebrow" style="margin-top:40px;">Rabbinical Counselors — Israel</span><h2>Guidance from Israel</h2>
     <div class="grid g2" style="margin-top:24px;">
-      <div class="card"><div style="display:flex;gap:16px;align-items:center;"><div class="media avatar" style="width:64px;height:64px;flex:0 0 auto;"></div><div><h3 style="font-size:19px;margin-bottom:2px;">Rabbi Gideon Weitzman</h3><div class="tag">Rabbinic Advisor</div></div></div><p class="muted" style="margin-top:12px;">Heads PUAH's English-speaking section in Israel; a published scholar on IVF, sperm extraction, and genetic counseling, and rabbi of the Merkaz Modiin Synagogue.</p></div>
-      <div class="card"><div style="display:flex;gap:16px;align-items:center;"><div class="media avatar" style="width:64px;height:64px;flex:0 0 auto;"></div><div><h3 style="font-size:19px;margin-bottom:2px;">Rabbi Elchanan Lewis</h3><div class="tag">Rabbinic Advisor — English Dept.</div></div></div><p class="muted" style="margin-top:12px;">Ordained by the Chief Rabbinate of Israel; rabbi of Congregation Tiferet Avot in Efrat and a longtime halachic responder.</p></div>
+      <div class="card"><div style="display:flex;gap:16px;align-items:center;"><div class="media avatar has-img" style="width:64px;height:64px;flex:0 0 auto;"><img src="img/team/weitzman.jpg" alt="Rabbi Gideon Weitzman" loading="lazy"></div><div><h3 style="font-size:19px;margin-bottom:2px;">Rabbi Gideon Weitzman</h3><div class="tag">Rabbinic Advisor</div></div></div><p class="muted" style="margin-top:12px;">Heads PUAH's English-speaking section in Israel; a published scholar on IVF, sperm extraction, and genetic counseling, and rabbi of the Merkaz Modiin Synagogue.</p></div>
+      <div class="card"><div style="display:flex;gap:16px;align-items:center;"><div class="media avatar has-img" style="width:64px;height:64px;flex:0 0 auto;"><img src="img/team/lewis.jpg" alt="Rabbi Elchanan Lewis" loading="lazy"></div><div><h3 style="font-size:19px;margin-bottom:2px;">Rabbi Elchanan Lewis</h3><div class="tag">Rabbinic Advisor — English Dept.</div></div></div><p class="muted" style="margin-top:12px;">Ordained by the Chief Rabbinate of Israel; rabbi of Congregation Tiferet Avot in Efrat and a longtime halachic responder.</p></div>
     </div>
   </div></section>
   <section><div class="wrap">
-    <span class="eyebrow">Rabbinical advisors by department</span><h2>Our rabbinical advisors</h2>
+    <span class="eyebrow">Rabbinical advisors by department</span><h2>Our International Advisors</h2>
     <div class="card dept-card" style="margin-top:22px;">
       <h3 style="font-size:17px;">Hebrew, Spanish &amp; French Departments</h3>
       <div class="dept-cols">
@@ -1409,26 +1434,25 @@
   <section class="alt"><div class="wrap">
     <span class="eyebrow">Supervision Department</span><h2>Supervision team</h2>
     <div class="grid g4" style="margin-top:24px;">
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Aryeh Noyek</strong><div class="muted" style="font-size:13px;">Int'l Director of Supervision</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Ahuva Goldstein</strong><div class="muted" style="font-size:13px;">Director of Supervision, West Coast</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Denise Hirsch</strong><div class="muted" style="font-size:13px;">Director of Supervision, Florida</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Sherryl Steiner</strong><div class="muted" style="font-size:13px;">Director of Supervision, Toronto</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Tzipporah Coronel</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, West Coast</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Brocha Friedman</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, East Coast</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Meira Reichmann</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, East Coast</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Lisa Friedman</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, West Coast</div></div>
+      <div class="card center"><strong>Aryeh Noyek</strong><div class="muted" style="font-size:13px;">Int'l Director of Supervision</div></div>
+      <div class="card center"><strong>Ahuva Goldstein</strong><div class="muted" style="font-size:13px;">Director of Supervision, West Coast</div></div>
+      <div class="card center"><strong>Denise Hirsch</strong><div class="muted" style="font-size:13px;">Director of Supervision, Florida</div></div>
+      <div class="card center"><strong>Sherryl Steiner</strong><div class="muted" style="font-size:13px;">Director of Supervision, Toronto</div></div>
+      <div class="card center"><strong>Tzipporah Coronel</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, West Coast</div></div>
+      <div class="card center"><strong>Brocha Friedman</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, East Coast</div></div>
+      <div class="card center"><strong>Meira Reichmann</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, East Coast</div></div>
+      <div class="card center"><strong>Lisa Friedman</strong><div class="muted" style="font-size:13px;">Supervision Coordinator, West Coast</div></div>
     </div>
   </div></section>
   <section><div class="wrap">
     <span class="eyebrow">Management</span><h2>Leadership &amp; operations</h2>
     <div class="grid g4" style="margin-top:24px;">
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Amichai Remer</strong><div class="muted" style="font-size:13px;">International Executive Director</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Lea P. Davidson</strong><div class="muted" style="font-size:13px;">Executive Director, USA</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Miriam Ben David</strong><div class="muted" style="font-size:13px;">Director of Volunteer Services</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Orly Aziz</strong><div class="muted" style="font-size:13px;">Director of Operations</div></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Joelle Bohadana</strong><div class="muted" style="font-size:13px;">Awareness &amp; Events Director</div></div>
+      <div class="card center"><strong>Amichai Remer</strong><div class="muted" style="font-size:13px;">International Executive Director</div></div>
+      <div class="card center"><strong>Lea P. Davidson</strong><div class="muted" style="font-size:13px;">Executive Director, USA</div></div>
+      <div class="card center"><strong>Miriam Ben David</strong><div class="muted" style="font-size:13px;">Director of Volunteer Services</div></div>
+      <div class="card center"><strong>Orly Aziz</strong><div class="muted" style="font-size:13px;">Director of Operations</div></div>
+      <div class="card center"><strong>Joelle Bohadana</strong><div class="muted" style="font-size:13px;">Awareness &amp; Events Director</div></div>
     </div>
-    <p class="note"><b>Wireframe note —</b> Real names/titles pulled from puahfertility.org/staff. Replace avatars with headshots; bios can be expanded per person.</p>
   </div></section>
 </div>
 
@@ -1439,34 +1463,33 @@
   <section><div class="wrap">
     <p style="max-width:760px;">PUAH's Medical Advisory Council is comprised of leading specialists who excel in their fields. Their expertise ensures that PUAH's guidance reflects the most current and accurate reproductive medicine, working hand-in-hand with our rabbinic advisors.</p>
     <div class="grid g3 council-grid" style="margin-top:26px;">
-      <div class="card council-card"><h3>Baruch Abittan, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">Extend Fertility, NY</p></div>
-      <div class="card council-card"><h3>Natan Bar-Chama, MD</h3><div class="tag">Director, Male Reproductive Health</div><p class="muted">RMA of New York</p></div>
-      <div class="card council-card"><h3>Yonah Bardos, MD</h3><div class="tag">Founder; Reproductive Endocrinologist</div><p class="muted">White Glove Fertility, Miami</p></div>
-      <div class="card council-card"><h3>Boback Berookhim, MD</h3><div class="tag">Director, Male Fertility &amp; Microsurgery</div><p class="muted">Lenox Hill Hospital, NY</p></div>
-      <div class="card council-card"><h3>Anate Brauer, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">RMA of New York</p></div>
-      <div class="card council-card"><h3>Scott Chudnoff, MD</h3><div class="tag">Chair, Obstetrics &amp; Gynecology</div><p class="muted">Maimonides Medical Center, Brooklyn</p></div>
-      <div class="card council-card"><h3>Alan Copperman, MD</h3><div class="tag">CEO &amp; Managing Director</div><p class="muted">RMA of New York</p></div>
-      <div class="card council-card"><h3>Eric Forman, MD, HCLD</h3><div class="tag">Medical &amp; Laboratory Director</div><p class="muted">Columbia University Fertility Center</p></div>
-      <div class="card council-card"><h3>Michael Glassner, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">Main Line Fertility, PA</p></div>
-      <div class="card council-card"><h3>Ellen Goldstein, MD</h3><div class="tag">Founder; Reproductive Endocrinologist</div><p class="muted">Beverly Hills Fertility</p></div>
-      <div class="card council-card"><h3>Marc Goldstein, MD, DSc</h3><div class="tag">Male Reproductive Medicine &amp; Microsurgery</div><p class="muted">Weill Cornell Medicine</p></div>
-      <div class="card council-card"><h3>Joshua Klein, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">Premium Health, NY</p></div>
-      <div class="card council-card"><h3>Alexander Kotlyar, MD</h3><div class="tag">Reproductive Endocrinologist; Director of Resident Education</div><p class="muted">Pinnacle Fertility, NY</p></div>
-      <div class="card council-card"><h3>Brian A. Levine, MD</h3><div class="tag">Founding Partner &amp; Practice Director</div><p class="muted">CCRM Fertility, NY</p></div>
-      <div class="card council-card"><h3>Harry Lieman, MD</h3><div class="tag">Division Director, Reproductive Endocrinology &amp; Infertility</div><p class="muted">Montefiore / Albert Einstein, NY</p></div>
-      <div class="card council-card"><h3>Hugh K. Miller, MD</h3><div class="tag">Obstetrics &amp; Gynecology</div><p class="muted">Stanford Health</p></div>
-      <div class="card council-card"><h3>Steven Presser, MD</h3><div class="tag">Founder; Fertility Specialist</div><p class="muted">IVFLA Fertility, Beverly Hills</p></div>
-      <div class="card council-card"><h3>Peter Schlegel, MD</h3><div class="tag">Reproductive Urologist</div><p class="muted">NY Men's Health Medical</p></div>
-      <div class="card council-card"><h3>Tomer Singer, MD</h3><div class="tag">System Chief, Reproductive Endocrinology &amp; Infertility</div><p class="muted">Northwell Fertility, NY</p></div>
-      <div class="card council-card"><h3>Ilan Tur-Kaspa, MD</h3><div class="tag">President &amp; Medical Director</div><p class="muted">Institute for Human Reproduction (IHR), Chicago</p></div>
-      <div class="card council-card"><h3>Paul J. Turek, MD, FACS, FRSM</h3><div class="tag">Director, Men's Reproductive Health</div><p class="muted">The Turek Clinics</p></div>
-      <div class="card council-card"><h3>Rachel Weinerman, MD</h3><div class="tag">Reproductive Endocrinologist; REI Fellowship Program Director</div><p class="muted">University Hospitals Cleveland Medical Center</p></div>
-      <div class="card council-card"><h3>Sahar Wertheimer, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">HRC Fertility, Beverly Hills</p></div>
-      <div class="card council-card"><h3>Philip Werthman, MD</h3><div class="tag">Founder; Reproductive Urologist</div><p class="muted">Center for Male Reproductive Medicine, LA</p></div>
-      <div class="card council-card"><h3>Zev Williams, MD, PhD</h3><div class="tag">Chief, Reproductive Endocrinology &amp; Infertility</div><p class="muted">Columbia University Fertility Center</p></div>
-      <div class="card council-card"><h3>Nurit Winkler, MD</h3><div class="tag">Co-Founder; Reproductive Endocrinologist</div><p class="muted">Los Angeles Reproductive Center</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/abittan.jpg" alt="Baruch Abittan" loading="lazy"><h3>Baruch Abittan, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">Extend Fertility, NY</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/bar-chama.jpg" alt="Natan Bar-Chama" loading="lazy"><h3>Natan Bar-Chama, MD</h3><div class="tag">Director, Male Reproductive Health</div><p class="muted">RMA of New York</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/bardos.jpg" alt="Yonah Bardos" loading="lazy"><h3>Yonah Bardos, MD, MBE</h3><div class="tag">Founding Physician &amp; Medical Director</div><p class="muted">CCRM Fertility, Miami</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/berookhim.jpg" alt="Boback Berookhim" loading="lazy"><h3>Boback Berookhim, MD</h3><div class="tag">Director, Male Fertility &amp; Microsurgery</div><p class="muted">Lenox Hill Hospital, NY</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/brauer.jpg" alt="Anate Brauer" loading="lazy"><h3>Anate Brauer, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">RMA of New York</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/chudnoff.jpg" alt="Scott Chudnoff" loading="lazy"><h3>Scott Chudnoff, MD</h3><div class="tag">Chair, Obstetrics &amp; Gynecology</div><p class="muted">Maimonides Medical Center, Brooklyn</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/copperman.jpg" alt="Alan Copperman" loading="lazy"><h3>Alan Copperman, MD, FACOG</h3><div class="tag">CEO &amp; Managing Director</div><p class="muted">RMA of New York</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/dahan.jpg" alt="Michael Dahan" loading="lazy"><h3>Michael Dahan, MD</h3><div class="tag">Reproductive Endocrinologist &amp; Associate Professor</div><p class="muted">McGill University / MUHC Reproductive Centre, Montreal</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/denker.jpg" alt="Mark Denker" loading="lazy"><h3>Mark Denker, MD</h3><div class="tag">Founder, CEO &amp; Reproductive Endocrinologist</div><p class="muted">Palm Beach Fertility Center, FL</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/forman.jpg" alt="Eric Forman" loading="lazy"><h3>Eric Forman, MD, HCLD</h3><div class="tag">Medical &amp; Laboratory Director</div><p class="muted">Columbia University Fertility Center, NY</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/glassner.jpg" alt="Michael Glassner" loading="lazy"><h3>Michael Glassner, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">Main Line Fertility, PA</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/goldstein.jpg" alt="Ellen Goldstein" loading="lazy"><h3>Ellen Goldstein, MD, FACOG</h3><div class="tag">Co-Founder &amp; Reproductive Endocrinologist</div><p class="muted">Beverly Hills Fertility, CA</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/klein.jpg" alt="Joshua Klein" loading="lazy"><h3>Joshua Klein, MD, FACOG</h3><div class="tag">Co-Founder &amp; Chief Clinical Officer</div><p class="muted">Extend Fertility, NY</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/kotlyar.jpg" alt="Alexander Kotlyar" loading="lazy"><h3>Alexander Kotlyar, MD, FACOG</h3><div class="tag">Reproductive Endocrinologist &amp; Director of Resident Education</div><p class="muted">Pinnacle Fertility, NY</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/levine.jpg" alt="Brian Levine" loading="lazy"><h3>Brian Levine, MD</h3><div class="tag">Founding Partner &amp; Practice Director</div><p class="muted">CCRM Fertility, NY</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/lieman.jpg" alt="Harry Lieman" loading="lazy"><h3>Harry Lieman, MD</h3><div class="tag">Division Director, Reproductive Endocrinology &amp; Infertility</div><p class="muted">Montefiore Einstein, NY</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/margolis.jpg" alt="Cheri Margolis" loading="lazy"><h3>Cheri Margolis, MD, FACOG</h3><div class="tag">Reproductive Endocrinologist &amp; Fertility Specialist</div><p class="muted">Boca Fertility, Boca Raton, FL</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/peyser.jpg" alt="Alexandra Peyser" loading="lazy"><h3>Alexandra Peyser, MD</h3><div class="tag">Associate Program Director, REI Fellowship; Assistant Professor</div><p class="muted">Northwell Health / Zucker School of Medicine, NY</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/presser.jpg" alt="Steven Presser" loading="lazy"><h3>Steven Presser, MD</h3><div class="tag">Founder &amp; Fertility Specialist</div><p class="muted">IVFLA Fertility, Beverly Hills</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/schlegel.jpg" alt="Peter Schlegel" loading="lazy"><h3>Peter Schlegel, MD</h3><div class="tag">James J. Colt Professor of Urology</div><p class="muted">Weill Cornell Medicine, NY</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/singer.jpg" alt="Tomer Singer" loading="lazy"><h3>Tomer Singer, MD, MBA</h3><div class="tag">System Chief, Reproductive Endocrinology &amp; Infertility</div><p class="muted">Northwell Fertility, NY</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/weinerman.jpg" alt="Rachel Weinerman" loading="lazy"><h3>Rachel Weinerman, MD</h3><div class="tag">Director of Third-Party Reproduction &amp; REI Fellowship Program Director</div><p class="muted">University Hospitals Cleveland Medical Center, OH</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/wertheimer.jpg" alt="Sahar Wertheimer" loading="lazy"><h3>Sahar Wertheimer, MD</h3><div class="tag">Reproductive Endocrinologist</div><p class="muted">HRC Fertility, Beverly Hills, CA</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/werthman.jpg" alt="Philip Werthman" loading="lazy"><h3>Philip Werthman, MD</h3><div class="tag">Founder &amp; Reproductive Urologist</div><p class="muted">Center for Male Reproductive Medicine, Los Angeles</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/williams.jpg" alt="Zev Williams" loading="lazy"><h3>Zev Williams, MD, PhD</h3><div class="tag">Chief, Reproductive Endocrinology &amp; Infertility</div><p class="muted">Columbia University Fertility Center, NY</p></div>
+      <div class="card council-card"><img class="council-ph" src="img/council/winkler.jpg" alt="Nurit Winkler" loading="lazy"><h3>Nurit Winkler, MD</h3><div class="tag">Co-Founder &amp; Reproductive Endocrinologist</div><p class="muted">Los Angeles Reproductive Center</p></div>
     </div>
-    <p class="note"><b>Wireframe note —</b> Roster merged from puahfertility.org/board (22 members) plus four physicians already on this site (M. Goldstein, Miller, Tur-Kaspa, Turek) who are not on the old board page. Confirm those four and all titles before publishing.</p>
   </div></section>
 </div>
 
@@ -1499,7 +1522,6 @@
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Yitzchak Yosef</strong><div class="muted" style="font-size:13px;">Rishon LeZion</div><a class="link" style="font-size:12px;margin-top:6px;display:inline-block;" href="img/letters/yitzchak-yosef.jpg" target="_blank" rel="noopener">View letter →</a></div>
       <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Rav Gavriel Zinner</strong><div class="muted" style="font-size:13px;">Nitei Gavriel</div></div>
     </div>
-    <p class="note"><b>Wireframe note —</b> Names pulled from puahfertility.org/endorsements. "View letter" appears where scanned letters exist; wire these to the letter images/PDFs.</p>
   </div></section>
 </div>
 
@@ -1508,6 +1530,7 @@
   <div class="stub-hero"><div class="wrap"><span class="eyebrow">Stories &amp; Testimonials</span><h1>Families, <em>in their own words</em></h1><p class="lead" style="max-width:64ch;">The heart of PUAH's work is the people we walk beside. Read their stories, or share your own.</p></div></div>
   <div class="breadcrumb"><div class="wrap">Home / About / Stories &amp; Testimonials</div></div>
   <section><div class="wrap">
+    <div class="story-photos"><img src="img/photos/mother-son-1.jpg" alt="" loading="lazy"><img src="img/photos/couple-1.jpg" alt="" loading="lazy"><img src="img/photos/couple-4.jpg" alt="" loading="lazy"><img src="img/photos/mother-son-2.jpg" alt="" loading="lazy"></div>
     <div class="v2-quotes">
       <div class="card"><p class="quote" style="font-size:18px;">"You guided us throughout all the years of treatment and listened to us with much patience and understanding. You not only assisted us with all our medical and halachic problems, but also helped us deal with our emotional pain."</p><p class="muted" style="margin:12px 0 0;">— Anonymous, Haifa</p></div>
       <div class="card"><p class="quote" style="font-size:18px;">"You cannot imagine how important your work is. How wonderful that there is a listening ear and someone to give guidance on where to go and which tests are necessary."</p><p class="muted" style="margin:12px 0 0;">— Anonymous, New York</p></div>
@@ -1567,7 +1590,7 @@
       <p>Our professional mental health specialists are here to give you personalized advice and emotional support every step of the fertility process. From the moment you reach out to us, you have access to our extensive network of resources and support — halachic, medical, and emotional.</p>
       <p>First and foremost, PUAH's mental health specialists ensure that you never feel isolated or alone. Infertility is often a struggle suffered in silence, so you may be surprised to learn that approximately 1 in every 7 people face hurdles when trying to have children — with more than 5,000,000 individuals of childbearing age experiencing fertility issues in the United States alone.</p>
     </div>
-    <div class="media tall"><span class="lbl">Photo — advisor with client</span></div>
+    <div class="media tall"><img src="img/photos/couple-2.jpg" alt="A couple holding their baby" loading="lazy"></div>
   </div></section>
   <section class="alt"><div class="wrap">
     <span class="eyebrow">Areas of guidance</span>
@@ -1593,15 +1616,15 @@
     <span class="eyebrow">Meet the Cares Team</span>
     <h2>Mental health specialists</h2>
     <div class="grid g4" style="margin-top:24px;">
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Shulamis Mayerfeld</strong><div class="tag">LCSW</div><p class="muted" style="font-size:13px;margin-top:10px;">Uses a psychodynamic approach, integrating play therapy, CBT, systems, narrative, and strength-based methods tailored to each client.</p></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Karen Wasserstein</strong><div class="tag">PsyD</div><p class="muted" style="font-size:13px;margin-top:10px;">Specializes in therapy for individuals and couples navigating family-building, including third-party reproduction consultations.</p></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Daniela Gemal</strong><div class="tag">LCSW</div><p class="muted" style="font-size:13px;margin-top:10px;">Helps individuals and couples with anxiety, depression, grief, and trauma to enhance emotional well-being and fulfillment.</p></div>
-      <div class="card center"><div class="media avatar" style="margin:0 auto 12px;"></div><strong>Elimor Ryzman</strong><div class="tag">Mental Health Specialist</div><p class="muted" style="font-size:13px;margin-top:10px;">Member of the PUAH Cares Team, offering emotional support through every stage of the fertility journey.</p></div>
+      <div class="card center"><strong>Shulamis Mayerfeld</strong><div class="tag">LCSW</div><p class="muted" style="font-size:13px;margin-top:10px;">Uses a psychodynamic approach, integrating play therapy, CBT, systems, narrative, and strength-based methods tailored to each client.</p></div>
+      <div class="card center"><strong>Karen Wasserstein</strong><div class="tag">PsyD</div><p class="muted" style="font-size:13px;margin-top:10px;">Specializes in therapy for individuals and couples navigating family-building, including third-party reproduction consultations.</p></div>
+      <div class="card center"><strong>Daniela Gemal</strong><div class="tag">LCSW</div><p class="muted" style="font-size:13px;margin-top:10px;">Helps individuals and couples with anxiety, depression, grief, and trauma to enhance emotional well-being and fulfillment.</p></div>
+      <div class="card center"><strong>Elimor Ryzman</strong><div class="tag">Mental Health Specialist</div><p class="muted" style="font-size:13px;margin-top:10px;">Member of the PUAH Cares Team, offering emotional support through every stage of the fertility journey.</p></div>
     </div>
     <h3 style="margin-top:34px;">Rabbinical advisors</h3>
     <div class="grid g2" style="margin-top:16px;">
-      <div class="card"><div style="display:flex;gap:14px;align-items:center;"><div class="media avatar" style="width:56px;height:56px;"></div><div><strong>Rabbi Elan Segelman</strong><div class="muted" style="font-size:13px;">Rabbinic Director — America</div></div></div></div>
-      <div class="card"><div style="display:flex;gap:14px;align-items:center;"><div class="media avatar" style="width:56px;height:56px;"></div><div><strong>Rabbi Eliezer Krohn</strong><div class="muted" style="font-size:13px;">Rabbinic Advisor — America</div></div></div></div>
+      <div class="card"><div style="display:flex;gap:14px;align-items:center;"><div class="media avatar has-img" style="width:56px;height:56px;flex:0 0 auto;"><img src="img/team/segelman.jpg" alt="Rabbi Elan Segelman" loading="lazy"></div><div><strong>Rabbi Elan Segelman</strong><div class="muted" style="font-size:13px;">Rabbinic Director — America</div></div></div></div>
+      <div class="card"><div style="display:flex;gap:14px;align-items:center;"><div class="media avatar has-img" style="width:56px;height:56px;flex:0 0 auto;"><img src="img/team/krohn.jpg" alt="Rabbi Eliezer Krohn" loading="lazy"></div><div><strong>Rabbi Eliezer Krohn</strong><div class="muted" style="font-size:13px;">Rabbinic Advisor — America</div></div></div></div>
     </div>
   </div></section>
   <section class="alt"><div class="wrap center">
@@ -1782,7 +1805,7 @@
   <section class="alt"><div class="wrap">
     <div class="center"><span class="eyebrow">The vision</span><h2>Three pillars. <em>One mission.</em></h2></div>
     <div class="v2-stage" style="margin-top:34px;">
-      <a class="bt bt-photo" onclick="go('pillar-rabbinic')"><span class="v2-chip">Pillar 01</span><div class="bt-ph"><span>Rabbanim in learning</span></div><div class="bt-cap"><h3>Rabbinic Leadership Initiative</h3><p>Empowering rabbanim to lead on fertility with confidence, clarity and compassion.</p><b>Explore this pillar →</b></div></a>
+      <a class="bt bt-photo" onclick="go('pillar-rabbinic')"><span class="v2-chip">Pillar 01</span><div class="bt-ph"><img src="img/photos/segelman-bris.jpg" alt="" loading="lazy"></div><div class="bt-cap"><h3>Rabbinic Leadership Initiative</h3><p>Empowering rabbanim to lead on fertility with confidence, clarity and compassion.</p><b>Explore this pillar →</b></div></a>
       <a class="bt bt-photo" onclick="go('pillar-medical')"><span class="v2-chip">Pillar 02</span><div class="bt-ph"><span>Physicians in dialogue</span></div><div class="bt-cap"><h3>National Medical Thinktank</h3><p>Uniting leading Jewish physicians and scientists in service of halachic clarity.</p><b>Explore this pillar →</b></div></a>
       <a class="bt bt-photo" onclick="go('pillar-education')"><span class="v2-chip">Pillar 03</span><div class="bt-ph"><span>Resource Library</span></div><div class="bt-cap"><h3>Education &amp; Awareness</h3><p>A trusted digital home making fertility knowledge accessible to all.</p><b>Explore this pillar →</b></div></a>
     </div>
@@ -1913,8 +1936,8 @@
 <div class="page v2" id="page-gi-volunteer">
   <div class="stub-hero"><div class="wrap"><span class="eyebrow">Get Involved · Volunteer</span><h1>Volunteers are <em>always welcome</em></h1><p class="lead" style="max-width:66ch;">Come join the PUAH family and help us in our efforts to assure Jewish continuity.</p></div></div>
   <div class="breadcrumb"><div class="wrap">Home / Get Involved / Volunteer</div></div>
-  <section><div class="wrap grid g2" style="align-items:center;">
-    <div>
+  <section><div class="wrap grid g2" style="align-items:start;">
+    <div class="sticky-col">
       <span class="eyebrow">Why volunteer</span>
       <h2>Your time makes families possible</h2>
       <p>PUAH requires a tremendous amount of time and energy, and volunteers are at the heart of everything we do. The zechusim (merits) associated with such an endeavor are extremely fulfilling and rewarding.</p>
@@ -1994,7 +2017,7 @@
       <a class="bk" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener"><div class="bk-cov"><img src="img/books/sefer-puah-2.png" alt="Cover of Sefer PUAH, Vol. 2" loading="lazy"></div><h3>Sefer PUAH, Vol. 2</h3><p>Fertility, intimacy and treatment.</p><div class="bk-foot"><b>$25</b><span>Order ↗</span></div></a>
       <a class="bk" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener"><div class="bk-cov"><img src="img/books/sefer-puah-3.jpg" alt="Cover of Sefer PUAH, Vol. 3" loading="lazy"></div><h3>Sefer PUAH, Vol. 3</h3><p>Pregnancy, birth, nursing and contraception.</p><div class="bk-foot"><b>$25</b><span>Order ↗</span></div></a>
       <a class="bk" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener"><div class="bk-cov"><img src="img/books/sefer-puah-4.jpg" alt="Cover of Sefer PUAH, Vol. 4" loading="lazy"></div><h3>Sefer PUAH, Vol. 4</h3><p>Gynecology, medical conditions and genetics.</p><div class="bk-foot"><b>$25</b><span>Order ↗</span></div></a>
-      <a class="bk" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener"><div class="bk-cov"><span class="bk-ph">Sefer PUAH, Vol. 5</span></div><h3>Sefer PUAH, Vol. 5</h3><p>The fifth volume of the Sefer PUAH set.</p><div class="bk-foot"><b>$25</b><span>Order ↗</span></div></a>
+      <a class="bk" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener"><div class="bk-cov"><img src="img/books/sefer-puah-5.jpg" alt="Cover of Sefer PUAH, Vol. 5" loading="lazy"></div><h3>Sefer PUAH, Vol. 5</h3><p>Otzar HaMusagim: a glossary of terms.</p><div class="bk-foot"><b>$25</b><span>Order ↗</span></div></a>
     </div>
     <div class="bk-group"><h2>Shu”t PUAH <span>Hebrew</span></h2></div>
     <div class="bk-grid">
@@ -2005,8 +2028,8 @@
     </div>
     <div class="bk-group"><h2>Rav Gideon Weitzman <span>English</span></h2></div>
     <div class="bk-grid">
-      <a class="bk" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener"><div class="bk-cov"><span class="bk-ph">Light of Redemption</span></div><h3>Light of Redemption</h3><p>Rav Kook on the Haggadah and Pesach.</p><div class="bk-foot"><b>$20</b><span>Order ↗</span></div></a>
-      <a class="bk" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener"><div class="bk-cov"><span class="bk-ph">His Words, Their Voices</span></div><h3>His Words, Their Voices</h3><p>Essays on the weekly haftarot.</p><div class="bk-foot"><b>$20</b><span>Order ↗</span></div></a>
+      <a class="bk" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener"><div class="bk-cov"><img src="img/books/light-of-redemption.jpg" alt="Cover of Light of Redemption" loading="lazy"></div><h3>Light of Redemption</h3><p>A Passover Haggadah based on the writings of Rav Kook.</p><div class="bk-foot"><b>$20</b><span>Order ↗</span></div></a>
+      <a class="bk" href="https://pci.jotform.com/form/72906923763465" target="_blank" rel="noopener"><div class="bk-cov"><img src="img/books/his-words-their-voices.jpg" alt="Cover of His Words, Their Voices" loading="lazy"></div><h3>His Words, Their Voices</h3><p>Essays on the weekly haftarot.</p><div class="bk-foot"><b>$20</b><span>Order ↗</span></div></a>
     </div>
     <p class="bk-note">Orders are placed on our secure order form; shipping is calculated at checkout. For bulk orders, call <a href="tel:8889937824">888.993.7824</a>.</p>
   </div></section>
@@ -3097,7 +3120,7 @@
 
     <div class="sg-row"><div>Ring stats<br><code>.v2-rings .ring</code></div><div><div class="v2-rings" style="max-width:520px;grid-template-columns:1fr 1fr;"><div class="ring" style="--p:70;--c:var(--teal);"><div><b>300</b><span>calls answered per day</span></div></div><div class="ring" style="--p:40;--c:var(--pink-d);"><div><b>150</b><span>trained lab supervisors</span></div></div></div><p class="v2-muted" style="margin-top:10px;font-size:14px;">Rings are decorative, not proportional. Only publish verified numbers, with the reporting year.</p></div></div>
 
-    <div class="sg-row"><div>List rows<br><code>.expert-list / .v2-docs</code></div><div style="max-width:520px;"><ul class="v2-docs"><li><b>Zev Williams, MD, PhD</b><span>Columbia University</span></li><li><b>Marc Goldstein, MD, DSc</b><span>Weill Cornell</span></li></ul></div></div>
+    <div class="sg-row"><div>List rows<br><code>.expert-list / .v2-docs</code></div><div style="max-width:520px;"><ul class="v2-docs"><li><b>Zev Williams, MD, PhD</b><span>Columbia University</span></li><li><b>Peter Schlegel, MD</b><span>Weill Cornell Medicine</span></li></ul></div></div>
 
     <div class="sg-row"><div>Forms<br><code>.form</code></div><div style="max-width:520px;"><form class="form" onsubmit="return false;"><div class="row2"><div><label>First name</label><input type="text"></div><div><label>Best way to reach you</label><select><option>Phone call</option></select></div></div><p class="fine">Ask only for what's needed. State who will see it, and how quickly we'll respond.</p></form></div></div>
   </div></section>
@@ -3166,8 +3189,7 @@
     <div class="fgrid">
       <div>
         <div class="logo" style="cursor:default;">
-          <svg class="mark" width="32" height="32" viewBox="0 0 48 48"><circle cx="18" cy="14" r="3.4" fill="#5cbfda"/><path d="M12 22c0 6.6 5.4 12 12 12s12-5.4 12-12" stroke="#5cbfda" stroke-width="3.6" stroke-linecap="round" fill="none"/></svg>
-          <span class="wordmark" style="color:#fff;">PUAH</span>
+          <img class="logo-img logo-inv" src="img/puah-logo.png" alt="PUAH" width="94" height="38">
         </div>
         <p style="font-size:14px;color:#9fadb6;margin-top:14px;max-width:36ch;">Helping the greater Jewish community fulfill the dream of a healthy family — rooted in Torah, informed by medicine.</p>
         <p style="font-size:13px;color:#7f8d97;line-height:1.7;"><a href="tel:8889937824" style="color:inherit;">888.993.7824</a><br>P.O. Box 297185, Brooklyn, NY 11229<br>PUAH is a 501(c)(3) nonprofit organization. Tax ID (EIN): 11-3403453</p>
@@ -3288,9 +3310,10 @@
   }
 
   /* ---- forms ----
-     Each form names a department in data-inbox. Until a server endpoint is
-     connected, submitting opens a pre-addressed email to that inbox.
-     To go server-side, replace the mailto block with a fetch() to the endpoint. */
+     Each form names a department in data-inbox. Submissions POST to /api/send
+     (Vercel function → SendGrid), which picks the recipients server-side.
+     INBOX below is only used for the fallback: if sending fails, the visitor's
+     email app opens with the message pre-addressed. Keep both lists in sync. */
   var INBOX={
     rabbi:       {to:'esegelman@puahfertility.org,rabbikrohn@puahfertility.org'},
     shabbos:     {to:'supervision@puahfertility.org'},
@@ -3299,20 +3322,38 @@
     volunteer:   {to:'contact@puahfertility.org', cc:'joelle@puahfertility.org'},
     story:       {to:'contact@puahfertility.org'}
   };
+  // Hidden honeypot field on every form; bots fill it, people never see it.
+  document.querySelectorAll('form[data-inbox]').forEach(function(f){
+    var hp=document.createElement('input'); hp.type='text'; hp.name='website'; hp.tabIndex=-1; hp.autocomplete='off';
+    hp.setAttribute('aria-hidden','true'); hp.style.cssText='position:absolute;left:-9999px;width:1px;height:1px;opacity:0;';
+    f.appendChild(hp);
+  });
   function sendForm(f){
     if(!f.reportValidity()){ return false; }
-    var box=INBOX[f.getAttribute('data-inbox')]||INBOX.rabbi, lines=[], seen={};
+    var key=f.getAttribute('data-inbox'), box=INBOX[key]||INBOX.rabbi, subject=f.getAttribute('data-subject')||'Message', lines=[], seen={}, hp='';
     f.querySelectorAll('input,select,textarea').forEach(function(el){
       var n=el.getAttribute('name'); if(!n){return;}
+      if(n==='website'){ hp=el.value; return; }
       if(el.type==='checkbox'){ if(!el.checked){return;} if(seen[n]){ seen[n].push(el.value); return; } seen[n]=[el.value]; lines.push([n,seen[n]]); return; }
       if(el.value){ lines.push([n,el.value]); }
     });
-    var body=lines.map(function(l){ return l[0]+': '+(Array.isArray(l[1])?l[1].join('; '):l[1]); }).join('\n');
-    var url='mailto:'+box.to+'?'+(box.cc?'cc='+encodeURIComponent(box.cc)+'&':'')+'subject='+encodeURIComponent('[Website] '+(f.getAttribute('data-subject')||'Message'))+'&body='+encodeURIComponent(body);
-    window.location.href=url;
-    var done=document.createElement('div'); done.className='form-done';
-    done.innerHTML='<h3>Thank you.</h3><p class="muted">Your email app should open with your message addressed to <b>'+box.to+'</b>. Press send there to finish. If nothing opened, email us at that address or call <a href="tel:8889937824">888.993.7824</a>.</p>';
-    f.replaceWith(done);
+    var fields=lines.map(function(l){ return {name:l[0], value:Array.isArray(l[1])?l[1].join('; '):l[1]}; });
+    var btn=f.querySelector('button[type=submit],button:not([type]),input[type=submit]');
+    var label=btn&&(btn.textContent||btn.value);
+    if(btn){ btn.disabled=true; if(btn.tagName==='BUTTON'){ btn.textContent='Sending…'; } }
+    function finish(html){ var done=document.createElement('div'); done.className='form-done'; done.innerHTML=html; f.replaceWith(done); }
+    function fallback(){
+      var body=fields.map(function(x){ return x.name+': '+x.value; }).join('\n');
+      window.location.href='mailto:'+box.to+'?'+(box.cc?'cc='+encodeURIComponent(box.cc)+'&':'')+'subject='+encodeURIComponent('[Website] '+subject)+'&body='+encodeURIComponent(body);
+      finish('<h3>Almost there.</h3><p class="muted">We couldn\'t send your message automatically, so your email app should open with it addressed to <b>'+box.to+'</b>. Press send there to finish. If nothing opened, email us at that address or call <a href="tel:8889937824">888.993.7824</a>.</p>');
+    }
+    fetch('/api/send',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({inbox:key,subject:subject,fields:fields,website:hp})})
+      .then(function(r){ return r.json().catch(function(){ return {ok:false}; }); })
+      .then(function(j){
+        if(j&&j.ok){ finish('<h3>Thank you. Your message was sent.</h3><p class="muted">A member of our team will get back to you as soon as possible. If it\'s urgent, call <a href="tel:8889937824">888.993.7824</a>.</p>'); }
+        else { if(btn){ btn.disabled=false; if(btn.tagName==='BUTTON'){ btn.textContent=label; } } fallback(); }
+      })
+      .catch(fallback);
     return false;
   }
   /* ---- site search ---- */
@@ -3365,6 +3406,39 @@
 
   // Route on first load so a deep link such as index.html#dictionary opens there
   render(currentRoute());
+</script>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Letter of endorsement">
+  <button class="lb-x" aria-label="Close">&times;</button>
+  <button class="lb-prev" aria-label="Previous letter">&#8249;</button>
+  <button class="lb-next" aria-label="Next letter">&#8250;</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lb'), im=lb.querySelector('img'), cap=lb.querySelector('figcaption'), links=[], idx=0, last=null;
+  function list(){ return Array.prototype.slice.call(document.querySelectorAll('a[href^="img/letters/"]')); }
+  function show(i){
+    idx=(i+links.length)%links.length; var a=links[idx];
+    var card=a.closest('.card'), who=card&&card.querySelector('strong,h3'); var name=who?who.textContent.trim():'Letter';
+    im.src=a.getAttribute('href'); im.alt='Letter of endorsement from '+name;
+    cap.innerHTML=''; cap.appendChild(document.createTextNode(name+' · '+(idx+1)+' of '+links.length));
+    var o=document.createElement('a'); o.href=a.getAttribute('href'); o.target='_blank'; o.rel='noopener'; o.textContent='Open full size ↗'; cap.appendChild(o);
+  }
+  function open(a){ links=list(); last=a; show(links.indexOf(a)); lb.classList.add('on'); document.body.style.overflow='hidden'; lb.querySelector('.lb-x').focus(); }
+  function close(){ lb.classList.remove('on'); document.body.style.overflow=''; im.removeAttribute('src'); if(last){ last.focus(); } }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="img/letters/"]');
+    if(a&&!lb.contains(a)&&!(e.metaKey||e.ctrlKey||e.shiftKey)){ e.preventDefault(); open(a); }
+  });
+  lb.querySelector('.lb-x').onclick=close;
+  lb.querySelector('.lb-prev').onclick=function(){ show(idx-1); };
+  lb.querySelector('.lb-next').onclick=function(){ show(idx+1); };
+  lb.addEventListener('click',function(e){ if(e.target===lb||e.target.tagName==='FIGURE'){ close(); } });
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('on')){ return; }
+    if(e.key==='Escape'){ close(); } else if(e.key==='ArrowLeft'){ show(idx-1); } else if(e.key==='ArrowRight'){ show(idx+1); }
+  });
+})();
 </script>
 </body>
 </html>
